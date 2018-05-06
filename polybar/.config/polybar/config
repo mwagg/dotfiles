@@ -1,0 +1,193 @@
+[colors]
+background = ${xrdb:color0:#222}
+foreground = ${xrdb:color7:#222}
+foreground-alt = ${xrdb:color7:#222}
+primary = ${xrdb:color1:#222}
+secondary = ${xrdb:color2:#222}
+alert = ${xrdb:color3:#222}
+
+[bar/top]
+monitor = DP-1
+monitor-fallback = eDP-1
+dpi = ${xrdb:Xft.dpi}
+width = 100%
+height = 48
+offset-x = 0
+offset-y = 0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+spacing = 1
+padding-left = 0
+padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+
+font-0 = Noto Sans:pixelsize=12;3
+font-1 = FontAwesome:size=12;4
+
+modules-left = i3 xwindow
+modules-center =
+modules-right = battery pulseaudio date powermenu
+
+tray-position = right
+tray-padding = 2
+tray-background = #5a000000
+
+; MODULES
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:120:...%
+label-padding = 4
+
+[module/date]
+type = internal/date
+interval = 1.0
+date = %a %b %d,
+time = %H:%M
+date-alt = %A, %d %B %Y
+time-alt = %H:%M:%S
+label = %date% %time%
+format =    <label>
+format-padding = 3
+
+[module/padding]
+type = custom/text
+content =
+content-foreground = #00000000
+content-background = #55000000
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = AC0
+poll-interval = 5
+format-charging = <animation-charging>  <label-charging>
+format-discharging = <ramp-capacity>  <label-discharging>
+format-full = <ramp-capacity>  <label-full>
+label-charging = %percentage%
+label-discharging = %percentage%
+label-full = %percentage%
+format-charging-padding = 3
+format-discharging-padding = 3
+format-full-padding = 3
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+
+[module/backlight]
+type = internal/backlight
+
+card = intel_backlight
+enable-scroll = true
+
+format = <ramp> <label>
+label = %percentage%
+
+ramp-0 = 🌕
+ramp-1 = 🌔
+ramp-2 = 🌓
+ramp-3 = 🌒
+ramp-4 = 🌑
+
+[module/volume]
+type = internal/volume
+
+format-volume = <ramp-volume>  <label-volume>
+format-muted = <label-muted>
+label-volume = %percentage%
+label-muted =   muted
+label-muted-foreground = #aaa
+format-volume-padding = 3
+format-muted-padding = 3
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-headphones-0 = 
+
+[module/powermenu]
+type = custom/menu
+label-open = 
+label-close = cancel
+label-open-padding = 4
+label-close-padding = 3
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+menu-0-0-padding = 3
+menu-0-1-padding = 3
+
+menu-1-0 = reboot?
+menu-1-0-exec = sudo reboot
+menu-1-0-padding = 3
+
+menu-2-0 = power off?
+menu-2-0-exec = sudo poweroff
+menu-2-0-padding = 3
+
+[module/i3]
+type = internal/i3
+strip-wsnumbers = true
+index-sort = true
+enable-click = false
+enable-scroll = false
+wrapping-scroll = false
+reverse-scroll = false
+fuzzy-match = true
+-ws-icon-0 = ;♚
+-ws-icon-1 = ;♛
+-ws-icon-2 = ;♜
+-ws-icon-3 = ;♝
+-ws-icon-4 = ;♞
+ws-icon-default = 
+format = <label-state> <label-mode>
+
+label-mode = %mode%
+label-mode-padding = 2
+label-mode-background = #e60053
+
+label-focused = %icon%
+label-focused-foreground = ${colors.foreground-alt}
+label-focused-padding = 1
+
+label-unfocused = %icon%
+label-unfocused-foreground = ${colors.secondary}
+label-unfocused-padding = 1
+
+label-visible = %icon%
+label-visible-padding = 1
+
+label-urgent = %icon%
+label-urgent-foreground = ${colors.alert}
+label-urgent-padding = 1
+
+[module/pulseaudio]
+type = internal/pulseaudio
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+use-ui-max = true
+format-volume = <ramp-volume>  <label-volume>
+format-muted = <label-muted>
+label-volume = %percentage%
+label-muted =   muted
+label-muted-foreground = ${colors.primary}
+format-volume-padding = 3
+format-muted-padding = 3
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-headphones-0 = 
