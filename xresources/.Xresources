@@ -5,12 +5,3 @@ Xft.rgba: rgb
 Xft.autohint: true
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
-
-*background:                      #272827
-*foreground:                      #657b83
-*fading:                          15
-*fadeColor:                       black
-*cursorColor:                     #16A085
-*pointerColorBackground:          #2B2C2B
-*pointerColorForeground:          #16A085
-
