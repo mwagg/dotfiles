@@ -228,6 +228,9 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute alsa_output.pci-0
 bindsym $mod+Ctrl+m exec pavucontrol
 bindsym $mod+Ctrl+a exec tilix -e 'pulsemixer'
 
+# manage wireless network
+bindsym $mod+Ctrl+n exec tilix -e 'wicd-curses'
+
 # Autostart applications
 exec --no-startup-id $HOME/.local/bin/wal -R && $HOME/.local/bin/start_polybar
 exec --no-startup-id compton -b
