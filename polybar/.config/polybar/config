@@ -26,14 +26,15 @@ module-margin-right = 0
 
 font-0 = Noto Sans:pixelsize=12;3
 font-1 = FontAwesome:size=10;5
+font-2 = Hack:pixelsize=10:weight=bold;2
 
 modules-left = i3 xwindow
-modules-center =
-modules-right = battery pulseaudio date powermenu
+modules-center = date
+modules-right = wireless-network battery pulseaudio powermenu
 
-tray-position = right
-tray-padding = 2
-tray-background = #5a000000
+; tray-position = right
+; tray-padding = 2
+; tray-background = #5a000000
 
 ; MODULES
 
@@ -50,7 +51,7 @@ time = %H:%M
 date-alt = %A, %d %B %Y
 time-alt = %H:%M:%S
 label = %date% %time%
-format =    <label>
+format = <label>
 format-padding = 3
 
 [module/padding]
@@ -69,7 +70,7 @@ format-charging = <animation-charging>  <label-charging>
 format-discharging = <ramp-capacity>  <label-discharging>
 format-full = <ramp-capacity>  <label-full>
 label-charging = %percentage%
-label-discharging = %percentage%
+label-discharging = %percentage%%
 label-full = %percentage%
 format-charging-padding = 3
 format-discharging-padding = 3
@@ -141,39 +142,36 @@ menu-2-0-padding = 3
 
 [module/i3]
 type = internal/i3
-strip-wsnumbers = true
+format = <label-state><label-mode>
+
 index-sort = true
 enable-click = false
 enable-scroll = false
-wrapping-scroll = false
-reverse-scroll = false
-fuzzy-match = true
--ws-icon-0 = ;♚
--ws-icon-1 = ;♛
--ws-icon-2 = ;♜
--ws-icon-3 = ;♝
--ws-icon-4 = ;♞
-ws-icon-default = 
-format = <label-state> <label-mode>
 
-label-mode = %mode%
-label-mode-padding = 2
-label-mode-background = #e60053
+ws-icon-0 = 0;*
+ws-icon-default = ○
 
-label-focused = %icon%
+; Only show workspaces on the same output as the bar
+pin-workspaces = true
+
+label-mode = " %mode% "
+label-mode-foreground = ${colors.secondary}
+label-mode-background = ${colors.background}
+
+; focused = Active workspace on focused monitor
+label-focused = " ● "
 label-focused-foreground = ${colors.foreground-alt}
-label-focused-padding = 1
+label-focused-background = ${colors.background}
 
-label-unfocused = %icon%
-label-unfocused-foreground = ${colors.secondary}
-label-unfocused-padding = 1
+; unfocused = Inactive workspace on any monitor
+label-unfocused = " %icon% "
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-background = ${colors.background}
 
-label-visible = %icon%
-label-visible-padding = 1
-
-label-urgent = %icon%
+; urgent = Workspace with urgency hint set
+label-urgent = " ● "
 label-urgent-foreground = ${colors.alert}
-label-urgent-padding = 1
+label-urgent-background = ${colors.background}
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -191,3 +189,14 @@ ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-headphones-0 = 
+
+[module/wireless-network]
+type = internal/network
+interface = wlp58s0
+interval = 3.0
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected =  %essid%
+label-connected-foreground = #eefafafa
+label-disconnected = 
+label-disconnected-foreground = #66ffffff
