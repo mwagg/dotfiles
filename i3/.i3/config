@@ -231,6 +231,9 @@ bindsym $mod+Ctrl+a exec tilix -e 'pulsemixer'
 # manage wireless network
 bindsym $mod+Ctrl+n exec tilix -e 'wicd-curses'
 
+# restart polybar
+bindsym $mod+Shift+p exec $HOME/.local/bin/start_polybar
+
 # Autostart applications
 exec --no-startup-id $HOME/.local/bin/wal -R && sleep 1 && $HOME/.local/bin/start_polybar
 exec --no-startup-id compton -b
