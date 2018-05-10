@@ -35,6 +35,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layers
    '(
      ansible
+     auto-completion
      emacs-lisp
      git
      helm
