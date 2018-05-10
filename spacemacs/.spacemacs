@@ -437,7 +437,9 @@ It should only modify the values of Spacemacs settings."
    git-magit-status-fullscreen t
    js2-basic-offset 2
    js-indent-level 2
-   css-indent-offset 2)
+   css-indent-offset 2
+   vc-follow-symlinks t
+   create-lockfiles nil)
   (with-eval-after-load 'org
     (setq org-default-notes-file "~/Dropbox/org/notes.org"))
   (when window-system
