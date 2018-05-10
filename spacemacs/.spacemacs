@@ -38,6 +38,7 @@ This function should only modify configuration layer settings."
      git
      helm
      neotree
+     version-control
      )
 
    ;; List of additional packages that will be installed without being
