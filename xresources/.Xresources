@@ -1,7 +1,34 @@
-Xft.dpi: 180
+#if WIDTH > 1440
+#define DPI 192
+#define POLYBAR_HEIGHT 48
+#define ROFI_FONT_SIZE 24
+#else
+#define DPI 96
+#define POLYBAR_HEIGHT 24
+#define ROFI_FONT_SIZE 12
+#endif
+Xft.dpi: DPI
 Xft.antialias: true
 Xft.hinting: true
 Xft.rgba: rgb
 Xft.autohint: true
 Xft.hintstyle: hintslight
 Xft.lcdfilter: lcddefault
+
+Polybar.height: POLYBAR_HEIGHT
+
+rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
+rofi.width: 35
+rofi.lines: 4
+rofi.font: FontAwesome ROFI_FONT_SIZE
+rofi.bw: 0
+rofi.padding: 50
+rofi.line-margin: 5
+rofi.eh: 1
+rofi.sidebar-mode: true
+rofi.separator-style: none
+rofi.hide-scrollbar: true
+rofi.show-icons: true
+rofi.location: 0
+rofi.modi: window,run,drun
+
