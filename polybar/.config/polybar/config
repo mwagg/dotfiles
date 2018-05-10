@@ -1,11 +1,8 @@
 [colors]
 background = ${xrdb:color0:#222}
 foreground = ${xrdb:color7:#222}
-foreground-alt = ${xrdb:color7:#222}
-primary = ${xrdb:color6:#222}
-secondary = ${xrdb:color2:#222}
-tertiary = ${xrdb:color5:#222}
-alert = ${xrdb:color3:#222}
+highlight = ${xrdb:color5:#222}
+highlight_foreground = ${xrdb:color0:#222}
 
 [bar/top]
 monitor = DP-1
@@ -155,23 +152,19 @@ ws-icon-0 = 0;*
 pin-workspaces = true
 
 label-mode = " %mode% "
-label-mode-foreground = ${colors.secondary}
 label-mode-background = ${colors.background}
 
 ; focused = Active workspace on focused monitor
 label-focused = " %index% "
-label-focused-foreground = ${colors.background}
-label-focused-background = ${colors.primary}
-label-focused-underline = ${colors.foreground}
+label-focused-foreground = ${colors.highlight_foreground}
+label-focused-background = ${colors.highlight}
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = " %index% "
-label-unfocused-foreground = ${colors.foreground}
 label-unfocused-background = ${colors.background}
 
 ; urgent = Workspace with urgency hint set
 label-urgent = " ● "
-label-urgent-foreground = ${colors.alert}
 label-urgent-background = ${colors.background}
 
 [module/pulseaudio]
@@ -182,7 +175,7 @@ format-volume = <ramp-volume>  <label-volume>
 format-muted = <label-muted>
 label-volume = %percentage%
 label-muted =   muted
-label-muted-foreground = ${colors.primary}
+label-muted-foreground = ${colors.highlight}
 format-volume-padding = 3
 format-muted-padding = 3
 
