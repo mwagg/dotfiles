@@ -41,6 +41,8 @@ This function should only modify configuration layer settings."
      emacs-lisp
      git
      helm
+     html
+     javascript
      neotree
      version-control
      (ruby :variables
@@ -422,7 +424,10 @@ It should only modify the values of Spacemacs settings."
 
 (defun dotspacemacs/user-init ()
   (setq-default
-   git-magit-status-fullscreen t)
+   git-magit-status-fullscreen t
+   js2-basic-offset 2
+   js-indent-level 2
+   css-indent-offset 2)
   (when window-system
     (when (> (x-display-pixel-width) 1440)
       (setq-default dotspacemacs-default-font '("Source Code Pro"
@@ -464,7 +469,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (sayid evil-smartparens clojure-snippets clojure-cheatsheet clj-refactor inflections edn multiple-cursors peg cider-eval-sexp-fu cider queue clojure-mode yasnippet-snippets yaml-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org symon string-inflection spaceline-all-the-icons smeargle rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe restart-emacs rbenv rake rainbow-delimiters popwin persp-mode password-generator paradox overseer org-plus-contrib org-bullets open-junk-file neotree nameless mwim move-text minitest magit-gitflow macrostep lorem-ipsum linum-relative link-hint jinja2-mode indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ fuzzy font-lock+ flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump diminish diff-hl define-word counsel-projectile company-statistics company-ansible column-enforce-mode clean-aindent-mode chruby centered-cursor-mode bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-compile ansible-doc ansible aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
+    (web-mode web-beautify tagedit slim-mode scss-mode sass-mode pug-mode livid-mode skewer-mode less-css-mode json-mode json-snatcher json-reformat js2-refactor js2-mode js-doc impatient-mode htmlize simple-httpd helm-css-scss haml-mode emmet-mode company-web web-completion-data company-tern dash-functional tern coffee-mode yasnippet-snippets yaml-mode ws-butler winum which-key volatile-highlights vi-tilde-fringe uuidgen use-package unfill toc-org symon string-inflection spaceline-all-the-icons smeargle sayid rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe restart-emacs rbenv rake rainbow-delimiters popwin persp-mode password-generator paradox overseer org-plus-contrib org-bullets open-junk-file neotree nameless mwim move-text minitest magit-gitflow macrostep lorem-ipsum linum-relative link-hint jinja2-mode indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ fuzzy font-lock+ flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-smartparens evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu elisp-slime-nav editorconfig dumb-jump diminish diff-hl define-word counsel-projectile company-statistics company-ansible column-enforce-mode clojure-snippets clojure-cheatsheet clj-refactor clean-aindent-mode cider-eval-sexp-fu chruby centered-cursor-mode bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-compile ansible-doc ansible aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
