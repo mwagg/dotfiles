@@ -429,6 +429,13 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-pretty-docs nil))
 
 (defun dotspacemacs/user-init ()
+  (when window-system
+    (when (> (x-display-pixel-width) 1440)
+      (setq-default dotspacemacs-default-font '("Source Code Pro"
+                                                :size 30
+                                                :weight normal
+                                                :width normal
+                                                :powerline-scale 1.1))))
   "Initialization for user code:
 This function is called immediately after `dotspacemacs/init', before layer
 configuration.
