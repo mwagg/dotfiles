@@ -20,7 +20,7 @@ font xft:URWGothic-Book 11
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec tilix
+bindsym $mod+Return exec rxvt
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -226,10 +226,10 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume alsa_out
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume alsa_output.pci-0000_00_1f.3.analog-stereo -5% #decrease sound volume
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute alsa_output.pci-0000_00_1f.3.analog-stereo toggle # mute sound
 bindsym $mod+Ctrl+m exec pavucontrol
-bindsym $mod+Ctrl+a exec tilix -e 'pulsemixer'
+bindsym $mod+Ctrl+a exec rxvt -e 'pulsemixer'
 
 # manage wireless network
-bindsym $mod+Ctrl+n exec tilix -e 'wicd-curses'
+bindsym $mod+Ctrl+n exec rxvt -e 'wicd-curses'
 
 # restart polybar
 bindsym $mod+Shift+p exec $HOME/.local/bin/start_polybar
