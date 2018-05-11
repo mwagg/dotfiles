@@ -32,3 +32,15 @@ rofi.show-icons: true
 rofi.location: 0
 rofi.modi: window,run,drun
 
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+URxvt*font: xft:Source Code Pro:size=12:antialias=true:hinting=true
+URxvt*boldFont: xft:Source Code Pro:size=12:antialias=true:hinting=true
+URxvt*italicFont: xft:Source Code Pro:style=Oblique:size=12:antialias=true:hinting=true
+URxvt*boldItalicFont: xft:Source Code Pro:style=Bold Oblique:size=12:antialias=true:hinting=true
+URxvt*letterSpace: -2
+URxvt*scrollBar: false
