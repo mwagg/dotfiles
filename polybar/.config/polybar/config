@@ -30,9 +30,9 @@ modules-left = i3 xwindow
 modules-center = date
 modules-right = wireless-network battery pulseaudio powermenu
 
-; tray-position = right
-; tray-padding = 2
-; tray-background = #5a000000
+tray-position = right
+tray-padding = 2
+tray-background = #5a000000
 
 ; MODULES
 
