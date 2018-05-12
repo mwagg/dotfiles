@@ -28,11 +28,11 @@ font-2 = Hack:pixelsize=10:weight=bold;2
 
 modules-left = i3 xwindow
 modules-center = date
-modules-right = wireless-network battery pulseaudio powermenu
+modules-right = wireless-network-dell wireless-network-macbook battery pulseaudio powermenu
 
-tray-position = right
-tray-padding = 2
-tray-background = #5a000000
+; tray-position = right
+; tray-padding = 2
+; tray-background = #5a000000
 
 ; MODULES
 
@@ -184,7 +184,19 @@ ramp-volume-1 = 
 ramp-volume-2 = 
 ramp-headphones-0 = 
 
-[module/wireless-network]
+
+[module/wireless-network-macbook]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected =  %essid%
+label-connected-foreground = #eefafafa
+label-disconnected = 
+label-disconnected-foreground = #66ffffff
+
+[module/wireless-network-dell]
 type = internal/network
 interface = wlp58s0
 interval = 3.0
