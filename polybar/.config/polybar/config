@@ -169,7 +169,7 @@ label-urgent-background = ${colors.background}
 
 [module/pulseaudio]
 type = internal/pulseaudio
-sink = alsa_output.pci-0000_12_00.3.analog-stereo
+sink = 0
 use-ui-max = true
 format-volume = <ramp-volume>  <label-volume>
 format-muted = <label-muted>
