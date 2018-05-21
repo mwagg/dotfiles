@@ -245,4 +245,3 @@ exec --no-startup-id dropbox start
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id pulseaudio
-exec --no-startup-id syndaemon -i .3 -d -t -K
