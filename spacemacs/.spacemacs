@@ -474,6 +474,11 @@ before packages are loaded."
   (setq ruby-insert-encoding-magic-comment nil)
   (spacemacs/toggle-transparency)
   (add-hook 'smartparent-enabled-hook #'evil-smartparens-mode)
+  (add-hook 'focus-out-hook
+            (defun save-current-buffer-if-needed ()
+              (interactive)
+              (when (and (buffer-file-name) (buffer-modified-p))
+                (save-buffer))))
   (define-key evil-normal-state-map (kbd "C-h") #'evil-window-left)
   (define-key evil-normal-state-map (kbd "C-j") #'evil-window-down)
   (define-key evil-normal-state-map (kbd "C-k") #'evil-window-up)
