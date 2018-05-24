@@ -40,6 +40,7 @@ This function should only modify configuration layer settings."
      clojure
      emacs-lisp
      git
+     github
      helm
      html
      javascript
