@@ -1,0 +1,21 @@
+[user]
+	name = mwagg
+	email = michael@guerillatactics.co.uk
+[core]
+	editor = nvim
+	whitespace = tab-in-indent,tabwidth=2
+[alias]
+	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
+	d = difftool
+[color]
+	branch = auto
+	interactive = auto
+	diff = auto
+	grep = auto
+	status = auto
+[push]
+	default = current
+[help]
+	autocorrect = 30
+[credential]
+	helper = cache --timeout=2592000
