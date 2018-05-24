@@ -452,7 +452,9 @@ It should only modify the values of Spacemacs settings."
    vc-follow-symlinks t
    create-lockfiles nil)
   (with-eval-after-load 'org
-    (setq org-default-notes-file "~/Dropbox/org/notes.org"))
+    (setq org-default-notes-file "~/Dropbox/org/notes.org")
+    (setq org-agenda-files (list "~/Dropbox/org/todos.org"
+                                 "~/Dropbox/org/projects.org")))
   (when window-system
     (when (> (x-display-pixel-width) 1440)
       (setq-default dotspacemacs-default-font '("Source Code Pro"
