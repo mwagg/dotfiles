@@ -352,7 +352,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-show-transient-state-color-guide t
 
    ;; If non-nil unicode symbols are displayed in the mode line. (default t)
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
 
    ;; If non-nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters point
@@ -453,9 +453,12 @@ It should only modify the values of Spacemacs settings."
    create-lockfiles nil
    bookmark-default-file "~/Dropbox/bookmarks")
   (with-eval-after-load 'org
-    (setq org-default-notes-file "~/Dropbox/org/notes.org")
+    (setq org-default-notes-file "~/Dropbox/org/todos.org")
     (setq org-agenda-files (list "~/Dropbox/org/todos.org"
-                                 "~/Dropbox/org/projects.org")))
+                                 "~/Dropbox/org/projects.org"))
+    (setq org-capture-templates '(
+                                  ("t" "Todo" entry (file "~/Dropbox/org/todos.org")
+                                   "* TODO %?\n%i"))))
   (when window-system
     (when (> (x-display-pixel-width) 1440)
       (setq-default dotspacemacs-default-font '("Source Code Pro"
