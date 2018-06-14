@@ -457,7 +457,7 @@ It should only modify the values of Spacemacs settings."
     (setq org-agenda-files (list "~/Dropbox/org/todos.org"
                                  "~/Dropbox/org/projects.org"))
     (setq org-capture-templates '(
-                                  ("t" "Todo" entry (file "~/Dropbox/org/todos.org")
+                                  ("t" "Todo" entry (file+headline "~/Dropbox/org/todos.org" "To be prioritised")
                                    "* TODO %?\n%i"))))
   (when window-system
     (when (> (x-display-pixel-width) 1440)
