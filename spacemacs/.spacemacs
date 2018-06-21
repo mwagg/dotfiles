@@ -481,6 +481,8 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
   (setq ruby-insert-encoding-magic-comment nil)
+  (setq exec-path (append exec-path '("$HOME/.local/bin")))
+  (setq exec-path (append exec-path '("$HOME/.local/node/bin")))
   (spacemacs/toggle-transparency)
   (add-hook 'focus-out-hook
             (defun save-current-buffer-if-needed ()
