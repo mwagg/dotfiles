@@ -452,6 +452,7 @@ It should only modify the values of Spacemacs settings."
    vc-follow-symlinks t
    create-lockfiles nil
    bookmark-default-file "~/Dropbox/bookmarks")
+  (setq-default dotspacemacs-smartparens-strict-mode t)
   (with-eval-after-load 'org
     (setq org-default-notes-file "~/Dropbox/org/todos.org")
     (setq org-agenda-files (list "~/Dropbox/org/todos.org"
