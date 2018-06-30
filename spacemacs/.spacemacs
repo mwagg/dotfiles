@@ -492,7 +492,8 @@ before packages are loaded."
   (define-key evil-normal-state-map (kbd "C-h") #'evil-window-left)
   (define-key evil-normal-state-map (kbd "C-j") #'evil-window-down)
   (define-key evil-normal-state-map (kbd "C-k") #'evil-window-up)
-  (define-key evil-normal-state-map (kbd "C-l") #'evil-window-right))
+  (define-key evil-normal-state-map (kbd "C-l") #'evil-window-right)
+  (setq auth-sources '("~/.authinfo.gpg")))
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
