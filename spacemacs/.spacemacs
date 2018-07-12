@@ -453,6 +453,13 @@ It should only modify the values of Spacemacs settings."
    vc-follow-symlinks t
    create-lockfiles nil
    bookmark-default-file "~/Dropbox/bookmarks")
+
+  (if (string-equal system-name "lenny")
+      (setq-default dotspacemacs-default-font '("Source Code Pro"
+                      :size 30
+                      :weight normal
+                      :width normal)))
+
   (setq-default dotspacemacs-smartparens-strict-mode t)
   (with-eval-after-load 'org
     (setq org-default-notes-file "~/Dropbox/org/todos.org")
