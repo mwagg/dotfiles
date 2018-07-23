@@ -470,7 +470,8 @@ See the header of this file for more information."
                                  "~/Dropbox/org/projects.org"))
     (setq org-capture-templates '(
                                   ("t" "Todo" entry (file+headline "~/Dropbox/org/todos.org" "To be prioritised")
-                                   "* TODO %?\n%i"))))
+                                   "* TODO %?\n%i")))
+    (setq org-refile-targets '((nil :level . 2))))
   (when window-system
     (when (> (x-display-pixel-width) 1440)
       (setq-default dotspacemacs-default-font '("Source Code Pro"
