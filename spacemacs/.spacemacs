@@ -491,7 +491,7 @@ If you are unsure, try setting them in `dotspacemacs/user-config' first."
 This function is called only while dumping Spacemacs configuration. You can
 `require' or `load' the libraries of your choice that will be included in the
 dump."
-  )
+  (spacemacs/load-spacemacs-env))
 
 (defun dotspacemacs/user-config ()
   "Configuration for user code:
@@ -501,6 +501,10 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (add-hook 'smartparens-enabled-hook #'evil-smartparens-mode)
   (setq ruby-insert-encoding-magic-comment nil)
+  (add-hook 'after-make-frame-functions
+            (lambda (frame)
+              (select-frame frame)
+              (spacemacs/load-spacemacs-env)))
   (add-hook 'focus-out-hook
             (defun save-current-buffer-if-needed ()
               (interactive)
