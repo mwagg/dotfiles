@@ -152,12 +152,3 @@
        ;; and additional ex commands for evil-mode. Use it as a reference for
        ;; your own modules.
        (default +bindings +snippets +evil-commands))
-
-(load-theme 'doom-nord t)
-
-;; autosave when losing focus
-(add-hook 'focus-out-hook
-            (defun save-current-buffer-if-needed ()
-              (interactive)
-              (when (and (buffer-file-name) (buffer-modified-p))
-                (save-buffer))))
