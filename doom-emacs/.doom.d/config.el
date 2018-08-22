@@ -16,6 +16,10 @@
 (after! doom-themes
   (load-theme 'doom-nord t))
 
+(after! markdown-mode
+  (setq markdown-command "/usr/bin/marked"))
+
+
 ;; terraform
 (defun configure-terraform-mode ()
   (terraform-format-on-save-mode))
