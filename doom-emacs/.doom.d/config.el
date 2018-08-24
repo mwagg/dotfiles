@@ -32,3 +32,13 @@
               (interactive)
               (when (and (buffer-file-name) (buffer-modified-p))
                 (save-buffer))))
+
+;; bundler
+(def-package! bundler
+  :hook (enh-ruby-mode)
+ :config
+ (map! :map rubocop-mode-map
+       :localleader
+       (:desc "bundler..."
+        :prefix "b"
+        :desc "install" :nv "i" #'bundle-install)))
