@@ -38,6 +38,3 @@
 
 ;; save on losing focus
 (add-hook 'focus-out-hook #'my-config/save-current-buffer-if-needed)
-
-;; enable fira code symbols
-(add-hook 'prog-mode-hook #'add-fira-code-symbol-keywords)
