@@ -38,3 +38,6 @@
 
 ;; save on losing focus
 (add-hook 'focus-out-hook #'my-config/save-current-buffer-if-needed)
+
+;; magit
+(setq git-magit-status-fullscreen t)
