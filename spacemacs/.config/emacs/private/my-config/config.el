@@ -41,3 +41,6 @@
 
 ;; magit
 (setq git-magit-status-fullscreen t)
+
+;; store auth info in a GPG encrypted file
+(setq auth-sources '("~/.authinfo.gpg"))
