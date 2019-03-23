@@ -190,7 +190,7 @@ pacman_install hub
 
 # firefox
 pacman_install firefox
-sudo sed /usr/share/applications/firefox.desktop -i -e 's/^Exec=\/usr\/lib\/firefox\/firefox %u$/Exec=env MOZ_USE_XINPUT2=1 \/usr\/lib\/firefox\/firefox %u/'
+sudo sed /usr/share/applications/firefox.desktop -i -e 's/^Exec=\/usr\/lib\/firefox\/firefox %u$/Exec=env MOZ_USE_XINPUT2=1 GDK_BACKEND=wayland \/usr\/lib\/firefox\/firefox %u/'
 xdg-settings set default-web-browser firefox.desktop
 
 # chromium
