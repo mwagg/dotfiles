@@ -1,0 +1,17 @@
+#!/bin/bash
+
+git branch | grep "* master" > /dev/null
+if [[ $? == 0 ]]
+then
+  printf "\e[031mDon't run me on master!\n\e[0m"
+  exit 1
+fi
+
+set -e
+
+git fetch
+git rebase origin/master
+git reset origin/master
+git add -u .
+git add .
+git commit

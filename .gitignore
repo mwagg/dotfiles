@@ -1,0 +1,4 @@
+/dots/fish/.config/fish/fishd.*
+/dots/fish/.config/fish/fish_variables
+/dots/pulseaudio/.config/pulse/*
+/dots/pulseaudio/.config/pulse/default.pa

@@ -1,0 +1,3 @@
+#!/bin/bash
+CERT_FILE=$HOME/dev/carwow/dev-environment/certs/carwow.local.crt
+certutil -d sql:$HOME/.pki/nssdb -A -t "P,," -n $CERT_FILE -i $CERT_FILE

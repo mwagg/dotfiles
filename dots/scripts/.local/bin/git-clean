@@ -1,0 +1,79 @@
+#!/bin/bash
+
+###
+# script to clean up git branches locally.
+# prunes the origin remote
+# deletes all local branches which are fully merged into master
+###
+
+user_email=$(git config --get user.email)
+
+function green {
+  printf "\e[032m$1\e[0m"
+}
+
+function blue {
+  printf "\e[034m$1\e[0m"
+}
+
+function purple {
+  printf "\e[035m$1\e[0m"
+}
+
+# prune origin
+green "Pruning remote branches which have been deleted\n"
+git remote prune origin
+# remove locally merged branches
+green "Deleting local branches which are already merged\n"
+for branch in $(git branch --merged master | grep -v master | grep -v "*")
+do
+  git branch -d $branch
+done
+
+# remove local branches no on the remote
+green "Removing local branches not present on origin\n"
+for branch in $(git branch | grep -v master | grep -v "*")
+do
+  git branch -r | grep $branch > /dev/null
+  if [[ $? == 1 ]]
+  then
+    git branch -D $branch
+  fi
+done
+
+current_author=$(git config --get user.email)
+declare -a current_author_branches
+
+# list remote branches which are already merged
+green "The following branches on the remote origin have been merged and so could be deleted\n"
+branches=$(git branch -r --merged origin/master | grep -v master | grep origin)
+for branch in $branches
+do
+  author=$(git --no-pager show -s --format='%ae' $branch)
+
+  if [[ "$author" == "$current_author" ]]
+  then
+    purple " * "
+    current_author_branches+=($branch)
+  fi
+
+  blue "$branch - Last commit by $author"
+  printf "\n"
+done
+
+owned_branch_count=${#current_author_branches[@]}
+echo $current_author_branches
+if [[ $owned_branch_count > 0 ]]
+then
+  purple "You were the last commit author on $owned_branch_count of these branches\n"
+  read -r -p "Want me to delete them for you? [y/N] " response
+  response=${response,,}
+  if [[ $response =~ ^(yes|y)$ ]]
+  then
+    for branch in ${current_author_branches[@]}
+    do
+      cmd=$(echo $branch | sed -e 's/\(.*\)\/\(.*\)/git push \1 :\2/')
+      eval $cmd
+    done
+  fi
+fi

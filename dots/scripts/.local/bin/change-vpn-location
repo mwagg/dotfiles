@@ -1,0 +1,6 @@
+#!/usr/bin/env fish
+
+set server (vyprvpn server list | grep -v "VyprVPN Servers" | cut -d ' ' -f2- | rofi -dmenu -i -select "United Kingdom")
+
+vyprvpn protocol set chemeleon
+vyprvpn server set $server

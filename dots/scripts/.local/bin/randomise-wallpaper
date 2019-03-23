@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+
+CONFIG=/home/$USER/.config
+WALLPAPERS_DIR="/$HOME/Sync/wallpapers"
+
+if [ ! -d $WALLPAPERS_DIR ]; then
+    exit 1;
+fi
+
+FILES="$WALLPAPERS_DIR/*"
+
+# pick a random wallpaper
+NEW=`ls $FILES | grep -Ei ".*\.(png|jpe?g|bmp)" | shuf -n 1`
+
+# create thumbnail for notification bubble
+convert "$NEW" -thumbnail 50x50^ -gravity Center -crop 50x50-0-0 "/tmp/thumb.png"
+# extract filename from path for notification bubble
+NAME=`echo $NEW | grep -Pio "[^/]*(?=\.(png|jpe?g|bmp))" | cut -c1-100`
+# set the wallpaper with nitrogen and notify user
+nitrogen --set-scaled $NEW && notify-send -t 5000 -i "/tmp/thumb.png" "Wallpaper" "Changed wallaper to \"$NAME\""
