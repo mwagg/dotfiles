@@ -81,6 +81,9 @@ sudo ufw enable
 
 # sddm
 pacman_install gdm
+set +e
+sudo systemctl disable lightdm.service
+set -e
 sudo systemctl enable gdm.service
 sudo systemctl set-default graphical.target
 
