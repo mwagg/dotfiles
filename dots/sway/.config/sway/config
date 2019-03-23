@@ -191,3 +191,5 @@ bar {
 
 include $HOME/.config/sway/`hostname`/*
 include /etc/sway/config.d/*
+
+exec --no-startup-id mako
