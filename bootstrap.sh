@@ -274,4 +274,5 @@ yay_install swaylock-fancy-git
 pacman_install light
 pacman_install waybar
 pacman_install otf-font-awesome
+pacman_install nautilus
 pacman_install mako
