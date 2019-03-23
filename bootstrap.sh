@@ -261,3 +261,13 @@ pacman_install avahi
 pacman_install nss-mdns
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable org.cups.cupsd.service
+
+# sway
+pacman_install rofi
+yay_install wlroots
+yay_install sway
+yay_install swayidle
+yay_install swaylock-fancy-git
+pacman_install light
+pacman_install waybar
+pacman_install otf-font-awesome
