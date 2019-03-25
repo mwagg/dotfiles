@@ -77,6 +77,8 @@ sudo systemctl enable ufw.service
 sudo systemctl start ufw.service
 sudo ufw default allow outgoing
 sudo ufw default deny incoming
+sudo ufw allow 22000/tcp
+sudo ufw allow 21027/udp
 sudo ufw enable
 
 # sddm
