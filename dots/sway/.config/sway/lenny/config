@@ -10,3 +10,7 @@ input "1739:30382:DLL0704:01_06CB:76AE_Touchpad" {
     natural_scroll enabled
     middle_emulation enabled
 }
+
+input "9456:311:Metadot_-_Das_Keyboard_Das_Keyboard_Model_S" {
+    xkb_layout gb
+}
