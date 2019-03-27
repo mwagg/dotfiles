@@ -1,0 +1,13 @@
+output eDP-1 scale 1
+
+input "1452:589:Apple_Inc._Apple_Internal_Keyboard_/_Trackpad" {
+    xkb_layout gb
+    xkb_model macintosh
+}
+
+input "1452:589:bcm5974" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
