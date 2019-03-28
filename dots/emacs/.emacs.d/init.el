@@ -493,17 +493,11 @@
 	elm-package-command '("elm" "package")
 	elm-package-json "elm.json"))
 
-;; neotree
-(use-package all-the-icons)
-(use-package neotree
-  :commands (neo-global--window-exists-p)
-  :config
-  (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+;; ranger
+(use-package ranger
   :general
   (tyrant-def
-    "pt" #'neotree-project-root-dir-or-current-dir)
-  (general-def neotree-mode-map
-    "q" #'neotree-hide))
+    "pt" #'ranger-project-root-dir-or-current-dir))
 
 ;; iedit
 (use-package iedit
