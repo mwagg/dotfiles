@@ -24,6 +24,7 @@ exec swayidle -w \
          timeout 600 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock-fancy'
+bindsym $mod+Alt+l exec swaylock-fancy -g -p
 
 ### Key bindings
 #
