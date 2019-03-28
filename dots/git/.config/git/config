@@ -4,7 +4,7 @@
 [core]
 	editor = vim
 	whitespace = tab-in-indent,tabwidth=2
-	excludesfile = /home/mike/.gitignore
+	excludesfile = /home/mike/.config/git/gitignore
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --
 	d = difftool
