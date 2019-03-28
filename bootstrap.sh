@@ -117,7 +117,6 @@ pacman_install pulseaudio-bluetooth
 pacman_install bluez
 pacman_install bluez-libs
 pacman_install bluez-utils
-pacman_install bluez-firmware
 pacman_install blueberry
 
 sudo systemctl enable bluetooth.service
