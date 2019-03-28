@@ -283,7 +283,7 @@
   :general
   (tyrant-def
     "p"   '(:ignore t :which-key "projectile")
-    "p'" #'open-terminal
+    "p'" #'open-terminal-in-project-root
     "pd"  'counsel-projectile-dired-find-dir
     "pp" 'counsel-projectile-switch-project
     "pf"  'counsel-projectile-find-file
