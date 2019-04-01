@@ -190,6 +190,11 @@ bar {
     }
 }
 
+# Window config
+for_window [class="mpv"] floating enable
+for_window [class="mpv"] sticky enable
+for_window [class="mpv"] resize set 640 480
+
 include $HOME/.config/sway/`hostname`/*
 include /etc/sway/config.d/*
 
