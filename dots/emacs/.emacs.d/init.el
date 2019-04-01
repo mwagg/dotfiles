@@ -647,6 +647,13 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
 
 (use-package fish-mode)
 
+;; snippets
+(use-package yasnippet
+  :config
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets/")
+        yas-indent-line 0)
+  (yas-global-mode 1))
+
 (eval-and-compile
   (add-hook 'emacs-startup-hook '(lambda ()
 				   (setq gc-cons-threshold 16777216
