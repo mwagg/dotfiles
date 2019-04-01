@@ -23,7 +23,9 @@
       coding-system-for-write 'utf-8
       locale-coding-system 'utf-8
       sentence-end-double-space nil
-      create-lockfiles nil)
+      create-lockfiles nil
+      tags-revert-without-query 1
+      scroll-conservatively 100)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
@@ -286,6 +288,7 @@
     "p'" #'open-terminal-in-project-root
     "pd"  'counsel-projectile-dired-find-dir
     "pp" 'counsel-projectile-switch-project
+    "pt" #'projectile-find-tag
     "pf"  'counsel-projectile-find-file
     "fp"  'counsel-projectile-find-file
     "pb"  'counsel-projectile-switch-to-buffer
@@ -482,7 +485,6 @@
   :mode "\\.elm\\'"
   :config
   (add-to-list 'company-backends 'company-elm)
-  (setq elm-format-on-save t)
   (setq elm-sort-imports-on-save t
 	elm-format-on-save t
 	elm-interactive-command '("elm" "repl")
@@ -491,7 +493,8 @@
 	elm-compile-command '("elm" "make")
 	elm-compile-arguments '("--output=elm.js" "--debug")
 	elm-package-command '("elm" "package")
-	elm-package-json "elm.json"))
+	elm-package-json "elm.json"
+        elm-tags-on-save t))
 
 ;; ranger
 (use-package ranger
