@@ -20,11 +20,11 @@ output * bg /usr/share/backgrounds/gnome/ColdWarm.jpg fill
 ### Idle configuration
 #
 exec swayidle -w \
-         timeout 300 'swaylock-fancy' \
-         timeout 600 'swaymsg "output * dpms off"' \
+         timeout 300 'swaylock -c 0' \
+         timeout 301 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock-fancy'
-bindsym $mod+Alt+l exec swaylock-fancy -g -p
+         before-sleep 'swaylock -c 0'
+bindsym $mod+End exec swaylock -c 0
 
 ### Key bindings
 #
@@ -162,8 +162,8 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # media keys
-bindsym XF86MonBrightnessDown exec light -U 10
-bindsym XF86MonBrightnessUp exec light -A 10
+bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 5
 
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl -- set-sink-volume 0 +5% && pkill -RTMIN+1 i3blocks
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5% && pkill -RTMIN+1 i3blocks
