@@ -273,7 +273,7 @@ pacman_install rofi
 yay_install wlroots
 yay_install sway
 yay_install swayidle
-yay_install swaylock-fancy-git
+pacman_install swaylock
 pacman_install light
 pacman_install waybar
 pacman_install otf-font-awesome
