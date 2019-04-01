@@ -206,7 +206,6 @@ yay_install chromium-widevine
 
 # docker
 pacman_install docker
-sudo systemctl enable docker.service
 sudo usermod -a -G docker $USER
 
 # aws
