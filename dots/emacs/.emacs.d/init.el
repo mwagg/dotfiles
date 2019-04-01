@@ -497,7 +497,8 @@
 (use-package ranger
   :general
   (tyrant-def
-    "pt" #'ranger-project-root-dir-or-current-dir))
+    "rp" #'ranger-project-root-dir
+    "rr" #'ranger))
 
 ;; iedit
 (use-package iedit
