@@ -12,19 +12,14 @@ set $menu rofi -modi run -show drun
 default_border none
 gaps inner 4
 
-### Output configuration
-#
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/gnome/ColdWarm.jpg fill
-
 ### Idle configuration
 #
 exec swayidle -w \
-         timeout 300 'swaylock -c 0' \
+         timeout 300 'swaylock -c 000000 -s fill -i /tmp/bg.jpg' \
          timeout 301 'swaymsg "output * dpms off"' \
               resume 'swaymsg "output * dpms on"' \
-         before-sleep 'swaylock -c 0'
-bindsym $mod+End exec swaylock -c 0
+         before-sleep 'swaylock -c 000000 -s fill -i /tmp/bg.jpg'
+bindsym $mod+End exec swaylock -c 000000 -s fill -i /tmp/bg.jpg
 
 ### Key bindings
 #
@@ -200,3 +195,4 @@ include /etc/sway/config.d/*
 
 exec --no-startup-id mako
 exec_always --no-startup-id $HOME/.local/bin/monitor-hotplug.sh
+exec_always $HOME/.local/bin/randomise-wallpaper
