@@ -82,7 +82,7 @@ sudo ufw default allow outgoing
 sudo ufw default deny incoming
 sudo ufw allow 22000/tcp
 sudo ufw allow 21027/udp
-sudo ufw enable
+sudo ufw enable || true
 
 # sddm
 pacman_install gdm
