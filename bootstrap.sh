@@ -280,3 +280,6 @@ pacman_install otf-font-awesome
 pacman_install ttf-font-awesome
 pacman_install nautilus
 pacman_install mako
+
+# fonts
+pacman_install noto-fonts-emoji
