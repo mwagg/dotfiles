@@ -62,7 +62,7 @@ pacman_install stow
 pacman_install intel-ucode
 
 # network
-sudo systemctl enable systemd-resolved.service
+sudo sed -i -e 's/#MulticastDNS=yes/MulticastDNS=no/' /etc/systemd/resolved.conf
 
 # power management
 pacman_install acpi
