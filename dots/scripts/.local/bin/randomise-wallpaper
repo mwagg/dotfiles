@@ -19,3 +19,10 @@ NAME=`echo $NEW | grep -Pio "[^/]*(?=\.(png|jpe?g|bmp))" | cut -c1-100`
 # set the wallpaper and notify user
 convert $NEW -colorspace Gray -filter Gaussian -resize 50% -define filter:sigma=2.5 -resize 200% /tmp/bg.jpg
 swaymsg "output * bg $NEW fill" && notify-send -t 5000 -i "/tmp/thumb.png" "Wallpaper" "Changed wallaper to \"$NAME\""
+
+# make a lockscreen image
+mode=$(swaymsg -t get_outputs | jq .[0].current_mode)
+width=$(echo $mode | jq .width)
+height=$(echo $mode | jq .height)
+
+convert $NEW -scale ${width}x${height} -blur 0x6 /tmp/bg.jpg
