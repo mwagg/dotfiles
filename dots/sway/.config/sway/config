@@ -10,7 +10,7 @@ set $term termite
 set $menu rofi -modi run -show drun
 
 default_border none
-gaps inner 4
+gaps inner 8
 
 ### Idle configuration
 #
