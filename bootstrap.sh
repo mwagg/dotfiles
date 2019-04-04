@@ -55,11 +55,23 @@ case $numberofcores in
 esac
 
 sudo pacman -Syyu --noconfirm --needed
-pacman_install stow
 
+pacman_install stow
 ./link_dotfiles.sh
 
+function install_yay {
+  mkdir -p $HOME/.local/src
+  pushd $HOME/.local/src
+  git clone https://aur.archlinux.org/yay.git
+  cd yay
+  makepkg -si --noconfirm
+  popd
+}
+
+type yay || install_yay
+
 pacman_install intel-ucode
+pacman_install openssh
 
 # network
 sudo sed -i -e 's/#MulticastDNS=yes/MulticastDNS=no/' /etc/systemd/resolved.conf
@@ -80,8 +92,7 @@ sudo systemctl enable ufw.service
 sudo systemctl start ufw.service
 sudo ufw default allow outgoing
 sudo ufw default deny incoming
-sudo ufw allow 22000/tcp
-sudo ufw allow 21027/udp
+sudo ufw allow syncthing
 sudo ufw enable || true
 
 # sddm
@@ -283,3 +294,6 @@ pacman_install mako
 
 # fonts
 pacman_install noto-fonts-emoji
+
+# vim
+pacman_install vim
