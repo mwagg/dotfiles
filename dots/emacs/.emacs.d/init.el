@@ -42,8 +42,8 @@
 (scroll-bar-mode 0)
 
 ;; setup fonts
-(set-face-attribute 'default nil :font "Source Code Pro-12" )
-(set-frame-font "Source Code Pro-12" nil t)
+(set-face-attribute 'default nil :font "Source Code Pro-10" )
+(set-frame-font "Source Code Pro-10" nil t)
 (set-face-attribute 'fixed-pitch nil :family "Iosevka")
 (set-face-attribute 'variable-pitch nil :family "Libre Baskerville")
 
