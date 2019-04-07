@@ -600,7 +600,7 @@ _p_rev       _u_pper              _=_: upper/lower       _r_esolve
 ;; doom themes
 (use-package doom-themes
   :config
-  (load-theme 'doom-nord t))
+  (load-theme 'doom-molokai t))
 
 (use-package auto-package-update
   :ensure t
