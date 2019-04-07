@@ -218,13 +218,13 @@
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
   (sp-local-pair 'clojure-mode "'" nil :actions nil)
   :general
-  (general-def smartparens-mode-map
-    "C-<left>" 'sp-forward-barf-sexp
-    "C-<right>" 'sp-forward-slurp-sexp
-    "M-s" 'sp-unwrap-sexp
-    "C-M-h" 'sp-beginning-of-sexp
-    "C-M-l" 'sp-end-of-sexp)
-  )
+  (general-def
+    "C-<left>" #'sp-backward-slurp-sexp
+    "S-C-<left>" #'sp-backward-barf-sexp
+    "C-<right>" #'sp-forward-slurp-sexp
+    "S-C-<right>" #'sp-forward-barf-sexp
+    "M-s" #'sp-unwrap-sexp
+    ))
 (use-package evil-smartparens
   :hook
   (smartparens-mode . evil-smartparens-mode))
