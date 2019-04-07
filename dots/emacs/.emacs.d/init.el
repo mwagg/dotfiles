@@ -207,7 +207,6 @@
   ('normal override-global-map
 	   "gc" 'evil-commentary
 	   "gC" 'evil-commentary-line))
-
 ;; smartparens
 (use-package smartparens
   :hook ((emacs-lisp-mode . smartparens-strict-mode)
@@ -237,76 +236,41 @@
   (add-to-list 'aggressive-indent-excluded-modes 'terraform-mode)
   (add-to-list 'aggressive-indent-excluded-modes 'elm-mode))
 
-;; ivy-mode
-(use-package ivy
-  :hook (after-init . ivy-mode)
-  :config (setq ivy-use-virtual-buffers t
-		ivy-count-format "(%d/%d) "
-		ivy-initial-inputs-alist nil
-		ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
-  :commands (ivy-switch-buffer)
-  :general
-  (general-def ivy-mode-map
-    "C-j" 'ivy-next-line
-    "C-k" 'ivy-previous-line)
-  (tyrant-def
-    "bb" 'ivy-switch-buffer))
-
-;; swiper
-(use-package swiper
-  :after ivy
-  :general
-  (general-def 'normal
-    "/" 'swiper))
-
-;; counsel
-(use-package counsel
-  :after (ivy)
+;; heml
+(use-package helm
   :config
-  (setq counsel-grep-base-command "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
+  (helm-mode 1)
   :general
   (tyrant-def
-    "SPC" 'counsel-M-x
-    "tt" 'counsel-load-theme
-    "ff" 'counsel-find-file
-    "fr" 'counsel-recentf
-    "fL" 'counsel-locate))
+    "SPC" #'helm-M-x
+    "ff" #'helm-find-files
+    "bb" #'helm-buffers-list))
+(use-package helm-themes
+  :general
+  (tyrant-def
+    "tt" #'helm-themes))
+(use-package helm-rg)
+(use-package helm-flyspell
+  :hook
+  (text-mode . flyspell-mode)
+  (prog-mode . flyspell-prog-mode)
+  :general
+  (general-define-key :keymaps 'flyspell-mode-map
+                      "C-;" 'helm-flyspell-correct))
 
 ;; projectile
 (use-package projectile
   :config
   (projectile-mode)
   (add-hook 'projectile-after-switch-project-hook #'set-eyebrowse-workspace-name-to-project))
-
-(use-package counsel-projectile
-  :after (projectile ivy)
-  :init
-  (setq projectile-completion-system 'ivy)
+(use-package helm-projectile
   :general
   (tyrant-def
-    "p"   '(:ignore t :which-key "projectile")
+    "p" '(:ignore t :which-key "projectile")
     "p'" #'open-terminal-in-project-root
-    "pd"  'counsel-projectile-dired-find-dir
-    "pp" 'counsel-projectile-switch-project
-    "pt" #'projectile-find-tag
-    "pf"  'counsel-projectile-find-file
-    "fp"  'counsel-projectile-find-file
-    "pb"  'counsel-projectile-switch-to-buffer
-    "bp" 'counsel-projectile-switch-to-buffer
-    "*" '(lambda ()
-           (interactive)
-           (counsel-git-grep nil (current-word)))
-    "/" 'counsel-git-grep))
-(use-package flyspell-correct-ivy
-  :commands (flyspell-correct-word-generic)
-  :hook
-  (text-mode . flyspell-mode)
-  (prog-mode . flyspell-prog-mode)
-  :general
-  (:keymaps '(flyspell-mode-map)
-	    :states '(normal visual)
-	    "zs" 'flyspell-correct-word-generic
-	    "z=" 'flyspell-buffer))
+    "pp" #'helm-projectile-switch-project
+    "pf" #'helm-projectile-find-file
+    "*" #'helm-projectile-grep))
 
 ;; flycheck
 (use-package flycheck
