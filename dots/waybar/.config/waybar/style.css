@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.4);
   color: white;
 }
 
@@ -22,15 +22,15 @@ window#waybar {
 */
 
 #workspaces button {
-  padding: 0 5px;
-  background: transparent;
-  color: white;
-  border-top: 2px solid transparent;
+  padding: 0 6px;
+  margin: 0 2px;
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.3);
 }
 
 #workspaces button.focused {
-  color: rgb(246, 201, 169);
-  border-top: 2px solid rgb(246, 201, 169);
+  background: rgba(0, 0, 0, 0.6);
+  color: rgb(252,220,11);
 }
 
 #mode {
@@ -38,9 +38,10 @@ window#waybar {
   border-bottom: 3px solid white;
 }
 
-#clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
-  padding: 0 3px;
+#idle_inhibitor, #clock, #battery, #cpu, #memory, #network, #pulseaudio, #custom-spotify, #tray, #mode {
+  padding: 0 6px;
   margin: 0 2px;
+  background: rgba(0, 0, 0, 0.2);
 }
 
 #clock {
