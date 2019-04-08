@@ -236,7 +236,7 @@
   (add-to-list 'aggressive-indent-excluded-modes 'terraform-mode)
   (add-to-list 'aggressive-indent-excluded-modes 'elm-mode))
 
-;; heml
+;; helm
 (use-package helm
   :config
   (helm-mode 1)
@@ -270,7 +270,12 @@
     "p'" #'open-terminal-in-project-root
     "pp" #'helm-projectile-switch-project
     "pf" #'helm-projectile-find-file
-    "*" #'helm-projectile-grep))
+    "*" #'helm-projectile-rg
+    "/" '(lambda ()
+           (interactive)
+           (if (projectile-project-p)
+               (helm-rg "" nil (list (projectile-project-root)))
+             (helm-rg "")))))
 
 ;; flycheck
 (use-package flycheck
