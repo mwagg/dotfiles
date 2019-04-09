@@ -114,6 +114,7 @@ pacman_install noto-fonts-emoji
 
 # sound
 pacman_install pulseaudio
+pacman_install pavucontrol
 pacman_install pulseaudio-alsa
 pacman_install alsa-utils
 pacman_install alsa-plugins
