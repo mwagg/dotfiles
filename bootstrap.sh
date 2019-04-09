@@ -109,7 +109,7 @@ pacman_install gnome-control-center
 pacman_install gnome-backgrounds
 
 # fonts
-yay_install ttfo-mononoki
+yay_install ttf-mononoki
 pacman_install noto-fonts-emoji
 
 # sound
