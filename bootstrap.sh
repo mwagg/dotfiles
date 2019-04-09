@@ -92,7 +92,6 @@ sudo systemctl enable ufw.service
 sudo systemctl start ufw.service
 sudo ufw default allow outgoing
 sudo ufw default deny incoming
-sudo ufw allow syncthing
 sudo ufw enable || true
 
 # gdm
@@ -246,6 +245,7 @@ flatpak install flathub com.valvesoftware.Steam -y
 
 # syncthing
 pacman_install syncthing
+sudo ufw allow syncthing
 sudo systemctl enable syncthing@$USER.service
 sudo systemctl start syncthing@$USER.service
 
