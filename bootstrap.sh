@@ -75,6 +75,7 @@ pacman_install openssh
 
 # network
 sudo sed -i -e 's/#MulticastDNS=yes/MulticastDNS=no/' /etc/systemd/resolved.conf
+sudo systemctl enable systemd-resolved.service
 
 # power management
 pacman_install acpi
@@ -265,6 +266,7 @@ pacman_install jq
 pacman_install transmission-gtk
 
 # use dhclient over dhcpcd
+pacman_install dhclient
 sudo systemctl disable dhcpcd.service
 sudo systemctl enable dhclient@mike.service
 sudo systemctl start dhclient@mike.service
