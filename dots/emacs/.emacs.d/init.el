@@ -302,19 +302,6 @@
   :config
   (projectile-mode)
   (add-hook 'projectile-after-switch-project-hook #'set-eyebrowse-workspace-name-to-project))
-(use-package helm-projectile
-  :general
-  (tyrant-def
-    "p" '(:ignore t :which-key "projectile")
-    "p'" #'open-terminal-in-project-root
-    "pp" #'helm-projectile-switch-project
-    "pf" #'helm-projectile-find-file
-    "*" #'helm-projectile-rg
-    "/" '(lambda ()
-           (interactive)
-           (if (projectile-project-p)
-               (helm-rg "" nil (list (projectile-project-root)))
-             (helm-rg "")))))
 
 ;; flycheck
 (use-package flycheck
