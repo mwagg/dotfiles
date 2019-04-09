@@ -237,27 +237,65 @@
   (add-to-list 'aggressive-indent-excluded-modes 'terraform-mode)
   (add-to-list 'aggressive-indent-excluded-modes 'elm-mode))
 
-;; helm
-(use-package helm
+;; ivy-mode
+(use-package ivy
+  :hook (after-init . ivy-mode)
+  :config (setq ivy-use-virtual-buffers t
+		ivy-count-format "(%d/%d) "
+		ivy-initial-inputs-alist nil
+		ivy-re-builders-alist '((t . ivy--regex-ignore-order)))
+  :commands (ivy-switch-buffer)
+  :general
+  (general-def ivy-mode-map
+    "C-j" 'ivy-next-line
+    "C-k" 'ivy-previous-line)
+  (tyrant-def
+    "bb" 'ivy-switch-buffer))
+;; counsel
+(use-package counsel
+  :after (ivy)
   :config
-  (helm-mode 1)
+  (setq counsel-grep-base-command "rg -i -M 120 --no-heading --line-number --color never '%s' %s")
   :general
   (tyrant-def
-    "SPC" #'helm-M-x
-    "ff" #'helm-find-files
-    "bb" #'helm-buffers-list))
-(use-package helm-themes
+    "SPC" 'counsel-M-x
+    "tt" 'counsel-load-theme
+    "ff" 'counsel-find-file
+    "fr" 'counsel-recentf
+    "fL" 'counsel-locate))
+;; projectile
+(use-package projectile
+  :config
+  (projectile-mode)
+  (add-hook 'projectile-after-switch-project-hook #'set-eyebrowse-workspace-name-to-project))
+
+(use-package counsel-projectile
+  :after (projectile ivy)
+  :init
+  (setq projectile-completion-system 'ivy)
   :general
   (tyrant-def
-    "tt" #'helm-themes))
-(use-package helm-rg)
-(use-package helm-flyspell
+    "p"   '(:ignore t :which-key "projectile")
+    "p'" #'open-terminal-in-project-root
+    "pp" 'counsel-projectile-switch-project
+    "pt" #'projectile-find-tag
+    "pf"  'counsel-projectile-find-file
+    "pb"  'counsel-projectile-switch-to-buffer
+    "*" '(lambda ()
+           (interactive)
+           (counsel-git-grep nil (current-word)))
+    "/" 'counsel-git-grep))
+;; spelling
+(use-package flyspell-correct-ivy
+  :commands (flyspell-correct-word-generic)
   :hook
   (text-mode . flyspell-mode)
   (prog-mode . flyspell-prog-mode)
   :general
-  (general-define-key :keymaps 'flyspell-mode-map
-                      "C-;" 'helm-flyspell-correct))
+  (:keymaps '(flyspell-mode-map)
+	    :states '(normal visual)
+	    "zs" 'flyspell-correct-word-generic
+            "z=" 'flyspell-buffer))
 
 ;; projectile
 (use-package projectile
