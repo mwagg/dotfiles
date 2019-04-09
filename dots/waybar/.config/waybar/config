@@ -42,10 +42,12 @@
         "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
-        "format": "{usage}% "
+        "format": "{usage}% ",
+        "on-click": "termite -e gtop"
     },
     "memory": {
-        "format": "{}% "
+        "format": "{}% ",
+        "on-click": "termite -e gtop"
     },
     "temperature": {
         // "thermal-zone": 2,
