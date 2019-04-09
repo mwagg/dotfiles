@@ -1,0 +1,2 @@
+set $term termite
+set $menu rofi -modi run -show drun

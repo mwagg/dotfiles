@@ -1,0 +1,11 @@
+### Idle configuration
+#
+exec swayidle -w \
+         timeout 300 'swaylock -c 000000 -s fill -i /tmp/bg.jpg' \
+         timeout 301 'swaymsg "output * dpms off"' \
+              resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -c 000000 -s fill -i /tmp/bg.jpg'
+
+exec --no-startup-id mako
+exec_always --no-startup-id $HOME/.local/bin/monitor-hotplug.sh
+exec_always $HOME/.local/bin/randomise-wallpaper
