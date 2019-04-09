@@ -56,6 +56,7 @@ esac
 
 sudo pacman -Syyu --noconfirm --needed
 
+pacman_install base-devel
 pacman_install stow
 ./link_dotfiles.sh
 
