@@ -95,7 +95,7 @@ sudo ufw default deny incoming
 sudo ufw allow syncthing
 sudo ufw enable || true
 
-# sddm
+# gdm
 pacman_install gdm
 set +e
 sudo systemctl disable lightdm.service
@@ -107,6 +107,10 @@ sudo systemctl set-default graphical.target
 pacman_install gnome-extra
 pacman_install gnome-control-center
 pacman_install gnome-backgrounds
+
+# fonts
+yay_install ttfo-mononoki
+pacman_install noto-fonts-emoji
 
 # sound
 pacman_install pulseaudio
@@ -291,9 +295,6 @@ pacman_install otf-font-awesome
 pacman_install ttf-font-awesome
 pacman_install nautilus
 pacman_install mako
-
-# fonts
-pacman_install noto-fonts-emoji
 
 # vim
 pacman_install vim
