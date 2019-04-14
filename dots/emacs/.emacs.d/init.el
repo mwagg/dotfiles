@@ -611,6 +611,10 @@
         yas-indent-line 0)
   (yas-global-mode 1))
 
+(use-package git-timemachine
+  :general
+  (tyrant-def
+    "gt" #'git-timemachine))
 (eval-and-compile
   (add-hook 'emacs-startup-hook '(lambda ()
 				   (setq gc-cons-threshold 16777216
