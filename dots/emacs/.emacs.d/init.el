@@ -25,7 +25,8 @@
       sentence-end-double-space nil
       create-lockfiles nil
       tags-revert-without-query 1
-      scroll-conservatively 100)
+      scroll-conservatively 100
+      compilation-scroll-output t)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
@@ -436,6 +437,9 @@
     "rrP" 'rubocop-autocorrect-project))
 (use-package rspec-mode
   :after enh-ruby-mode
+  :config
+  (setq rspec-use-opts-file-when-available nil
+        rspec-command-options "--format progress")
   :general
   (local-leader-def 'enh-ruby-mode-map
     "t" '(:ignore t :which-key "rspec")
