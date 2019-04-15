@@ -64,8 +64,8 @@
     "battery": {
         "states": {
             // "good": 95,
-            "warning": 30,
-            "critical": 15
+            "warning": 15,
+            "critical": 5
         },
         "format": "{capacity}% {icon}",
         // "format-good": "", // An empty format will hide the module
