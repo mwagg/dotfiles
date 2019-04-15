@@ -406,6 +406,7 @@
   (setq ruby-insert-encoding-magic-comment nil)
   :mode ("\\(Rake\\|Thor\\|Guard\\|Gem\\|Vagrant\\)file\\'"
  	 "\\.\\(rb\\|rabl\\|ru\\|builder\\|rake\\|thor\\|gemspec\\|jbuilder\\)\\'"))
+(use-package ruby-end)
 (use-package bundler
   :after enh-ruby-mode
   :general
