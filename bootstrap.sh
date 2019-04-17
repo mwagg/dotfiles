@@ -108,6 +108,7 @@ sudo systemctl set-default graphical.target
 pacman_install gnome-extra
 pacman_install gnome-control-center
 pacman_install gnome-backgrounds
+pacman_install gnome-tweaks
 
 # fonts
 yay_install ttf-mononoki
