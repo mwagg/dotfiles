@@ -15,20 +15,22 @@ if [[ -z "$HOSTNAME" ]]; then
 	exit 1
 fi
 
+PARTITION_PREFIX=${PARTITION_PREFIX:-""}
+
 log "Installing using drive $DRIVE"
-EFI_DEV="/dev/${DRIVE}1"
-BOOT_DEV="/dev/${DRIVE}2"
-ROOT_DEV="/dev/${DRIVE}3"
+EFI_DEV="/dev/${DRIVE}${PARTITION_PREFIX}1"
+BOOT_DEV="/dev/${DRIVE}${PARTITION_PREFIX}2"
+ROOT_DEV="/dev/${DRIVE}${PARTITION_PREFIX}3"
 
 loadkeys uk
 timedatectl set-ntp true
 
 log "Partitioning disk"
 parted --script -a optimal /dev/$DRIVE \
-       	mklabel gpt \
-	mkpart primary 1MiB 512MiB \
-	mkpart primary 512Mib 762MiB \
-	-- mkpart primary 762Mib -1
+       mklabel gpt \
+       mkpart primary 1MiB 512MiB \
+       mkpart primary 512Mib 762MiB \
+       -- mkpart primary 762Mib -1
 
 
 log "Formatting disks"
@@ -47,9 +49,9 @@ mkdir /mnt/boot/efi
 mount $EFI_DEV /mnt/boot/efi
 
 function finish {
-	log "Unmounting partitions"
-	umount -R /mnt
-	cryptsetup close cryptroot
+  log "Unmounting partitions"
+  umount -R /mnt
+  cryptsetup close cryptroot
 }
 trap finish EXIT
 
@@ -65,10 +67,10 @@ genfstab -U /mnt >> /mnt/etc/fstab
 log "Configuring hostname"
 echo $HOSTNAME > /mnt/etc/hostname
 cat << EOF > /mnt/etc/hosts
-127.0.0.1	localhost
-::1		localhost
-127.0.1.1	$HOSTNAME.localdomain $HOSTNAME
-EOF
+                   127.0.0.1	localhost
+                   ::1		localhost
+                   127.0.1.1	$HOSTNAME.localdomain $HOSTNAME
+                   EOF
 
 log "Configuring initcpio"
 sed -i /mnt/etc/mkinitcpio.conf -e 's/MODULES=()/MODULES=(ext4)/'
@@ -87,7 +89,7 @@ cat << EOF > /mnt/arch_install.sh
 	echo "%wheel ALL=(ALL) ALL" | sudo EDITOR='tee -a' visudo
 	grub-install
 
-        sed -i /etc/default/grub -e 's/GRUB_CMDLINE_LINUX.*$/GRUB_CMDLINE_LINUX="cryptdevice=\/dev\/${DRIVE}3:luks:allow-discards/'
+        sed -i /etc/default/grub -e 's/GRUB_CMDLINE_LINUX.*$/GRUB_CMDLINE_LINUX="cryptdevice=\/dev\/${DRIVE}${PARTITION_PREFIX}3:luks:allow-discards"/'
 	grub-mkconfig -o /boot/grub/grub.cfg
 
 	echo "Setting passwd for user"
