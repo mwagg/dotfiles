@@ -461,6 +461,10 @@
 (use-package ruby-tools
   :after enh-ruby-mode
   :hook (enh-ruby-mode . ruby-tools-mode))
+(use-package inf-ruby
+  :after enh-ruby-mode
+  :config
+  (inf-ruby-switch-setup))
 (use-package rake
   :after enh-ruby-mode
   :general
