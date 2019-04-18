@@ -410,6 +410,9 @@
 (use-package ruby-end)
 (use-package bundler
   :after enh-ruby-mode
+  :config
+  (setq rubocop-prefer-system-executable t
+        rubocop-autocorrect-on-save t)
   :general
   (local-leader-def 'enh-ruby-mode-map
     "b" '(:ignore t :which-key "bundler")
