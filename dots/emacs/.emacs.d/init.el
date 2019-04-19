@@ -546,46 +546,6 @@
   :config
   (smart-jump-setup-default-registers))
 
-;; org mode
-(use-package org
-  :defer t
-  :config
-  (setq org-default-notes-file "~/Sync/org/todos.org"
-	org-agenda-files (list "~/Sync/org/todos.org")
-	org-refile-targets '((nil :level . 2))
-	org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
-			    (sequence "⚑ WAITING(w)" "|")
-			    (sequence "|" "✘ CANCELED(c)")))
-  :general
-  (tyrant-def
-    "aoa" 'org-agenda
-    "aot" 'open-org-todos
-    "aoj" 'org-journal-new-entry)
-  (local-leader-def org-mode-map
-    "s" 'org-schedule
-    "a" 'org-agenda
-    "A" 'org-archive-subtree))
-(use-package org-bullets
-  :after org-mode
-  :hook
-  (org-mode . org-bullet)
-  :init
-  (setq org-bullets-bullet-list
-	'("◉" "◎" "⚫" "○" "►" "◇")))
-(use-package evil-org
-  :after org
-  :config
-  (add-hook 'org-mode-hook 'evil-org-mode)
-  (add-hook 'evil-org-mode-hook
-            (lambda ()
-              (evil-org-set-key-theme)))
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
-(use-package org-journal
-  :after org
-  :config
-  (setq org-journal-dir "~/Sync/org/journal"))
-
 ;; javascript
 (use-package js2-mode
   :config
