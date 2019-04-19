@@ -307,7 +307,7 @@ pacman_install vim
 # gtk
 yay_install newaita-icons-git
 gsettings set org.gnome.desktop.interface icon-theme Newaita
-yay_install flat-remix-gtk
-gsettings set org.gnome.desktop.interface gtk-theme Flat-Remix-GTK-Yellow-Solid
+yay_install qogir-gtk-theme-git
+gsettings set org.gnome.desktop.interface gtk-theme Qogir-light
 yay_install capitaine-cursors 3-2
 gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
