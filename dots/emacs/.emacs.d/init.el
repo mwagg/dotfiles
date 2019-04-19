@@ -352,21 +352,38 @@
   :config
   (global-company-mode))
 
-;; ;; mode line
-(use-package telephone-line
-  :config
-  (setq telephone-line-primary-left-separator 'telephone-line-abs-left telephone-line-primary-right-separator 'telephone-line-abs-right)
-  (setq telephone-line-lhs
-        '((evil   . (telephone-line-evil-tag-segment))
-          (accent . (telephone-line-vc-segment
-		     telephone-line-projectile-segment
-                     telephone-line-process-segment))
-          (nil    . (telephone-line-buffer-segment))))
-  (setq telephone-line-rhs
-	'((nil    . (telephone-line-misc-info-segment))
-          (accent . (telephone-line-major-mode-segment))
-          (evil   . (telephone-line-airline-position-segment))))
-  (telephone-line-mode 1))
+;; mode line
+(setq auto-revert-check-vc-info t)
+(setq-default mode-line-format (list
+                                ;; Check the buffer status and display its status
+                                '((:eval
+                                   (cond
+                                    (buffer-read-only
+                                     (propertize " ⚿ " 'face '(:foreground "orange" :weight 'bold)))
+
+                                    ((buffer-modified-p)
+                                     (propertize " * " 'face '(:foreground "red")))
+                                    ((not (buffer-modified-p))
+                                     (propertize " * " 'face '(:foreground "gray85"))))))
+                                ;; Use all-the-icons to display the icon of current major mode
+                                '(:eval (propertize (all-the-icons-icon-for-mode major-mode
+                                                                                 :height (/ all-the-icons-scale-factor 1.8)
+                                                                                 :v-adjust -0.02)))
+                                ;; Show the file name with full path
+                                " %f "
+                                ;; Show the current position of the cursor in buffer
+                                'mode-line-position
+                                ;; Show the current major mode name
+                                "[" 'mode-name "] "
+                                ;; Check if the buffer is in any version control system, if yes, show the branch
+                                '(:eval
+                                  (if vc-mode
+                                      (let* ((noback (replace-regexp-in-string
+                                                      (format "^ %s" (vc-backend buffer-file-name)) " " vc-mode))
+                                             (face (cond ((string-match "^ -" noback) 'mode-line-vc)
+                                                         ((string-match "^ [:@]" noback) 'mode-line-vc-edit)
+                                                         ((string-match "^ [!\\?]" noback) 'mode-line-vc-modified))))
+                                        (format "[git:%s]" (substring noback 2)))))))
 
 ;; Clojure
 (use-package clojure-mode
