@@ -70,7 +70,7 @@ cat << EOF > /mnt/etc/hosts
                    127.0.0.1	localhost
                    ::1		localhost
                    127.0.1.1	$HOSTNAME.localdomain $HOSTNAME
-                   EOF
+EOF
 
 log "Configuring initcpio"
 sed -i /mnt/etc/mkinitcpio.conf -e 's/MODULES=()/MODULES=(ext4)/'
