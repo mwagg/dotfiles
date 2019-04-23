@@ -3,11 +3,11 @@
 set -e
 
 function pacman_install {
-  sudo pacman -S --needed --noconfirm $1
+  pacman -Q $1 || sudo pacman -S --needed --noconfirm $1
 }
 
 function yay_install {
-  yay -S --needed --noconfirm $1
+  pacman -Q $1 || yay -S --needed --noconfirm $1
 }
 
 numberofcores=$(grep -c ^processor /proc/cpuinfo)
