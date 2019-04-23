@@ -311,3 +311,7 @@ yay_install qogir-gtk-theme-git
 gsettings set org.gnome.desktop.interface gtk-theme Qogir-light
 yay_install capitaine-cursors 3-2
 gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
+
+# qemu
+pacman_install qemu
+pacman_install virt-manager
