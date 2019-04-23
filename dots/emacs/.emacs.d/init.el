@@ -158,7 +158,8 @@
     "ww"  'other-window
     "wd"  'delete-window
     "wD" 'delete-other-windows
-    "ws" 'eshell
+    "ws" #'projectile-run-eshell
+
 
     ;; applications
     "a" '(:ignore t :which-key "Applications")
