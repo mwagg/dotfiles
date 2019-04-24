@@ -49,6 +49,39 @@
                                                          ((string-match "^ [!\\?]" noback) 'mode-line-vc-modified))))
                                         (format "[git:%s]" (substring noback 2)))))))
 
+;; global text scaling
+(define-globalized-minor-mode
+  global-text-scale-mode
+  text-scale-mode
+  (lambda () (text-scale-mode 1)))
+
+(defun global-text-scale-adjust (inc)
+  "Add (INC) to the gloabl text scale."
+  (interactive)
+  (text-scale-set 1)
+  (kill-local-variable 'text-scale-mode-amount)
+  (setq-default text-scale-mode-amount (+ text-scale-mode-amount inc))
+  (global-text-scale-mode 1))
+
+(add-hook 'which-key-mode-hook (lambda ()
+                                 (general-def
+                                   "s-+" '(lambda ()
+                                            (interactive)
+                                            (global-text-scale-adjust 1))
+                                   "s--" '(lambda ()
+                                            (interactive)
+                                            (global-text-scale-adjust -1)))))
+
+;; themes
+(use-package doom-themes
+  :config
+  (load-theme 'doom-nord t))
+(add-hook 'general-override-mode-hook (lambda ()
+                                        (tyrant-def
+                                          ;; theme settings
+                                          "t" '(:ignore t :which-key "themes")
+                                          "tt" 'counsel-load-theme)))
+
 (provide 'init-ui)
 
 ;;; init-ui.el ends here

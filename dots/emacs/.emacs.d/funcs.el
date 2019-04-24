@@ -48,14 +48,6 @@
 	     (backward-char))
     (insert " ")))
 
-(defun global-text-scale-adjust (inc)
-  "Add (INC) to the gloabl text scale."
-  (interactive)
-  (text-scale-set 1)
-  (kill-local-variable 'text-scale-mode-amount)
-  (setq-default text-scale-mode-amount (+ text-scale-mode-amount inc))
-  (global-text-scale-mode 1))
-
 (defun set-eyebrowse-workspace-name-to-project ()
   "Set the eyebrowse workspace name to the current project name."
   (eyebrowse-rename-window-config (eyebrowse--get 'current-slot) (projectile-project-name)))

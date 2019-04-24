@@ -33,12 +33,6 @@
 
 (load "~/.emacs.d/funcs")
 
-;; global text scaling
-(define-globalized-minor-mode
-  global-text-scale-mode
-  text-scale-mode
-  (lambda () (text-scale-mode 1)))
-
 ;; which-key
 (use-package which-key
   :config
