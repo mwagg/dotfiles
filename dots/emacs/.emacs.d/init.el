@@ -24,6 +24,8 @@
 (require 'init-basics)
 (require 'init-package)
 (require 'init-ui)
+(require 'init-keybindings)
+(require 'init-ruby)
 
 ;; paths
 (defvar my-bin-paths '("~/.local/bin"))
@@ -32,93 +34,6 @@
   (setq exec-path (append exec-path (list path))))
 
 (load "~/.emacs.d/funcs")
-
-;; which-key
-(use-package which-key
-  :config
-  (which-key-mode))
-
-;; general
-(use-package general
-  :after which-key
-  :init
-  (general-override-mode 1)
-  :config
-  (general-def
-    "s-+" '(lambda ()
-	     (interactive)
-	     (global-text-scale-adjust 1))
-    "s--" '(lambda ()
-	     (interactive)
-	     (global-text-scale-adjust -1)))
-
-  (general-create-definer tyrant-def
-    :states '(normal visual insert motion emacs)
-    :prefix "SPC"
-    :non-normal-prefix "C-SPC")
-
-  (general-create-definer despot-def
-    :states '(normal insert)
-    :prefix "SPC"
-    :non-normal-prefix "C-SPC")
-
-  (general-create-definer local-leader-def
-    :states '(normal)
-    :prefix ",")
-
-  (general-define-key
-   :keymaps 'key-translation-map
-   "ESC" (kbd "C-g"))
-
-  (tyrant-def
-    "" nil
-    "c" (general-simulate-key "C-c")
-    "h" (general-simulate-key "C-h")
-    "u" (general-simulate-key "C-u")
-    "x" (general-simulate-key "C-x")
-    "TAB" 'alternate-buffer
-
-    ;; theme settings
-    "t" '(:ignore t :which-key "themes")
-
-    ;; buffers
-    "b" '(:ignore t :which-key "buffers")
-
-    ;; files
-    "f" '(:ignore t :which-key "files")
-    "fed" 'find-user-init-file
-    "fs" 'save-buffer
-
-    ;; Window operations
-    "w"   '(:ignore t :which-key "window")
-    "wm"  'maximize-window
-    "w/"  'split-window-horizontally
-    "wv"  'split-window-vertically
-    "wm"  'maximize-window
-    "wu"  'winner-undo
-    "ww"  'other-window
-    "wd"  'delete-window
-    "wD" 'delete-other-windows
-    "ws" #'projectile-run-eshell
-
-
-    ;; applications
-    "a" '(:ignore t :which-key "Applications")
-    "ad" 'dired
-    "ac" 'caletdar
-
-    ;; Quit operations
-    "q" '(:ignore t :which-key "quit emacs")
-    "qq" 'evil-quit-all
-    "qz" 'delete-frame)
-
-  (general-def 'normal package-menu-mode-map
-    "i"   'package-menu-mark-install
-    "U"   'package-menu-mark-upgrades
-    "d"   'package-menu-mark-delete
-    "u"   'package-menu-mark-unmark
-    "x"   'package-menu-execute
-    "q" 'quit-window))
 
 ;; evil
 (use-package evil
@@ -155,7 +70,6 @@
 (use-package smartparens
   :hook ((emacs-lisp-mode . smartparens-strict-mode)
 	 (clojure-mode . smartparens-strict-mode)
-	 (enh-ruby-mode . smartparens-mode)
 	 (elm-mode . smartparens-mode))
   :config
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
@@ -202,7 +116,6 @@
   :general
   (tyrant-def
     "SPC" 'counsel-M-x
-    "tt" 'counsel-load-theme
     "ff" 'counsel-find-file
     "fr" 'counsel-recentf
     "fL" 'counsel-locate))
@@ -327,82 +240,82 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 ;; ruby
-(define-key global-map (kbd "SPC") #'insert-space-in-brackets)
+;; (define-key global-map (kbd "SPC") #'insert-space-in-brackets)
 
-(use-package enh-ruby-mode
-  :config
-  (setq ruby-insert-encoding-magic-comment nil)
-  :mode ("\\(Rake\\|Thor\\|Guard\\|Gem\\|Vagrant\\)file\\'"
- 	 "\\.\\(rb\\|rabl\\|ru\\|builder\\|rake\\|thor\\|gemspec\\|jbuilder\\)\\'"))
-(use-package ruby-end)
-(use-package bundler
-  :after enh-ruby-mode
-  :config
-  (setq rubocop-prefer-system-executable t
-        rubocop-autocorrect-on-save t)
-  :general
-  (local-leader-def 'enh-ruby-mode-map
-    "b" '(:ignore t :which-key "bundler")
-    "bc" 'bundle-check
-    "bi" 'bundle-install
-    "bs" 'bundle-console
-    "bu" 'bundle-update
-    "bx" 'bundle-exec
-    "bo" 'bundle-open ))
-(use-package rbenv
-  :after enh-ruby-mode
-  :config
-  (global-rbenv-mode))
-(use-package rubocop
-  :after enh-ruby-mode
-  :hook (enh-ruby-mode . rubocop-mode)
-  :general
-  (local-leader-def 'enh-ruby-mode-map
-    "rr" '(:ignore t :with-key "rubocop")
-    "rrd" 'rubocop-check-directory
-    "rrD" 'rubocop-autocorrect-directory
-    "rrf" 'rubocop-check-current-file
-    "rrF" 'rubocop-autocorrect-current-file
-    "rrp" 'rubocop-check-project
-    "rrP" 'rubocop-autocorrect-project))
-(use-package rspec-mode
-  :after enh-ruby-mode
-  :config
-  (setq rspec-use-opts-file-when-available nil
-        rspec-command-options "--format progress")
-  :general
-  (local-leader-def 'enh-ruby-mode-map
-    "t" '(:ignore t :which-key "rspec")
-    "ta" 'rspec-verify-all
-    "tb" 'rspec-verify
-    "tc" 'rspec-verify-continue
-    "td" 'ruby/rspec-verify-directory
-    "te" 'rspec-toggle-example-pendingness
-    "tf" 'rspec-verify-method
-    "tl" 'rspec-run-last-failed
-    "tm" 'rspec-verify-matching
-    "tr" 'rspec-rerun
-    "tt" 'rspec-verify-single
-    "t~" 'rspec-toggle-spec-and-target-find-example
-    "t TAB" 'rspec-toggle-spec-and-target))
-(use-package ruby-tools
-  :after enh-ruby-mode
-  :hook (enh-ruby-mode . ruby-tools-mode))
-(use-package inf-ruby
-  :after enh-ruby-mode
-  :config
-  (inf-ruby-switch-setup))
-(use-package rake
-  :after enh-ruby-mode
-  :general
-  (local-leader-def 'enh-ruby-mode-map
-    "k" '(:ignore t :which-ley "rake")
-    "kk" 'rake
-    "kr" 'rake-rerun
-    "kR" 'rake-regenerate-cache
-    "kf" 'rake-find-task))
-(use-package haml-mode
-  :mode "\\.haml\\'")
+;; (use-package enh-ruby-mode
+;;   :config
+;;   (setq ruby-insert-encoding-magic-comment nil)
+;;   :mode ("\\(Rake\\|Thor\\|Guard\\|Gem\\|Vagrant\\)file\\'"
+;;  	 "\\.\\(rb\\|rabl\\|ru\\|builder\\|rake\\|thor\\|gemspec\\|jbuilder\\)\\'"))
+;; (use-package ruby-end)
+;; (use-package bundler
+;;   :after enh-ruby-mode
+;;   :config
+;;   (setq rubocop-prefer-system-executable t
+;;         rubocop-autocorrect-on-save t)
+;;   :general
+;;   (local-leader-def 'enh-ruby-mode-map
+;;     "b" '(:ignore t :which-key "bundler")
+;;     "bc" 'bundle-check
+;;     "bi" 'bundle-install
+;;     "bs" 'bundle-console
+;;     "bu" 'bundle-update
+;;     "bx" 'bundle-exec
+;;     "bo" 'bundle-open ))
+;; (use-package rbenv
+;;   :after enh-ruby-mode
+;;   :config
+;;   (global-rbenv-mode))
+;; (use-package rubocop
+;;   :after enh-ruby-mode
+;;   :hook (enh-ruby-mode . rubocop-mode)
+;;   :general
+;;   (local-leader-def 'enh-ruby-mode-map
+;;     "rr" '(:ignore t :with-key "rubocop")
+;;     "rrd" 'rubocop-check-directory
+;;     "rrD" 'rubocop-autocorrect-directory
+;;     "rrf" 'rubocop-check-current-file
+;;     "rrF" 'rubocop-autocorrect-current-file
+;;     "rrp" 'rubocop-check-project
+;;     "rrP" 'rubocop-autocorrect-project))
+;; (use-package rspec-mode
+;;   :after enh-ruby-mode
+;;   :config
+;;   (setq rspec-use-opts-file-when-available nil
+;;         rspec-command-options "--format progress")
+;;   :general
+;;   (local-leader-def 'enh-ruby-mode-map
+;;     "t" '(:ignore t :which-key "rspec")
+;;     "ta" 'rspec-verify-all
+;;     "tb" 'rspec-verify
+;;     "tc" 'rspec-verify-continue
+;;     "td" 'ruby/rspec-verify-directory
+;;     "te" 'rspec-toggle-example-pendingness
+;;     "tf" 'rspec-verify-method
+;;     "tl" 'rspec-run-last-failed
+;;     "tm" 'rspec-verify-matching
+;;     "tr" 'rspec-rerun
+;;     "tt" 'rspec-verify-single
+;;     "t~" 'rspec-toggle-spec-and-target-find-example
+;;     "t TAB" 'rspec-toggle-spec-and-target))
+;; (use-package ruby-tools
+;;   :after enh-ruby-mode
+;;   :hook (enh-ruby-mode . ruby-tools-mode))
+;; (use-package inf-ruby
+;;   :after enh-ruby-mode
+;;   :config
+;;   (inf-ruby-switch-setup))
+;; (use-package rake
+;;   :after enh-ruby-mode
+;;   :general
+;;   (local-leader-def 'enh-ruby-mode-map
+;;     "k" '(:ignore t :which-ley "rake")
+;;     "kk" 'rake
+;;     "kr" 'rake-rerun
+;;     "kR" 'rake-regenerate-cache
+;;     "kf" 'rake-find-task))
+;; (use-package haml-mode
+;;   :mode "\\.haml\\'")
 
 ;; matchit
 (use-package evil-matchit
@@ -483,11 +396,6 @@
 ;; terraform
 (use-package terraform-mode
   :mode "\\.tf")
-
-;; doom themes
-(use-package doom-themes
-  :config
-  (load-theme 'doom-molokai t))
 
 (use-package auto-package-update
   :ensure t
