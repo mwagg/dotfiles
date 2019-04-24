@@ -4,43 +4,24 @@
 ;;; Emacs Startup File --- initialisation for Emacs
 ;;; Package --- Summary
 ;;; Code:
+
+;;; speed up startup
 (eval-and-compile
   (setq gc-cons-threshold 402653184
 	gc-cons-percentage 0.6))
 (defvar temp--file-name-handler-alist file-name-handler-alist)
 (setq file-name-handler-alist nil)
 
-;; sensible defaults to make Emacs nice
-(setq delete-old-versions -1
-      version-control t
-      vc-make-backup-files t
-      backup-directory-alist `(("." . "~/.emacs.d/backups")) ; which directory to put backups file
-      vc-follow-symlinks t
-      auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t))
-      inhibit-startup-screen t
-      ring-bell-function 'ignore
-      coding-system-for-read 'utf-8
-      coding-system-for-write 'utf-8
-      locale-coding-system 'utf-8
-      sentence-end-double-space nil
-      create-lockfiles nil
-      tags-revert-without-query 1
-      scroll-conservatively 100
-      compilation-scroll-output t)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
-(set-selection-coding-system 'utf-8)
-(prefer-coding-system 'utf-8)
-(setq sh-indentation 2)
+;; Load path
+;; Optimize: Force "lisp"" at the head to reduce the startup time.
+(defun update-load-path (&rest _)
+  "Update `load-path'."
+  (push (expand-file-name "lisp" user-emacs-directory) load-path))
 
-;; show tabs
-(setq whitespace-style '(trailing tabs newline tab-mark newline-mark))
+(advice-add #'package-initialize :after #'update-load-path)
+(update-load-path)
 
-(when (display-graphic-p)
-  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
-(menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
+(require 'init-basics)
 
 ;; setup fonts
 (set-face-attribute 'default nil :font "mononoki-12" )
@@ -54,22 +35,7 @@
   (setenv "PATH" (concat (getenv "PATH") (concat ":" path)))
   (setq exec-path (append exec-path (list path))))
 
-;; configure custom
-(setq custom-file "~/.emacs.d/emacs-custom.el")
-(load custom-file)
-
 (load "~/.emacs.d/funcs")
-
-;; save buffers when losing focus
-(add-hook 'focus-out-hook #'save-current-buffer-if-needed)
-
-;; relative line numbers
-(add-hook 'prog-mode-hook (lambda ()
-			    (setq display-line-numbers-type 'relative)
-			    (display-line-numbers-mode)))
-
-;; kill trailing whitespace
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
 
 ;; bootstrap use-package
 (require 'package)
@@ -599,6 +565,7 @@
   :general
   (tyrant-def
     "gt" #'git-timemachine))
+
 (eval-and-compile
   (add-hook 'emacs-startup-hook '(lambda ()
 				   (setq gc-cons-threshold 16777216
