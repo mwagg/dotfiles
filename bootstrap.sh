@@ -314,4 +314,5 @@ gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
 
 # qemu
 pacman_install qemu
+pacman_install ovmf
 pacman_install virt-manager
