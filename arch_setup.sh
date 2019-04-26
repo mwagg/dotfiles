@@ -36,6 +36,7 @@ log "Formatting disks"
 mkfs.vfat -F32 $BOOT_DEV
 log "Creating encrypted partition"
 cryptsetup -y -v luksFormat --type luks2 $ROOT_DEV
+cryptsetup config --label=root $ROOT_DEV
 cryptsetup open $ROOT_DEV cryptroot
 mkfs.ext4 /dev/mapper/cryptroot
 
@@ -57,7 +58,7 @@ pacman -S --noconfirm reflector
 reflector -c "United Kingdom" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 
 log "Pacstrap installation"
-pacstrap /mnt/ base sudo intel-ucode efibootmgr wpa_supplicant networkmanager
+pacstrap /mnt/ base base-devel sudo intel-ucode efibootmgr wpa_supplicant networkmanager git
 genfstab -U /mnt >> /mnt/etc/fstab
 
 log "Configuring hostname"
@@ -86,7 +87,7 @@ title Arch Linux
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
-options root=LABEL=arch_os rw
+options cryptdevice=LABEL=root:cryptroot root=/dev/mapper/cryptroot rw quiet
 EOF
 
 cat << EOF > /mnt/arch_install.sh
@@ -102,14 +103,17 @@ cat << EOF > /mnt/arch_install.sh
 	echo "%wheel ALL=(ALL) ALL" | sudo EDITOR='tee -a' visudo
         bootctl --path=/boot install
 
-        sed -i /etc/default/grub -e 's/GRUB_CMDLINE_LINUX.*$/GRUB_CMDLINE_LINUX="cryptdevice=\/dev\/${DRIVE}${PARTITION_PREFIX}3:luks:allow-discards"/'
-	grub-mkconfig -o /boot/grub/grub.cfg
-
 	echo "Setting passwd for user"
 	useradd -m -g users -G wheel -s /bin/bash mike
 	passwd mike
 
 	systemctl enable NetworkManager.service
+
+        git clone https://aur.archlinux.org/yay.git /usr/local/src/yay
+        cd /usr/local/src/yay
+        makepkg -si --noconfirm
+
+        yay -S systemd-boot-pacman-hook --noconfirm
 EOF
 chmod +x /mnt/arch_install.sh
 
