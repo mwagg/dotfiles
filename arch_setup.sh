@@ -18,9 +18,8 @@ fi
 PARTITION_PREFIX=${PARTITION_PREFIX:-""}
 
 log "Installing using drive $DRIVE"
-EFI_DEV="/dev/${DRIVE}${PARTITION_PREFIX}1"
-BOOT_DEV="/dev/${DRIVE}${PARTITION_PREFIX}2"
-ROOT_DEV="/dev/${DRIVE}${PARTITION_PREFIX}3"
+BOOT_DEV="/dev/${DRIVE}${PARTITION_PREFIX}1"
+ROOT_DEV="/dev/${DRIVE}${PARTITION_PREFIX}2"
 
 loadkeys uk
 timedatectl set-ntp true
@@ -29,15 +28,15 @@ log "Partitioning disk"
 parted --script -a optimal /dev/$DRIVE \
        mklabel gpt \
        mkpart primary 1MiB 512MiB \
-       mkpart primary 512Mib 762MiB \
-       -- mkpart primary 762Mib -1
+       set 1 esp on \
+       -- mkpart primary 512Mib -1
 
 
 log "Formatting disks"
-mkfs.vfat -F32 $EFI_DEV
-mkfs.ext4 $BOOT_DEV
+mkfs.vfat -F32 $BOOT_DEV
 log "Creating encrypted partition"
 cryptsetup -y -v luksFormat --type luks2 $ROOT_DEV
+cryptsetup config --label=root $ROOT_DEV
 cryptsetup open $ROOT_DEV cryptroot
 mkfs.ext4 /dev/mapper/cryptroot
 
@@ -45,8 +44,6 @@ log "Mounting partitions"
 mount /dev/mapper/cryptroot /mnt
 mkdir /mnt/boot
 mount $BOOT_DEV /mnt/boot
-mkdir /mnt/boot/efi
-mount $EFI_DEV /mnt/boot/efi
 
 function finish {
   log "Unmounting partitions"
@@ -61,7 +58,7 @@ pacman -S --noconfirm reflector
 reflector -c "United Kingdom" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 
 log "Pacstrap installation"
-pacstrap /mnt/ base sudo intel-ucode grub efibootmgr wpa_supplicant networkmanager
+pacstrap /mnt/ base base-devel sudo intel-ucode efibootmgr wpa_supplicant networkmanager git
 genfstab -U /mnt >> /mnt/etc/fstab
 
 log "Configuring hostname"
@@ -76,6 +73,23 @@ log "Configuring initcpio"
 sed -i /mnt/etc/mkinitcpio.conf -e 's/MODULES=()/MODULES=(ext4)/'
 sed -i /mnt/etc/mkinitcpio.conf -e 's/HOOKS=(base udev autodetect modconf/HOOKS=(base udev autodetect keyboard keymap encrypt modconf/'
 
+log "Configureing systemd-boot"
+mkdir -p /mnt/boot/loader/entries
+cat <<EOF > /mnt/boot/loader/loader.conf
+default arch
+timeout 0
+console-mode max
+editor no
+EOF
+
+cat <<EOF > /mnt/boot/loader/entries/arch.conf
+title Arch Linux
+linux /vmlinuz-linux
+initrd /intel-ucode.img
+initrd /initramfs-linux.img
+options cryptdevice=LABEL=root:cryptroot root=/dev/mapper/cryptroot rw quiet
+EOF
+
 cat << EOF > /mnt/arch_install.sh
 	ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
 	echo "KEYMAP=uk" > /etc/vconsole.conf
@@ -87,10 +101,7 @@ cat << EOF > /mnt/arch_install.sh
 	echo "Setting password for root"
 	passwd
 	echo "%wheel ALL=(ALL) ALL" | sudo EDITOR='tee -a' visudo
-	grub-install
-
-        sed -i /etc/default/grub -e 's/GRUB_CMDLINE_LINUX.*$/GRUB_CMDLINE_LINUX="cryptdevice=\/dev\/${DRIVE}${PARTITION_PREFIX}3:luks:allow-discards"/'
-	grub-mkconfig -o /boot/grub/grub.cfg
+        bootctl --path=/boot install
 
 	echo "Setting passwd for user"
 	useradd -m -g users -G wheel -s /bin/bash mike

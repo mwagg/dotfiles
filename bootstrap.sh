@@ -316,6 +316,9 @@ gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
 pacman_install qemu
 pacman_install ovmf
 pacman_install virt-manager
+mkdir -p $HOME/.config/libvirt
 echo "nvram = [" > $HOME/.config/libvirt/qemu.conf
 echo '"/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd"' >> $HOME/.config/libvirt/qemu.conf
 echo "]" >> $HOME/.config/libvirt/qemu.conf
+
+yay -S systemd-boot-pacman-hook --noconfirm
