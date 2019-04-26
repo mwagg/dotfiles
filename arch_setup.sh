@@ -108,12 +108,6 @@ cat << EOF > /mnt/arch_install.sh
 	passwd mike
 
 	systemctl enable NetworkManager.service
-
-        git clone https://aur.archlinux.org/yay.git /usr/local/src/yay
-        cd /usr/local/src/yay
-        makepkg -si --noconfirm
-
-        yay -S systemd-boot-pacman-hook --noconfirm
 EOF
 chmod +x /mnt/arch_install.sh
 

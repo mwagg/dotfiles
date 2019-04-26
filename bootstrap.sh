@@ -319,3 +319,5 @@ pacman_install virt-manager
 echo "nvram = [" > $HOME/.config/libvirt/qemu.conf
 echo '"/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd"' >> $HOME/.config/libvirt/qemu.conf
 echo "]" >> $HOME/.config/libvirt/qemu.conf
+
+yay -S systemd-boot-pacman-hook --noconfirm
