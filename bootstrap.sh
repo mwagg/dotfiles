@@ -255,9 +255,6 @@ sudo systemctl start syncthing@$USER.service
 # imagemagick
 pacman_install imagemagick
 
-# udevil - automounting disks
-pacman_install udisks2
-
 # eog - image viewer
 pacman_install eog
 
