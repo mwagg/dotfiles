@@ -305,3 +305,6 @@ echo '"/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd"' >> $H
 echo "]" >> $HOME/.config/libvirt/qemu.conf
 
 yay -S systemd-boot-pacman-hook --noconfirm
+
+yay -S throttled
+sudo systemctl enable --now lenovo_fix.service
