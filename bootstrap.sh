@@ -255,9 +255,6 @@ sudo systemctl start syncthing@$USER.service
 # imagemagick
 pacman_install imagemagick
 
-# eog - image viewer
-pacman_install eog
-
 # jq
 pacman_install jq
 
