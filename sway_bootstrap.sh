@@ -1,15 +1,11 @@
-#!/usr/bin/env bash
-
-SRC_URL="https://github.com/swaywm/sway/archive/1.0.tar.gz"
-SRC_DIR=$HOME/.local/src/sway
-SRC_TAR=$SRC_DIR/sway.tar.gz
-
-if [[ ! -f $SRC_TAR ]]; then
-  mkdir -p $SRC_DIR
-
-  curl -o $SRC_TAR $SRC_URL
-fi
-
-rm -rf $SRC_DIR/build
-mkdir $SRC_DIR/build
-tar xzf $SRC_TAR -C $SRC_DIR/build/
+pacman_install rofi
+yay_install wlroots
+yay_install sway
+yay_install swayidle
+pacman_install swaylock
+pacman_install light
+pacman_install waybar
+pacman_install otf-font-awesome
+pacman_install ttf-font-awesome
+pacman_install nautilus
+pacman_install mako

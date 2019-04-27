@@ -288,18 +288,7 @@ pacman_install nss-mdns
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable org.cups.cupsd.service
 
-# sway
-pacman_install rofi
-yay_install wlroots
-yay_install sway
-yay_install swayidle
-pacman_install swaylock
-pacman_install light
-pacman_install waybar
-pacman_install otf-font-awesome
-pacman_install ttf-font-awesome
-pacman_install nautilus
-pacman_install mako
+source "./sway_bootstrap.sh"
 
 # vim
 pacman_install vim
