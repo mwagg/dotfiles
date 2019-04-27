@@ -222,9 +222,10 @@ xdg-settings set default-web-browser firefox.desktop
 pacman_install chromium
 yay_install chromium-widevine
 
-# docker
-pacman_install docker
-sudo usermod -a -G docker $USER
+# containers
+pacman_install podman
+pacman_install podman-docker
+pacman_install buildah
 
 # aws
 pacman_install aws-cli
