@@ -87,7 +87,7 @@ title Arch Linux
 linux /vmlinuz-linux
 initrd /intel-ucode.img
 initrd /initramfs-linux.img
-options cryptdevice=LABEL=root:cryptroot root=/dev/mapper/cryptroot rw quiet
+options cryptdevice=LABEL=root:cryptroot:allow-discards root=/dev/mapper/cryptroot rw quiet
 EOF
 
 cat << EOF > /mnt/arch_install.sh
