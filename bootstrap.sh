@@ -105,6 +105,7 @@ sudo systemctl enable gdm.service
 sudo systemctl set-default graphical.target
 
 # gnome
+pacman_install gnome
 pacman_install gnome-extra
 pacman_install gnome-control-center
 pacman_install gnome-backgrounds
