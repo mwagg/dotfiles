@@ -134,7 +134,6 @@
     "p"   '(:ignore t :which-key "projectile")
     "p'" #'open-terminal-in-project-root
     "pp" 'counsel-projectile-switch-project
-    "pt" #'projectile-find-tag
     "pf"  'counsel-projectile-find-file
     "pb"  'counsel-projectile-switch-to-buffer
     "*" '(lambda ()
@@ -343,12 +342,33 @@
 	elm-package-json "elm.json"
         elm-tags-on-save t))
 
-;; ranger
-(use-package ranger
+;; neotree
+(use-package neotree
+  :config
+  (defun neotree-project-dir-toggle ()
+    "Open NeoTree using the project root, using find-file-in-project,
+or the current buffer directory."
+    (interactive)
+    (let ((project-dir
+           (ignore-errors
+           ;;; Pick one: projectile or find-file-in-project
+                                        ; (projectile-project-root)
+             (ffip-project-root)
+             ))
+          (file-name (buffer-file-name))
+          (neo-smart-open t))
+      (if (and (fboundp 'neo-global--window-exists-p)
+               (neo-global--window-exists-p))
+          (neotree-hide)
+        (progn
+          (neotree-show)
+          (if project-dir
+              (neotree-dir project-dir))
+          (if file-name
+              (neotree-find file-name))))))
   :general
   (tyrant-def
-    "rp" #'ranger-project-root-dir
-    "rr" #'ranger))
+    "pt" #'neotree-project-dir-toggle))
 
 ;; iedit
 (use-package iedit
