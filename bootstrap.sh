@@ -150,3 +150,5 @@ pacman_install youtube-dl
 
 yay -S throttled
 sudo systemctl enable --now lenovo_fix.service
+
+pacman_install geary
