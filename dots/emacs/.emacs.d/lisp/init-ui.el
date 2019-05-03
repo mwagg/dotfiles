@@ -6,8 +6,8 @@
 ;;; Code:
 
 ;; setup fonts
-(set-face-attribute 'default nil :font "mononoki-12" )
-(set-frame-font "mononoki-12" nil t)
+(set-face-attribute 'default nil :font "SourceCodePro-12" )
+(set-frame-font "SourceCodePro-12" nil t)
 (set-face-attribute 'fixed-pitch nil :family "Iosevka")
 (set-face-attribute 'variable-pitch nil :family "Libre Baskerville")
 

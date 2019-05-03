@@ -55,7 +55,7 @@
 (defun open-terminal ()
   "Open default terminal emulator in the current directory."
   (interactive)
-  (start-process "terminal" nil "termite"))
+  (start-process "terminal" nil "gnome-terminal"))
 
 (defun open-terminal-in-project-root ()
   "Open default terminal in the project root."
