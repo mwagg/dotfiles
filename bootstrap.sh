@@ -152,3 +152,5 @@ yay -S throttled
 sudo systemctl enable --now lenovo_fix.service
 
 pacman_install geary
+# tmux
+install tmux
