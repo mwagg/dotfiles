@@ -153,10 +153,12 @@ install youtube-dl
 install ffmpeg-libs
 install compat-ffmpeg28
 
+# lednf copr enable abn/throttled
+sudo dnf copr enable abn/throttled -y
+install throttled
 
-yay -S throttled
-sudo systemctl enable --now lenovo_fix.service
+sudo systemctl enable throttled
+sudo systemctl start throttled
 
-pacman_install geary
 # tmux
 install tmux
