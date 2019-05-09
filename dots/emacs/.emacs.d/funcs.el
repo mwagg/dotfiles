@@ -34,20 +34,6 @@
       (if project-dir
           (ranger project-dir)))))
 
-(defun open-org-todos ()
-  "Open the todos.org file."
-  (interactive)
-  (find-file "~/Sync/org/todos.org"))
-
-(defun insert-space-in-brackets ()
-  "Automatically insert a space when inserting braces."
-  (interactive)
-  (if (and (looking-at "}")
-	   (looking-back "{"))
-      (progn (insert "  ")
-	     (backward-char))
-    (insert " ")))
-
 (defun set-eyebrowse-workspace-name-to-project ()
   "Set the eyebrowse workspace name to the current project name."
   (eyebrowse-rename-window-config (eyebrowse--get 'current-slot) (projectile-project-name)))

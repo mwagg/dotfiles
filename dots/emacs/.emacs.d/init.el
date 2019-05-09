@@ -25,6 +25,7 @@
 (require 'init-package)
 (require 'init-ui)
 (require 'init-keybindings)
+(require 'init-evil)
 (require 'init-ruby)
 
 ;; paths
@@ -35,37 +36,6 @@
 
 (load "~/.emacs.d/funcs")
 
-;; evil
-(use-package evil
-  :init
-  (setq evil-want-integration t
-	evil-want-keybinding nil
-	evil-want-C-u-scroll t)
-  :config
-  (evil-mode 1)
-  :general
-  (general-def 'normal
-    "C-h" 'evil-window-left
-    "C-l" 'evil-window-right
-    "C-k" 'evil-window-up
-    "C-j" 'evil-window-down))
-
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
-
-(use-package evil-surround
-  :after evil
-  :config (global-evil-surround-mode 1))
-
-(use-package evil-commentary
-  :after evil
-  :config (evil-commentary-mode 1)
-  :general
-  ('normal override-global-map
-	   "gc" 'evil-commentary
-	   "gC" 'evil-commentary-line))
 ;; smartparens
 (use-package smartparens
   :hook ((emacs-lisp-mode . smartparens-strict-mode)
