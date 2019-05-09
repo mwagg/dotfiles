@@ -16,6 +16,11 @@ function clone_src {
 install stow
 ./link_dotfiles.sh
 
+# rpmfusion
+version=$(rpm -E %fedora)
+install https://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$version.noarch.rpm
+install https://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$version.noarch.rpm
+
 # emacs
 install adobe-source-code-pro-fonts
 install aspell
@@ -142,11 +147,12 @@ clone_src https://github.com/vinceliuice/Qogir-theme Qogir-theme
 $HOME/.local/src/Qogir-theme/Install
 gsettings set org.gnome.desktop.interface gtk-theme Qogir-light
 
-exit 0
+# video
+install mpv
+install youtube-dl
+install ffmpeg-libs
+install compat-ffmpeg28
 
-# mpv
-pacman_install mpv
-pacman_install youtube-dl
 
 yay -S throttled
 sudo systemctl enable --now lenovo_fix.service
