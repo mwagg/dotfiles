@@ -364,7 +364,8 @@ or the current buffer directory."
   :defer t
   :config
   (setq org-default-notes-file "~/Sync/org/todos.org"
-	org-agenda-files (list "~/Sync/org/todos.org")
+	org-agenda-files (list "~/Sync/org/todos.org"
+                               "~/Sync/org/eporta.org")
 	org-refile-targets '((nil :level . 2))
 	org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
 			    (sequence "⚑ WAITING(w)" "|")
