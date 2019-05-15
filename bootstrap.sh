@@ -93,8 +93,11 @@ install hub
 
 # containers
 install podman
-install podman-docker
 install buildah
+sudo dnf config-manager --add-repo https://download.docker.com/linux/fedora/docker-ce.repo
+sudo dnf install --releasever=29 docker-ce docker-ce-cli -y
+sudo systemctl enable --now docker
+sudo usermod -a -G docker $USER
 
 # chromium
 install chromium
