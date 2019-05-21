@@ -165,3 +165,6 @@ sudo systemctl start throttled
 
 # tmux
 install tmux
+
+# exfat
+install fuse-exfat
