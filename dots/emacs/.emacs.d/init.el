@@ -28,6 +28,7 @@
 (require 'init-evil)
 (require 'init-ruby)
 (require 'init-org)
+(require 'init-python)
 
 ;; paths
 (defvar my-bin-paths '("~/.local/bin"))
