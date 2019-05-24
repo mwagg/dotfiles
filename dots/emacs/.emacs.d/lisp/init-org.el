@@ -23,12 +23,20 @@
     (add-hook 'org-mode-hook 'org-bullets-mode)
     :init
     (setq org-bullets-bullet-list
-          '("◉" "◎" "⚫" "○" "►" "◇")))
+          '("◎" "◉" "○" "⚫" "►" "◇")))
+
+  (use-package evil-org
+    :config
+    (add-hook 'org-mode-hook 'evil-org-mode)
+    (add-hook 'evil-org-mode-hook
+              (lambda ()
+                (evil-org-set-key-theme)))
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
   :general
   (tyrant-def
     "aoa" 'org-agenda
-    "aot" 'open-org-todos
-    "aoj" 'org-journal-new-entry)
+    "aot" 'open-org-todos)
   (local-leader-def org-mode-map
     "s" 'org-schedule
     "a" 'org-agenda
