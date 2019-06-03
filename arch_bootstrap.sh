@@ -288,3 +288,5 @@ yay_install throttled
 sudo systemctl enable --now lenovo_fix.service
 
 yay_install zoom
+
+pacman_install htop
