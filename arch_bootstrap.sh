@@ -290,3 +290,8 @@ sudo systemctl enable --now lenovo_fix.service
 yay_install zoom
 
 pacman_install htop
+
+#docker
+pacman_install docker
+sudo usermod -a -G docker $USER
+sudo systemctl enable --now docker.service
