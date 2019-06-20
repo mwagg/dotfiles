@@ -30,11 +30,11 @@
 (require 'init-org)
 (require 'init-python)
 
-;; paths
-(defvar my-bin-paths '("~/.local/bin"))
-(dolist (path my-bin-paths)
-  (setenv "PATH" (concat (getenv "PATH") (concat ":" path)))
-  (setq exec-path (append exec-path (list path))))
+(use-package exec-path-from-shell
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
 
 (load "~/.emacs.d/funcs")
 
