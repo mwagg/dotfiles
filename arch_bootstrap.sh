@@ -293,5 +293,6 @@ pacman_install htop
 
 #docker
 pacman_install docker
+pacman_install docker-compose
 sudo usermod -a -G docker $USER
 sudo systemctl enable --now docker.service
