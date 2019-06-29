@@ -387,7 +387,9 @@ or the current buffer directory."
 
 ;; terraform
 (use-package terraform-mode
-  :mode "\\.tf")
+  :mode "\\.tf"
+  :config
+  (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
 
 (use-package auto-package-update
   :ensure t
