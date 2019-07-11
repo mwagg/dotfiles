@@ -47,6 +47,7 @@
 (add-hook 'prog-mode-hook (lambda ()
 			    (setq display-line-numbers-type 'relative)
 			    (display-line-numbers-mode)))
+(setq global-linum-mode t)
 
 ;; kill trailing whitespace
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
