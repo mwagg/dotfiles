@@ -299,3 +299,6 @@ sudo systemctl enable --now docker.service
 
 # ansible
 pacman_install ansible
+
+# python
+pacman_install python
