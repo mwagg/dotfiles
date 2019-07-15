@@ -1,11 +1,5 @@
-if test -d $HOME/.rbenv/bin
-    set -x PATH $HOME/.rbenv/bin $PATH
-end
-if test -d $HOME/.rbenv/shims
-    set -x PATH $HOME/.rbenv/shims $PATH
-end
-if test -d $HOME/.rbenv
-    source (rbenv init -|psub)
+if test -d $HOME/.asdf
+    source ~/.asdf/asdf.fish
 end
 
 if test -d $HOME/.local/bin
@@ -14,6 +8,10 @@ end
 
 if test -d $HOME/.local/node/bin
     set -x PATH $HOME/.local/node/bin $PATH
+end
+
+if test -d $HOME/.local/elm/bin
+    set -x PATH $HOME/.local/elm/bin $PATH
 end
 
 set -x PGHOST localhost
