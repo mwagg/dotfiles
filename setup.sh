@@ -62,9 +62,8 @@ pacman_install stow
 
 function install_yay {
   mkdir -p $HOME/.local/src
-  pushd $HOME/.local/src
-  git clone https://aur.archlinux.org/yay.git
-  cd yay
+  [ -d $HOME/.local/src/yay ] || git clone https://aur.archlinux.org/yay.git
+  pushd $HOME/.local/src/yay
   makepkg -si --noconfirm
   popd
 }
@@ -106,6 +105,15 @@ pacman_install gnome-extra
 pacman_install gnome-control-center
 pacman_install gnome-backgrounds
 pacman_install gnome-tweaks
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'gnome-terminal'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
+
+# vim
+pacman_install vim
+
+# tmux
+pacman_install tmux
 
 # fonts
 yay_install ttf-mononoki
@@ -158,9 +166,6 @@ pacman_install autojump
 pacman_install fish
 sudo chsh -s /usr/bin/fish $USER
 
-# termite
-pacman_install termite
-
 # emacs
 pacman_install adobe-source-code-pro-fonts
 pacman_install aspell-en
@@ -173,13 +178,12 @@ pacman_install hub
 
 # firefox
 pacman_install firefox
+pacman_install xdg-utils
 xdg-settings set default-web-browser firefox.desktop
 
 # chromium
 pacman_install chromium
 yay_install chromium-widevine
-
-# containers
 
 # aws
 pacman_install aws-cli
@@ -197,7 +201,6 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 
 flatpak install flathub com.spotify.Client -y
 flatpak install flathub com.slack.Slack -y
-flatpak install flathub com.uploadedlobster.peek -y
 
 # syncthing
 pacman_install syncthing
@@ -225,9 +228,6 @@ pacman_install avahi
 pacman_install nss-mdns
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable org.cups.cupsd.service
-
-# vim
-pacman_install vim
 
 # gtk
 yay_install newaita-icons-git
@@ -264,5 +264,10 @@ sudo systemctl enable --now docker.service
 # ansible
 pacman_install ansible
 
-# python
-pacman_install python
+# peek
+pacman_install peek
+
+# dev
+yay_install asdf-vm
+
+source lib/dev.sh

@@ -1,5 +1,8 @@
-if test -d $HOME/.asdf
+if test -f $HOME/.asdf/asdf.sh
     source ~/.asdf/asdf.fish
+end
+if test -f /opt/asdf-vm/asdf.sh
+    source /opt/asdf-vm/asdf.fish
 end
 
 if test -d $HOME/.local/bin
