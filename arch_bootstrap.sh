@@ -142,39 +142,6 @@ sudo systemctl start bluetooth.service
 
 sudo sed -i 's/'#AutoEnable=false'/'AutoEnable=true'/g' /etc/bluetooth/main.conf
 
-# nodejs
-export PATH=~/.local/node/bin:$PATH
-if ! command -v node &> /dev/null; then
-  NODE_VERSION=10.13.0
-  NODE_SRC_PATH=~/.local/src/node-v$NODE_VERSION.tar.xz
-
-  mkdir -p ~/.local/src
-
-  curl -o "$NODE_SRC_PATH" https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-x64.tar.xz
-  mkdir -p ~/.local/node
-  tar xf "$NODE_SRC_PATH" -C ~/.local/node/ --strip-components=1
-fi
-function npm_g {
-  package=$1
-  npm_bin=$HOME/.local/node/bin/npm
-
-  $npm_bin list -g $package &> /dev/null || $npm_bin install -g $package
-}
-npm_g yarn
-npm_g tern
-npm_g js-beautify
-npm_g eslint
-
-# clojure
-pacman_install jdk8-openjdk
-pacman_install clojure
-
-# elm
-npm_g elm
-npm_g elm-test
-npm_g elm-oracle
-npm_g elm-format
-
 # base devel
 pacman_install base-devel
 
@@ -231,7 +198,6 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 flatpak install flathub com.spotify.Client -y
 flatpak install flathub com.slack.Slack -y
 flatpak install flathub com.uploadedlobster.peek -y
-flatpak install flathub com.valvesoftware.Steam -y
 
 # syncthing
 pacman_install syncthing
@@ -259,8 +225,6 @@ pacman_install avahi
 pacman_install nss-mdns
 sudo systemctl enable avahi-daemon.service
 sudo systemctl enable org.cups.cupsd.service
-
-source "./sway_bootstrap.sh"
 
 # vim
 pacman_install vim
