@@ -6,8 +6,12 @@ function log {
 	echo -e "\e[32m$1\e[0m"
 }
 
-if [[ -z "$DRIVE" ]]; then
-	echo "You must set the DRIVE variable"
+if [[ -z "$BOOT_PARTITION" ]]; then
+	echo "You must set the BOOT_PARTITION variable"
+	exit 1
+fi
+if [[ -z "$ROOT_PARTITION" ]]; then
+	echo "You must set the ROOT_PARTITION variable"
 	exit 1
 fi
 if [[ -z "$HOSTNAME" ]]; then
@@ -15,35 +19,19 @@ if [[ -z "$HOSTNAME" ]]; then
 	exit 1
 fi
 
-PARTITION_PREFIX=${PARTITION_PREFIX:-""}
-
-log "Installing using drive $DRIVE"
-BOOT_DEV="/dev/${DRIVE}${PARTITION_PREFIX}1"
-ROOT_DEV="/dev/${DRIVE}${PARTITION_PREFIX}2"
-
 loadkeys uk
 timedatectl set-ntp true
 
-log "Partitioning disk"
-parted --script -a optimal /dev/$DRIVE \
-       mklabel gpt \
-       mkpart primary 1MiB 512MiB \
-       set 1 esp on \
-       -- mkpart primary 512Mib -1
-
-
-log "Formatting disks"
-mkfs.vfat -F32 $BOOT_DEV
-log "Creating encrypted partition"
-cryptsetup -y -v luksFormat --type luks2 $ROOT_DEV
-cryptsetup config --label=root $ROOT_DEV
-cryptsetup open $ROOT_DEV cryptroot
+log "Creating encrypted root partition"
+cryptsetup -y -v luksFormat --type luks2 $ROOT_PARTITION
+cryptsetup config --label=root $ROOT_PARTITION
+cryptsetup open $ROOT_PARITION cryptroot
 mkfs.ext4 /dev/mapper/cryptroot
 
 log "Mounting partitions"
 mount /dev/mapper/cryptroot /mnt
 mkdir /mnt/boot
-mount $BOOT_DEV /mnt/boot
+mount $BOOT_PARTITION /mnt/boot
 
 function finish {
   log "Unmounting partitions"
