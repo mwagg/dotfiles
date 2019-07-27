@@ -25,7 +25,7 @@ timedatectl set-ntp true
 log "Creating encrypted root partition"
 cryptsetup -y -v luksFormat --type luks2 $ROOT_PARTITION
 cryptsetup config --label=root $ROOT_PARTITION
-cryptsetup open $ROOT_PARITION cryptroot
+cryptsetup open $ROOT_PARTITION cryptroot
 mkfs.ext4 /dev/mapper/cryptroot
 
 log "Mounting partitions"
