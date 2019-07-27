@@ -22,7 +22,8 @@
       tags-revert-without-query 1
       scroll-conservatively 100
       compilation-scroll-output t
-      whitespace-style '(trailing tabs newline tab-mark newline-mark))
+      whitespace-style '(trailing tabs newline tab-mark newline-mark)
+      auth-sources '("~/.authinfo.gpg"))
 
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)

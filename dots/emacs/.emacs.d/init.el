@@ -26,6 +26,7 @@
 (require 'init-ui)
 (require 'init-keybindings)
 (require 'init-evil)
+(require 'init-magit)
 (require 'init-ruby)
 (require 'init-org)
 (require 'init-python)
@@ -158,20 +159,6 @@
   :after flycheck
   :config
   (global-flycheck-inline-mode))
-
-
-;; magit
-(use-package magit
-  :commands (magit-status)
-  :config
-  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
-  :general
-  (tyrant-def
-    "g"  '(:ignore t :which-key "git")
-    "gs" 'magit-status
-    "gb" 'magit-blame-addition))
-(use-package evil-magit
-  :hook (magit-mode . evil-magit-init))
 
 ;; auto completion
 (use-package company
