@@ -41,9 +41,7 @@
 
 ;; smartparens
 (use-package smartparens
-  :hook ((emacs-lisp-mode . smartparens-strict-mode)
-	 (clojure-mode . smartparens-strict-mode)
-	 (elm-mode . smartparens-mode))
+  :hook ((prog-mode . smartparens-mode))
   :config
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
   (sp-local-pair 'clojure-mode "'" nil :actions nil)
