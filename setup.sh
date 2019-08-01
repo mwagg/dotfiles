@@ -274,4 +274,7 @@ pacman_install peek
 # dev
 yay_install asdf-vm
 
+# dsvpn
+yay_install dsvpn-git
+
 source lib/dev.sh
