@@ -17,6 +17,8 @@ source "$ASDF_PATH/asdf.sh"
 [ -f $HOME/.asdf/asdf.sh ] && source $HOME/.asdf/asdf.sh
 [ -f /opt/asdf-vm/asdf.sh ] && source /opt/asdf-vm/asdf.sh
 
+asdf reshim
+
 # nodejs
 asdf plugin-add nodejs || true
 source "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
@@ -41,6 +43,7 @@ asdf install clojure 1.10.1
 # python
 asdf plugin-add python || true
 asdf install python 3.6.9
+asdf local python 3.6.9
 pip install pipenv
 pip install virtualenv
 pip install jedi
