@@ -62,7 +62,7 @@ pacman_install stow
 
 function install_yay {
   mkdir -p $HOME/.local/src
-  [ -d $HOME/.local/src/yay ] || git clone https://aur.archlinux.org/yay.git
+  [ -d $HOME/.local/src/yay ] || git clone https://aur.archlinux.org/yay.git $HOME/.local/src/yay
   pushd $HOME/.local/src/yay
   makepkg -si --noconfirm
   popd
