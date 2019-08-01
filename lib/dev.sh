@@ -21,7 +21,7 @@ asdf reshim
 
 # nodejs
 asdf plugin-add nodejs || true
-source "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+type node || source "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 asdf install nodejs 10.16.0
 type yarn || npm install -g yarn
 type tern || yarn global add tern
@@ -43,9 +43,12 @@ asdf install clojure 1.10.1
 # python
 asdf plugin-add python || true
 asdf install python 3.6.9
-asdf local python 3.6.9
+asdf shell python 3.6.9
 pip install pipenv
 pip install virtualenv
 pip install jedi
 
 asdf reshim
+
+# elasticsearch and it's insatiable hunger for files
+echo "vm.max_map_count=262144" | sudo tee -a /usr/lib/sysctl.d/elasticsearch.conf
