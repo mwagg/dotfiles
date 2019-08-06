@@ -278,3 +278,5 @@ yay_install asdf-vm
 yay_install dsvpn-git
 
 source lib/dev.sh
+
+pacman_install libreoffice
