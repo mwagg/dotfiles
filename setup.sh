@@ -277,6 +277,8 @@ yay_install asdf-vm
 # dsvpn
 yay_install dsvpn-git
 
+pacman_install postgresql
+
 source lib/dev.sh
 
 pacman_install libreoffice
