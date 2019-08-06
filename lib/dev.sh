@@ -52,3 +52,6 @@ asdf reshim
 
 # elasticsearch and it's insatiable hunger for files
 echo "vm.max_map_count=262144" | sudo tee -a /usr/lib/sysctl.d/elasticsearch.conf
+
+sudo pacman -S --needed --noconfirm racket
+raco pkg install --skip-installed pie

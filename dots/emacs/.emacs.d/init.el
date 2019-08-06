@@ -45,6 +45,7 @@
   :config
   (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
   (sp-local-pair 'clojure-mode "'" nil :actions nil)
+  (sp-local-pair 'racket-mode "'" nil :actions nil)
   :general
   (general-def
     "C-<left>" #'sp-backward-slurp-sexp
@@ -395,6 +396,8 @@ or the current buffer directory."
   :general
   (tyrant-def
     "gt" #'git-timemachine))
+
+(use-package racket-mode)
 
 (eval-and-compile
   (add-hook 'emacs-startup-hook '(lambda ()
