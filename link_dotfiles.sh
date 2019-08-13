@@ -12,9 +12,9 @@ done
 # secrets
 function decrypt_file {
     target="$HOME/$1"
-    source="$HOME/Sync/secrets/$1.gpg"
+    source="$HOME/.config/secret/$1.gpg"
 
-    echo $source
+    echo "Decrypting: $source"
 
     if [[ ! -f "$target" ]] && [[ -f "$source" ]]; then
 	gpg --output $target --decrypt $source
@@ -23,5 +23,7 @@ function decrypt_file {
 mkdir -p "$HOME/.aws"
 decrypt_file ".aws/config"
 decrypt_file ".aws/credentials"
+mkdir -p ~/.ssh
+decrypt_file ".ssh/config"
 
 popd &> /dev/null
