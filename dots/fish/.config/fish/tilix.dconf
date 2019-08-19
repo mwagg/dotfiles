@@ -10,7 +10,7 @@ terminal-title-show-when-single=false
 terminal-title-style='small'
 theme-variant='dark'
 warn-vte-config-issue=false
-window-style='borderless'
+window-style='disable-csd-hide-toolbar'
 
 [profiles/2b7c4080-0ddd-46c5-8f23-563fd3ba789d]
 background-color='#272822'
@@ -22,7 +22,7 @@ cell-width-scale=1.0
 cursor-colors-set=false
 dim-color-set=false
 dim-transparency-percent=0
-font='Source Code Pro 10'
+font='Monospace 10'
 foreground-color='#F8F8F2'
 highlight-colors-set=false
 login-shell=true
