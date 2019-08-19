@@ -347,6 +347,10 @@ or the current buffer directory."
   :config
   (smart-jump-setup-default-registers))
 
+;; html
+(use-package emmet-mode
+  :hook (sgml-mode css-mode))
+
 ;; javascript
 (use-package js2-mode
   :config
@@ -391,6 +395,8 @@ or the current buffer directory."
   (setq yas-snippet-dirs '("~/.emacs.d/snippets/")
         yas-indent-line 0)
   (yas-global-mode 1))
+(use-package yasnippet-snippets
+  :after yasnipper)
 
 (use-package git-timemachine
   :general
