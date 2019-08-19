@@ -1,19 +1,19 @@
 * {
   border: none;
   border-radius: 0;
-  font-family: "mononoki";
-  font-size: 16px;
-  min-height: 0;
+  font-family: "monospace";
+  font-size: 12px;
+  min-height: 24px;
 }
 
 window#waybar {
-  background: rgba(0, 0, 0, 0.4);
+  background: rgba(0, 0, 0, 0.2);
   color: white;
 }
 
 #window {
   font-weight: bold;
-  font-family: "mononoki";
+  font-family: "monospace";
 }
 /*
 #workspaces {

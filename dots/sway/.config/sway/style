@@ -1,5 +1,5 @@
 gaps inner 8
-default_border pixel 3
+default_border pixel 1
 default_floating_border pixel 3
 
 set $fg #000000
