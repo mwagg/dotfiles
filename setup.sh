@@ -232,3 +232,6 @@ pacman_install postgresql
 source lib/dev.sh
 
 pacman_install libreoffice
+
+pacman_install python-neovim
+pacman_install neovim
