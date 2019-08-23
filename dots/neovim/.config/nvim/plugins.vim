@@ -33,11 +33,9 @@ Plug 'easymotion/vim-easymotion'
 " Intellisense Engine
 Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
-" Tmux/Neovim movement integration
-Plug 'christoomey/vim-tmux-navigator'
-
-" Denite - Fuzzy finding, buffer management
-Plug 'Shougo/denite.nvim'
+" fzf
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-bash' }
+Plug 'junegunn/fzf.vim'
 
 " Snippet support
 Plug 'Shougo/neosnippet'
@@ -46,25 +44,22 @@ Plug 'Shougo/neosnippet-snippets'
 " Print function signatures in echo area
 Plug 'Shougo/echodoc.vim'
 
-" === Git Plugins === "
-" Enable git changes to be shown in sign column
-Plug 'mhinz/vim-signify'
-Plug 'tpope/vim-fugitive'
-
-" === Javascript Plugins === "
-" Typescript syntax highlighting
-Plug 'HerringtonDarkholme/yats.vim'
-
-" ReactJS JSX syntax highlighting
-Plug 'mxw/vim-jsx'
-
-" Generate JSDoc commands based on function signature
-Plug 'heavenshell/vim-jsdoc'
-
-" === Syntax Highlighting === "
-
-" Syntax highlighting for nginx
-Plug 'chr4/nginx.vim'
+"" === Git Plugins === "
+"" Enable git changes to be shown in sign column
+"Plug 'mhinz/vim-signify'
+"Plug 'tpope/vim-fugitive'
+"
+"" === Javascript Plugins === "
+"" Typescript syntax highlighting
+"Plug 'HerringtonDarkholme/yats.vim'
+"
+"" ReactJS JSX syntax highlighting
+"Plug 'mxw/vim-jsx'
+"
+"" Generate JSDoc commands based on function signature
+"Plug 'heavenshell/vim-jsdoc'
+"
+"" === Syntax Highlighting === "
 
 " Syntax highlighting for javascript libraries
 Plug 'othree/javascript-libraries-syntax.vim'
@@ -76,12 +71,12 @@ Plug 'othree/yajs.vim'
 " File explorer
 Plug 'scrooloose/nerdtree'
 
-" Colorscheme
-Plug 'mhartington/oceanic-next'
-
-" Customized vim status line
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+"" Colorscheme
+"Plug 'mhartington/oceanic-next'
+"
+"" Customized vim status line
+"Plug 'vim-airline/vim-airline'
+"Plug 'vim-airline/vim-airline-themes'
 
 " Icons
 Plug 'ryanoasis/vim-devicons'
