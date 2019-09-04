@@ -44,11 +44,11 @@ Plug 'Shougo/neosnippet-snippets'
 " Print function signatures in echo area
 Plug 'Shougo/echodoc.vim'
 
-"" === Git Plugins === "
-"" Enable git changes to be shown in sign column
-"Plug 'mhinz/vim-signify'
-"Plug 'tpope/vim-fugitive'
-"
+" === Git Plugins === "
+" Enable git changes to be shown in sign column
+Plug 'mhinz/vim-signify'
+Plug 'tpope/vim-fugitive'
+
 "" === Javascript Plugins === "
 "" Typescript syntax highlighting
 "Plug 'HerringtonDarkholme/yats.vim'
@@ -71,12 +71,9 @@ Plug 'othree/yajs.vim'
 " File explorer
 Plug 'scrooloose/nerdtree'
 
-"" Colorscheme
-"Plug 'mhartington/oceanic-next'
-"
-"" Customized vim status line
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
+" Customized vim status line
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Icons
 Plug 'ryanoasis/vim-devicons'
