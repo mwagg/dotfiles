@@ -14,9 +14,8 @@ function decrypt_file {
     target="$HOME/$1"
     source="$HOME/.config/secret/$1.gpg"
 
-    echo "Decrypting: $source"
-
     if [[ ! -f "$target" ]] && [[ -f "$source" ]]; then
+        echo "Decrypting: $source"
 	gpg --output $target --decrypt $source
     fi
 }
