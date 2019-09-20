@@ -10,5 +10,6 @@ pacman_install sway
 pacman_install waybar
 pacman_install rofi
 pacman_install light
+sudo usermod -a -G video mike
 yay_install dot-desktop
 yay_install wldash
