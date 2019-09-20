@@ -12,4 +12,4 @@ pacman_install rofi
 pacman_install light
 sudo usermod -a -G video mike
 yay_install dot-desktop
-yay_install wldash
+yay_install wofi-hg
