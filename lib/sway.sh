@@ -13,3 +13,5 @@ pacman_install light
 sudo usermod -a -G video mike
 yay_install dot-desktop
 yay_install wofi-hg
+pacman_install swayidle
+pacman_install swaylock
