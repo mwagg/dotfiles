@@ -9,3 +9,4 @@ exec swayidle -w \
 exec --no-startup-id mako
 exec_always --no-startup-id $HOME/.local/bin/monitor-hotplug.sh
 exec_always $HOME/.local/bin/randomise-wallpaper
+exec_always --no-startup-id flashfocus
