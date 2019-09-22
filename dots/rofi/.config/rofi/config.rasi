@@ -1,14 +1,16 @@
 configuration {
-    display-drun:                   "Apps";
-    display-window:                 "Window";
+    modi: "window,drun,ssh,drun";
+    display-drun: "Apps";
+    display-window: "Window";
     show-icons:true;
-    icon-theme:                     "McMojave-circle";
+    icon-theme: "McMojave-circle";
+    lines: 5;
+    columns: 1;
+    fixed-num-lines: true;
 }
 
 * {
-    lines: 15;
-    columns: 1;
-    background-color: #00000065;
+    background-color: #00000099;
     border-color: #00000000;
     text-color: #EFEFEF;
     font: "Hack 11";
