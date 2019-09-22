@@ -1,2 +1,2 @@
 set $term tilix
-set $menu dmenu_path | wofi --show drun -i | xargs swaymsg exec --
+set $menu rofi -show drun

@@ -6,9 +6,9 @@ configuration {
 }
 
 * {
-    lines: 5;
+    lines: 15;
     columns: 1;
-    background-color: #000000DD;
+    background-color: #00000065;
     border-color: #00000000;
     text-color: #EFEFEF;
     font: "Hack 11";
@@ -19,7 +19,7 @@ configuration {
     border-radius: 4px;
     padding: 30;
     width: 40%;
-    height: 10%;
+    height: 60%;
 }
 
 #mainbox {
@@ -53,6 +53,7 @@ configuration {
     background-color: #00a0e6;
     text-color: #EFEFEF;
 }
+
 
 #inputbar {
     children:   [ prompt,textbox-prompt-colon,entry,case-indicator ];
