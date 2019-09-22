@@ -29,8 +29,8 @@
 (require 'init-magit)
 (require 'init-ruby)
 (require 'init-org)
+(require 'init-reason)
 (require 'init-python)
-
 (use-package exec-path-from-shell
   :config
   (when (memq window-system '(mac ns x))
@@ -64,7 +64,8 @@
   (global-aggressive-indent-mode 1)
   (add-to-list 'aggressive-indent-excluded-modes 'haml-mode)
   (add-to-list 'aggressive-indent-excluded-modes 'terraform-mode)
-  (add-to-list 'aggressive-indent-excluded-modes 'elm-mode))
+  (add-to-list 'aggressive-indent-excluded-modes 'elm-mode)
+  (add-to-list 'aggressive-indent-excluded-modes 'reason-mode))
 
 ;; ivy-mode
 (use-package ivy
