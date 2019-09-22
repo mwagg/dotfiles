@@ -24,5 +24,6 @@ decrypt_file ".aws/config"
 decrypt_file ".aws/credentials"
 mkdir -p ~/.ssh
 decrypt_file ".ssh/config"
+decrypt_file ".terraformrc"
 
 popd &> /dev/null
