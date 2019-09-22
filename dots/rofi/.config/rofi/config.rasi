@@ -21,7 +21,7 @@ configuration {
     border-radius: 4px;
     padding: 30;
     width: 40%;
-    height: 60%;
+    height: 20%;
 }
 
 #mainbox {
