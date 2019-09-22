@@ -49,10 +49,9 @@ Plug 'Shougo/echodoc.vim'
 Plug 'mhinz/vim-signify'
 Plug 'tpope/vim-fugitive'
 
-"" === Javascript Plugins === "
-"" Typescript syntax highlighting
-"Plug 'HerringtonDarkholme/yats.vim'
-"
+" === Elm Plugins === "
+Plug 'Zaptic/elm-vim'
+
 "" ReactJS JSX syntax highlighting
 "Plug 'mxw/vim-jsx'
 "
@@ -79,6 +78,7 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
+Plug 'dense-analysis/ale'
 " Initialize plugin system
 call plug#end()
 
