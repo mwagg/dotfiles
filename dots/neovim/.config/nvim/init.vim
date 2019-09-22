@@ -1,8 +1,10 @@
 scriptencoding utf-8
 source ~/.config/nvim/plugins.vim
 
-" Remap leader key to ,
+" Remap leader key to Space
 let g:mapleader=' '
+" Remap local leader to ','
+let g:maplocalleader=','
 
 " Line numbers
 set number
@@ -64,7 +66,7 @@ cmap w!! w !sudo tee %
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " === fzf
-nnoremap <leader>pf :call fzf#run({'source': 'find . -type f', 'sink': 'e'})<return>
+nnoremap <leader>pf :GFiles<cr>
 nnoremap <leader>bb :Buffers<cr>
 nnoremap <leader>tt :Colors<Cr>
 nnoremap <leader>/ :Rg<cr>
