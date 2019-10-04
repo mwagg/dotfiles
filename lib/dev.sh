@@ -48,6 +48,12 @@ pip install pipenv
 pip install virtualenv
 pip install jedi
 
+asdf plugin-add ruby || true
+asdf install ruby 2.6.5
+asdf shell ruby 2.6.5
+gem install pry
+
+
 asdf reshim
 
 # elasticsearch and it's insatiable hunger for files
