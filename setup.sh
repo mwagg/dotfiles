@@ -25,10 +25,13 @@ pacman_install openssh
 
 # power management
 pacman_install acpi
-pacman_install powertop
-sudo cp templates/powertop.service /usr/lib/systemd/system/powertop.service
-sudo systemctl enable powertop.service
-sudo systemctl start powertop.service
+pacman_install tlp
+pacman_install tp_smapi
+pacman_install acpi_call
+sudo systemctl enable tlp.service
+sudo systemctl enable tlp-sleep.service
+sudo systemctl start tlp.service
+sudo systemctl start tlp-sleep.service
 
 # suspend on lid close
 sudo sed -i -e 's/HandleLidSwitch=ignore/handleLidSwitch=suspend/' /etc/systemd/logind.conf
