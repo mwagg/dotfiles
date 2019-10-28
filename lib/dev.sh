@@ -53,15 +53,16 @@ asdf install ruby 2.6.5
 asdf shell ruby 2.6.5
 gem install pry
 
-
-asdf reshim
-
 # elasticsearch and it's insatiable hunger for files
 echo "vm.max_map_count=262144" | sudo tee -a /usr/lib/sysctl.d/elasticsearch.conf
 
 sudo pacman -S --needed --noconfirm racket
 raco pkg install --skip-installed pie
 
+sudo pacman -S --needed --noconfirm code
+
 # reason
 npm install -g esy
 sudo pacman -S --needed --noconfirm ragel
+
+asdf reshim
