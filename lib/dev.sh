@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
 if [[ -f $HOME/.asdf/asdf.sh ]]; then
   ASDF_PATH="$HOME/.asdf"
@@ -55,14 +54,5 @@ gem install pry
 
 # elasticsearch and it's insatiable hunger for files
 echo "vm.max_map_count=262144" | sudo tee -a /usr/lib/sysctl.d/elasticsearch.conf
-
-sudo pacman -S --needed --noconfirm racket
-raco pkg install --skip-installed pie
-
-sudo pacman -S --needed --noconfirm code
-
-# reason
-npm install -g esy
-sudo pacman -S --needed --noconfirm ragel
 
 asdf reshim
