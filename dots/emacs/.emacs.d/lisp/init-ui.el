@@ -6,8 +6,11 @@
 ;;; Code:
 
 ;; setup fonts
-(set-face-attribute 'default nil :font "SourceCodePro-12" )
-(set-frame-font "SourceCodePro-12" nil t)
+(let ((font-name (if (string-equal system-type "darwin")
+                    "Source Code Pro 12"
+                  "SourceCodePro-12")))
+  (set-face-attribute 'default nil :font font-name )
+  (set-frame-font font-name nil t))
 (set-face-attribute 'fixed-pitch nil :family "Iosevka")
 (set-face-attribute 'variable-pitch nil :family "Libre Baskerville")
 
