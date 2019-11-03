@@ -18,8 +18,6 @@ if test -d $HOME/.local/elm/bin
 end
 
 set -x PGHOST localhost
-set -x PGUSER carwow
-set -x PGPASSWORD carwow
 set -x EDITOR nvim
 set -x COUNTRY uk
 
@@ -28,9 +26,9 @@ if test -d $HOME/dev/carwow/dev-environment
     set -x PATH $HOME/dev/carwow/dev-environment/bin/stubs $PATH
 end
 
-begin
-    set --local AUTOJUMP_PATH /usr/share/autojump/autojump.fish
-    if test -e $AUTOJUMP_PATH
-        source $AUTOJUMP_PATH
-    end
+set -l AUTOJUMP_PATH /usr/share/autojump/autojump.fish /usr/local/share/autojump/autojump.fish
+for path in $AUTOJUMP_PATH
+  if test -e $path
+      source $path
+   end
 end
