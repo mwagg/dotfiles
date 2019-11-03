@@ -4,3 +4,4 @@
 /dots/pulseaudio/.config/pulse/default.pa
 /dots/gtk/.config/gtk-3.0/servers
 /dots/gtk/.config/gtk-3.0/bookmarks
+/dots/fish/.config/fish/functions/fzf_key_bindings.fish
