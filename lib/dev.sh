@@ -26,6 +26,8 @@ type yarn || npm install -g yarn
 type tern || yarn global add tern
 type eslint || yarn global add eslint
 type js-beautify || yarn global add js-beautify
+type prettier || yarn global add prettier
+type javascript-typescript-langserver || yarn global add javascript-typescript-langserver
 
 # elm
 type elm || yarn global add elm
