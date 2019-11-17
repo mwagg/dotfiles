@@ -58,6 +58,8 @@ gem install pry
 gem install neovim
 
 # elasticsearch and it's insatiable hunger for files
-echo "vm.max_map_count=262144" | sudo tee -a /usr/lib/sysctl.d/elasticsearch.conf
+if [[ -f /usr/lib/sysctl.d/elasticsearch.conf ]]; then
+  echo "vm.max_map_count=262144" | sudo tee -a /usr/lib/sysctl.d/elasticsearch.conf
+fi
 
 asdf reshim
