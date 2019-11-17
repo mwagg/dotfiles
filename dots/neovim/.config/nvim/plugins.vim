@@ -47,55 +47,16 @@ Plug 'prettier/vim-prettier', {
     \ 'swift' ] }
 Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'wokalski/autocomplete-flow'
+" For func argument completion
+Plug 'Shougo/neosnippet'
+Plug 'Shougo/neosnippet-snippets'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
+Plug 'mhartington/oceanic-next'
 
-"" Improved motion in Vim
-"Plug 'easymotion/vim-easymotion'
-"
-"" Intellisense Engine
-"Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
-"
-"" Snippet support
-"Plug 'Shougo/neosnippet'
-"Plug 'Shougo/neosnippet-snippets'
-"
-"" Print function signatures in echo area
-"Plug 'Shougo/echodoc.vim'
-"
-"" === Git Plugins === "
-"" Enable git changes to be shown in sign column
-"Plug 'mhinz/vim-signify'
-"Plug 'tpope/vim-fugitive'
-"
-"" === Elm Plugins === "
-"Plug 'Zaptic/elm-vim'
-"
-""" ReactJS JSX syntax highlighting
-""Plug 'mxw/vim-jsx'
-""
-""" Generate JSDoc commands based on function signature
-""Plug 'heavenshell/vim-jsdoc'
-""
-""" === Syntax Highlighting === "
-"
-"" Syntax highlighting for javascript libraries
-"Plug 'othree/javascript-libraries-syntax.vim'
-"
-"" Improved syntax highlighting and indentation
-"Plug 'othree/yajs.vim'
-"
-"" === UI === "
-"" File explorer
-"
-"" Customized vim status line
-"Plug 'vim-airline/vim-airline'
-"Plug 'vim-airline/vim-airline-themes'
-"
-"" Icons
-"
 "" Initialize plugin system
 call plug#end()
 

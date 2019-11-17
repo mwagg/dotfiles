@@ -60,6 +60,13 @@ nnoremap ]r :ALENextWrap<CR>
 " move to the previous ALE warning / error
 nnoremap [r :ALEPreviousWrap<CR>
 
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+" neosnippet
+let g:neosnippet#enable_completed_snippet = 1
+
+colorscheme OceanicNext
+
 " === Easy-motion shortcuts ==="
 ""   <leader>w - Easy-motion highlights first word letters bi-directionally
 "map <leader>w <Plug>(easymotion-bd-w)

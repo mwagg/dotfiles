@@ -28,6 +28,7 @@ type eslint || yarn global add eslint
 type js-beautify || yarn global add js-beautify
 type prettier || yarn global add prettier
 type javascript-typescript-langserver || yarn global add javascript-typescript-langserver
+yarn global add neovim
 
 # elm
 type elm || yarn global add elm
@@ -48,11 +49,13 @@ asdf shell python 3.6.9
 pip install pipenv
 pip install virtualenv
 pip install jedi
+pip install pynvim
 
 asdf plugin-add ruby || true
 asdf install ruby 2.6.5
 asdf shell ruby 2.6.5
 gem install pry
+gem install neovim
 
 # elasticsearch and it's insatiable hunger for files
 echo "vm.max_map_count=262144" | sudo tee -a /usr/lib/sysctl.d/elasticsearch.conf
