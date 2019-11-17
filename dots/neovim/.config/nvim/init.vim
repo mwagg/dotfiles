@@ -9,6 +9,7 @@ source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/fzf.vim
 source ~/.config/nvim/neotree.vim
 source ~/.config/nvim/javascript.vim
+source ~/.config/nvim/terminal.vim
 
 " Line numbers
 set number
@@ -67,23 +68,8 @@ let g:neosnippet#enable_completed_snippet = 1
 
 colorscheme OceanicNext
 
-" === Easy-motion shortcuts ==="
-""   <leader>w - Easy-motion highlights first word letters bi-directionally
-"map <leader>w <Plug>(easymotion-bd-w)
-"
-"" Allows you to save files you opened without write permissions via sudo
-"cmap w!! w !sudo tee %
-"
-
-"
-"" === NeoSnippet
-"" Map <C-k> as shortcut to activate snippet if available
-"imap <C-k> <Plug>(neosnippet_expand_or_jump) smap <C-k>
-"<Plug>(neosnippet_expand_or_jump) xmap <C-k> <Plug>(neosnippet_expand_target)
-"
-"" Load custom snippets from snippets folder
-"let g:neosnippet#snippets_directory='~/.config/nvim/snippets'
-"
-"" Hide conceal markers
-"let g:neosnippet#enable_conceal_markers = 0
-"
+" simpler window navigation
+noremap <C-h> <C-w>h
+noremap <C-j> <C-w>j
+noremap <C-k> <C-w>k
+noremap <C-l> <C-w>l
