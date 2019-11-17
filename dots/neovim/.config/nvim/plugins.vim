@@ -56,7 +56,8 @@ Plug 'autozimu/LanguageClient-neovim', {
     \ 'do': 'bash install.sh',
     \ }
 Plug 'mhartington/oceanic-next'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 
 "" Initialize plugin system
 call plug#end()
-
