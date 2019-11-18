@@ -1,4 +1,4 @@
-nnoremap <leader>pf :GFiles<cr>
+nnoremap <leader>pf :GFiles --exclude-standard --others --cached<cr>
 nnoremap <leader>bb :Buffers<cr>
 nnoremap <leader>tt :Colors<Cr>
 nnoremap <leader>/ :Rg<cr>

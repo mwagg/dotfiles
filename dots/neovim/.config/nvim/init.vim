@@ -66,10 +66,20 @@ let g:deoplete#enable_at_startup = 1
 " neosnippet
 let g:neosnippet#enable_completed_snippet = 1
 
-colorscheme OceanicNext
+colorscheme darcula
 
 " simpler window navigation
 noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
+set inccommand=nosplit

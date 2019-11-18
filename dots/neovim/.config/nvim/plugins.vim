@@ -46,18 +46,17 @@ Plug 'prettier/vim-prettier', {
     \ 'html',
     \ 'swift' ] }
 Plug 'dense-analysis/ale'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'wokalski/autocomplete-flow'
-" For func argument completion
-Plug 'Shougo/neosnippet'
-Plug 'Shougo/neosnippet-snippets'
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
     \ }
-Plug 'mhartington/oceanic-next'
+Plug 'doums/darcula'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
+Plug 'Zaptic/elm-vim'
+Plug 'mattn/emmet-vim'
+Plug 'reasonml-editor/vim-reason-plus'
+"Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "" Initialize plugin system
 call plug#end()
