@@ -10,6 +10,7 @@ source ~/.config/nvim/fzf.vim
 source ~/.config/nvim/neotree.vim
 source ~/.config/nvim/javascript.vim
 source ~/.config/nvim/terminal.vim
+source ~/.config/nvim/fugitive.vim
 
 " Line numbers
 set number
