@@ -57,6 +57,7 @@ Plug 'Zaptic/elm-vim'
 Plug 'mattn/emmet-vim'
 Plug 'reasonml-editor/vim-reason-plus'
 "Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'janko/vim-test'
 
 "" Initialize plugin system
 call plug#end()
