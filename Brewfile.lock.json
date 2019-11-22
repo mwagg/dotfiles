@@ -2,7 +2,7 @@
   "entries": {
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "726899d01038da5cb14fb7c2ce9c817e6c554870"
+        "revision": "eea1c26925c25178f673fb1370d026b36a8ca75c"
       }
     },
     "brew": {
@@ -223,6 +223,31 @@
       "asdf": {
         "version": "0.7.5",
         "bottle": false
+      },
+      "htop": {
+        "version": "2.2.0_1",
+        "bottle": {
+          "cellar": ":any",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/htop-2.2.0_1.catalina.bottle.tar.gz",
+              "sha256": "c06ff60960f64f5c8395f53d7419cbcce2a22ee87f0cb0138352c8a88111d21c"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/htop-2.2.0_1.mojave.bottle.tar.gz",
+              "sha256": "77aa302765353b4085dcad52356d3264183e06310dda8d5bac64642299ea2902"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/htop-2.2.0_1.high_sierra.bottle.tar.gz",
+              "sha256": "0ebfb655b91566ba31f8effc94d642a43305ff95bdc9b30b46fadc132e2ced0c"
+            },
+            "sierra": {
+              "url": "https://homebrew.bintray.com/bottles/htop-2.2.0_1.sierra.bottle.tar.gz",
+              "sha256": "ed93b86f011de155c5d261b8c9cc9cb81fd0017667bf3ebe26ee090716bcd650"
+            }
+          }
+        }
       }
     },
     "cask": {
@@ -231,6 +256,9 @@
       },
       "syncthing": {
         "version": "1.0.0-2"
+      },
+      "paparazzi": {
+        "version": "1.0b11"
       }
     }
   },
@@ -239,8 +267,8 @@
       "catalina": {
         "HOMEBREW_VERSION": "2.1.16",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "59d05f268104f015b5341fc8a2278178f60137fd",
-        "CLT": "11.0.0.0.1.1567737322",
+        "Homebrew/homebrew-core": "1f40695ee1158a512470b767780fdb1eeaf702a2",
+        "CLT": "11.2.0.0.1.1571444319",
         "Xcode": "11.0",
         "macOS": "10.15.1"
       }
