@@ -11,13 +11,11 @@ source ~/.config/nvim/neotree.vim
 source ~/.config/nvim/javascript.vim
 source ~/.config/nvim/terminal.vim
 source ~/.config/nvim/fugitive.vim
+source ~/.config/nvim/test.vim
 
 " Line numbers
 set number
 set relativenumber
-
-" Don't show last command
-set noshowcmd
 
 " Yank and paste with the system clipboard
 set clipboard=unnamed
@@ -36,12 +34,6 @@ set shiftwidth=2
 
 " do not wrap long lines by default
 set nowrap
-
-" Don't highlight current cursor line
-set nocursorline
-
-" Don't highlight current cursor line
-set nocursorline
 
 " Disable line/column number in status line Shows up in preview window when
 " airline is disabled if not
@@ -84,3 +76,6 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical"
 
 set inccommand=nosplit
+
+" window keybindings
+nnoremap <leader>wd :close<cr>
