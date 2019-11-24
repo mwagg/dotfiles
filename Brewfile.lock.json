@@ -248,6 +248,44 @@
             }
           }
         }
+      },
+      "ffmpeg": {
+        "version": "4.2.1_2",
+        "bottle": {
+          "cellar": "/usr/local/Cellar",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/ffmpeg-4.2.1_2.catalina.bottle.tar.gz",
+              "sha256": "11b16a8f9657e0826774d41133052b088f778a50f6f8037f641923cbb6b90335"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/ffmpeg-4.2.1_2.mojave.bottle.tar.gz",
+              "sha256": "a8dfa8eb401973fb9aa2adf806fca3e2a091ccb16d1270b5dcd67283022ba05b"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/ffmpeg-4.2.1_2.high_sierra.bottle.tar.gz",
+              "sha256": "67fa397296c48e8f838a4cfbd654da8888a7e579eb53bda46e2d2ca70908d14e"
+            }
+          }
+        }
+      },
+      "handbrake": {
+        "version": "1.3.0",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/handbrake-1.3.0.catalina.bottle.tar.gz",
+              "sha256": "cd30221643e98ef2bb7fd47a698fe3206bea7ffbb920dcf7cca1551aaa61c488"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/handbrake-1.3.0.mojave.bottle.tar.gz",
+              "sha256": "a8d970465d2fd15f53b109a5efdfa19be785da8f71f9193f73cc9134817fad14"
+            }
+          }
+        }
       }
     },
     "cask": {
