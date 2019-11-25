@@ -1,11 +1,13 @@
 {
-  "suggest.echodocSupport": true,
-  "suggest.maxCompleteItemCount": 20,
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact", "typescript.tsx"],
-  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact", "typescript.tsx"],
-  "diagnostic.errorSign": "•",
-  "diagnostic.warningSign": "•",
-  "diagnostic.infoSign": "•"
+	"languageserver": {
+		"elmLS": {
+			"command": "elm-language-server",
+			"filetypes": ["elm"],
+			"rootPatterns": ["elm.json"],
+			"initializationOptions": {
+				"elmAnalyseTrigger": "change"
+			}
+		}
+	},
+	"codeLens.enable": true
 }
-
-

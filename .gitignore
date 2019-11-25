@@ -7,3 +7,9 @@
 /dots/fish/.config/fish/functions/fzf_key_bindings.fish
 /dots/fish/.config/fish/functions/fish_user_key_bindings.fish
 .DS_Store
+/dots/neovim/.config/coc/*
+!/dots/neovim/.config/coc/extensions/
+/dots/neovim/.config/coc/extensions/*
+!/dots/neovim/.config/coc/extensions/package.json
+/dots/neovim/.config/nvim/.netrwhist
+/dots/neovim/.config/nvim/autoload

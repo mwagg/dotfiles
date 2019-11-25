@@ -15,49 +15,19 @@ if !filereadable(plugpath)
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
-
-Plug 'ntpeters/vim-better-whitespace'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-commentary'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-bash' }
 Plug 'junegunn/fzf.vim'
+Plug 'tomasr/molokai'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-surround'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'scrooloose/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'othree/yajs.vim'
-Plug 'mxw/vim-jsx'
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install',
-  \ 'branch': 'release/1.x',
-  \ 'for': [
-    \ 'javascript',
-    \ 'typescript',
-    \ 'css',
-    \ 'less',
-    \ 'scss',
-    \ 'json',
-    \ 'graphql',
-    \ 'markdown',
-    \ 'vue',
-    \ 'lua',
-    \ 'php',
-    \ 'python',
-    \ 'ruby',
-    \ 'html',
-    \ 'swift' ] }
-Plug 'dense-analysis/ale'
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-Plug 'doums/darcula'
+Plug 'andys8/vim-elm-syntax'
 Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-surround'
-Plug 'Zaptic/elm-vim'
-Plug 'mattn/emmet-vim'
-Plug 'reasonml-editor/vim-reason-plus'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'janko/vim-test'
-
-"" Initialize plugin system
 call plug#end()
+
+nnoremap <leader>pi :PlugInstall<cr>
+nnoremap <leader>pc :PlugClean<cr>
+

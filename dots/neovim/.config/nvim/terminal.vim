@@ -1,5 +1,8 @@
-au TermOpen * setlocal nonumber norelativenumber
-au TermOpen term://* startinsert
+augroup terminal
+	autocmd!
+	au TermOpen * setlocal nonumber norelativenumber
+	au TermOpen term://* startinsert
+augroup end
 
 tnoremap <Esc> <C-\><C-n>
 tnoremap <C-h> <C-\><C-N><C-w>h
