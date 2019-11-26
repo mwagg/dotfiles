@@ -9,5 +9,7 @@
 			}
 		}
 	},
-	"codeLens.enable": true
+	"codeLens.enable": true,
+	"python.formatting.provider": "black",
+	"coc.preferences.formatOnSaveFiletypes": ["elm", "python"]
 }
