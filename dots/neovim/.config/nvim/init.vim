@@ -46,3 +46,7 @@ set softtabstop=2
 
 " Indentation amount for < and > commands.
 set shiftwidth=2
+
+" stop accidentally entering exmode
+map q: <Nop>
+nnoremap Q <nop>
