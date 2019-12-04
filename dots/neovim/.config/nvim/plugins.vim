@@ -15,8 +15,6 @@ if !filereadable(plugpath)
 endif
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --no-bash' }
-Plug 'junegunn/fzf.vim'
 Plug 'tomasr/molokai'
 Plug 'jiangmiao/auto-pairs'
 Plug 'tpope/vim-surround'
@@ -26,6 +24,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'andys8/vim-elm-syntax'
 Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
 call plug#end()
 
 nnoremap <leader>pi :PlugInstall<cr>

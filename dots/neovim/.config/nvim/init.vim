@@ -6,12 +6,12 @@ let g:maplocalleader=','
 let path = "$HOME/.config/nvim"
 exec 'source' path . '/plugins.vim'
 exec 'source' path . '/windows.vim'
-exec 'source' path . '/fzf.vim'
 exec 'source' path . '/terminal.vim'
 exec 'source' path . '/nerdtree.vim'
 exec 'source' path . '/coc.vim'
 exec 'source' path . '/elm.vim'
 exec 'source' path . '/fugitive.vim'
+exec 'source' path . '/find.vim'
 
 " source init.vim whenever it is saved
 augroup reload_config
