@@ -51,11 +51,16 @@ pip install virtualenv
 pip install jedi
 pip install pynvim
 
+# ruby
 asdf plugin-add ruby || true
 asdf install ruby 2.6.5
 asdf shell ruby 2.6.5
 gem install pry
 gem install neovim
+
+# elixir
+asdf plugin-add elixir || true
+asdf install elixir 1.9.4
 
 # elasticsearch and it's insatiable hunger for files
 if [[ -f /usr/lib/sysctl.d/elasticsearch.conf ]]; then
