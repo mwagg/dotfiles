@@ -59,8 +59,13 @@ gem install pry
 gem install neovim
 
 # elixir
+asdf plugin-add erlang || true
+export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
+asdf install erlang 22.1.8
 asdf plugin-add elixir || true
 asdf install elixir 1.9.4
+yes | mix local.hex
+yes | mix archive.install hex phx_new 1.4.11
 
 # elasticsearch and it's insatiable hunger for files
 if [[ -f /usr/lib/sysctl.d/elasticsearch.conf ]]; then
