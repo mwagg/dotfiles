@@ -25,6 +25,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'andys8/vim-elm-syntax'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
+Plug 'elixir-editors/vim-elixir'
 call plug#end()
 
 nnoremap <leader>pi :PlugInstall<cr>
