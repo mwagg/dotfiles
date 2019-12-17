@@ -50,3 +50,5 @@ set shiftwidth=2
 " stop accidentally entering exmode
 map q: <Nop>
 nnoremap Q <nop>
+
+set lazyredraw
