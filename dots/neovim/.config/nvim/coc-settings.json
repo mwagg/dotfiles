@@ -12,7 +12,7 @@
 	"codeLens.enable": true,
 	"python.formatting.provider": "black",
         "python.linting.flake8Enabled": true,
-	"coc.preferences.formatOnSaveFiletypes": ["elm", "python", "json"],
+	"coc.preferences.formatOnSaveFiletypes": ["elm", "python", "json", "sql"],
         "list.source.files.args": ["--hidden", "--files"],
         "list.source.grep.args": ["--hidden"]
 }
