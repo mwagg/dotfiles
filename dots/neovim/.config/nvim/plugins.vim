@@ -26,6 +26,7 @@ Plug 'andys8/vim-elm-syntax'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'elixir-editors/vim-elixir'
+Plug 'frazrepo/vim-rainbow'
 call plug#end()
 
 nnoremap <leader>pi :PlugInstall<cr>
