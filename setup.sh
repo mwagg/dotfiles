@@ -16,6 +16,7 @@ function install_yay {
   pushd $HOME/.local/src/yay
   makepkg -si --noconfirm
   popd
+  rm -rf $HOME/.local/src/yay
 }
 
 type yay || install_yay
