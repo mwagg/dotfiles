@@ -32,3 +32,5 @@ for path in $AUTOJUMP_PATH
       source $path
    end
 end
+
+eval (python -m virtualfish)
