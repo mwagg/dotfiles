@@ -242,3 +242,5 @@ pacman_install libreoffice
 pacman_install python-neovim
 pacman_install neovim
 yay_install nerd-fonts-complete
+
+yay_install circleci-cli-bin
