@@ -33,4 +33,8 @@ for path in $AUTOJUMP_PATH
    end
 end
 
+if test -d /usr/local/opt/postgresql@9.6/bin
+    set -x PATH /usr/local/opt/postgresql@9.6/bin $PATH
+end
+
 eval (python -m virtualfish)
