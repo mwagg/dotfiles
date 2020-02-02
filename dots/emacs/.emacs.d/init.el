@@ -5,69 +5,372 @@
 ;;; Package --- Summary
 ;;; Code:
 
-;;; speed up startup
-(eval-and-compile
-  (setq gc-cons-threshold 402653184
-	gc-cons-percentage 0.6))
-(defvar temp--file-name-handler-alist file-name-handler-alist)
-(setq file-name-handler-alist nil)
+(package-initialize)
 
-;; Load path
-;; Optimize: Force "lisp"" at the head to reduce the startup time.
-(defun update-load-path (&rest _)
-  "Update `load-path'."
-  (push (expand-file-name "lisp" user-emacs-directory) load-path))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Basic setup
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(advice-add #'package-initialize :after #'update-load-path)
-(update-load-path)
+;; sensible defaults to make Emacs nice
+(setq delete-old-versions -1
+      version-control t
+      vc-make-backup-files t
+      backup-directory-alist `(("." . "~/.emacs.d/backups")) ; which directory to put backups file
+      vc-follow-symlinks t
+      auto-save-file-name-transforms '((".*" "~/.emacs.d/auto-save-list/" t))
+      inhibit-startup-screen t
+      ring-bell-function 'ignore
+      coding-system-for-read 'utf-8
+      coding-system-for-write 'utf-8
+      locale-coding-system 'utf-8
+      sentence-end-double-space nil
+      create-lockfiles nil
+      tags-revert-without-query 1
+      scroll-conservatively 100
+      compilation-scroll-output t
+      whitespace-style '(trailing tabs newline tab-mark newline-mark)
+      auth-sources '("~/.authinfo.gpg"))
 
-(require 'init-basics)
-(require 'init-package)
-(require 'init-ui)
-(require 'init-keybindings)
-(require 'init-evil)
-(require 'init-magit)
-(require 'init-ruby)
-(require 'init-org)
-(require 'init-reason)
-(require 'init-python)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+(setq sh-indentation 2)
+
+(when (display-graphic-p)
+  (setq x-select-request-type '(UTF8_STRING COMPOUND_TEXT TEXT STRING)))
+(menu-bar-mode 0)
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+
+;; configure custom
+(setq custom-file "~/.emacs.d/emacs-custom.el")
+(load custom-file)
+
+(defun save-current-buffer-if-needed ()
+  "Save the current buffer if it has an unsaved change."
+  (interactive)
+  (when (and (buffer-file-name) (buffer-modified-p)) (save-buffer)))
+(add-hook 'focus-out-hook #'save-current-buffer-if-needed)
+
+;; relative line numbers
+(add-hook 'prog-mode-hook (lambda ()
+                            (setq display-line-numbers-type 'relative)
+                            (display-line-numbers-mode)))
+(setq global-linum-mode t)
+
+;; kill trailing whitespace
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; packaging
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; bootstrap use-package
+(require 'package)
+
+(setq package-enable-at-startup nil)
+(setq use-package-always-ensure t)
+
+(setq package-archives '(("org"       . "http://orgmode.org/elpa/")
+			 ("gnu"       . "http://elpa.gnu.org/packages/")
+			 ("melpa"     . "https://melpa.org/packages/")
+			 ("marmalade" . "http://marmalade-repo.org/packages/")))
+(package-initialize)
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
+(require 'use-package)
+
+(use-package auto-package-update
+  :ensure t
+  :config
+  (setq auto-package-update-delete-old-versions t
+        auto-package-update-interval 4))
+
+(use-package doom-modeline
+  :hook (after-init . doom-modeline-mode))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Mac specific stuff
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;; nice titlebar
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+
 (use-package exec-path-from-shell
   :config
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
+;; Allow hash to be entered
+(global-set-key (kbd "M-3") '(lambda () (interactive) (insert "#")))
 
-(load "~/.emacs.d/funcs")
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; UI
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; smartparens
-(use-package smartparens
-  :hook ((prog-mode . smartparens-mode))
+;; setup fonts
+(let ((font-name (if (string-equal system-type "darwin")
+                     "Source Code Pro 16"
+                   "SourceCodePro-16")))
+  (set-face-attribute 'default nil :font font-name )
+  (set-frame-font font-name nil t))
+(set-face-attribute 'fixed-pitch nil :family "Iosevka")
+(set-face-attribute 'variable-pitch nil :family "Libre Baskerville")
+
+(use-package all-the-icons
   :config
-  (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
-  (sp-local-pair 'clojure-mode "'" nil :actions nil)
-  (sp-local-pair 'racket-mode "'" nil :actions nil)
+  (unless (member "all-the-icons" (font-family-list))
+    (all-the-icons-install-fonts t)))
+
+;; global text scaling
+(define-globalized-minor-mode
+  global-text-scale-mode
+  text-scale-mode
+  (lambda () (text-scale-mode 1)))
+
+(defun global-text-scale-adjust (inc)
+  "Add (INC) to the gloabl text scale."
+  (interactive)
+  (text-scale-set 1)
+  (kill-local-variable 'text-scale-mode-amount)
+  (setq-default text-scale-mode-amount (+ text-scale-mode-amount inc))
+  (global-text-scale-mode 1))
+
+(add-hook 'which-key-mode-hook (lambda ()
+                                 (general-def
+                                   "s-+" '(lambda ()
+                                            (interactive)
+                                            (global-text-scale-adjust 1))
+                                   "s--" '(lambda ()
+                                            (interactive)
+                                            (global-text-scale-adjust -1)))))
+
+;; themes
+(use-package doom-themes
+  :config
+  (load-theme 'doom-nord t))
+(add-hook 'general-override-mode-hook (lambda ()
+                                        (tyrant-def
+                                          ;; theme settings
+                                          "t" '(:ignore t :which-key "themes")
+                                          "tt" 'counsel-load-theme)))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; global key bindings
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package which-key
+  :config
+  (which-key-mode))
+
+(use-package general
+  :after which-key
+  :config
+  (defun find-user-init-file ()
+    "Edit the `user-init-file', in same window."
+    (interactive)
+    (find-file user-init-file))
+
+  (defun alternate-buffer (&optional window)
+    "Switch back and forth between current and last buffer in the current WINDOW."
+    (interactive)
+    (let ((current-buffer (window-buffer window)))
+      ;; if no window is found in the windows history, `switch-to-buffer' will
+      ;; default to calling `other-buffer'.
+      (switch-to-buffer
+       (cl-find-if (lambda (buffer)
+                     (not (eq buffer current-buffer)))
+                   (mapcar #'car (window-prev-buffers window)))
+       nil t)))
+
+  (general-create-definer tyrant-def
+    :states '(normal visual insert motion emacs)
+    :prefix "SPC"
+    :non-normal-prefix "C-SPC")
+
+  (general-create-definer despot-def
+    :states '(normal insert)
+    :prefix "SPC"
+    :non-normal-prefix "C-SPC")
+
+  (general-create-definer local-leader-def
+    :states '(normal)
+    :prefix ",")
+
+  (general-define-key
+   :keymaps 'key-translation-map
+   "ESC" (kbd "C-g"))
+
+  ;; navigating between windows
+  (tyrant-def
+    "" nil
+    "c" (general-simulate-key "C-c")
+    "h" (general-simulate-key "C-h")
+    "u" (general-simulate-key "C-u")
+    "x" (general-simulate-key "C-x")
+    "TAB" 'alternate-buffer
+
+    ;; buffers
+    "b" '(:ignore t :which-key "buffers")
+
+    ;; files
+    "f" '(:ignore t :which-key "files")
+    "fed" 'find-user-init-file
+    "fs" 'save-buffer
+
+    ;; Window operations
+    "w"   '(:ignore t :which-key "window")
+    "wm"  'maximize-window
+    "w/"  'split-window-horizontally
+    "wv"  'split-window-vertically
+    "wm"  'maximize-window
+    "wu"  'winner-undo
+    "ww"  'other-window
+    "wd"  'delete-window
+    "wD" 'delete-other-windows
+    "ws" #'projectile-run-eshell
+
+
+    ;; applications
+    "a" '(:ignore t :which-key "Applications")
+    "ad" 'dired
+    "ac" 'caletdar
+
+    ;; Quit operations
+    "q" '(:ignore t :which-key "quit emacs")
+    "qq" 'evil-quit-all
+    "qz" 'delete-frame)
+
+  (general-def 'normal package-menu-mode-map
+    "i"   'package-menu-mark-install
+    "U"   'package-menu-mark-upgrades
+    "d"   'package-menu-mark-delete
+    "u"   'package-menu-mark-unmark
+    "x"   'package-menu-execute
+    "q" 'quit-window)
+
+  (general-override-mode 1))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; editing multiple sections simultaneously
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package iedit
   :general
-  (general-def
-    "C-<left>" #'sp-backward-slurp-sexp
-    "S-C-<left>" #'sp-backward-barf-sexp
-    "C-<right>" #'sp-forward-slurp-sexp
-    "S-C-<right>" #'sp-forward-barf-sexp
-    "M-s" #'sp-unwrap-sexp
-    ))
-(use-package evil-smartparens
-  :hook
-  (smartparens-mode . evil-smartparens-mode))
+  (tyrant-def
+    "se" 'iedit-mode)
+  (general-def 'normal iedit-mode-keymap
+    "f" #'iedit-restrict-function
+    "l" #'iedit-restrict-current-line
+    "q" #'iedit-mode))
 
-;; aggressive indent
-(use-package aggressive-indent
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; evil
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package evil
+  :init
+  (setq evil-want-integration t
+	evil-want-keybinding nil
+	evil-want-C-u-scroll t)
   :config
-  (global-aggressive-indent-mode 1)
-  (add-to-list 'aggressive-indent-excluded-modes 'haml-mode)
-  (add-to-list 'aggressive-indent-excluded-modes 'terraform-mode)
-  (add-to-list 'aggressive-indent-excluded-modes 'elm-mode)
-  (add-to-list 'aggressive-indent-excluded-modes 'reason-mode))
+  (evil-mode 1)
+  :general
+  (general-def 'normal
+    "C-h" 'evil-window-left
+    "C-l" 'evil-window-right
+    "C-k" 'evil-window-up
+    "C-j" 'evil-window-down))
 
-;; ivy-mode
+(use-package evil-collection
+  :after evil
+  :config
+  (evil-collection-init))
+
+(use-package evil-surround
+  :after evil
+  :config (global-evil-surround-mode 1))
+
+(use-package evil-commentary
+  :after evil
+  :config (evil-commentary-mode 1)
+  :general
+  ('normal override-global-map
+	   "gc" 'evil-commentary
+	   "gC" 'evil-commentary-line))
+
+(use-package evil-matchit
+  :hook (prog-mode . evil-matchit-mode)
+  :config
+  (global-evil-matchit-mode 1))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; git
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package magit
+  :commands (magit-status)
+  :config
+  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1)
+  :general
+  (tyrant-def
+    "g"  '(:ignore t :which-key "git")
+    "gs" 'magit-status
+    "gb" 'magit-blame-addition))
+(use-package evil-magit
+  :hook (magit-mode . evil-magit-init))
+(use-package magithub)
+
+(use-package git-timemachine
+  :general
+  (tyrant-def
+    "gt" #'git-timemachine))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; org mode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package org
+  :defer t
+  :config
+  (setq org-default-notes-file "~/Sync/org/todos.org"
+	org-agenda-files (list "~/Sync/org/todos.org"
+                               "~/Sync/org/eporta.org")
+	org-refile-targets '((nil :level . 2))
+	org-todo-keywords '((sequence "☛ TODO(t)" "|" "✔ DONE(d)")
+			    (sequence "⚑ WAITING(w)" "|")
+			    (sequence "|" "✘ CANCELED(c)")))
+  (use-package org-bullets
+    :config
+    (add-hook 'org-mode-hook 'org-bullets-mode)
+    :init
+    (setq org-bullets-bullet-list
+          '("◎" "◉" "○" "⚫" "►" "◇")))
+
+  (use-package evil-org
+    :config
+    (add-hook 'org-mode-hook 'evil-org-mode)
+    (add-hook 'evil-org-mode-hook
+              (lambda ()
+                (evil-org-set-key-theme)))
+    (require 'evil-org-agenda)
+    (evil-org-agenda-set-keys))
+  :general
+  (tyrant-def
+    "aoa" 'org-agenda
+    "aot" 'open-org-todos)
+  (local-leader-def org-mode-map
+    "s" 'org-schedule
+    "a" 'org-agenda
+    "A" 'org-archive-subtree))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; ivy/counsel/projects
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (use-package ivy
   :hook (after-init . ivy-mode)
   :config (setq ivy-use-virtual-buffers t
@@ -81,7 +384,7 @@
     "C-k" 'ivy-previous-line)
   (tyrant-def
     "bb" 'ivy-switch-buffer))
-;; counsel
+
 (use-package counsel
   :after (ivy)
   :config
@@ -92,11 +395,10 @@
     "ff" 'counsel-find-file
     "fr" 'counsel-recentf
     "fL" 'counsel-locate))
-;; projectile
+
 (use-package projectile
   :config
-  (projectile-mode)
-  (add-hook 'projectile-after-switch-project-hook #'set-eyebrowse-workspace-name-to-project))
+  (projectile-mode))
 
 (use-package counsel-projectile
   :after (projectile ivy)
@@ -105,7 +407,6 @@
   :general
   (tyrant-def
     "p"   '(:ignore t :which-key "projectile")
-    "p'" #'open-terminal-in-project-root
     "pp" 'counsel-projectile-switch-project
     "pf"  'counsel-projectile-find-file
     "pb"  'counsel-projectile-switch-to-buffer
@@ -113,7 +414,7 @@
            (interactive)
            (counsel-git-grep nil (current-word)))
     "/" 'counsel-git-grep))
-;; spelling
+
 (use-package flyspell-correct-ivy
   :commands (flyspell-correct-word-generic)
   :hook
@@ -125,13 +426,18 @@
 	    "zs" 'flyspell-correct-word-generic
             "z=" 'flyspell-buffer))
 
-;; projectile
-(use-package projectile
-  :config
-  (projectile-mode)
-  (add-hook 'projectile-after-switch-project-hook #'set-eyebrowse-workspace-name-to-project))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; general dev
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; flycheck
+(use-package aggressive-indent
+  :config
+  (global-aggressive-indent-mode 1)
+  (add-to-list 'aggressive-indent-excluded-modes 'haml-mode)
+  (add-to-list 'aggressive-indent-excluded-modes 'terraform-mode)
+  (add-to-list 'aggressive-indent-excluded-modes 'elm-mode)
+  (add-to-list 'aggressive-indent-excluded-modes 'reason-mode))
+
 (use-package flycheck
   :commands (flycheck-mode)
   :hook (prog-mode . flycheck-mode)
@@ -155,153 +461,43 @@
     "el" 'flycheck-list-errors
     "en" 'flycheck-next-error
     "ep" 'flycheck-previous-error))
+
 (use-package flycheck-inline
   :after flycheck
   :config
   (global-flycheck-inline-mode))
 
-;; auto completion
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package yasnippet
+  :config
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets/")
+        yas-indent-line 0)
+  (yas-global-mode 1))
+(use-package yasnippet-snippets
+  :after yasnipper)
+
+(use-package dumb-jump)
+(use-package smart-jump
+  :general
+  ('normal
+   "gd" 'smart-jump-go)
+  :config
+  (smart-jump-setup-default-registers))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; completion
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (use-package company
   :config
   (global-company-mode))
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; neotree
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; Clojure
-(use-package clojure-mode
-  :mode "\\.clj\\|\\.edn\\'"
-  :general
-  (local-leader-def 'clojure-mode-map
-    "'" 'cider-jack-in
-    "ee" 'cider-eval-last-sexp
-    "eb" 'cider-eval-buffer
-    "ef" 'cider-eval-defun-at-point
-    "ew" 'cider-eval-last-secp-and-replace
-    "er" 'cider-ns-refresh
-    "ss" 'cider-switch-to-repl-buffer
-    "sq" 'cider-quit
-    "=" 'cider-format-buffer
-    "ta" 'cider-test-run-project-tests
-    "tt" 'cider-test-run-test
-    "tb" 'cider-test-show-report
-    "hh" 'cider-doc
-    "hn" 'cider-browse-ns
-    "r" '(:ignore t :which-key "refactor")
-    "ra" '(:ignore t :which-key "add")
-    "rap" 'cljr-add-project-dependency
-    "rar" 'cljr-add-require-to-ns))
-(use-package cider
-  :after clojure-mode)
-(use-package clj-refactor
-  :hook (clojure-mode-hook . clj-refactor-mode)
-  :after clojure-mode)
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
-
-;; ruby
-;; (define-key global-map (kbd "SPC") #'insert-space-in-brackets)
-
-;; (use-package enh-ruby-mode
-;;   :config
-;;   (setq ruby-insert-encoding-magic-comment nil)
-;;   :mode ("\\(Rake\\|Thor\\|Guard\\|Gem\\|Vagrant\\)file\\'"
-;;  	 "\\.\\(rb\\|rabl\\|ru\\|builder\\|rake\\|thor\\|gemspec\\|jbuilder\\)\\'"))
-;; (use-package ruby-end)
-;; (use-package bundler
-;;   :after enh-ruby-mode
-;;   :config
-;;   (setq rubocop-prefer-system-executable t
-;;         rubocop-autocorrect-on-save t)
-;;   :general
-;;   (local-leader-def 'enh-ruby-mode-map
-;;     "b" '(:ignore t :which-key "bundler")
-;;     "bc" 'bundle-check
-;;     "bi" 'bundle-install
-;;     "bs" 'bundle-console
-;;     "bu" 'bundle-update
-;;     "bx" 'bundle-exec
-;;     "bo" 'bundle-open ))
-;; (use-package rbenv
-;;   :after enh-ruby-mode
-;;   :config
-;;   (global-rbenv-mode))
-;; (use-package rubocop
-;;   :after enh-ruby-mode
-;;   :hook (enh-ruby-mode . rubocop-mode)
-;;   :general
-;;   (local-leader-def 'enh-ruby-mode-map
-;;     "rr" '(:ignore t :with-key "rubocop")
-;;     "rrd" 'rubocop-check-directory
-;;     "rrD" 'rubocop-autocorrect-directory
-;;     "rrf" 'rubocop-check-current-file
-;;     "rrF" 'rubocop-autocorrect-current-file
-;;     "rrp" 'rubocop-check-project
-;;     "rrP" 'rubocop-autocorrect-project))
-;; (use-package rspec-mode
-;;   :after enh-ruby-mode
-;;   :config
-;;   (setq rspec-use-opts-file-when-available nil
-;;         rspec-command-options "--format progress")
-;;   :general
-;;   (local-leader-def 'enh-ruby-mode-map
-;;     "t" '(:ignore t :which-key "rspec")
-;;     "ta" 'rspec-verify-all
-;;     "tb" 'rspec-verify
-;;     "tc" 'rspec-verify-continue
-;;     "td" 'ruby/rspec-verify-directory
-;;     "te" 'rspec-toggle-example-pendingness
-;;     "tf" 'rspec-verify-method
-;;     "tl" 'rspec-run-last-failed
-;;     "tm" 'rspec-verify-matching
-;;     "tr" 'rspec-rerun
-;;     "tt" 'rspec-verify-single
-;;     "t~" 'rspec-toggle-spec-and-target-find-example
-;;     "t TAB" 'rspec-toggle-spec-and-target))
-;; (use-package ruby-tools
-;;   :after enh-ruby-mode
-;;   :hook (enh-ruby-mode . ruby-tools-mode))
-;; (use-package inf-ruby
-;;   :after enh-ruby-mode
-;;   :config
-;;   (inf-ruby-switch-setup))
-;; (use-package rake
-;;   :after enh-ruby-mode
-;;   :general
-;;   (local-leader-def 'enh-ruby-mode-map
-;;     "k" '(:ignore t :which-ley "rake")
-;;     "kk" 'rake
-;;     "kr" 'rake-rerun
-;;     "kR" 'rake-regenerate-cache
-;;     "kf" 'rake-find-task))
-;; (use-package haml-mode
-;;   :mode "\\.haml\\'")
-
-;; matchit
-(use-package evil-matchit
-  :hook (prog-mode . evil-matchit-mode)
-  :config
-  (global-evil-matchit-mode 1))
-
-;; yaml
-(use-package yaml-mode
-  :mode "\\.yml\\'")
-
-;; elm
-(use-package elm-mode
-  :mode "\\.elm\\'"
-  :config
-  (add-to-list 'company-backends 'company-elm)
-  (setq elm-sort-imports-on-save t
-	elm-format-on-save t
-	elm-interactive-command '("elm" "repl")
-	elm-reactor-command '("elm" "reactor")
-	elm-reactor-arguments '("--port" "8000")
-	elm-compile-command '("elm" "make")
-	elm-compile-arguments '("--output=elm.js" "--debug")
-	elm-package-command '("elm" "package")
-	elm-package-json "elm.json"
-        elm-tags-on-save t))
-
-;; neotree
 (use-package neotree
   :config
   (defun neotree-project-dir-toggle ()
@@ -329,88 +525,116 @@ or the current buffer directory."
   (tyrant-def
     "pt" #'neotree-project-dir-toggle))
 
-;; iedit
-(use-package iedit
-  :general
-  (tyrant-def
-    "se" 'iedit-mode)
-  (general-def 'normal iedit-mode-keymap
-    "f" #'iedit-restrict-function
-    "l" #'iedit-restrict-current-line
-    "q" #'iedit-mode))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; lisps
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; smart/dumb jump
-(use-package dumb-jump)
-(use-package smart-jump
-  :general
-  ('normal
-   "gd" 'smart-jump-go)
+(use-package smartparens
+  :hook ((prog-mode . smartparens-mode))
   :config
-  (smart-jump-setup-default-registers))
+  (sp-local-pair 'emacs-lisp-mode "'" nil :actions nil)
+  (sp-local-pair 'clojure-mode "'" nil :actions nil)
+  (sp-local-pair 'racket-mode "'" nil :actions nil)
+  :general
+  (general-def
+    "C-<left>" #'sp-backward-slurp-sexp
+    "S-C-<left>" #'sp-backward-barf-sexp
+    "C-<right>" #'sp-forward-slurp-sexp
+    "S-C-<right>" #'sp-forward-barf-sexp
+    "M-s" #'sp-unwrap-sexp
+    ))
+(use-package evil-smartparens
+  :hook
+  (smartparens-mode . evil-smartparens-mode))
 
-;; html
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; LSP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package lsp-mode
+  :hook ((js-mode . lsp-mode)
+	 (web-mode . lsp-mode)
+         (elm-mode . lsp-mode)
+         (python-mode . lsp-mode))
+  :config
+  (setq lsp-enable-on-type-formatting t))
+(use-package lsp-ui
+  :after lsp-mode)
+(use-package company-lsp
+  :after lsp-mode)
+(use-package lsp-treemacs
+  :after lsp-mode)
+(use-package lsp-ivy
+  :after lsp-mode)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; javascript
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package js2-mode
+  :config
+  (setq indent-tabs-mode nil))
+(use-package rjsx-mode)
+(use-package eslintd-fix)
+(use-package json-mode
+  :hook (json-mode . (lambda ()
+		       (make-local-variable 'js-indent-level)
+		       (setq js-indent-level 2))))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; elm
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package elm-mode
+  :mode "\\.elm\\'"
+  :config
+  (add-to-list 'company-backends 'company-elm)
+  (setq elm-sort-imports-on-save t
+	elm-format-on-save t
+	elm-interactive-command '("elm" "repl")
+	elm-reactor-command '("elm" "reactor")
+	elm-reactor-arguments '("--port" "8000")
+	elm-compile-command '("elm" "make")
+	elm-compile-arguments '("--output=elm.js" "--debug")
+	elm-package-command '("elm" "package")
+	elm-package-json "elm.json"
+        elm-tags-on-save t))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; yaml
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+(use-package yaml-mode
+  :mode "\\.yml\\'")
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; html
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (use-package emmet-mode
   :hook (sgml-mode css-mode))
 
-;; javascript
-(use-package js2-mode
-  :config
-  (setq js-indent-level 2)
-  (setq-default indent-tabs-mode nil))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; terraform
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-;; JSON
-(use-package json-mode)
-
-;; css
-(setq css-indent-offset 2)
-
-;; eyebrowse
-(use-package eyebrowse
-  :config
-  (setq eyebrowse-wrap-around t)
-  (eyebrowse-mode 1)
-  :general
-  (general-def 'normal
-    "M-n" #'eyebrowse-create-window-config
-    "M-d" #'eyebrowse-close-window-config
-    "M-h" #'eyebrowse-prev-window-config
-    "M-l" #'eyebrowse-next-window-config))
-
-;; terraform
 (use-package terraform-mode
   :mode "\\.tf"
   :config
   (add-hook 'terraform-mode-hook #'terraform-format-on-save-mode))
 
-(use-package auto-package-update
-  :ensure t
-  :config
-  (setq auto-package-update-delete-old-versions t
-        auto-package-update-interval 4))
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; fish shell
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (use-package fish-mode)
 
-;; snippets
-(use-package yasnippet
-  :config
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets/")
-        yas-indent-line 0)
-  (yas-global-mode 1))
-(use-package yasnippet-snippets
-  :after yasnipper)
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; python
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package git-timemachine
-  :general
-  (tyrant-def
-    "gt" #'git-timemachine))
+(use-package pyvenv)
 
-(use-package racket-mode)
-
-(eval-and-compile
-  (add-hook 'emacs-startup-hook '(lambda ()
-				   (setq gc-cons-threshold 16777216
-					 gc-cons-percentage 0.1
-					 file-name-handler-alist temp--file-name-handler-alist))))
 (setq initial-scratch-message (concat "Startup time: " (emacs-init-time)))
 
 (provide 'init)
