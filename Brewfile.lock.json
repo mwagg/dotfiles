@@ -2,10 +2,10 @@
   "entries": {
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "783ef17621b10966ce78c8387faa38babca5d280"
+        "revision": "e92925ad3d7262d547259f033ee8e8058bfabda6"
       },
       "d12frosted/emacs-plus": {
-        "revision": "95e2add191d426ebb19ff150a517d1b0dc8cb676"
+        "revision": "e4bc084f411b47e4b7e3ebab40310e7fc693eba0"
       }
     },
     "brew": {
@@ -411,38 +411,74 @@
             }
           }
         }
+      },
+      "terraform": {
+        "version": "0.12.20",
+        "bottle": {
+          "cellar": ":any_skip_relocation",
+          "prefix": "/usr/local",
+          "files": {
+            "catalina": {
+              "url": "https://homebrew.bintray.com/bottles/terraform-0.12.20.catalina.bottle.tar.gz",
+              "sha256": "25c7620a0343e13244b141db9aea321b296eaf9ad5abcf20a89db966d280ac35"
+            },
+            "mojave": {
+              "url": "https://homebrew.bintray.com/bottles/terraform-0.12.20.mojave.bottle.tar.gz",
+              "sha256": "f5b3312733631a42e9067032cef62803e500a2465e6cd979841b597a6ed4fed7"
+            },
+            "high_sierra": {
+              "url": "https://homebrew.bintray.com/bottles/terraform-0.12.20.high_sierra.bottle.tar.gz",
+              "sha256": "94c079fbac973d6507838d4e7f9b7a0be31421877f7662fd0db43d06b10f046e"
+            }
+          }
+        }
       }
     },
     "cask": {
       "iterm2": {
-        "version": "3.3.6"
+        "version": "3.3.6",
+        "options": {
+          "full_name": "iterm2"
+        }
       },
       "syncthing": {
-        "version": "1.0.0-2"
+        "version": "1.0.0-2",
+        "options": {
+          "full_name": "syncthing"
+        }
       },
       "paparazzi": {
         "version": "1.0b11"
       },
       "handbrake": {
-        "version": "1.3.0"
+        "version": "1.3.0",
+        "options": {
+          "full_name": "handbrake"
+        }
       },
       "emacs": {
         "version": "26.3"
       },
       "font-source-code-pro": {
-        "version": "2.030R-ro-1.050R-it"
+        "version": "2.030R-ro-1.050R-it",
+        "options": {
+          "full_name": "font-source-code-pro"
+        }
       },
       "spectacle": {
-        "version": "1.2"
+        "version": "1.2",
+        "options": {
+          "full_name": "spectacle"
+        }
       }
     }
   },
   "system": {
     "macos": {
       "catalina": {
-        "HOMEBREW_VERSION": "2.2.4",
+        "HOMEBREW_VERSION": "2.2.5",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "914491a78919d05add5b04c57f5b7fb8bcf14e18",
+        "Homebrew/homebrew-core": "eb952a3f04f7624f9b6da14d8b0f1027b717af84",
         "CLT": "11.0.33.16",
         "Xcode": "11.3",
         "macOS": "10.15.2"
