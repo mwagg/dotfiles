@@ -10,6 +10,7 @@ exec 'source' path . '/terminal.vim'
 exec 'source' path . '/nerdtree.vim'
 exec 'source' path . '/coc.vim'
 exec 'source' path . '/elm.vim'
+exec 'source' path . '/terraform.vim'
 exec 'source' path . '/fugitive.vim'
 exec 'source' path . '/find.vim'
 
@@ -50,5 +51,9 @@ set shiftwidth=2
 " stop accidentally entering exmode
 map q: <Nop>
 nnoremap Q <nop>
+
+" use four spaces for javascript
+autocmd FileType javascript setlocal ts=4 sts=4 sw=4
+autocmd FileType javascriptreact setlocal ts=4 sts=4 sw=4
 
 set lazyredraw

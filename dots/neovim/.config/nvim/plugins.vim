@@ -27,6 +27,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'elixir-editors/vim-elixir'
 Plug 'frazrepo/vim-rainbow'
+Plug 'hashivim/vim-terraform'
 call plug#end()
 
 nnoremap <leader>pi :PlugInstall<cr>
