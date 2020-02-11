@@ -45,27 +45,35 @@ sudo ufw default allow outgoing
 sudo ufw default deny incoming
 sudo ufw enable || true
 
-# gdm
-pacman_install gdm
-set +e
-sudo systemctl disable lightdm.service
-set -e
-sudo systemctl enable gdm.service
+pacman_install xorg-server
+pacman_install plasma
+pacman_install kde-applications
+pacman_install ssdm
+pacman_install ssdm-kcm
+sudo systemctl enable sddm.service
 sudo systemctl set-default graphical.target
 
+# gdm
+#pacman_install gdm
+#set +e
+#sudo systemctl disable lightdm.service
+#set -e
+#sudo systemctl enable gdm.service
+#sudo systemctl set-default graphical.target
+
 # gnome
-pacman_install gnome
-pacman_install gnome-extra
-pacman_install gnome-control-center
-pacman_install gnome-backgrounds
-pacman_install gnome-tweaks
+#pacman_install gnome
+#pacman_install gnome-extra
+#pacman_install gnome-control-center
+#pacman_install gnome-backgrounds
+#pacman_install gnome-tweaks
 
 # tilix
 pacman_install tilix
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'tilix'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
+#gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+#gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
+#gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'tilix'
+#gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
 
 # vim
 pacman_install vim
