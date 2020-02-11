@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 set -e
 
 source lib/core.sh
@@ -30,9 +31,9 @@ pacman_install tlp
 pacman_install tp_smapi
 pacman_install acpi_call
 sudo systemctl enable tlp.service
-sudo systemctl enable tlp-sleep.service
+#sudo systemctl enable tlp-sleep.service
 sudo systemctl start tlp.service
-sudo systemctl start tlp-sleep.service
+#sudo systemctl start tlp-sleep.service
 
 # suspend on lid close
 sudo sed -i -e 's/HandleLidSwitch=ignore/handleLidSwitch=suspend/' /etc/systemd/logind.conf
@@ -45,27 +46,35 @@ sudo ufw default allow outgoing
 sudo ufw default deny incoming
 sudo ufw enable || true
 
-# gdm
-pacman_install gdm
-set +e
-sudo systemctl disable lightdm.service
-set -e
-sudo systemctl enable gdm.service
+pacman_install xorg-server
+pacman_install plasma
+pacman_install kde-applications
+pacman_install sddm
+pacman_install sddm-kcm
+sudo systemctl enable sddm.service
 sudo systemctl set-default graphical.target
 
+# gdm
+#pacman_install gdm
+#set +e
+#sudo systemctl disable lightdm.service
+#set -e
+#sudo systemctl enable gdm.service
+#sudo systemctl set-default graphical.target
+
 # gnome
-pacman_install gnome
-pacman_install gnome-extra
-pacman_install gnome-control-center
-pacman_install gnome-backgrounds
-pacman_install gnome-tweaks
+#pacman_install gnome
+#pacman_install gnome-extra
+#pacman_install gnome-control-center
+#pacman_install gnome-backgrounds
+#pacman_install gnome-tweaks
 
 # tilix
 pacman_install tilix
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'tilix'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
+#gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+#gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
+#gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'tilix'
+#gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
 
 # vim
 pacman_install vim
@@ -118,7 +127,7 @@ pacman_install exfat-utils
 pacman_install fzf
 
 # autojump
-pacman_install autojump
+yay_install autojump
 
 # fish shell
 pacman_install fish
@@ -244,3 +253,6 @@ pacman_install neovim
 yay_install nerd-fonts-complete
 
 yay_install circleci-cli-bin
+
+pacman_install latte-dock
+pacman_install kdeconnect

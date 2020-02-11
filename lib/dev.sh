@@ -37,12 +37,6 @@ type elm-test || yarn global add elm-test
 type elm-format || yarn global add elm-format
 type elm-language-server || yarn global add @elm-tooling/elm-language-server
 
-# clojure
-asdf plugin-add java || true
-asdf install java openjdk-11
-asdf plugin-add clojure || true
-asdf install clojure 1.10.1
-
 # python
 asdf plugin-add python || true
 asdf install python 3.6.9
@@ -60,15 +54,6 @@ asdf install ruby 2.6.5
 asdf shell ruby 2.6.5
 gem install pry
 gem install neovim
-
-# elixir
-asdf plugin-add erlang || true
-export KERL_CONFIGURE_OPTIONS="--disable-debug --without-javac"
-asdf install erlang 22.1.8
-asdf plugin-add elixir || true
-asdf install elixir 1.9.4
-yes | mix local.hex
-yes | mix archive.install hex phx_new 1.4.11
 
 # elasticsearch and it's insatiable hunger for files
 if [[ -f /usr/lib/sysctl.d/elasticsearch.conf ]]; then
