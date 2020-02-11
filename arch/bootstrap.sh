@@ -46,7 +46,7 @@ pacman -S --noconfirm reflector
 reflector -c "United Kingdom" -f 12 -l 10 -n 12 --save /etc/pacman.d/mirrorlist
 
 log "Pacstrap installation"
-pacstrap /mnt/ base base-devel sudo intel-ucode efibootmgr wpa_supplicant networkmanager git
+pacstrap /mnt/ base linux linux-firmware base-devel sudo intel-ucode efibootmgr wpa_supplicant networkmanager git
 genfstab -U /mnt >> /mnt/etc/fstab
 
 log "Configuring hostname"
