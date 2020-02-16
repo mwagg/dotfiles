@@ -2,10 +2,10 @@
   "entries": {
     "tap": {
       "homebrew/cask-fonts": {
-        "revision": "e92925ad3d7262d547259f033ee8e8058bfabda6"
+        "revision": "0df83012db895a011caa00729dc4b322026266a8"
       },
       "d12frosted/emacs-plus": {
-        "revision": "e4bc084f411b47e4b7e3ebab40310e7fc693eba0"
+        "revision": "fa0f7f09ba3486a66095f2fa085d297da033089b"
       }
     },
     "brew": {
@@ -470,6 +470,12 @@
         "options": {
           "full_name": "spectacle"
         }
+      },
+      "kitty": {
+        "version": "0.16.0",
+        "options": {
+          "full_name": "kitty"
+        }
       }
     }
   },
@@ -478,7 +484,7 @@
       "catalina": {
         "HOMEBREW_VERSION": "2.2.5",
         "HOMEBREW_PREFIX": "/usr/local",
-        "Homebrew/homebrew-core": "eb952a3f04f7624f9b6da14d8b0f1027b717af84",
+        "Homebrew/homebrew-core": "1252f760fe029bcafb6025bd4b3835a8dfe00264",
         "CLT": "11.0.33.16",
         "Xcode": "11.3",
         "macOS": "10.15.2"
