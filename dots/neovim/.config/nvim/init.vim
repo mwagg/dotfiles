@@ -13,6 +13,7 @@ exec 'source' path . '/elm.vim'
 exec 'source' path . '/terraform.vim'
 exec 'source' path . '/fugitive.vim'
 exec 'source' path . '/find.vim'
+exec 'source' path . '/vim-test.vim'
 
 " source init.vim whenever it is saved
 augroup reload_config
@@ -57,3 +58,6 @@ autocmd FileType javascript setlocal ts=4 sts=4 sw=4
 autocmd FileType javascriptreact setlocal ts=4 sts=4 sw=4
 
 set lazyredraw
+
+" format whole file
+nnoremap <leader>== gg=G<C-o>

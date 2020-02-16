@@ -28,6 +28,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'elixir-editors/vim-elixir'
 Plug 'frazrepo/vim-rainbow'
 Plug 'hashivim/vim-terraform'
+Plug 'janko/vim-test'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 nnoremap <leader>pi :PlugInstall<cr>
