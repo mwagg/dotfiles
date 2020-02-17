@@ -61,7 +61,3 @@ if [[ -f /usr/lib/sysctl.d/elasticsearch.conf ]]; then
 fi
 
 asdf reshim
-
-pushd ~/.config/coc/extensions
-npm install
-popd
