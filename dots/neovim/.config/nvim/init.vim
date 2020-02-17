@@ -58,6 +58,9 @@ autocmd FileType javascript setlocal ts=4 sts=4 sw=4
 autocmd FileType javascriptreact setlocal ts=4 sts=4 sw=4
 
 set lazyredraw
+<<<<<<< HEAD
 
 " format whole file
 nnoremap <leader>== gg=G<C-o>
+
+hi Normal guibg=NONE ctermbg=NONE
