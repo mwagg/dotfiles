@@ -44,6 +44,10 @@ sudo systemctl enable ufw.service
 sudo systemctl start ufw.service
 sudo ufw default allow outgoing
 sudo ufw default deny incoming
+# kde-connect
+sudo ufw allow 1714:1764/udp
+sudo ufw allow 1714:1764/tcp
+
 sudo ufw enable || true
 
 pacman_install xorg-server
