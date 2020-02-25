@@ -41,7 +41,6 @@ type elm-language-server || yarn global add @elm-tooling/elm-language-server
 asdf plugin-add python || true
 asdf install python 3.6.9
 asdf shell python 3.6.9
-pip install virtualfish
 pip install pipenv
 pip install virtualenv
 pip install jedi
