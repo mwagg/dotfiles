@@ -25,6 +25,10 @@ type yay || install_yay
 pacman_install intel-ucode
 pacman_install openssh
 
+# ssh-agent
+systemctl enable ssh-agent --user
+systemctl start ssh-agent --user
+
 # power management
 pacman_install acpi
 pacman_install tlp
