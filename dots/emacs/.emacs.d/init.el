@@ -29,7 +29,8 @@
       scroll-conservatively 100
       compilation-scroll-output t
       whitespace-style '(trailing tabs newline tab-mark newline-mark)
-      auth-sources '("~/.authinfo.gpg"))
+      auth-sources '("~/.authinfo.gpg")
+      epa-pinentry-mode 'loopback)
 
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
