@@ -413,7 +413,7 @@
     "pb"  'counsel-projectile-switch-to-buffer
     "*" '(lambda ()
            (interactive)
-           (counsel-git-grep nil (current-word)))
+           (counsel-git-grep (current-word)))
     "/" 'counsel-git-grep))
 
 (use-package flyspell-correct-ivy
