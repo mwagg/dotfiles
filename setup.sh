@@ -262,3 +262,4 @@ yay_install circleci-cli-bin
 
 pacman_install latte-dock
 pacman_install kdeconnect
+pacman_install wget
