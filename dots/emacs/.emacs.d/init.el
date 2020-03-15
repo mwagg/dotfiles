@@ -634,7 +634,9 @@ or the current buffer directory."
 ;;; python
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(use-package pyvenv)
+(use-package elpy
+  :init
+  (advice-add 'python-mode :before 'elpy-enable))
 
 (setq initial-scratch-message (concat "Startup time: " (emacs-init-time)))
 
