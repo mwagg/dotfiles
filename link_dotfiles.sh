@@ -1,7 +1,4 @@
 #!/usr/bin/env bash
-mkdir -p ~/.emacs.d
-touch ~/.emacs.d/emacs-custom.el
-
 pushd dots &> /dev/null
 DIRS=$(find "$PWD" -mindepth 1 -maxdepth 1 -type d -not -name ".*")
 
@@ -25,5 +22,12 @@ decrypt_file ".aws/credentials"
 mkdir -p ~/.ssh
 decrypt_file ".ssh/config"
 decrypt_file ".terraformrc"
+
+if [[ ! -d ~/.emacs.d ]]; then
+  git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+  ~/.emacs.d/bin/doom install
+else
+  ~/.emacs.d/bin/doom upgrade
+fi
 
 popd &> /dev/null
