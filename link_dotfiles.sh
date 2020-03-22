@@ -26,8 +26,6 @@ decrypt_file ".terraformrc"
 if [[ ! -d ~/.emacs.d ]]; then
   git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
   ~/.emacs.d/bin/doom install
-else
-  ~/.emacs.d/bin/doom upgrade
 fi
 
 popd &> /dev/null
