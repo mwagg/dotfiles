@@ -61,6 +61,7 @@ pacman_install gnome-extra
 pacman_install gnome-control-center
 pacman_install gnome-backgrounds
 pacman_install gnome-tweaks
+yay_install gnome-shell-extension-dash-to-dock
 
 # tilix
 pacman_install tilix
