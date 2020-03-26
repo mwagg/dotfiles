@@ -67,3 +67,9 @@
       :n "C-j" #'evil-window-down
       :n "C-k" #'evil-window-up
       :n "C-l" #'evil-window-right)
+
+(use-package! sqlformat
+  :hook sql-mode
+  :config
+  (setq sqlformat-command 'pgformatter
+        sqlformat-args '("-s2" "-g")))

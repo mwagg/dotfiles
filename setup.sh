@@ -245,3 +245,4 @@ pacman_install neovim
 yay_install nerd-fonts-complete
 
 yay_install circleci-cli-bin
+yay_install pgformatter-git
