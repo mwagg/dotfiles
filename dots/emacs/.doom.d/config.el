@@ -69,7 +69,9 @@
       :n "C-l" #'evil-window-right)
 
 (use-package! sqlformat
-  :hook sql-mode
+  :commands sqlformat-on-save-mode sqlformatbuffer
+  :init
+  (add-hook 'sql-mode-hook #'sqlformat-on-save-mode)
   :config
   (setq sqlformat-command 'pgformatter
         sqlformat-args '("-s2" "-g")))
