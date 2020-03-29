@@ -246,3 +246,17 @@ yay_install nerd-fonts-complete
 
 yay_install circleci-cli-bin
 yay_install pgformatter-git
+
+pacman_install sway
+pacman_install swaybg
+pacman_install swayidle
+pacman_install swaylock
+pacman_install rofi
+pacman_install waybar
+pacman_install inetutils
+pacman_install light
+if [[ ! -f /etc/udev/rules.d/backlight.rules ]];then
+  echo 'ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="acpi_video0", RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness"' | sudo tee -a /etc/udev/rules.d/backlight.rules
+  echo 'ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="acpi_video0", RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"' | sudo tee -a /etc/udev/rules.d/backlight.rules
+fi
+sudo usermod -a -G video $USER
