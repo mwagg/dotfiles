@@ -75,3 +75,6 @@
   :config
   (setq sqlformat-command 'pgformatter
         sqlformat-args '("-s2" "-g")))
+
+(after! elm-mode
+  (add-hook 'elm-mode-hook #'elm-format-on-save-mode))
