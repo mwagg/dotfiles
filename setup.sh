@@ -260,3 +260,10 @@ if [[ ! -f /etc/udev/rules.d/backlight.rules ]];then
   echo 'ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="acpi_video0", RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"' | sudo tee -a /etc/udev/rules.d/backlight.rules
 fi
 sudo usermod -a -G video $USER
+
+pacman_install spectrwm
+pacman_install man-db
+pacman_install man-pages
+pacman_install nitrogen
+pacman_install compton
+pacman_install xlockmore
