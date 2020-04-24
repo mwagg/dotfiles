@@ -52,7 +52,7 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = Source Code Pro Medium:pixelsize=10;3
+font-0 = Hack Nerd Font:pixelsize=10;3
 font-1 = FontAwesome5Free:pixelsize=10;3
 font-2 = FontAwesome5Free:style=Solid:pixelsize=10;3
 font-3 = FontAwesome5Brands:pixelsize=10;3
@@ -180,7 +180,7 @@ label = %percentage_used%%
 
 [module/wlan]
 type = custom/script
-exec = iwgetid -r
+exec = iw dev wlp3s0 link | awk '/SSID/{print $2}'
 interval = 1
 format-prefix = " "
 format-connected = <ramp-signal> <label-connected>
