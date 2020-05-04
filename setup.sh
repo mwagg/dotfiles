@@ -164,6 +164,7 @@ flatpak update -y
 
 flatpak install flathub com.spotify.Client -y
 flatpak install flathub com.slack.Slack -y
+flatpak install com.valvesoftware.Steam -y
 
 # syncthing
 pacman_install syncthing
