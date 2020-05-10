@@ -30,6 +30,13 @@ vol() {
     echo -e "VOL: $vol"
 }
 
+## BATTERY
+bat() {
+    bat0=$(cat /sys/class/power_supply/BAT0/capacity)
+    bat1=$(cat /sys/class/power_supply/BAT1/capacity)
+    echo -e "BAT0: $bat0% BAT1: $bat1%"
+}
+
 SLEEP_SEC=3
 
 #loops forever outputting a line every SLEEP_SEC secs
@@ -39,6 +46,6 @@ SLEEP_SEC=3
 # echo output too long to display correctly.
 
 while :; do
-    echo "+@fg=1;+@fn=0;$(cpu)+@fg=0; |+@fg=2; $(mem)+@fg=0; |+@fg=3; $(wifi) +@fg=0; | +@fg=4; $(vol) +@fg=0; |"
+    echo "+@fg=1;+@fn=0;$(cpu)+@fg=0; |+@fg=2; $(mem)+@fg=0; |+@fg=3; $(wifi) +@fg=0; | +@fg=4; $(vol) +@fg=0; | +@fg=5; $(bat) +@fg=0; |"
     sleep $SLEEP_SEC
 done
