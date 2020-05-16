@@ -47,6 +47,12 @@ pip install jedi
 pip install pynvim
 pip install pyls
 
+# clojure
+asdf plugin-add java || true
+asdf install java adopt-openjdk-12+33
+asdf plugin-add clojure || true
+asdf install clojure 1.10.1
+
 # ruby
 asdf plugin-add ruby || true
 asdf install ruby 2.6.5
