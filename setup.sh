@@ -21,6 +21,8 @@ function install_yay {
 
 type yay || install_yay
 
+yay -Syu --noconfirm
+
 pacman_install intel-ucode
 pacman_install openssh
 
