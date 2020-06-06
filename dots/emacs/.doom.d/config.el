@@ -83,5 +83,3 @@
   :config
   (setq poetry-tracking-strategy 'projectile)
   (add-hook 'python-mode #'poetry-tracking-mode))
-
-(evil-snipe-override-mode 1)
