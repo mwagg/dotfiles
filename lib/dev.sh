@@ -38,14 +38,13 @@ type elm-format || yarn global add elm-format
 type elm-language-server || yarn global add @elm-tooling/elm-language-server
 
 # python
-asdf plugin-add python || true
-asdf install python 3.6.9
-asdf shell python 3.6.9
-pip install pipenv
-pip install virtualenv
-pip install jedi
-pip install pynvim
-pip install pyls
+[ -d $HOME/.pyenv ] || git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+[ -d $HOME/.pyenv/plugins/pyenv-virtualenv ] || git clone https://github.com/pyenv/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyenv-virtualenv
+[ -d $HOME/.poetry ] || curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+pyenv install 3.8.3 -s
+pyenv install 3.6.9 -s
 
 # clojure
 asdf plugin-add java || true

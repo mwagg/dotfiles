@@ -36,3 +36,12 @@ end
 if test -d /usr/local/opt/postgresql@9.6/bin
     set -x PATH /usr/local/opt/postgresql@9.6/bin $PATH
 end
+
+if test -d $HOME/.pyenv
+    status --is-interactive; and source (pyenv init -|psub)
+    status --is-interactive; and pyenv virtualenv-init - | source
+end
+
+if test -d $HOME/.poetry/bin
+   set -x PATH $HOME/.poetry/bin $PATH
+end
