@@ -16,6 +16,8 @@
 	status = auto
 [push]
 	default = current
+[pull]
+	rebase = true
 [help]
 	autocorrect = 30
 [credential]
