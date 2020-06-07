@@ -38,6 +38,8 @@ if test -d /usr/local/opt/postgresql@9.6/bin
 end
 
 if test -d $HOME/.pyenv
+    set -Ux PYENV_ROOT $HOME/.pyenv
+    set -Ux fish_user_paths $PYENV_ROOT/bin $fish_user_paths
     status --is-interactive; and source (pyenv init -|psub)
     status --is-interactive; and pyenv virtualenv-init - | source
 end
