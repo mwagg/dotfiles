@@ -20,7 +20,7 @@ asdf reshim
 
 # nodejs
 asdf plugin-add nodejs || true
-type node || source "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
+type node || bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
 asdf install nodejs 10.16.0
 type yarn || npm install -g yarn
 type tern || yarn global add tern
