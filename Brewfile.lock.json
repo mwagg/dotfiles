@@ -6,6 +6,9 @@
       },
       "d12frosted/emacs-plus": {
         "revision": "1f4fb6b41f4e3322050e16dac10e896a117affaf"
+      },
+      "borkdude/brew": {
+        "revision": "064536e7d0504f0b7e8cc5452a2860c3313ff1d1"
       }
     },
     "brew": {
@@ -499,6 +502,11 @@
             }
           }
         }
+      },
+      "borkdude/brew/clj-kondo": null,
+      "clj-kondo": {
+        "version": "2020.06.12",
+        "bottle": false
       }
     },
     "cask": {
@@ -554,7 +562,7 @@
         "Homebrew/homebrew-core": "cd73c30a2677045ce112137256c06e5414288f74",
         "CLT": "11.0.33.16",
         "Xcode": "11.4",
-        "macOS": "10.15.4"
+        "macOS": "10.15.5"
       }
     }
   }
