@@ -21,6 +21,17 @@
 ;; font string. You generally only need these two:
 (setq doom-font (font-spec :family "monospace" :size 16))
 
+;; Font size adjustment
+(defun adjust-font-size (frame)
+  (let* ((attrs (frame-monitor-attributes))
+       (dimensions (cdr (third attrs)))
+       (width (third dimensions))
+       (size (cond
+              ((> width 2560) 18)
+              (t 16))))
+  (set-frame-font (format "monospace %s" size))))
+(add-hook 'window-size-change-functions #'adjust-font-size)
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
