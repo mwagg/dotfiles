@@ -112,7 +112,7 @@
        ;;csharp            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
        ;;elixir            ; erlang done right
-       (elm +lsp)               ; care for a cup of TEA?
+       elm               ; care for a cup of TEA?
        emacs-lisp        ; drown in parentheses
        ;;erlang            ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
@@ -125,6 +125,7 @@
        ;;idris             ;
        ;;(java +meghanada) ; the poster child for carpal tunnel syndrome
        (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
+       json
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
        ;;latex             ; writing papers in Emacs has never been so fun
