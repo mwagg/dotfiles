@@ -271,4 +271,7 @@ pacman_install nitrogen
 pacman_install picom
 pacman_install xlockmore
 
+pacman_install fd
+pacman_install entr
+
 sudo cp templates/70-synaptics.conf /etc/X11/xorg.conf.d/70-synaptics.conf
