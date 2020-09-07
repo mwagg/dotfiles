@@ -2,15 +2,10 @@
 
 set monitors (xrandr | grep " connected" | cut -d ' ' -f 1)
 
-if contains DP1 $monitors
-    mons -s --dpi 96
-    echo "Xft.dpi: 96" > ~/.Xresources
+if contains DP-2 $monitors
+    xrandr --output eDP-1 --off --output DP-2 --auto
 else
-    mons -o --dpi 196
-    echo "Xft.dpi: 196" > ~/.Xresources
+    xrandr --auto
 end
 
-xrdb $HOME/.Xresources
-i3-msg restart
-$HOME/.local/bin/randomise-wallpaper
-killall dunst
+nitrogen --restore

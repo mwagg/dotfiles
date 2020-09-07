@@ -125,10 +125,10 @@ label-urgent-padding = 2
 ; Separator in between workspaces
 ; label-separator = |
 
-ws-icon-0 = "1;"
-ws-icon-1 = "2;"
-ws-icon-2 = "3;"
-ws-icon-3 = "4;"
+ws-icon-0 = "1"
+ws-icon-1 = "2"
+ws-icon-2 = "3"
+ws-icon-3 = "4"
 
 [module/spotify]
 type = custom/script
@@ -234,7 +234,7 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <ramp-volume> <label-volume>
+format-volume = %{A1:pavucontrol:}<ramp-volume> <label-volume>%{A}
 format-underline = ${colors.underline}
 label-volume = VOL %percentage%%
 label-volume-foreground = ${root.foreground}

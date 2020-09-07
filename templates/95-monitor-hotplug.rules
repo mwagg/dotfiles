@@ -1,0 +1,1 @@
+KERNEL=="card0", SUBSYSTEM=="drm", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/run/user/1000/gdm/Xauthority", RUN+="/home/mike/.local/bin/change-monitors.sh"

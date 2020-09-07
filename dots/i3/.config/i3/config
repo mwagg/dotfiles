@@ -7,7 +7,7 @@ font pango:monospace 8
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec tilix
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -134,8 +134,8 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl -- set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle && pkill -RTMIN+1 i3blocks
 
 # Sreen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease screen brightness
 
 # Media controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -151,17 +151,10 @@ bindsym $mod+End exec --no-startup-id light-locker-command -l
 
 bindsym $mod+F1 exec --no-startup-id $HOME/.local/bin/search.sh
 
-# window assignments
-assign [class="Slack"] 4
-assign [class="Chromium"] 3
-assign [class="Firefox"] 3
-assign [class="Emacs"] 2
-
 exec --no-startup-id nitrogen --restore
-exec --no-startup-id compton
+exec --no-startup-id picom
 exec --no-startup-id nm-applet
 exec --no-startup-id $HOME/.local/bin/configure-trackpad
 exec --no-startup-id $HOME/.local/bin/wallpaper-auto-change.sh
 exec --no-startup-id light-locker
-exec --no-startup-id mons -a
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh

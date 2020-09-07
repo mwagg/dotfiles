@@ -13,3 +13,4 @@
 !/dots/neovim/.config/coc/extensions/package.json
 /dots/neovim/.config/nvim/.netrwhist
 /dots/neovim/.config/nvim/autoload
+/dots/fish/.config/fish/functions/fish_ssh_agent.fish

@@ -47,3 +47,5 @@ end
 if test -d $HOME/.poetry/bin
    set -x PATH $HOME/.poetry/bin $PATH
 end
+
+fish_ssh_agent
