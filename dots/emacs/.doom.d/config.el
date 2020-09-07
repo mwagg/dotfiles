@@ -19,7 +19,7 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 16))
+(setq doom-font (font-spec :family "Fira Code" :size 12))
 
 ;; Font size adjustment
 (defun adjust-font-size (frame)
@@ -28,7 +28,7 @@
        (width (third dimensions))
        (size (cond
               ((> width 2560) 18)
-              (t 16))))
+              (t 12))))
   (set-frame-font (format "monospace %s" size))))
 (add-hook 'window-size-change-functions #'adjust-font-size)
 
