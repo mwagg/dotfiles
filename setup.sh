@@ -265,6 +265,8 @@ fi
 sudo usermod -a -G video $USER
 
 pacman_install spectrwm
+yay_install polybar-git
+pacman_install pavucontrol
 pacman_install man-db
 pacman_install man-pages
 pacman_install nitrogen
@@ -275,3 +277,5 @@ pacman_install fd
 pacman_install entr
 
 sudo cp templates/70-synaptics.conf /etc/X11/xorg.conf.d/70-synaptics.conf
+
+sudo cp templates/95-monitor-hotplug.rules /etc/udev/rules.d/
