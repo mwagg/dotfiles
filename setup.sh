@@ -250,12 +250,6 @@ yay_install nerd-fonts-complete
 yay_install circleci-cli-bin
 yay_install pgformatter-git
 
-pacman_install sway
-pacman_install swaybg
-pacman_install swayidle
-pacman_install swaylock
-pacman_install rofi
-pacman_install waybar
 pacman_install inetutils
 pacman_install light
 if [[ ! -f /etc/udev/rules.d/backlight.rules ]];then
@@ -264,7 +258,8 @@ if [[ ! -f /etc/udev/rules.d/backlight.rules ]];then
 fi
 sudo usermod -a -G video $USER
 
-pacman_install spectrwm
+pacman_install bspwm
+pacman_install sxhkd
 yay_install polybar-git
 pacman_install pavucontrol
 pacman_install man-db

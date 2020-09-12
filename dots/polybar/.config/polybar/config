@@ -30,10 +30,10 @@ underline = #ffb52a
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 20
+height = 30
 bottom = false
 radius = 2.0
-fixed-center = false
+fixed-center = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -58,9 +58,9 @@ font-2 = FontAwesome5Free:style=Solid:pixelsize=10;3
 font-3 = FontAwesome5Brands:pixelsize=10;3
 font-4 = FontAwesome5Brands:style=Solid:pixelsize=10
 
-modules-left = i3
-modules-center =
-modules-right = pulseaudio wlan eth battery date powermenu
+modules-left =
+modules-center = date
+modules-right = pulseaudio wlan eth battery powermenu
 
 tray-position = right
 tray-padding = 2
@@ -215,19 +215,21 @@ format-disconnected =
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
+;
+[module/bspwm]
+type = internal/bspwm
 
 [module/date]
 type = internal/date
 interval = 5
 
-date =
+date = "%Y-%m-%d"
 date-alt = " %Y-%m-%d"
 
 time = %H:%M
 time-alt = %H:%M:%S
 
-format-prefix = ""
-format-underline = ${colors.underline}
+format-prefix = ""
 
 label = %date% %time%
 
@@ -322,7 +324,7 @@ screenchange-reload = true
 ;pseudo-transparency = false
 
 [global/wm]
-margin-top = 5
-margin-bottom = 5
+margin-top = 0
+margin-bottom = 0
 
 ; vim:ft=dosini
