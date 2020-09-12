@@ -19,23 +19,23 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-(setq doom-font (font-spec :family "Fira Code" :size 12))
+(setq doom-font (font-spec :family "Source Code Pro" :size 12))
 
 ;; Font size adjustment
 (defun adjust-font-size (frame)
   (let* ((attrs (frame-monitor-attributes))
-       (dimensions (cdr (third attrs)))
-       (width (third dimensions))
+       (dimensions (cdr (nth 2 attrs)))
+       (width (nth 3 dimensions))
        (size (cond
-              ((> width 2560) 18)
+              ((> width 1900) 20)
               (t 12))))
-  (set-frame-font (format "monospace %s" size))))
+  (set-frame-font (format "Source Code Pro %s" size))))
 (add-hook 'window-size-change-functions #'adjust-font-size)
 
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-laserwave)
+(setq doom-theme 'doom-monokai-pro)
 
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
