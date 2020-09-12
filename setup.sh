@@ -260,11 +260,12 @@ sudo usermod -a -G video $USER
 
 pacman_install bspwm
 pacman_install sxhkd
+pacman_install cbatticon
 yay_install polybar-git
 pacman_install pavucontrol
 pacman_install man-db
 pacman_install man-pages
-pacman_install nitrogen
+pacman_install variety
 pacman_install picom
 pacman_install xlockmore
 

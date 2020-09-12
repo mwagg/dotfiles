@@ -60,7 +60,7 @@ font-4 = FontAwesome5Brands:style=Solid:pixelsize=10
 
 modules-left =
 modules-center = date
-modules-right = pulseaudio wlan eth battery powermenu
+modules-right = pulseaudio wlan eth
 
 tray-position = right
 tray-padding = 2

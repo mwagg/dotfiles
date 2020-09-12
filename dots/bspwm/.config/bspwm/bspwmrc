@@ -2,10 +2,6 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd &
 
-nitrogen --restore
-picom&
-~/.config/polybar/launch.sh
-
 bspc monitor -d I II III IV V VI VII VIII IX X
 
 bspc config border_width         2
@@ -24,3 +20,8 @@ bspc rule -a Emacs state=tiled
 bspc rule -a Picture-in-Picture state=floating
 
 bspc config external_rules_command "$HOME/.config/bspwm/external_rules"
+
+$HOME/.config/polybar/launch.sh
+pgrep -x variety >> ~/bspwm_log || variety &
+pgrep -x picom >> ~/bspwm_log || picom &
+pgrep -x cbatticon >> ~/bspwm_log || cbatticon &
