@@ -1,10 +1,9 @@
 #!/usr/bin/env bash
 
-external_connected=$(swaymsg -t get_outputs | jq .[].name | grep -w "DP-1" | head)
+external_connected=$(xrandr | grep " connected" | cut -d ' ' -f 1 | grep -v eDP-1)
 
-if [[ "$external_connected" = '"DP-1"' ]]; then
-  swaymsg output eDP-1 disable
-  swaymsg output DP1 enable
+if [ "$external_connected" = "DP-1" ] || [ "$external_connected" = "DP-2" ]; then
+    xrandr --output eDP-1 --off
 else
-  swaymsg output eDP-1 enable
+    xrandr --auto
 fi
