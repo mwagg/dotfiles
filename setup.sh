@@ -135,6 +135,7 @@ pacman_install aspell-en
 pacman_install ripgrep
 pacman_install emacs
 sudo sed -i -e 's/^Exec=.*/Exec=\/usr\/bin\/fish -c emacs %f/' /usr/share/applications/emacs.desktop
+pacman_install ttf-nerd-fonts-symbols
 
 # github hub
 pacman_install hub
