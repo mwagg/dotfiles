@@ -65,5 +65,3 @@ if [[ -f /usr/lib/sysctl.d/elasticsearch.conf ]]; then
 fi
 
 asdf reshim
-
-rustup component add rustfmt
