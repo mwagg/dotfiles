@@ -1,4 +1,0 @@
-#!/bin/bash
-
-export GPG_TTY=$(tty)
-gpg --decrypt ~/dotfiles/gpg-key.asc | gpg --import

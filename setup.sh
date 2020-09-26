@@ -237,9 +237,6 @@ pacman_install peek
 # dev
 yay_install asdf-vm
 
-# dsvpn
-yay_install dsvpn-git
-
 pacman_install postgresql
 
 pacman_install libreoffice
@@ -258,22 +255,9 @@ if [[ ! -f /etc/udev/rules.d/backlight.rules ]];then
 fi
 sudo usermod -a -G video $USER
 
-pacman_install bspwm
-pacman_install sxhkd
-pacman_install cbatticon
-yay_install polybar-git
-pacman_install pavucontrol
 pacman_install man-db
 pacman_install man-pages
-pacman_install variety
-pacman_install picom
-pacman_install xlockmore
 
 pacman_install fd
 pacman_install entr
-
-sudo cp templates/70-synaptics.conf /etc/X11/xorg.conf.d/70-synaptics.conf
-
-sudo cp templates/95-monitor-hotplug.rules /etc/udev/rules.d/
-
 pacman_install httpie

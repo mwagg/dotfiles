@@ -1,4 +1,0 @@
-#!/bin/bash
-
-export GPG_TTY=$(tty)
-gpg -a --export-secret-keys michael@guerillatactics.co.uk | gpg --symmetric --armor > ~/dotfiles/gpg-key.asc

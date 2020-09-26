@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-
-DEVICE_ID=$(xinput list | grep "DLL0704\|bcm5974" | sed -e 's/.*id=\([0-9]*\).*/\1/')
-
-TAPPING_ENABLED_ID=$(xinput list-props $DEVICE_ID | grep "Tapping Enabled" | grep -v "Default" | sed -e 's/^.*(\([0-9]*\)).*$/\1/')
-NATURAL_SCROLLING_ENABLED_ID=$(xinput list-props $DEVICE_ID | grep "Natural Scrolling Enabled" | grep -v "Default" | sed -e 's/^.*(\([0-9]*\)).*$/\1/')
-xinput set-prop $DEVICE_ID $TAPPING_ENABLED_ID 1
-xinput set-prop $DEVICE_ID $NATURAL_SCROLLING_ENABLED_ID 1
