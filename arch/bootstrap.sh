@@ -6,18 +6,9 @@ function log {
 	echo -e "\e[32m$1\e[0m"
 }
 
-if [[ -z "$BOOT_PARTITION" ]]; then
-	echo "You must set the BOOT_PARTITION variable"
-	exit 1
-fi
-if [[ -z "$ROOT_PARTITION" ]]; then
-	echo "You must set the ROOT_PARTITION variable"
-	exit 1
-fi
-if [[ -z "$HOSTNAME" ]]; then
-	echo "You must set the HOSTNAME variable"
-	exit 1
-fi
+BOOT_PARTITION=/dev/nvme0n1p1
+ROOT_PARTITION=/dev/nvme0n1p2
+HOSTNAME=arch
 
 loadkeys uk
 timedatectl set-ntp true

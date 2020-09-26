@@ -2,12 +2,8 @@
 
 set -e
 
-if [[ -z "$DRIVE" ]]; then
-	echo "You must set the DRIVE variable"
-	exit 1
-fi
-
-PARTITION_PREFIX=${PARTITION_PREFIX:-""}
+DRIVE=nvme0n1
+PARTITION_PREFIX=p
 
 echo "Partitioning disk"
 parted --script -a optimal /dev/$DRIVE \
