@@ -136,6 +136,7 @@ pacman_install ripgrep
 pacman_install emacs
 sudo sed -i -e 's/^Exec=.*/Exec=\/usr\/bin\/fish -c emacs %f/' /usr/share/applications/emacs.desktop
 pacman_install ttf-nerd-fonts-symbols
+pacman_install cmake
 
 # github hub
 pacman_install hub
