@@ -49,3 +49,7 @@ if test -d $HOME/.cargo/bin
 end
 
 fish_ssh_agent
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/__tabtab.fish ]; and . ~/.config/tabtab/__tabtab.fish; or true
