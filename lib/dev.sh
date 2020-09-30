@@ -21,7 +21,7 @@ asdf reshim
 # nodejs
 asdf plugin-add nodejs || true
 type node || bash "$HOME/.asdf/plugins/nodejs/bin/import-release-team-keyring"
-asdf install nodejs 10.16.0
+asdf install nodejs 12.18.4
 type yarn || npm install -g yarn
 type tern || yarn global add tern
 type eslint || yarn global add eslint
@@ -45,19 +45,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 pyenv install 3.8.3 -s
 pyenv install 3.6.9 -s
-
-# clojure
-asdf plugin-add java || true
-asdf install java adopt-openjdk-12+33
-asdf plugin-add clojure || true
-asdf install clojure 1.10.1
-
-# ruby
-asdf plugin-add ruby || true
-asdf install ruby 2.6.5
-asdf shell ruby 2.6.5
-gem install pry
-gem install neovim
 
 # elasticsearch and it's insatiable hunger for files
 if [[ -f /usr/lib/sysctl.d/elasticsearch.conf ]]; then
