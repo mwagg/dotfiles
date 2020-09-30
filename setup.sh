@@ -262,3 +262,4 @@ pacman_install man-pages
 pacman_install fd
 pacman_install entr
 pacman_install httpie
+pacman_install wget
