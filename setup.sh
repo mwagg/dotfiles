@@ -263,3 +263,5 @@ pacman_install fd
 pacman_install entr
 pacman_install httpie
 pacman_install wget
+
+yay_install gnome-shell-extension-sound-output-device-chooser-git
