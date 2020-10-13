@@ -70,9 +70,6 @@
 ;; make the right alt key useful for #, ¢ etc.
 (setq ns-right-alternate-modifier (quote none))
 
-;; cross project rg
-(map! :leader "/" #'counsel-rg)
-
 ;; easier window movement
 (map! :n "C-h" #'evil-window-left
       :n "C-j" #'evil-window-down
