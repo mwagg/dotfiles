@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name : it.todo('...');
+# key: todoit
+# --
+
+it.todo('${1:...}');
