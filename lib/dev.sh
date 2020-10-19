@@ -27,7 +27,7 @@ type tern || yarn global add tern
 type eslint || yarn global add eslint
 type js-beautify || yarn global add js-beautify
 type prettier || yarn global add prettier
-type javascript-typescript-langserver || yarn global add javascript-typescript-langserver
+type typescript-language-server|| yarn global add typescript-language-server
 type eslint_d || yarn global add eslint_d
 yarn global add neovim
 
