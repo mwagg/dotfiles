@@ -6,8 +6,15 @@ function log {
 	echo -e "\e[32m$1\e[0m"
 }
 
-BOOT_PARTITION=/dev/nvme0n1p1
-ROOT_PARTITION=/dev/nvme0n1p2
+if [[ -e /dev/sda ]]; then
+    BOOT_PARTITION=/dev/sda1
+    ROOT_PARTITION=/dev/sda2
+fi
+if [[ -e /dev/nvme0n1 ]]; then
+    BOOT_PARTITION=/dev/nvme0n1p1
+    ROOT_PARTITION=/dev/nvme0n1p2
+fi
+
 HOSTNAME=arch
 
 loadkeys uk

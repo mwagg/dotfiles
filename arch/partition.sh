@@ -2,8 +2,13 @@
 
 set -e
 
-DRIVE=nvme0n1
-PARTITION_PREFIX=p
+if [[ -e /dev/sda ]]; then
+       DRIVE=sda
+fi
+if [[ -e /dev/nvme0n1 ]]; then
+       DRIVE=nvme0n1
+       PARTITION_PREFIX=p
+fi
 
 echo "Partitioning disk"
 parted --script -a optimal /dev/$DRIVE \
