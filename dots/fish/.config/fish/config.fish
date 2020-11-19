@@ -18,7 +18,7 @@ if test -d $HOME/.local/elm/bin
 end
 
 set -x PGHOST localhost
-set -x EDITOR emacsclient -c
+set -x EDITOR nvim
 set -x COUNTRY uk
 
 if test -d $HOME/dev/carwow/dev-environment
