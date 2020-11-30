@@ -91,3 +91,6 @@
   :config
   (setq poetry-tracking-strategy 'projectile)
   (add-hook 'python-mode #'poetry-tracking-mode))
+
+(after! projectile
+  (pushnew! projectile-project-root-files-top-down-recurring "package.json"))
