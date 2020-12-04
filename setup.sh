@@ -195,7 +195,7 @@ pacman_install cups
 pacman_install avahi
 pacman_install nss-mdns
 sudo systemctl enable avahi-daemon.service
-sudo systemctl enable org.cups.cupsd.service
+sudo systemctl enable cups.service
 
 # gtk
 yay_install newaita-icons-git
