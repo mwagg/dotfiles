@@ -86,8 +86,3 @@
 
 (after! elm-mode
   (add-hook 'elm-mode-hook #'elm-format-on-save-mode))
-
-(use-package! poetry
-  :config
-  (setq poetry-tracking-strategy 'projectile)
-  (add-hook 'python-mode #'poetry-tracking-mode))
