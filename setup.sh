@@ -200,8 +200,8 @@ sudo systemctl enable cups.service
 # gtk
 yay_install newaita-icons-git
 gsettings set org.gnome.desktop.interface icon-theme Newaita
-yay_install zukitwo-themes-git
-gsettings set org.gnome.desktop.interface gtk-theme Zukitwo-dark
+yay_install prof-gnome-theme-git
+gsettings set org.gnome.desktop.interface gtk-theme Prof-Gnome-Dark
 yay_install capitaine-cursors 3-2
 gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
 
