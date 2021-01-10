@@ -92,3 +92,9 @@
         (append projectile-project-root-files-bottom-up
                 projectile-project-root-files)
         projectile-project-root-files-bottom-up nil))
+
+(use-package! jest
+  :after (:any js2-mode typescript-mode)
+  :config
+  (setq jest-executable "yarn test")
+  :hook ((js2-mode . jest-minor-mode) (typescript-mode . jest-minor-mode)))
