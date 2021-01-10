@@ -87,5 +87,3 @@
 (after! elm-mode
   (add-hook 'elm-mode-hook #'elm-format-on-save-mode))
 
-(after! magit
-  (setq magit-display-buffer-function #'magit-display-buffer-fullframe-status-v1))
