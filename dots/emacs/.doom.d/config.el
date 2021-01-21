@@ -98,3 +98,5 @@
   :config
   (setq jest-executable "yarn test")
   :hook ((js2-mode . jest-minor-mode) (typescript-mode . jest-minor-mode)))
+
+(setq org-directory "~/org")
