@@ -178,6 +178,7 @@ sudo systemctl start syncthing@$USER.service
 
 # jq
 pacman_install jq
+pacman_install ijq
 
 # transmission
 pacman_install transmission-gtk
