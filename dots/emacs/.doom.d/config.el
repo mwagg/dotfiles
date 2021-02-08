@@ -99,4 +99,9 @@
   (setq jest-executable "yarn test")
   :hook ((js2-mode . jest-minor-mode) (typescript-mode . jest-minor-mode) (typescript-tsx-mode . jest-minor-mode)))
 
+(setq lsp-eslint-server-command
+   '("node"
+     "/home/mike/.local/share/vscode/vscode-eslint/extension/server/out/eslintServer.js"
+     "--stdio"))
+
 (setq org-directory "~/org")
