@@ -43,7 +43,6 @@ type elm-language-server || yarn global add @elm-tooling/elm-language-server
 [ -d $HOME/.poetry ] || curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
-pyenv install 3.8.3 -s
 pyenv install 3.6.9 -s
 
 # elasticsearch and it's insatiable hunger for files
