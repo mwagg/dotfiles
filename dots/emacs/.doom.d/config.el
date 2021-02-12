@@ -105,3 +105,6 @@
      "--stdio"))
 
 (setq org-directory "~/org")
+
+(after! org-journal
+  (setq org-journal-file-type 'weekly))
