@@ -10,7 +10,6 @@ function yay_install {
   pacman -Q $1 || yay -S --needed --noconfirm $1
 }
 
-pacman_install base-devel
 pacman_install stow
 ./link_dotfiles.sh
 
