@@ -171,3 +171,8 @@ yay_install flat-remix-gnome
 gnome-shell-extension-tool -e user-theme@gnome-shell-extensions.gcampax.github.com
 gsettings set org.gnome.shell.extensions.user-theme name "Flat-Remix-Blue"
 
+# bluetooth
+pacman_install pulseaudio-bluetooth
+pacman_install bluez-utils
+pacman_install bluez
+sudo systemctl enable --now bluetooth.service
