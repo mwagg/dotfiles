@@ -94,8 +94,9 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 flatpak update -y
 
 flatpak install flathub com.spotify.Client -y
-flatpak install flathub com.slack.Slack -y
 flatpak install com.valvesoftware.Steam -y
+
+yay_install slack-desktop
 
 # syncthing
 pacman_install syncthing
