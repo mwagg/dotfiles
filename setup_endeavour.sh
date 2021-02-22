@@ -159,3 +159,15 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "[
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'tilix'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
+
+# gtk
+yay_install newaita-icons-git
+gsettings set org.gnome.desktop.interface icon-theme Newaita
+yay_install prof-gnome-theme-git
+gsettings set org.gnome.desktop.interface gtk-theme Prof-Gnome-Dark
+yay_install capitaine-cursors 3-2
+gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
+yay_install flat-remix-gnome
+gnome-shell-extension-tool -e user-theme@gnome-shell-extensions.gcampax.github.com
+gsettings set org.gnome.shell.extensions.user-theme name "Flat-Remix-Blue"
+
