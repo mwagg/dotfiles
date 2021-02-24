@@ -48,7 +48,9 @@ if test -d $HOME/.cargo/bin
     set -x PATH $HOME/.cargo/bin $PATH
 end
 
-fish_ssh_agent
+if test -n "$DESKTOP_SESSION"
+    set (gnome-keyring-daemon --start | string split "=")
+end
 
 # tabtab source for packages
 # uninstall by removing these lines
