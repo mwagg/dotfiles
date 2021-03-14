@@ -50,13 +50,14 @@ let g:which_key_map.p = {
       \ 'c': [':PackerClean', 'Clean'],
       \ }
 
-" l is for LSP
-let g:which_key_map.l = {
+" c is for LSP
+let g:which_key_map.c = {
       \ 'name': '+LSP',
       \ 's': [':Lspsaga signature_help', 'Signature help'],
       \ 'r': [':Lspsaga rename', 'Signature help'],
       \ 'd': [':Lspsaga preview_definition', 'Preview definition'],
       \ 'e': [':Lspsaga show_line_diagnostics', 'Show line diagnostics'],
+      \ 'a': [':Lspsaga code_action', 'Code actions'],
       \ }
 
 " b is for buffers
