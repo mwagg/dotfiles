@@ -163,8 +163,8 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
 
 # gtk
-yay_install newaita-icons-git
-gsettings set org.gnome.desktop.interface icon-theme Newaita
+yay_install qogir-icon-theme-git
+gsettings set org.gnome.desktop.interface icon-theme Qogir-dark
 yay_install prof-gnome-theme-git
 gsettings set org.gnome.desktop.interface gtk-theme Prof-Gnome-Dark
 yay_install capitaine-cursors 3-2
