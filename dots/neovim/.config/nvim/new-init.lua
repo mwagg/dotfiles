@@ -1,8 +1,8 @@
 require('plugins')
 
--- -- LSP
--- require('lsp/lua')
--- require('lsp/typescript')
+-- LSP
+require('lsp/lua')
+require('lsp/typescript')
 
 -- -- plugins
 -- require('plugins/lsp-config')

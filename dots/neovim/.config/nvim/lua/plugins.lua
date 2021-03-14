@@ -37,4 +37,6 @@ return require('packer').startup(function()
   use 'jiangmiao/auto-pairs'
   -- closetags
   use 'alvan/vim-closetag'
+  -- LSP
+  use 'neovim/nvim-lspconfig'
 end)
