@@ -4,8 +4,7 @@ require('plugins')
 require('lsp/lua')
 require('lsp/typescript')
 
--- -- plugins
--- require('plugins/lsp-config')
--- require('plugins/lspsaga')
+-- plugins
+require('plugins/lsp-saga')
 -- require('plugins/telescope')
 

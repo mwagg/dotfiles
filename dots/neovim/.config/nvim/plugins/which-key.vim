@@ -41,4 +41,13 @@ let g:which_key_map.p = {
       \ 'c': [':PackerClean', 'Clean'],
       \ }
 
+" l is for LSP
+let g:which_key_map.l = {
+      \ 'name': '+LSP',
+      \ 's': [':Lspsaga signature_help', 'Signature help'],
+      \ 'r': [':Lspsaga rename', 'Signature help'],
+      \ 'd': [':Lspsaga preview_definition', 'Preview definition'],
+      \ 'e': [':Lspsaga show_line_diagnostics', 'Show line diagnostics'],
+      \ }
+
 call which_key#register('<Space>', "g:which_key_map")
