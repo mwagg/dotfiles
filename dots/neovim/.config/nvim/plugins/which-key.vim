@@ -35,6 +35,13 @@ let g:which_key_map.g = {
       \ 'm': [':GitMessenger', 'Git message'],
       \ }
 
+" e is for file explorer
+let g:which_key_map.e = {
+      \ 'name': '+file explorer',
+      \ 'e': [':NvimTreeToggle', 'Toggle file explorer'],
+      \ 'f': [':NvimTreeFindFile', 'Toggle find file'],
+      \}
+
 " p is for packer
 let g:which_key_map.p = {
       \ 'name': '+Packer',
