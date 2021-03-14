@@ -50,4 +50,7 @@ return require('packer').startup(function()
   use 'nvim-telescope/telescope.nvim'
   -- nvim tree
   use 'kyazdani42/nvim-tree.lua'
+  -- tab line
+  use 'kyazdani42/nvim-web-devicons'
+  use 'romgrk/barbar.nvim'
 end)

@@ -61,7 +61,8 @@ let g:which_key_map.l = {
 
 " b is for buffers
 let g:which_key_map.b = {
-      \ 'b' : [':Telescope buffers', 'buffers'],
+      \ 'b' : [':Telescope buffers', 'Buffers'],
+      \ 'd' : [':BufferClose', 'Close buffer'],
       \}
 
 " s is for search powered by telescope
