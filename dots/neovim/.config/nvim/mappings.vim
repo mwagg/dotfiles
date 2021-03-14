@@ -44,6 +44,3 @@ nnoremap <silent> <M-j>    :resize -2<CR>
 nnoremap <silent> <M-k>    :resize +2<CR>
 nnoremap <silent> <M-h>    :vertical resize -2<CR>
 nnoremap <silent> <M-l>    :vertical resize +2<CR>
-
-" quickly edit init.vim
-nnoremap <leader>. :e $MYVIMRC<CR>

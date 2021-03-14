@@ -2,3 +2,6 @@ source ~/.config/nvim/settings.vim
 source ~/.config/nvim/mappings.vim
 
 luafile ~/.config/nvim/new-init.lua
+
+" plugins
+source ~/.config/nvim/plugins/which-key.vim
