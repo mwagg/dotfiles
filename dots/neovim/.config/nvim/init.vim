@@ -5,3 +5,5 @@ luafile ~/.config/nvim/new-init.lua
 
 " plugins
 source ~/.config/nvim/plugins/which-key.vim
+source ~/.config/nvim/plugins/better-whitespace.vim
+source ~/.config/nvim/plugins/vim-polyglot.vim

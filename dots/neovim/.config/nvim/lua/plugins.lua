@@ -15,4 +15,26 @@ return require('packer').startup(function()
   use {'wbthomason/packer.nvim', opt = true}
   use 'TimUntersberger/neogit'
   use 'liuchengxu/vim-which-key'
+  -- theme
+  use 'sickill/vim-monokai'
+  -- comments
+  use 'tpope/vim-commentary'
+  -- comments when mixed languages in file
+  use 'suy/vim-context-commentstring'
+  -- set the root dir automatically
+  use 'airblade/vim-rooter'
+  -- better whitespace
+  use 'ntpeters/vim-better-whitespace'
+  -- quick jump
+  use 'justinmk/vim-sneak'
+  -- surround
+  use 'tpope/vim-surround'
+  -- better syntax
+  use 'sheerun/vim-polyglot'
+  -- icons
+  use 'ryanoasis/vim-devicons'
+  -- auto pairs for '(' '[' '{'
+  use 'jiangmiao/auto-pairs'
+  -- closetags
+  use 'alvan/vim-closetag'
 end)
