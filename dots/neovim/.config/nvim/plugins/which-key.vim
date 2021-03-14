@@ -31,7 +31,8 @@ let g:which_key_map[' '] = [':Telescope find_files hidden=true', 'Find files']
 " g is for git
 let g:which_key_map.g = {
       \ 'name': '+git',
-      \ 'g': [':Neogit', 'Show Neogit']
+      \ 'g': [':Neogit', 'Show Neogit'],
+      \ 'm': [':GitMessenger', 'Git message'],
       \ }
 
 " p is for packer
