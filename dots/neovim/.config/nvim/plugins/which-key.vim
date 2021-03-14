@@ -24,8 +24,9 @@ autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
 " Single mappings
-let g:which_key_map['.'] = [':e $MYVIMRC', 'open init']
-let g:which_key_map['='] = ['<C-W>=', 'balance windows']
+let g:which_key_map['.'] = [':e $MYVIMRC', 'Open init']
+let g:which_key_map['='] = ['<C-W>=', 'Balance windows']
+let g:which_key_map[' '] = [':Telescope find_files hidden=true', 'Find files']
 
 " g is for git
 let g:which_key_map.g = {
@@ -48,6 +49,51 @@ let g:which_key_map.l = {
       \ 'r': [':Lspsaga rename', 'Signature help'],
       \ 'd': [':Lspsaga preview_definition', 'Preview definition'],
       \ 'e': [':Lspsaga show_line_diagnostics', 'Show line diagnostics'],
+      \ }
+
+" b is for buffers
+let g:which_key_map.b = {
+      \ 'b' : [':Telescope buffers', 'buffers'],
+      \}
+
+" s is for search powered by telescope
+let g:which_key_map.s = {
+      \ 'name' : '+search',
+      \ '.' : [':Telescope filetypes', 'filetypes'],
+      \ ';' : [':Telescope commands', 'commands'],
+      \ 'a' : [':Telescope lsp_code_actions', 'code_actions'],
+      \ 'A' : [':Telescope builtin', 'all'],
+      \ 'b' : [':Telescope buffers', 'buffers'],
+      \ 'B' : [':Telescope git_branches', 'git branches'],
+      \ 'd' : [':Telescope lsp_document_diagnostics', 'document_diagnostics'],
+      \ 'D' : [':Telescope lsp_workspace_diagnostics', 'workspace_diagnostics'],
+      \ 'c' : [':Telescope git_commits', 'git_commits'],
+      \ 'C' : [':Telescope git_bcommits', 'git_bcommits'],
+      \ 'f' : [':Telescope find_files', 'files'],
+      \ 'F' : [':Telescope git_files', 'git_files'],
+      \ 'g' : [':Telescope tags', 'tags'],
+      \ 'G' : [':Telescope current_buffer_tags', 'buffer_tags'],
+      \ 'h' : [':Telescope command_history', 'history'],
+      \ 'H' : [':Telescope help_tags', 'help_tags'],
+      \ 'i' : [':Telescope media_files', 'media files'],
+      \ 'k' : [':Telescope keymaps', 'keymaps'],
+      \ 'l' : [':Telescope loclist', 'loclist'],
+      \ 'm' : [':Telescope marks', 'marks'],
+      \ 'M' : [':Telescope man_pages', 'man_pages'],
+      \ 'o' : [':Telescope vim_options', 'vim_options'],
+      \ 'O' : [':Telescope oldfiles', 'oldfiles'],
+      \ 'p' : [':Telescope fd', 'fd'],
+      \ 'P' : [':Telescope spell_suggest', 'spell_suggest'],
+      \ 's' : [':Telescope git_status', 'git_status'],
+      \ 'S' : [':Telescope grep_string', 'grep_string'],
+      \ 't' : [':Telescope live_grep', 'text'],
+      \ 'y' : [':Telescope symbols', 'symbols'],
+      \ 'Y' : [':Telescope lsp_workspace_symbols', 'lsp_workspace_symbols'],
+      \ 'r' : [':Telescope registers', 'registers'],
+      \ 'R' : [':Telescope reloader', 'reloader'],
+      \ 'w' : [':Telescope file_browser', 'buf_fuz_find'],
+      \ 'u' : [':Telescope colorscheme', 'colorschemes'],
+      \ 'z' : [':Telescope current_buffer_fuzzy_find', 'buf_fuz_find'],
       \ }
 
 call which_key#register('<Space>', "g:which_key_map")
