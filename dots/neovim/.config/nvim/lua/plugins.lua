@@ -16,6 +16,8 @@ return require('packer').startup(function()
   -- git
   use 'TimUntersberger/neogit'
   use 'rhysd/git-messenger.vim'
+  use 'airblade/vim-gitgutter'
+  -- which key
   use 'liuchengxu/vim-which-key'
   -- theme
   use 'sickill/vim-monokai'
