@@ -9,8 +9,10 @@ if fn.empty(fn.glob(install_path)) > 0 then
 end
 
 vim.cmd [[packadd packer.nvim]]
+local packer = require('packer')
+local use = packer.use
 
-return require('packer').startup(function()
+return packer.startup(function()
   -- Packer can manage itself as an optional plugin
   use {'wbthomason/packer.nvim', opt = true}
   -- git
