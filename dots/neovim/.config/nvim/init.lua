@@ -1,5 +1,5 @@
 require('settings')
-vim.cmd('source ~/.config/nvim/mappings.vim')
+require('mappings')
 vim.cmd('source ~/.config/nvim/theme.vim')
 require('plugins')
 
