@@ -10,3 +10,4 @@ source ~/.config/nvim/plugins/vim-polyglot.vim
 source ~/.config/nvim/plugins/lspconfig.vim
 source ~/.config/nvim/plugins/lsp-saga.vim
 source ~/.config/nvim/plugins/barbar.vim
+source ~/.config/nvim/plugins/floaterm.vim
