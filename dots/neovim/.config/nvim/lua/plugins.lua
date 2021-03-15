@@ -59,5 +59,5 @@ return packer.startup(function()
   -- floaterm
   use 'voldikss/vim-floaterm'
   -- completion
-  use 'hrsh7th/nvim-compe'
+  use 'nvim-lua/completion-nvim'
 end)

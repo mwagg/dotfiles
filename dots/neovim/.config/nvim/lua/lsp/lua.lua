@@ -31,4 +31,5 @@ require'lspconfig'.sumneko_lua.setup {
       },
     },
   },
+  on_attach = require('completion').on_attach,
 }
