@@ -106,4 +106,10 @@ let g:which_key_map.s = {
       \ 'z' : [':Telescope current_buffer_fuzzy_find', 'buf_fuz_find'],
       \ }
 
+" q is for quitting
+let g:which_key_map.q = {
+      \ 'name': '+quit',
+      \ 'q': [':qall', 'Quit'],
+      \ }
+
 call which_key#register('<Space>', "g:which_key_map")
