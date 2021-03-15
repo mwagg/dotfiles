@@ -1,7 +1,7 @@
+require('plugins')
 require('settings')
 require('mappings')
 vim.cmd('source ~/.config/nvim/theme.vim')
-require('plugins')
 
 -- LSP
 require('lsp/lua')
@@ -19,3 +19,4 @@ require('plugins/lsp-saga')
 require('plugins/barbar')
 require('plugins/floaterm')
 vim.cmd('source ~/.config/nvim/plugins/which-key.vim')
+vim.cmd('source ~/.config/nvim/plugins/neoformat.vim')
