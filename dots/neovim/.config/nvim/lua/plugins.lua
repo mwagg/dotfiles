@@ -46,6 +46,7 @@ return packer.startup(function()
   -- LSP
   use 'neovim/nvim-lspconfig'
   use 'glepnir/lspsaga.nvim'
+  use 'onsails/lspkind-nvim'
   -- telescope
   use 'nvim-lua/popup.nvim'
   use 'nvim-lua/plenary.nvim'
@@ -57,4 +58,6 @@ return packer.startup(function()
   use 'romgrk/barbar.nvim'
   -- floaterm
   use 'voldikss/vim-floaterm'
+  -- completion
+  use 'hrsh7th/nvim-compe'
 end)

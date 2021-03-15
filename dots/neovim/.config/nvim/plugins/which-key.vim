@@ -54,7 +54,7 @@ let g:which_key_map.p = {
 let g:which_key_map.c = {
       \ 'name': '+LSP',
       \ 's': [':Lspsaga signature_help', 'Signature help'],
-      \ 'r': [':Lspsaga rename', 'Signature help'],
+      \ 'r': [':Lspsaga rename', 'Rename'],
       \ 'd': [':Lspsaga preview_definition', 'Preview definition'],
       \ 'e': [':Lspsaga show_line_diagnostics', 'Show line diagnostics'],
       \ 'a': [':Lspsaga code_action', 'Code actions'],
