@@ -25,6 +25,7 @@ asdf install nodejs 12.18.4
 type yarn || npm install -g yarn
 type tern || yarn global add tern
 type eslint || yarn global add eslint
+type eslint_d || yarn global add eslint_d
 type js-beautify || yarn global add js-beautify
 type prettier || yarn global add prettier
 type typescript-language-server|| yarn global add typescript-language-server

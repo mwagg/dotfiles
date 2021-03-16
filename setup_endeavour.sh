@@ -141,6 +141,7 @@ pacman_install neovim
 pacman_install xsel
 pacman_install ninja
 yay_install lua-language-server
+yay_install efm-langserver
 
 yay_install circleci-cli-bin
 yay_install pgformatter-git
