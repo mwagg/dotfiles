@@ -62,4 +62,6 @@ return packer.startup(function()
   use 'nvim-lua/completion-nvim'
   -- autoformat
   use 'sbdchd/neoformat'
+  -- python
+  use { 'psf/black', branch= 'stable' }
 end)
