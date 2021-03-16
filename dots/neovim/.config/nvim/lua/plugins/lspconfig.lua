@@ -4,4 +4,4 @@ vim.api.nvim_set_keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', { si
 vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { silent = true, noremap = true })
 
 -- auto-format
-vim.cmd('autocmd BufWritePre *.js,*.jsx,*.json,*.tsx,*.ts,*.py :lua vim.lsp.buf.formatting()')
+vim.cmd('autocmd BufWritePre *.js,*.jsx,*.json,*.tsx,*.ts,*.py,*.lua :lua vim.lsp.buf.formatting_sync(nil, 100)')
