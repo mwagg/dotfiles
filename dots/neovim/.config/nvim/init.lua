@@ -8,6 +8,7 @@ require('lsp/efm')
 require('lsp/lua')
 require('lsp/typescript')
 require('lsp/python')
+require('lsp/yaml')
 
 -- plugins
 require('plugins/lsp-saga')
