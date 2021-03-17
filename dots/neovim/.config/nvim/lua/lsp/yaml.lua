@@ -1,1 +1,1 @@
-require'lspconfig'.yamlls.setup {}
+require'lspconfig'.yamlls.setup {on_attach = require('completion').on_attach}
