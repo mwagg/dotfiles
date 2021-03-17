@@ -62,4 +62,12 @@ return packer.startup(function()
     use 'voldikss/vim-floaterm'
     -- completion
     use 'nvim-lua/completion-nvim'
+    -- statusline
+    use {
+        'glepnir/galaxyline.nvim',
+        branch = 'main',
+        -- some optional icons
+        requires = {'kyazdani42/nvim-web-devicons', opt = true},
+        opt = false
+    }
 end)
