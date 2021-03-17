@@ -34,6 +34,9 @@ let g:which_key_map.g = {
       \ 'name': '+git',
       \ 'g': [':Neogit', 'Show Neogit'],
       \ 'm': [':GitMessenger', 'Git message'],
+      \ 's': [':GitGutterStageHunk', 'Stage hunk'],
+      \ 'u': [':GitGutterUndoHunk', 'Undo hunk'],
+      \ 'p': [':GitGutterPreviewHunk', 'Preview hunk'],
       \ }
 
 " e is for file explorer
