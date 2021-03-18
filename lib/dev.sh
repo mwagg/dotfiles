@@ -28,6 +28,7 @@ type eslint || yarn global add eslint
 type eslint_d || yarn global add eslint_d
 type js-beautify || yarn global add js-beautify
 type prettier || yarn global add prettier
+type tsc yarn global add typescript
 type typescript-language-server|| yarn global add typescript-language-server
 type eslint_d || yarn global add eslint_d
 type yaml-language-server || yarn global add yaml-language-server
