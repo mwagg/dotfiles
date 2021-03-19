@@ -53,6 +53,7 @@ return packer.startup(function()
     use 'nvim-lua/plenary.nvim'
     use 'nvim-telescope/telescope.nvim'
     use 'nvim-telescope/telescope-media-files.nvim'
+    use 'nvim-telescope/telescope-project.nvim'
     -- nvim tree
     use 'kyazdani42/nvim-tree.lua'
     -- tab line
@@ -61,7 +62,7 @@ return packer.startup(function()
     -- floaterm
     use 'voldikss/vim-floaterm'
     -- completion
-    use 'nvim-lua/completion-nvim'
+    use 'hrsh7th/nvim-compe'
     -- statusline
     use {
         'glepnir/galaxyline.nvim',
