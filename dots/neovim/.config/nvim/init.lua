@@ -10,6 +10,7 @@ require('lsp/typescript')
 require('lsp/python')
 require('lsp/yaml')
 require('lsp/terraform')
+require('lsp/bash')
 
 -- plugins
 require('plugins/lsp-saga')
