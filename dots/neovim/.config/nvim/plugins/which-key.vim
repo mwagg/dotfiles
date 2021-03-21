@@ -37,6 +37,8 @@ let g:which_key_map.g = {
       \ 's': [':GitGutterStageHunk', 'Stage hunk'],
       \ 'u': [':GitGutterUndoHunk', 'Undo hunk'],
       \ 'p': [':GitGutterPreviewHunk', 'Preview hunk'],
+      \ 'b' : [':Telescope git_branches', 'Branches'],
+      \ 'c' : [':Telescope git_commits', 'git_commits'],
       \ }
 
 " e is for file explorer
@@ -62,6 +64,7 @@ let g:which_key_map.c = {
       \ 'd': [':Lspsaga preview_definition', 'Preview definition'],
       \ 'e': [':Lspsaga show_line_diagnostics', 'Show line diagnostics'],
       \ 'a': [':Lspsaga code_action', 'Code actions'],
+      \ 'E' : [':Telescope lsp_document_diagnostics', 'document_diagnostics'],
       \ }
 
 " b is for buffers
@@ -70,18 +73,11 @@ let g:which_key_map.b = {
       \ 'd' : [':BufferClose', 'Close buffer'],
       \}
 
-" s is for search powered by telescope
-let g:which_key_map.s = {
+" f is for find powered by telescope
+let g:which_key_map.f = {
       \ 'name' : '+search',
-      \ '.' : [':Telescope filetypes', 'filetypes'],
-      \ ';' : [':Telescope commands', 'commands'],
       \ 'a' : [':Telescope lsp_code_actions', 'code_actions'],
-      \ 'A' : [':Telescope builtin', 'all'],
       \ 'b' : [':Telescope buffers', 'buffers'],
-      \ 'B' : [':Telescope git_branches', 'git branches'],
-      \ 'd' : [':Telescope lsp_document_diagnostics', 'document_diagnostics'],
-      \ 'D' : [':Telescope lsp_workspace_diagnostics', 'workspace_diagnostics'],
-      \ 'c' : [':Telescope git_commits', 'git_commits'],
       \ 'C' : [':Telescope git_bcommits', 'git_bcommits'],
       \ 'f' : [':Telescope find_files', 'files'],
       \ 'F' : [':Telescope git_files', 'git_files'],
@@ -100,7 +96,6 @@ let g:which_key_map.s = {
       \ 'P' : [':Telescope spell_suggest', 'spell_suggest'],
       \ 's' : [':Telescope git_status', 'git_status'],
       \ 'S' : [':Telescope grep_string', 'grep_string'],
-      \ 't' : [':Telescope live_grep', 'text'],
       \ 'y' : [':Telescope symbols', 'symbols'],
       \ 'Y' : [':Telescope lsp_workspace_symbols', 'lsp_workspace_symbols'],
       \ 'r' : [':Telescope registers', 'registers'],
