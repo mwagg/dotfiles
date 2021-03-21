@@ -5,8 +5,6 @@ window:
     x: 10
     y: 10
 
-  decorations: none
-
 scrolling:
   multiplier: 10
 
