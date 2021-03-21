@@ -32,6 +32,7 @@ type tsc yarn global add typescript
 type typescript-language-server|| yarn global add typescript-language-server
 type eslint_d || yarn global add eslint_d
 type yaml-language-server || yarn global add yaml-language-server
+type bash-language-server || yarn global add bash-language-server
 yarn global add vim-language-server
 yarn global add pyright
 yarn global add neovim
@@ -42,13 +43,16 @@ type elm-test || yarn global add elm-test
 type elm-format || yarn global add elm-format
 type elm-language-server || yarn global add @elm-tooling/elm-language-server
 
-# python
-[ -d $HOME/.pyenv ] || git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-[ -d $HOME/.pyenv/plugins/pyenv-virtualenv ] || git clone https://github.com/pyenv/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyenv-virtualenv
-[ -d $HOME/.poetry ] || curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-pyenv install 3.6.9 -s
+if [[ "$OSTYPE" == "linux-gnu"* ]]
+then
+  # python
+  [ -d $HOME/.pyenv ] || git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+  [ -d $HOME/.pyenv/plugins/pyenv-virtualenv ] || git clone https://github.com/pyenv/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyenv-virtualenv
+  [ -d $HOME/.poetry ] || curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+  export PYENV_ROOT="$HOME/.pyenv"
+  export PATH="$PYENV_ROOT/bin:$PATH"
+  pyenv install 3.6.9 -s
+fi
 
 # elasticsearch and it's insatiable hunger for files
 if [[ -f /usr/lib/sysctl.d/elasticsearch.conf ]]; then
