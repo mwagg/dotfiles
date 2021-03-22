@@ -105,7 +105,7 @@ sudo systemctl start syncthing@$USER.service
 
 # jq
 pacman_install jq
-yay_install ijq-bin
+yay_install ijq
 
 # transmission
 pacman_install transmission-qt
