@@ -2,11 +2,14 @@
 
 set -e
 
-source lib/core.sh
+function pacman_install {
+  pacman -Q $1 || sudo pacman -S --needed --noconfirm $1
+}
 
-sudo pacman -Syyu --noconfirm --needed
+function yay_install {
+  pacman -Q $1 || yay -S --needed --noconfirm $1
+}
 
-pacman_install base-devel
 pacman_install stow
 ./link_dotfiles.sh
 
@@ -23,23 +26,9 @@ type yay || install_yay
 
 yay -Syu --noconfirm
 
-pacman_install intel-ucode
-pacman_install openssh
-
 # ssh-agent
 systemctl enable ssh-agent --user
 systemctl start ssh-agent --user
-
-# power management
-pacman_install acpi
-pacman_install tlp
-pacman_install tp_smapi
-pacman_install acpi_call
-sudo systemctl enable tlp.service
-sudo systemctl start tlp.service
-
-# suspend on lid close
-sudo sed -i -e 's/HandleLidSwitch=ignore/handleLidSwitch=suspend/' /etc/systemd/logind.conf
 
 # firewall
 pacman_install ufw
@@ -49,69 +38,11 @@ sudo ufw default allow outgoing
 sudo ufw default deny incoming
 sudo ufw enable || true
 
-# gdm
-pacman_install gdm
-set +e
-sudo systemctl disable lightdm.service
-set -e
-sudo systemctl enable gdm.service
-sudo systemctl set-default graphical.target
-
-# gnome
-pacman_install gnome
-pacman_install gnome-extra
-pacman_install gnome-control-center
-pacman_install gnome-backgrounds
-pacman_install gnome-tweaks
-yay_install gnome-shell-extension-dash-to-dock
-
-# tilix
-pacman_install tilix
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'tilix'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
-
 # vim
 pacman_install vim
 
 # tmux
 pacman_install tmux
-
-# fonts
-yay_install ttf-mononoki
-pacman_install noto-fonts-emoji
-
-# sound
-pacman_install pulseaudio
-pacman_install pavucontrol
-pacman_install pulseaudio-alsa
-pacman_install alsa-utils
-pacman_install alsa-plugins
-pacman_install alsa-lib
-pacman_install alsa-firmware
-pacman_install gstreamer
-pacman_install gst-plugins-good
-pacman_install gst-plugins-bad
-pacman_install gst-plugins-base
-pacman_install gst-plugins-ugly
-pulseaudio --start
-echo ".include /etc/pulse/default.pa" > $HOME/.config/pulse/default.pa
-echo ".ifexists module-switch-on-connect.so" >> $HOME/.config/pulse/default.pa
-echo "load-module module-switch-on-connect" >> $HOME/.config/pulse/default.pa
-echo ".endif" >> $HOME/.config/pulse/default.pa
-
-# bluetooth
-pacman_install pulseaudio-bluetooth
-pacman_install bluez
-pacman_install bluez-libs
-pacman_install bluez-utils
-pacman_install blueberry
-
-sudo systemctl enable bluetooth.service
-sudo systemctl start bluetooth.service
-
-sudo sed -i 's/'#AutoEnable=false'/'AutoEnable=true'/g' /etc/bluetooth/main.conf
 
 # base devel
 pacman_install base-devel
@@ -141,11 +72,6 @@ pacman_install cmake
 # github hub
 pacman_install hub
 
-# firefox
-pacman_install firefox
-pacman_install xdg-utils
-xdg-settings set default-web-browser firefox.desktop
-
 # chromium
 pacman_install chromium
 yay_install chromium-widevine
@@ -167,8 +93,9 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 flatpak update -y
 
 flatpak install flathub com.spotify.Client -y
-flatpak install flathub com.slack.Slack -y
 flatpak install com.valvesoftware.Steam -y
+
+yay_install slack-desktop
 
 # syncthing
 pacman_install syncthing
@@ -178,47 +105,13 @@ sudo systemctl start syncthing@$USER.service
 
 # jq
 pacman_install jq
-pacman_install ijq
+yay_install ijq
 
 # transmission
-pacman_install transmission-gtk
+pacman_install transmission-qt
 
 # tldr
 pacman_install tldr
-
-# vyprvpn
-yay_install vyprvpn-linux-cli
-sudo systemctl enable vyprvpn.service
-sudo systemctl start vyprvpn.service
-
-# printing
-pacman_install cups
-pacman_install avahi
-pacman_install nss-mdns
-sudo systemctl enable avahi-daemon.service
-sudo systemctl enable cups.service
-
-# gtk
-yay_install newaita-icons-git
-gsettings set org.gnome.desktop.interface icon-theme Newaita
-yay_install prof-gnome-theme-git
-gsettings set org.gnome.desktop.interface gtk-theme Prof-Gnome-Dark
-yay_install capitaine-cursors 3-2
-gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
-
-# qemu
-pacman_install qemu
-pacman_install ovmf
-pacman_install virt-manager
-mkdir -p $HOME/.config/libvirt
-echo "nvram = [" > $HOME/.config/libvirt/qemu.conf
-echo '"/usr/share/ovmf/x64/OVMF_CODE.fd:/usr/share/ovmf/x64/OVMF_VARS.fd"' >> $HOME/.config/libvirt/qemu.conf
-echo "]" >> $HOME/.config/libvirt/qemu.conf
-
-yay_install systemd-boot-pacman-hook
-
-yay_install throttled
-sudo systemctl enable --now lenovo_fix.service
 
 yay_install zoom
 
@@ -245,17 +138,17 @@ pacman_install libreoffice
 
 pacman_install python-neovim
 pacman_install neovim
+pacman_install xsel
+pacman_install ninja
+yay_install lua-language-server
+yay_install efm-langserver
+yay_install lua-format
+yay_install terraform-ls
 
 yay_install circleci-cli-bin
 yay_install pgformatter-git
 
 pacman_install inetutils
-pacman_install light
-if [[ ! -f /etc/udev/rules.d/backlight.rules ]];then
-  echo 'ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="acpi_video0", RUN+="/bin/chgrp video /sys/class/backlight/%k/brightness"' | sudo tee -a /etc/udev/rules.d/backlight.rules
-  echo 'ACTION=="add", SUBSYSTEM=="backlight", KERNEL=="acpi_video0", RUN+="/bin/chmod g+w /sys/class/backlight/%k/brightness"' | sudo tee -a /etc/udev/rules.d/backlight.rules
-fi
-sudo usermod -a -G video $USER
 
 pacman_install man-db
 pacman_install man-pages
@@ -265,4 +158,29 @@ pacman_install entr
 pacman_install httpie
 pacman_install wget
 
-yay_install gnome-shell-extension-sound-output-device-chooser-git
+# terminal
+pacman_install alacritty
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'alacritty'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
+
+# gnome extensions
+yay_install gnome-shell-frippery
+
+# gtk
+yay_install qogir-icon-theme-git
+gsettings set org.gnome.desktop.interface icon-theme Qogir-dark
+yay_install prof-gnome-theme-git
+gsettings set org.gnome.desktop.interface gtk-theme Prof-Gnome-Dark
+yay_install capitaine-cursors 3-2
+gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
+yay_install flat-remix-gnome
+gnome-shell-extension-tool -e user-theme@gnome-shell-extensions.gcampax.github.com
+gsettings set org.gnome.shell.extensions.user-theme name "Flat-Remix-Blue"
+
+# bluetooth
+pacman_install pulseaudio-bluetooth
+pacman_install bluez-utils
+pacman_install bluez
+sudo systemctl enable --now bluetooth.service
