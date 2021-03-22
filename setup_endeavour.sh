@@ -165,6 +165,9 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'alacritty'
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
 
+# gnome extensions
+yay_install gnome-shell-frippery
+
 # gtk
 yay_install qogir-icon-theme-git
 gsettings set org.gnome.desktop.interface icon-theme Qogir-dark
