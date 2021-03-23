@@ -22,7 +22,15 @@ require"lspconfig".efm.setup {
             typescript = {eslintSettings},
             ["typescript.tsx"] = {eslintSettings},
             typescriptreact = {eslintSettings},
-            python = {{formatCommand = 'black --quiet -', formatStdin = true}},
+            python = {
+                {
+                    formatCommand = 'black --quiet -',
+                    formatStdin = true,
+                    lintCommand = 'flake8 --stdin-display-name ${INPUT} -',
+                    lintStdin = true,
+                    lintFormats = {'%f:%l:%c: %m'}
+                }
+            },
             lua = {{formatCommand = "lua-format -i", formatStdin = true}}
         }
     }
