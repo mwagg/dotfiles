@@ -70,7 +70,7 @@ pacman_install ttf-nerd-fonts-symbols
 pacman_install cmake
 
 # github hub
-pacman_install hub
+pacman_install github-cli
 
 # chromium
 pacman_install chromium
