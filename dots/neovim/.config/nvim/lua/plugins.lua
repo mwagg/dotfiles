@@ -59,7 +59,6 @@ return packer.startup(function()
     use 'kyazdani42/nvim-tree.lua'
     -- tab line
     use 'kyazdani42/nvim-web-devicons'
-    use 'romgrk/barbar.nvim'
     -- floaterm
     use 'voldikss/vim-floaterm'
     -- completion
