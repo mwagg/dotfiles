@@ -36,7 +36,12 @@ local checkwidth = function()
     return false
 end
 
-gls.left[3] = {FileName = {provider = 'FileName'}}
+gls.left[3] = {
+    FileName = {
+        provider = function() return vim.fn.expand('%:p') end,
+        separator = ' '
+    }
+}
 
 gls.left[4] = {
     DiffAdd = {
