@@ -92,7 +92,7 @@ let g:which_key_map.f = {
       \ 'M' : [':Telescope man_pages', 'man_pages'],
       \ 'o' : [':Telescope vim_options', 'vim_options'],
       \ 'O' : [':Telescope oldfiles', 'oldfiles'],
-      \ 'p' : [':Telescope fd', 'fd'],
+      \ 'p' : [':lua require"telescope".extensions.project.project{}', 'Projects'],
       \ 'P' : [':Telescope spell_suggest', 'spell_suggest'],
       \ 's' : [':Telescope git_status', 'git_status'],
       \ 'S' : [':Telescope grep_string', 'grep_string'],
