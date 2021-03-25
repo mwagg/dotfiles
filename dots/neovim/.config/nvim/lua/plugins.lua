@@ -48,6 +48,7 @@ return packer.startup(function()
     use 'neovim/nvim-lspconfig'
     use 'glepnir/lspsaga.nvim'
     use 'onsails/lspkind-nvim'
+    use 'kabouzeid/nvim-lspinstall'
     -- telescope
     use 'nvim-lua/popup.nvim'
     use 'nvim-lua/plenary.nvim'
