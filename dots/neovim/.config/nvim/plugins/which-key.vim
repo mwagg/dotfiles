@@ -79,7 +79,7 @@ let g:which_key_map.f = {
       \ 'a' : [':Telescope lsp_code_actions', 'code_actions'],
       \ 'b' : [':Telescope buffers', 'buffers'],
       \ 'C' : [':Telescope git_bcommits', 'git_bcommits'],
-      \ 'f' : [':Telescope find_files', 'files'],
+      \ 'f' : [':Telescope file_browser', 'files'],
       \ 'F' : [':Telescope git_files', 'git_files'],
       \ 'g' : [':Telescope tags', 'tags'],
       \ 'G' : [':Telescope current_buffer_tags', 'buffer_tags'],
@@ -100,7 +100,6 @@ let g:which_key_map.f = {
       \ 'Y' : [':Telescope lsp_workspace_symbols', 'lsp_workspace_symbols'],
       \ 'r' : [':Telescope registers', 'registers'],
       \ 'R' : [':Telescope reloader', 'reloader'],
-      \ 'w' : [':Telescope file_browser', 'buf_fuz_find'],
       \ 'u' : [':Telescope colorscheme', 'colorschemes'],
       \ 'z' : [':Telescope current_buffer_fuzzy_find', 'buf_fuz_find'],
       \ }
