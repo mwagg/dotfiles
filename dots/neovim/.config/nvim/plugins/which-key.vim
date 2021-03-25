@@ -28,6 +28,7 @@ let g:which_key_map['.'] = [':e $MYVIMRC', 'Open init']
 let g:which_key_map['='] = ['<C-W>=', 'Balance windows']
 let g:which_key_map[' '] = [':Telescope find_files hidden=true', 'Find files']
 let g:which_key_map['/'] = [':Telescope live_grep', 'Live grep']
+let g:which_key_map['*'] = [':Telescope grep_string', 'Grep string']
 
 " g is for git
 let g:which_key_map.g = {
