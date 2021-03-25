@@ -71,4 +71,5 @@ return packer.startup(function()
         requires = {'kyazdani42/nvim-web-devicons', opt = true},
         opt = false
     }
+    use 'nvim-treesitter/nvim-treesitter'
 end)
