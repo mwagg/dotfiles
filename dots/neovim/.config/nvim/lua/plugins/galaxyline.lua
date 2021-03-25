@@ -20,13 +20,6 @@ local buffer_not_empty = function()
     return false
 end
 
-gls.left[1] = {
-    GitIcon = {
-        provider = function() return ' ' end,
-        condition = buffer_not_empty,
-        highlight = {colors.orange, colors.bg}
-    }
-}
 gls.left[2] = {
     GitBranch = {
         provider = 'GitBranch',
@@ -43,7 +36,9 @@ local checkwidth = function()
     return false
 end
 
-gls.left[3] = {
+gls.left[3] = {FileName = {provider = 'FileName'}}
+
+gls.left[4] = {
     DiffAdd = {
         provider = 'DiffAdd',
         condition = checkwidth,
@@ -51,7 +46,7 @@ gls.left[3] = {
         highlight = {colors.green, colors.bg}
     }
 }
-gls.left[4] = {
+gls.left[5] = {
     DiffModified = {
         provider = 'DiffModified',
         condition = checkwidth,
@@ -59,7 +54,7 @@ gls.left[4] = {
         highlight = {colors.blue, colors.bg}
     }
 }
-gls.left[5] = {
+gls.left[6] = {
     DiffRemove = {
         provider = 'DiffRemove',
         condition = checkwidth,
@@ -67,14 +62,14 @@ gls.left[5] = {
         highlight = {colors.red, colors.bg}
     }
 }
-gls.left[6] = {
+gls.left[7] = {
     LspClient = {
         provider = 'GetLspClient',
         condition = buffer_not_empty,
         highlight = {colors.green, colors.bg}
     }
 }
-gls.left[7] = {
+gls.left[8] = {
     LeftEnd = {
         provider = function() return ' ' end,
         separator = ' ',
@@ -82,29 +77,29 @@ gls.left[7] = {
         highlight = {colors.purple, colors.bg}
     }
 }
-gls.left[8] = {
+gls.left[9] = {
     DiagnosticError = {
         provider = 'DiagnosticError',
         icon = '  ',
         highlight = {colors.red, colors.bg}
     }
 }
-gls.left[9] = {Space = {provider = function() return '' end}}
-gls.left[10] = {
+gls.left[10] = {Space = {provider = function() return '' end}}
+gls.left[11] = {
     DiagnosticWarn = {
         provider = 'DiagnosticWarn',
         icon = '  ',
         highlight = {colors.yellow, colors.bg}
     }
 }
-gls.left[11] = {
+gls.left[12] = {
     DiagnosticHint = {
         provider = 'DiagnosticHint',
         icon = '   ',
         highlight = {colors.blue, colors.bg}
     }
 }
-gls.left[12] = {
+gls.left[13] = {
     DiagnosticInfo = {
         provider = 'DiagnosticInfo',
         icon = '   ',
