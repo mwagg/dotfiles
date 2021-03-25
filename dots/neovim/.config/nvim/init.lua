@@ -14,6 +14,7 @@ require('lsp/python')
 require('lsp/yaml')
 require('lsp/terraform')
 require('lsp/bash')
+require('lsp/elm')
 
 -- plugins
 require('plugins/lsp-saga')
