@@ -6,4 +6,4 @@ require'lspconfig'.pyright.setup {
     settings = {python = {analysis = {typeCheckingMode = "off"}}}
 }
 
-vim.cmd('autocmd BufWritePre *.py :lua vim.lsp.buf.formatting_sync(nil, 1000)')
+vim.cmd('autocmd BufWritePre *.py :lua vim.lsp.buf.formatting_sync(nil, 2000)')

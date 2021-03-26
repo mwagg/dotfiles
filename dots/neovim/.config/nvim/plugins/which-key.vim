@@ -72,6 +72,7 @@ let g:which_key_map.c = {
 let g:which_key_map.b = {
       \ 'b' : [':Telescope buffers', 'Buffers'],
       \ 'd' : [':BufferClose', 'Close buffer'],
+      \ 'f' : [':lua vim.lsp.buf.formatting()', 'Format buffer']
       \}
 
 " f is for find powered by telescope
