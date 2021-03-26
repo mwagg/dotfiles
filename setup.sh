@@ -167,6 +167,7 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/or
 
 # gnome extensions
 yay_install gnome-shell-frippery
+yay_install gnome-shell-extension-desk-changer
 
 # gtk
 yay_install qogir-icon-theme-git
