@@ -72,4 +72,5 @@ return packer.startup(function()
         opt = false
     }
     use 'nvim-treesitter/nvim-treesitter'
+    use 'phaazon/hop.nvim'
 end)

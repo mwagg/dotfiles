@@ -123,4 +123,10 @@ let g:which_key_map.q = {
       \ 'q': [':qall', 'Quit'],
       \ }
 
+" h is for hopping
+let g:which_key_map.h = {
+      \ 'name': '+hop',
+      \ 'h': [':HopWord', 'word']
+      \ }
+
 call which_key#register('<Space>', "g:which_key_map")
