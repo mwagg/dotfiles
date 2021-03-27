@@ -23,25 +23,6 @@ autocmd! FileType which_key
 autocmd  FileType which_key set laststatus=0 noshowmode noruler
   \| autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler
 
-" Single mappings
-let g:which_key_map['.'] = [':e $MYVIMRC', 'Open init']
-let g:which_key_map['='] = ['<C-W>=', 'Balance windows']
-let g:which_key_map[' '] = [':Telescope find_files hidden=true', 'Find files']
-let g:which_key_map['/'] = [':Telescope live_grep', 'Live grep']
-let g:which_key_map['*'] = [':Telescope grep_string', 'Grep string']
-
-" g is for git
-let g:which_key_map.g = {
-      \ 'name': '+git',
-      \ 'g': [':Neogit', 'Show Neogit'],
-      \ 'm': [':GitMessenger', 'Git message'],
-      \ 's': [':GitGutterStageHunk', 'Stage hunk'],
-      \ 'u': [':GitGutterUndoHunk', 'Undo hunk'],
-      \ 'p': [':GitGutterPreviewHunk', 'Preview hunk'],
-      \ 'b' : [':Telescope git_branches', 'Branches'],
-      \ 'c' : [':Telescope git_commits', 'git_commits'],
-      \ }
-
 " e is for file explorer
 let g:which_key_map.e = {
       \ 'name': '+file explorer',

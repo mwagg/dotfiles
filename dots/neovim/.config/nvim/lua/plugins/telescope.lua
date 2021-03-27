@@ -21,3 +21,14 @@ require('telescope').setup {
         }
     }
 }
+
+local wk = require('whichkey_setup')
+
+local keymap = {
+    g = {
+        b = {':Telescope git_branches<cr>', 'Branches'},
+        c = {':Telescope git_commits<cr>', 'Git commits'}
+    }
+}
+
+wk.register_keymap('leader', keymap)

@@ -22,6 +22,7 @@ return packer.startup(function()
     use 'airblade/vim-gitgutter'
     -- which key
     use 'liuchengxu/vim-which-key'
+    use 'AckslD/nvim-whichkey-setup.lua'
     -- theme
     use 'sickill/vim-monokai'
     -- comments
