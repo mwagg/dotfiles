@@ -49,14 +49,6 @@ let g:which_key_map.c = {
       \ 'E' : [':Telescope lsp_document_diagnostics', 'document_diagnostics'],
       \ }
 
-" b is for buffers
-let g:which_key_map.b = {
-      \ 'b' : [':Telescope buffers', 'Buffers'],
-      \ 'd' : [':BufferClose', 'Close buffer'],
-      \ 'f' : [':lua vim.lsp.buf.formatting()', 'Format buffer'],
-      \ 's' : [':w', 'Save buffer'],
-      \}
-
 " f is for find powered by telescope
 let g:which_key_map.f = {
       \ 'name' : '+search',

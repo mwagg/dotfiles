@@ -28,7 +28,8 @@ local keymap = {
     g = {
         b = {':Telescope git_branches<cr>', 'Branches'},
         c = {':Telescope git_commits<cr>', 'Git commits'}
-    }
+    },
+    b = {b = {':Telescope buffers<cr>', 'Find'}}
 }
 
 wk.register_keymap('leader', keymap)

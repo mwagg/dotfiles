@@ -64,7 +64,8 @@ local keymap = {
     [' '] = {':Telescope find_files hidden=true<cr>', 'Find files'},
     ['/'] = {':Telescope live_grep<cr>', 'Live grep'},
     ['*'] = {':Telescope grep_string<cr>', 'Grep string'},
-    g = {name = '+git'}
+    g = {name = '+git'},
+    b = {name = '+buffer', s = {':w<cr>', 'Save'}, d = {':q<cr>', 'Close'}}
 }
 
 wk.register_keymap('leader', keymap)
