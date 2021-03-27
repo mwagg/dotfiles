@@ -80,17 +80,6 @@ let g:which_key_map.f = {
       \ 'z' : [':Telescope current_buffer_fuzzy_find', 'buf_fuz_find'],
       \ }
 
-" t is for terminal
-let g:which_key_map.t = {
-      \ 'name': '+terminal',
-      \ 't': [':FloatermToggle', 'Toggle'],
-      \ 'h': [':FloatermNew htop', 'Htop'],
-      \ 'y': [':FloatermNew yarn install', 'Yarn install'],
-      \ 'n': [':FloatermNext', 'Next terminal'],
-      \ 'p': [':FloatermPrev', 'Previous terminal'],
-      \ 'z': [':FloatermHide', 'Hide'],
-      \ }
-
 " q is for quitting
 let g:which_key_map.q = {
       \ 'name': '+quit',
