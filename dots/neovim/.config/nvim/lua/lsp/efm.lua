@@ -14,7 +14,7 @@ require"lspconfig".efm.setup {
         'typescriptreact', 'typescript.tsx', 'python', 'lua'
     },
     settings = {
-        rootMarkers = {".git/"},
+        rootMarkers = {".package.json/"},
         languages = {
             javascript = {eslintSettings},
             javascriptreact = {eslintSettings},
