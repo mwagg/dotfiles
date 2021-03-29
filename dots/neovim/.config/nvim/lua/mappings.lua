@@ -66,7 +66,8 @@ local keymap = {
     ['*'] = {':Telescope grep_string<cr>', 'Grep string'},
     g = {name = '+git'},
     b = {name = '+buffer', s = {':w<cr>', 'Save'}, d = {':q<cr>', 'Close'}},
-    t = {name = '+terminal'}
+    t = {name = '+terminal'},
+    f = {name = '+files'}
 }
 
 wk.register_keymap('leader', keymap)
