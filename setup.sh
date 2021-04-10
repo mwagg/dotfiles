@@ -38,8 +38,12 @@ sudo ufw default allow outgoing
 sudo ufw default deny incoming
 sudo ufw enable || true
 
-# vim
-pacman_install vim
+# terminal
+pacman_install alacritty
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'alacritty'
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
 
 # tmux
 pacman_install tmux
@@ -57,24 +61,40 @@ pacman_install fzf
 yay_install autojump
 
 # fish shell
+pacman_install starship
 pacman_install fish
 sudo chsh -s /usr/bin/fish $USER
+
+# vim/emacs shared
+pacman_install ripgrep
+pacman_install ttf-nerd-fonts-symbols
+
+# neovim
+pacman_install python-neovim
+yay_install neovim-nightly-bin
+pacman_install xsel
+pacman_install ninja
+yay_install lua-language-server
+yay_install efm-langserver
+yay_install lua-format
+yay_install terraform-ls
 
 # emacs
 pacman_install adobe-source-code-pro-fonts
 pacman_install aspell-en
-pacman_install ripgrep
 pacman_install emacs
 sudo sed -i -e 's/^Exec=.*/Exec=\/usr\/bin\/fish -c emacs %f/' /usr/share/applications/emacs.desktop
-pacman_install ttf-nerd-fonts-symbols
 pacman_install cmake
+if [[ ! -d ~/.emacs.d ]]; then
+  git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+  ~/.emacs.d/bin/doom install
+fi
 
 # github hub
 pacman_install github-cli
 
 # chromium
 pacman_install chromium
-yay_install chromium-widevine
 
 # aws
 pacman_install aws-cli
@@ -93,7 +113,6 @@ sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flat
 flatpak update -y
 
 flatpak install flathub com.spotify.Client -y
-flatpak install com.valvesoftware.Steam -y
 
 yay_install slack-desktop
 
@@ -108,7 +127,7 @@ pacman_install jq
 yay_install ijq
 
 # transmission
-pacman_install transmission-qt
+pacman_install transmission-gtk
 
 # tldr
 pacman_install tldr
@@ -123,9 +142,6 @@ pacman_install docker-compose
 sudo usermod -a -G docker $USER
 sudo systemctl enable --now docker.service
 
-# ansible
-pacman_install ansible
-
 # peek
 pacman_install peek
 
@@ -135,15 +151,6 @@ yay_install asdf-vm
 pacman_install postgresql
 
 pacman_install libreoffice
-
-pacman_install python-neovim
-pacman_install neovim
-pacman_install xsel
-pacman_install ninja
-yay_install lua-language-server
-yay_install efm-langserver
-yay_install lua-format
-yay_install terraform-ls
 
 yay_install circleci-cli-bin
 yay_install pgformatter-git
@@ -157,28 +164,6 @@ pacman_install fd
 pacman_install entr
 pacman_install httpie
 pacman_install wget
-
-# terminal
-pacman_install alacritty
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'alacritty'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
-
-# gnome extensions
-yay_install gnome-shell-frippery
-yay_install gnome-shell-extension-desk-changer
-
-# gtk
-yay_install qogir-icon-theme-git
-gsettings set org.gnome.desktop.interface icon-theme Qogir-dark
-yay_install prof-gnome-theme-git
-gsettings set org.gnome.desktop.interface gtk-theme Prof-Gnome-Dark
-yay_install capitaine-cursors 3-2
-gsettings set org.gnome.desktop.interface cursor-theme capitaine-cursors
-yay_install flat-remix-gnome
-gnome-shell-extension-tool -e user-theme@gnome-shell-extensions.gcampax.github.com
-gsettings set org.gnome.shell.extensions.user-theme name "Flat-Remix-Blue"
 
 # bluetooth
 pacman_install pulseaudio-bluetooth

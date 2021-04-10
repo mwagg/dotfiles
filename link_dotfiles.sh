@@ -23,9 +23,4 @@ mkdir -p ~/.ssh
 decrypt_file ".ssh/config"
 decrypt_file ".terraformrc"
 
-if [[ ! -d ~/.emacs.d ]]; then
-  git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
-  ~/.emacs.d/bin/doom install
-fi
-
 popd &> /dev/null
