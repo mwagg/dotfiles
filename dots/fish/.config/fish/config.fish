@@ -1,3 +1,5 @@
+set fish_greeting
+
 if test -f $HOME/.asdf/asdf.sh
     source ~/.asdf/asdf.fish
 end
