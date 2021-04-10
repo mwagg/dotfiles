@@ -37,8 +37,6 @@ return packer.startup(function()
     use 'justinmk/vim-sneak'
     -- surround
     use 'tpope/vim-surround'
-    -- better syntax
-    use 'sheerun/vim-polyglot'
     -- icons
     use 'ryanoasis/vim-devicons'
     -- auto pairs for '(' '[' '{'
