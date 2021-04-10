@@ -73,4 +73,6 @@ return packer.startup(function()
     use 'nvim-treesitter/nvim-treesitter'
     use 'phaazon/hop.nvim'
     use 'aymericbeaumet/vim-symlink'
+    -- tab bar
+    use 'romgrk/barbar.nvim'
 end)
