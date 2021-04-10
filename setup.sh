@@ -90,7 +90,7 @@ if [[ ! -d ~/.emacs.d ]]; then
   ~/.emacs.d/bin/doom install
 fi
 
-# github hub
+# github
 pacman_install github-cli
 
 # chromium
