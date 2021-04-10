@@ -9,6 +9,6 @@ vim.api.nvim_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>',
 
 local wk = require('whichkey_setup')
 
-local keymap = {b = {f = {':lua vim.lsp.buf.formatting()', 'Format'}}}
+local keymap = {b = {f = {':lua vim.lsp.buf.formatting()<cr>', 'Format'}}}
 
 wk.register_keymap('leader', keymap)
