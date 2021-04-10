@@ -1,2 +1,0 @@
-set $term tilix
-set $menu rofi -show drun

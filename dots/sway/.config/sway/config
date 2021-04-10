@@ -1,8 +1,0 @@
-include ./vars
-include ./bindings
-include ./style
-include ./bar
-include ./rules
-include ./`hostname`/*
-include /etc/sway/config.d/*
-include ./exec
