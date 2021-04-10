@@ -13,6 +13,8 @@ bw get attachment chocg8j9jn0ce67leh3u8my7ybp24d73 --itemid e93fa440-324a-419e-a
 bw get attachment wvb3nx6m5evq5qgk76li684hqv34zksi --itemid 2b3bfe9d-ef76-4bba-9a27-a80000d36e86 --output ~/.ssh/id_rsa
 bw get attachment 2gnovdize9kfq9maa0g1oenj9fn823wt --itemid 2b3bfe9d-ef76-4bba-9a27-a80000d36e86 --output ~/.ssh/id_rsa.pub
 
+bw get attachment u563oebpumoyatmx9hxavnijbfk56jy7 --itemid 2e5b58ea-79a6-4421-8300-aa2200f9bfdf --output ~/.ssh/digital-ocean
+
 chmod 600 ~/.ssh/*
 
 ./http_to_git_ssh.sh
