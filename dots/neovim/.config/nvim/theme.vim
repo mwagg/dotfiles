@@ -1,5 +1,5 @@
 syntax on
-colorscheme monokai
+colorscheme dracula
 
 " checks if terminal has 24-bit color support
 if (has("termguicolors"))
