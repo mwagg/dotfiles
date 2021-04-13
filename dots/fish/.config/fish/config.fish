@@ -46,4 +46,6 @@ end
 [ -f ~/.config/tabtab/__tabtab.fish ]; and . ~/.config/tabtab/__tabtab.fish; or true
 set -g fish_user_paths "/usr/local/opt/libpq/bin" $fish_user_paths
 
+alias vim=nvim
+
 starship init fish | source

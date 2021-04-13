@@ -2,7 +2,7 @@
 	name = mwagg
 	email = michael@guerillatactics.co.uk
 [core]
-	editor = vim
+	editor = nvim
 	whitespace = tab-in-indent,tabwidth=2
 	excludesfile = /home/mike/.config/git/gitignore
 [alias]
