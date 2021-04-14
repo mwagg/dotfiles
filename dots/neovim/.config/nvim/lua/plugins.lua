@@ -19,7 +19,7 @@ return packer.startup(function()
     -- git
     use 'TimUntersberger/neogit'
     use 'rhysd/git-messenger.vim'
-    use 'airblade/vim-gitgutter'
+    use 'lewis6991/gitsigns.nvim'
     -- which key
     use 'liuchengxu/vim-which-key'
     use 'AckslD/nvim-whichkey-setup.lua'
