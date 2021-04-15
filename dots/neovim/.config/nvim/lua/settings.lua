@@ -24,6 +24,10 @@ vim.o.clipboard = 'unnamedplus' -- use system clipboard
 vim.o.incsearch = true -- show search matches while typing
 vim.o.inccommand = 'nosplit' -- show result of substitution as you type
 vim.o.mouse = 'a'
+vim.cmd('set ts=4') -- Insert 2 spaces for a tab
+vim.cmd('set sw=4') -- Change the number of space characters inserted for indentation
+vim.bo.expandtab = true
+vim.o.smartindent = true
 
 -- don't automatically add comment on newline
 vim.cmd('filetype plugin on') -- need to make sure the autocmd is after this
