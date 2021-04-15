@@ -52,6 +52,10 @@ then
   export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   pyenv install 3.6.9 -s
+
+  # ruby
+  asdf plugin add ruby || true
+  asdf install ruby 3.0.1
 fi
 
 # elasticsearch and it's insatiable hunger for files
