@@ -36,3 +36,10 @@ vim.cmd(
 
 -- no line numbers in terminals
 vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber')
+
+-- highlight on yank
+vim.cmd('augroup name')
+vim.cmd('autocmd!')
+vim.cmd(
+    'autocmd TextYankPost *, lua require(\'vim.highlight\').on_yank({higroup = \'Search\', timeout = 200})')
+vim.cmd('augroup END')
