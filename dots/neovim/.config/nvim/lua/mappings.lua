@@ -72,3 +72,7 @@ local keymap = {
 }
 
 wk.register_keymap('leader', keymap)
+
+vim.cmd('autocmd! FileType which_key')
+vim.cmd('autocmd  FileType which_key set laststatus=0 noshowmode noruler')
+vim.cmd('autocmd BufLeave <buffer> set laststatus=2 noshowmode ruler')
