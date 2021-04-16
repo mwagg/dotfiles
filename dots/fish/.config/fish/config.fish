@@ -31,10 +31,10 @@ for path in $AUTOJUMP_PATH
 end
 
 if test -d $HOME/.pyenv
-    set -Ux PYENV_ROOT $HOME/.pyenv
-    set -x PATH $HOME/.pyenv/bin $PATH
-    status --is-interactive; and source (pyenv init -|psub)
-    status --is-interactive; and pyenv virtualenv-init - | source
+	set -Ux PYENV_ROOT $HOME/.pyenv
+	set -x PATH $HOME/.pyenv/bin $PATH
+	status --is-interactive; and source (pyenv init -|psub)
+	status --is-interactive; and source (pyenv virtualenv-init -|psub)
 end
 
 if test -n "$DESKTOP_SESSION"
