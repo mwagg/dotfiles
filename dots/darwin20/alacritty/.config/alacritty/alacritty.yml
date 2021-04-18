@@ -1,0 +1,29 @@
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+window:
+  padding:
+    x: 10
+    y: 10
+  decorations: buttonless
+  position:
+    x: 60
+    y: 100
+  dimensions:
+    columns: 170
+    lines: 42
+
+scrolling:
+  multiplier: 10
+
+font:
+  normal:
+    family: Source Code Pro
+  size: 14.0
+
+background_opacity: 0.95
+
+# Live config reload (changes require restart)
+live_config_reload: true
+
+import:
+  - ~/.config/alacritty/dracula.yml
