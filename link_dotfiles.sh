@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 function link_dots {
   pushd "dots/$1" &> /dev/null
   DIRS=$(find "$PWD" -mindepth 1 -maxdepth 1 -type d -not -name ".*")
