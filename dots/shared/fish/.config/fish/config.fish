@@ -7,16 +7,15 @@ if test -f /opt/asdf-vm/asdf.sh
     source /opt/asdf-vm/asdf.fish
 end
 
-if test -d $HOME/.local/bin
-    set -x PATH $HOME/.local/bin $PATH
-end
-
-if test -d $HOME/.local/node/bin
-    set -x PATH $HOME/.local/node/bin $PATH
-end
-
-if test -d $HOME/.local/elm/bin
-    set -x PATH $HOME/.local/elm/bin $PATH
+for path in $HOME/.local/bin \
+		$HOME/.local/node/bin \
+		$HOME/.local/elm/bin \
+		/usr/local/bin \
+		/usr/local/opt/libpq/bin \
+		/usr/local/sbin
+	if test -d "$path"
+		set -g fish_user_paths "$path" $fish_user_paths
+	end
 end
 
 set -x PGHOST localhost
@@ -32,7 +31,7 @@ end
 
 if test -d $HOME/.pyenv
 	set -Ux PYENV_ROOT $HOME/.pyenv
-	set -x PATH $HOME/.pyenv/bin $PATH
+    set -g fish_user_paths "$HOME/.pyenv/bin" $fish_user_paths
 	status --is-interactive; and source (pyenv init -|psub)
 	status --is-interactive; and source (pyenv virtualenv-init -|psub)
 end
@@ -44,7 +43,6 @@ end
 # tabtab source for packages
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/__tabtab.fish ]; and . ~/.config/tabtab/__tabtab.fish; or true
-set -g fish_user_paths "/usr/local/opt/libpq/bin" $fish_user_paths
 
 alias vim=nvim
 
