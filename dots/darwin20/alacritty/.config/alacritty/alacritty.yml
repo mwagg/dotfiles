@@ -26,5 +26,8 @@ background_opacity: 0.95
 # Live config reload (changes require restart)
 live_config_reload: true
 
+shell:
+  program: /usr/local/bin/fish
+
 import:
   - ~/.config/alacritty/dracula.yml
