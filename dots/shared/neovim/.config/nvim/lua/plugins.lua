@@ -24,7 +24,8 @@ return packer.startup(function()
     use 'liuchengxu/vim-which-key'
     use 'AckslD/nvim-whichkey-setup.lua'
     -- theme
-    use 'dracula/vim'
+	use 'tjdevries/colorbuddy.nvim'
+	use 'marko-cerovac/material.nvim'
     -- comments
     use 'tpope/vim-commentary'
     -- comments when mixed languages in file
