@@ -76,4 +76,5 @@ return packer.startup(function()
     use 'aymericbeaumet/vim-symlink'
     -- tab bar
     use 'romgrk/barbar.nvim'
+	use 'simrat39/symbols-outline.nvim'
 end)
