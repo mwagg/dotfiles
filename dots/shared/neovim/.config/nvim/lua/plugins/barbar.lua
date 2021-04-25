@@ -7,6 +7,6 @@ vim.api.nvim_set_keymap('n', '<TAB>', ":BufferNext<cr>",
 
 local wk = require('whichkey_setup')
 
-local keymap = {b = {d = {':BufferClose', 'Close'}}}
+local keymap = {b = {d = {':BufferClose<cr>', 'Close'}}}
 
 wk.register_keymap('leader', keymap)
