@@ -68,7 +68,8 @@ local keymap = {
     b = {name = '+buffer', s = {':w<cr>', 'Save'}},
     t = {name = '+terminal'},
     f = {name = '+files'},
-    h = {name = '+hop'}
+    h = {name = '+hop'},
+	c = {name = '+code'}
 }
 
 wk.register_keymap('leader', keymap)
