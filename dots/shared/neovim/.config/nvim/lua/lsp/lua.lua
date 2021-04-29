@@ -1,7 +1,10 @@
 local sumneko_root_path
 local sumneko_binary
 
-if vim.fn.has("unix") == 1 then
+if vim.fn.has("macunix") == 1 then
+    sumneko_root_path = DATA_PATH .. "/lspinstall/lua/sumneko-lua"
+    sumneko_binary = DATA_PATH .. "/lspinstall/lua/sumneko-lua-language-server"
+elseif vim.fn.has("unix") == 1 then
     sumneko_root_path = '/usr/share/lua-language-server'
     sumneko_binary = '/usr/bin/lua-language-server'
 else
