@@ -28,6 +28,3 @@ live_config_reload: true
 
 shell:
   program: /usr/local/bin/fish
-
-import:
-  - ~/.config/alacritty/dracula.yml
