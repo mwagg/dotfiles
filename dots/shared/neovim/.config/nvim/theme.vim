@@ -9,4 +9,3 @@ endif
 
 highlight Normal guibg=none
 highlight NonText guibg=none
-highlight Pmenu ctermbg=gray guibg=gray
