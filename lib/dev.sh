@@ -45,13 +45,10 @@ type elm-language-server || yarn global add @elm-tooling/elm-language-server
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]
 then
-  # python
-  [ -d $HOME/.pyenv ] || git clone https://github.com/pyenv/pyenv.git ~/.pyenv
-  [ -d $HOME/.pyenv/plugins/pyenv-virtualenv ] || git clone https://github.com/pyenv/pyenv-virtualenv.git $HOME/.pyenv/plugins/pyenv-virtualenv
-  [ -d $HOME/.poetry ] || curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  pyenv install 3.6.9 -s
+  asdf plugin add python || true
+  [[ -f /home/mike/.asdf/installs/python/3.6.9 ]] || CC=clang asdf install python 3.6.9
+  asdf shell python 3.6.9
+  type virtualenv || pip install virtualenv
 
   # ruby
   asdf plugin add ruby || true
