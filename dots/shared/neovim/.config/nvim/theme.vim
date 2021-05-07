@@ -1,5 +1,5 @@
 syntax on
-colorscheme material
+colorscheme sonokai
 
 " checks if terminal has 24-bit color support
 if (has("termguicolors"))
