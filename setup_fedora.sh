@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 sudo dnf groupinstall "Development Tools" "Development Libraries" -y
 sudo dnf install -y \
 	alacritty \
@@ -18,7 +20,8 @@ sudo dnf install -y \
 	autojump \
 	autojump-fish \
 	xsel \
-	chromium
+	chromium \
+    ripgrep
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
