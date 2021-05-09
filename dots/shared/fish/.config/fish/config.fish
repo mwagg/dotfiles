@@ -23,7 +23,7 @@ set -x PGHOST localhost
 set -x EDITOR nvim
 set -x COUNTRY uk
 
-set -l AUTOJUMP_PATH /usr/share/autojump/autojump.fish /usr/local/share/autojump/autojump.fish
+set -l AUTOJUMP_PATH /usr/share/autojump/autojump.fish /usr/local/share/autojump/autojump.fish /opt/homebrew/share/autojump/autojump.fish
 for path in $AUTOJUMP_PATH
     if test -e $path
         source $path
