@@ -13,7 +13,8 @@ for path in $HOME/.local/bin \
 		/usr/local/bin \
 		/usr/local/opt/libpq/bin \
 		/usr/local/sbin \
-		/opt/homebrew/bin
+		/opt/homebrew/bin \
+		/Users/mike/.cargo/bin
 	if test -d "$path"
 		set -g fish_user_paths "$path" $fish_user_paths
 	end
