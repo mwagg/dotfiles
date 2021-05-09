@@ -19,12 +19,9 @@ font:
   normal:
     family: SauceCodePro Nerd Font Mono
     style: Regular
-  size: 14.0
+  size: 16.0
 
 background_opacity: 0.95
 
 # Live config reload (changes require restart)
 live_config_reload: true
-
-shell:
-  program: /usr/local/bin/fish
