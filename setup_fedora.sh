@@ -24,7 +24,8 @@ sudo dnf install -y \
     ripgrep \
 	gnome-tweaks \
 	entr \
-	fd-find
+	fd-find \
+	openssh-server
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
@@ -51,3 +52,5 @@ if [ ! -d ~/.local/share/nerd-fonts ]; then
 	./install.sh
 	popd
 fi
+
+sudo systemctl enable --now sshd.service
