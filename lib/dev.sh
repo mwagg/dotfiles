@@ -49,11 +49,11 @@ then
   [[ -f /home/mike/.asdf/installs/python/3.6.9 ]] || CC=clang asdf install python 3.6.9
   asdf shell python 3.6.9
   type virtualenv || pip install virtualenv
-
-  # ruby
-  asdf plugin add ruby || true
-  asdf install ruby 3.0.1
 fi
+
+# ruby
+asdf plugin add ruby || true
+asdf install ruby 3.0.1
 
 # elasticsearch and it's insatiable hunger for files
 if [[ -f /usr/lib/sysctl.d/elasticsearch.conf ]]; then
