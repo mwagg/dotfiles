@@ -2,7 +2,7 @@ require'lspconfig'.solargraph.setup {
     settings = {
         solargraph = {
             autoformat = true,
-            bundlerPath = '/home/mike/.asdf/shims/bundle'
+            bundlerPath = '~/.asdf/shims/bundle'
         }
     }
 }
