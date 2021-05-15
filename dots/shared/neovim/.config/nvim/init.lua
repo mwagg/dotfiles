@@ -16,6 +16,7 @@ require('lsp/terraform')
 require('lsp/bash')
 require('lsp/elm')
 require('lsp/ruby')
+require('lsp/html')
 
 -- plugins
 require('plugins/lsp-saga')
