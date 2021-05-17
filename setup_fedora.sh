@@ -2,6 +2,9 @@
 
 set -e
 
+sudo dnf install -y dnf-plugins-core
+sudo dnf config-manager --add-repo https://rpm.releases.hashicorp.com/fedora/hashicorp.repo
+
 sudo dnf groupinstall "Development Tools" "Development Libraries" -y
 sudo dnf install -y \
 	alacritty \
@@ -26,7 +29,9 @@ sudo dnf install -y \
 	entr \
 	fd-find \
 	openssh-server \
-	htop
+	htop \
+	terraform \
+	awscli
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
