@@ -9,14 +9,15 @@ sudo dnf groupinstall "Development Tools" "Development Libraries" -y
 sudo dnf install -y \
 	alacritty \
 	syncthing \
-    ninja-build \
+	ninja-build \
  	libtool \
+	cmake \
  	gcc-c++ \
 	stow \
-    tldr \
+	tldr \
 	starship \
-    fish \
-    sqlite \
+	fish \
+	sqlite \
 	tk-devel \
 	clang \
 	postgresql \
@@ -24,7 +25,7 @@ sudo dnf install -y \
 	autojump-fish \
 	xsel \
 	chromium \
-    ripgrep \
+	ripgrep \
 	gnome-tweaks \
 	entr \
 	fd-find \
@@ -60,3 +61,5 @@ if [ ! -d ~/.local/share/nerd-fonts ]; then
 fi
 
 sudo systemctl enable --now sshd.service
+
+type nvim > /dev/null 2>&1 || { git clone https://github.com/neovim/neovim.git ~/.local/share/neovim; cd ~/.local/share/neovim; make CMAKE_BUILD_TYPE=RelWithDebInfo; sudo make install; }
