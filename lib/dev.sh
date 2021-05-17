@@ -55,6 +55,11 @@ fi
 asdf plugin add ruby || true
 asdf install ruby 3.0.1
 
+# go
+asdf plugin add golang || true
+asdf install golang 1.16.4
+go get github.com/mattn/efm-langserver
+
 # elasticsearch and it's insatiable hunger for files
 if [[ -f /usr/lib/sysctl.d/elasticsearch.conf ]]; then
   echo "vm.max_map_count=262144" | sudo tee -a /usr/lib/sysctl.d/elasticsearch.conf
