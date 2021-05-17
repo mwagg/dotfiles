@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
+set -e
 
-type bw || yay -S --needed bitwarden-cli-bin --noconfirm
+mkdir -p ~/.local/bin
+type bw || { curl -L -o /tmp/bw.zip 'https://vault.bitwarden.com/download/?app=cli&platform=linux'; unzip /tmp/bw.zip -d ~/.local/bin/; chmod +x ~/.local/bin/bw; }
 export BW_SESSION="$(bw login --raw)"
 export BW_SESSION="$(bw unlock --raw)"
 
