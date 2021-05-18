@@ -32,7 +32,8 @@ sudo dnf install -y \
 	openssh-server \
 	htop \
 	terraform \
-	awscli
+	awscli \
+	haproxy
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
