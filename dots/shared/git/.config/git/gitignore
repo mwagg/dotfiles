@@ -2,3 +2,4 @@ TAGS
 .tool-versions
 flycheck*
 pyrightconfig.json
+.git
