@@ -32,7 +32,6 @@ sudo dnf install -y \
 	openssh-server \
 	htop \
 	terraform \
-	awscli \
 	haproxy \
     postgresql \
     postgresql-devel
@@ -51,7 +50,7 @@ if [ ! -d ~/.asdf ]; then
 fi
 
 sudo flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak update -y
+sudo flatpak update -y
 flatpak install flathub com.spotify.Client -y
 flatpak install flathub com.slack.Slack -y
 sudo flatpak override --filesystem=home:ro com.slack.Slack
@@ -68,3 +67,5 @@ sudo systemctl enable --now sshd.service
 type nvim > /dev/null 2>&1 || { git clone https://github.com/neovim/neovim.git ~/.local/share/neovim; cd ~/.local/share/neovim; git checkout nightly; make CMAKE_BUILD_TYPE=RelWithDebInfo; sudo make install; }
 
 type gh || sudo dnf -y install https://github.com/cli/cli/releases/download/v1.9.2/gh_1.9.2_linux_amd64.rpm
+
+type aws || { curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"; cd /tmp; unzip "/tmp/awscliv2.zip"; sudo ./aws/install; }
