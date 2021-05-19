@@ -34,7 +34,8 @@ sudo dnf install -y \
 	terraform \
 	haproxy \
     postgresql \
-    postgresql-devel
+    postgresql-devel \
+    ranger
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
