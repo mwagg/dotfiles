@@ -65,4 +65,4 @@ fi
 
 sudo systemctl enable --now sshd.service
 
-type nvim > /dev/null 2>&1 || { git clone https://github.com/neovim/neovim.git ~/.local/share/neovim; cd ~/.local/share/neovim; make CMAKE_BUILD_TYPE=RelWithDebInfo; sudo make install; }
+type nvim > /dev/null 2>&1 || { git clone https://github.com/neovim/neovim.git ~/.local/share/neovim; cd ~/.local/share/neovim; git checkout nightly; make CMAKE_BUILD_TYPE=RelWithDebInfo; sudo make install; }
