@@ -184,6 +184,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mike/.local/share/nvim/site/pack/packer/start/rnvimr"
   },
+  ["surround.nvim"] = {
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/surround.nvim"
+  },
   ["telescope-fzy-native.nvim"] = {
     loaded = false,
     needs_bufread = false,
