@@ -67,7 +67,8 @@ vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", {noremap = true, s
 
 local mappings = {
     [" "] = {":Telescope find_files hidden=true<CR>", "Find file"},
-    ["/"] = {"<cmd>Telescope live_grep<cr>", "Text"},
+    ["/"] = {"<cmd>Telescope live_grep<cr>", "Search across project"},
+    ["*"] = {"<cmd>Telescope grep_string<cr>", "Grep word under cursor"},
     ["c"] = "Close Buffer",
     ["e"] = "Explorer",
     ["h"] = "No Highlight",
