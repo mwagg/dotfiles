@@ -1,4 +1,5 @@
--- TODO figure out why this don't work
+local utils = require('lv-utils')
+
 vim.fn.sign_define("LspDiagnosticsSignError",
                    {texthl = "LspDiagnosticsSignError", text = "", numhl = "LspDiagnosticsSignError"})
 vim.fn.sign_define("LspDiagnosticsSignWarning",
@@ -168,5 +169,17 @@ local servers = {
 }
 
 for server, config in pairs(servers) do require('lspconfig')[server].setup(config) end
+
+utils.define_augroups({
+    _auto_formatters = {
+        {'BufWritePre', '*.py', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'},
+        {'BufWritePre', '*.js', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'},
+        {'BufWritePre', '*.jsx', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'},
+        {'BufWritePre', '*.ts', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'},
+        {'BufWritePre', '*.tsx', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'},
+        {'BufWritePre', '*.lua', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'},
+        {'BufWritePre', '*.json', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
+    }
+})
 
 return lsp_config
