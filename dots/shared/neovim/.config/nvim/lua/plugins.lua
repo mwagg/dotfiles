@@ -68,7 +68,7 @@ return require("packer").startup(function(use)
     use {"TimUntersberger/neogit", opt = true}
 
     -- Color
-    use {"christianchiarulli/nvcode-color-schemes.vim", opt = true}
+    use {"briones-gabriel/darcula-solid.nvim", requires = "rktjmp/lush.nvim"}
 
     -- Icons
     use {"kyazdani42/nvim-web-devicons", opt = true}
