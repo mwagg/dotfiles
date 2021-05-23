@@ -4,8 +4,7 @@ local fn = vim.fn
 local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-    execute('!git clone https://github.com/wbthomason/packer.nvim ' ..
-                install_path)
+    execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
     execute 'packadd packer.nvim'
 end
 
@@ -21,10 +20,9 @@ return packer.startup(function()
     use 'rhysd/git-messenger.vim'
     use 'lewis6991/gitsigns.nvim'
     -- which key
-    use 'liuchengxu/vim-which-key'
-    use 'AckslD/nvim-whichkey-setup.lua'
+    use {"folke/which-key.nvim"}
     -- theme
-	use 'sainnhe/sonokai'
+    use 'sainnhe/sonokai'
     -- comments
     use 'tpope/vim-commentary'
     -- comments when mixed languages in file
@@ -75,5 +73,5 @@ return packer.startup(function()
     use 'aymericbeaumet/vim-symlink'
     -- tab bar
     use 'romgrk/barbar.nvim'
-	use 'simrat39/symbols-outline.nvim'
+    use 'simrat39/symbols-outline.nvim'
 end)

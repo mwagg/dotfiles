@@ -131,10 +131,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mike/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
   },
-  ["nvim-whichkey-setup.lua"] = {
-    loaded = true,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/start/nvim-whichkey-setup.lua"
-  },
   ["packer.nvim"] = {
     loaded = false,
     needs_bufread = false,
@@ -208,9 +204,9 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-symlink"
   },
-  ["vim-which-key"] = {
+  ["which-key.nvim"] = {
     loaded = true,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-which-key"
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/which-key.nvim"
   }
 }
 
