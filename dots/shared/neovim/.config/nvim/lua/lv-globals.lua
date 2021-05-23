@@ -7,7 +7,7 @@ O = {
     number = true,
     relative_number = true,
     shell = 'bash',
-	timeoutlen = 100,
+    timeoutlen = 100,
     nvim_tree_disable_netrw = 0, -- "1 by default, disables netrw (must be set before plugin's packadd)
 
     -- @usage pass a table with your desired languages
@@ -27,12 +27,12 @@ O = {
         autoformat = false,
         isort = false,
         diagnostics = {virtual_text = {spacing = 0, prefix = ""}, signs = true, underline = true},
-		analysis = {type_checking = "basic", auto_search_paths = true, use_library_code_types = true}
+        analysis = {type_checking = "basic", auto_search_paths = true, use_library_code_types = true}
     },
     dart = {sdk_path = '/usr/lib/dart/bin/snapshots/analysis_server.dart.snapshot'},
     lua = {
         -- @usage can be 'lua-format'
-        formatter = '',
+        formatter = 'lua-format',
         autoformat = true,
         diagnostics = {virtual_text = {spacing = 0, prefix = ""}, signs = true, underline = true}
     },
@@ -60,23 +60,21 @@ O = {
     },
     tailwindls = {filetypes = {'html', 'css', 'scss', 'javascript', 'javascriptreact', 'typescript', 'typescriptreact'}},
     clang = {diagnostics = {virtual_text = {spacing = 0, prefix = ""}, signs = true, underline = true}},
-	ruby = {
-		diagnostics = {virtualtext = {spacing = 0, prefix = ""}, signs = true, underline = true},
-		filetypes = {'rb', 'erb', 'rakefile'}
-	},
+    ruby = {
+        diagnostics = {virtualtext = {spacing = 0, prefix = ""}, signs = true, underline = true},
+        filetypes = {'rb', 'erb', 'rakefile'}
+    },
     -- css = {formatter = '', autoformat = false, virtual_text = true},
     -- json = {formatter = '', autoformat = false, virtual_text = true}
 
-	dashboard = {
-		custom_header = {
-'               _   __                _         ',
-'              / | / /__  ____ _   __(_)___ ___ ',
-'             /  |/ / _ \\/ __ \\ | / / / __ `__ \\',
-'            / /|  /  __/ /_/ / |/ / / / / / / /',
-'           /_/ |_/\\___/\\____/|___/_/_/ /_/ /_/ ',
-		},
-		footer= {''}
-	}
+    dashboard = {
+        custom_header = {
+            '               _   __                _         ', '              / | / /__  ____ _   __(_)___ ___ ',
+            '             /  |/ / _ \\/ __ \\ | / / / __ `__ \\', '            / /|  /  __/ /_/ / |/ / / / / / / /',
+            '           /_/ |_/\\___/\\____/|___/_/_/ /_/ /_/ '
+        },
+        footer = {''}
+    }
 }
 
 DATA_PATH = vim.fn.stdpath('data')

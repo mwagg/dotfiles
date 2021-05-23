@@ -5,9 +5,7 @@ Formatters and linters should be
 filled in as strings with either
 a global executable or a path to
 an executable
-]]
-
--- general
+]] -- general
 O.auto_complete = true
 O.colorscheme = 'lunar'
 O.auto_close_tree = 0
@@ -22,7 +20,6 @@ O.timeoutlen = 100
 O.treesitter.ensure_installed = "all"
 O.treesitter.ignore_install = {"haskell"}
 O.treesitter.highlight.enabled = true
-
 
 O.clang.diagnostics.virtual_text = false
 O.clang.diagnostics.signs = false
@@ -39,12 +36,6 @@ O.python.diagnostics.underline = true
 O.python.analysis.type_checking = "off"
 O.python.analysis.auto_search_paths = true
 O.python.analysis.use_library_code_types = true
-
--- lua
--- TODO look into stylua
-O.lua.formatter = 'lua-format'
--- O.lua.formatter = 'lua-format'
-O.lua.autoformat = true
 
 -- javascript
 O.tsserver.formatter = 'prettier'
