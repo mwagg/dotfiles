@@ -71,142 +71,146 @@ end
 time("try_loadstring definition", false)
 time("Defining packer_plugins", true)
 _G.packer_plugins = {
-  ["barbar.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/barbar.nvim"
-  },
-  ["darcula-solid.nvim"] = {
+  ["auto-pairs"] = {
     loaded = true,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/start/darcula-solid.nvim"
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/auto-pairs"
   },
-  ["dashboard-nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/dashboard-nvim"
-  },
-  ["friendly-snippets"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/friendly-snippets"
+  ["barbar.nvim"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/barbar.nvim"
   },
   ["galaxyline.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/galaxyline.nvim"
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/galaxyline.nvim"
+  },
+  ["git-messenger.vim"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/git-messenger.vim"
   },
   ["gitsigns.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/gitsigns.nvim"
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/gitsigns.nvim"
+  },
+  ["hop.nvim"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/hop.nvim"
+  },
+  ["lspkind-nvim"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/lspkind-nvim"
   },
   ["lspsaga.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim"
-  },
-  ["lush.nvim"] = {
     loaded = true,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/start/lush.nvim"
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
   },
   neogit = {
-    loaded = false,
-    needs_bufread = true,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/neogit"
-  },
-  ["nvim-autopairs"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-autopairs"
-  },
-  ["nvim-bqf"] = {
-    loaded = false,
-    needs_bufread = true,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-bqf"
-  },
-  ["nvim-comment"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-comment"
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/neogit"
   },
   ["nvim-compe"] = {
-    after_files = { "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_buffer.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_calc.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_emoji.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_luasnip.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_nvim_lsp.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_nvim_lua.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_omni.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_path.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_snippets_nvim.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_spell.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_tags.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_treesitter.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_ultisnips.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_vim_lsc.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_vim_lsp.vim", "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe/after/plugin/compe_vsnip.vim" },
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-compe"
-  },
-  ["nvim-dap"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-dap"
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/nvim-compe"
   },
   ["nvim-lspconfig"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-lspconfig"
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
   },
   ["nvim-lspinstall"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-lspinstall"
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/nvim-lspinstall"
   },
   ["nvim-tree.lua"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-tree.lua"
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/nvim-tree.lua"
   },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/mike/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
   },
-  ["nvim-ts-autotag"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-ts-autotag"
-  },
   ["nvim-web-devicons"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons"
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/nvim-web-devicons"
+  },
+  ["nvim-whichkey-setup.lua"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/nvim-whichkey-setup.lua"
   },
   ["packer.nvim"] = {
-    loaded = true,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/packer.nvim"
   },
   ["plenary.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/plenary.nvim"
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/plenary.nvim"
   },
   ["popup.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/popup.nvim"
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/popup.nvim"
   },
-  ["surround.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/surround.nvim"
+  sonokai = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/sonokai"
   },
-  ["telescope-fzy-native.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/telescope-fzy-native.nvim"
+  ["symbols-outline.nvim"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim"
+  },
+  ["telescope-media-files.nvim"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/telescope-media-files.nvim"
+  },
+  ["telescope-project.nvim"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/telescope-project.nvim"
   },
   ["telescope.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/telescope.nvim"
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/telescope.nvim"
   },
-  ["vim-vsnip"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/vim-vsnip"
+  ["vim-better-whitespace"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-better-whitespace"
   },
-  ["which-key.nvim"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/opt/which-key.nvim"
+  ["vim-closetag"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-closetag"
+  },
+  ["vim-commentary"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-commentary"
+  },
+  ["vim-context-commentstring"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-context-commentstring"
+  },
+  ["vim-devicons"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-devicons"
+  },
+  ["vim-floaterm"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-floaterm"
+  },
+  ["vim-rooter"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-rooter"
+  },
+  ["vim-sneak"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-sneak"
+  },
+  ["vim-surround"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-surround"
+  },
+  ["vim-symlink"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-symlink"
+  },
+  ["vim-which-key"] = {
+    loaded = true,
+    path = "/home/mike/.local/share/nvim/site/pack/packer/start/vim-which-key"
   }
 }
 
