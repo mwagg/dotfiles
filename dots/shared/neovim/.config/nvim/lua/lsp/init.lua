@@ -15,8 +15,8 @@ vim.cmd("nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>")
 vim.cmd("nnoremap <silent> ca :Lspsaga code_action<CR>")
 vim.cmd("nnoremap <silent> K :Lspsaga hover_doc<CR>")
 -- vim.cmd('nnoremap <silent> <C-k> <cmd>lua vim.lsp.buf.signature_help()<CR>')
-vim.cmd("nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>")
-vim.cmd("nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>")
+vim.cmd("nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>")
+vim.cmd("nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>")
 -- scroll down hover doc or scroll in definition preview
 vim.cmd("nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>")
 -- scroll up hover doc
@@ -80,6 +80,18 @@ end
 local sumneko_root_path = DATA_PATH .. "/lspinstall/lua"
 local sumneko_binary = sumneko_root_path .. "/sumneko-lua-language-server"
 
+local prettier = {formatCommand = "prettier --stdin-filepath ${INPUT}", formatStdin = true}
+local tsserver_args = {
+    {formatCommand = "prettier --stdin-filepath ${INPUT}", formatStdin = true}, {
+        formatCommand = "./node_modules/.bin/eslint --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+        formatStdin = true,
+        lintCommand = "./node_modules/.bin/eslint -f unix --stdin --stdin-filename ${INPUT}",
+        lintFormats = {"%f:%l:%c: %m"},
+        lintIgnoreExitCode = true,
+        lintStdin = true
+    }
+}
+
 local servers = {
     sumneko_lua = {
         cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
@@ -106,13 +118,55 @@ local servers = {
                 }
             }
         }
+    },
+
+    efm = {
+        -- init_options = {initializationOptions},
+        cmd = {DATA_PATH .. "/lspinstall/efm/efm-langserver"},
+        init_options = {documentFormatting = true, codeAction = false},
+        filetypes = {
+            "lua", "python", "javascriptreact", "javascript", "typescript", "typescriptreact", "sh", "html", "css",
+            "json", "yaml", "markdown", "vue"
+        },
+        settings = {
+            rootMarkers = {".git/"},
+            languages = {
+                python = {
+                    {
+                        LintCommand = "flake8 --ignore=E501 --stdin-display-name ${INPUT} -",
+                        lintFormats = {"%f:%l:%c: %m"},
+                        lintStdin = true
+                    }, {formatCommand = "isort --quiet -", formatStdin = true},
+                    {formatCommand = "black --quiet -", formatStdin = true}
+                },
+                lua = {
+                    {
+                        formatCommand = "lua-format -i --no-keep-simple-function-one-line --column-limit=120",
+                        formatStdin = true
+                    }
+                },
+                sh = {
+                    {formatCommand = "shfmt -ci -s -bn", formatStdin = true}, {
+                        LintCommand = "shellcheck -f gcc -x",
+                        lintFormats = {"%f:%l:%c: %trror: %m", "%f:%l:%c: %tarning: %m", "%f:%l:%c: %tote: %m"}
+                    }
+                },
+                javascript = tsserver_args,
+                javascriptreact = tsserver_args,
+                typescript = tsserver_args,
+                typescriptreact = tsserver_args,
+                html = {prettier},
+                css = {prettier},
+                json = {prettier},
+                yaml = {prettier}
+                -- javascriptreact = {prettier, eslint},
+                -- javascript = {prettier, eslint},
+                -- markdown = {markdownPandocFormat, markdownlint},
+            }
+        }
     }
 }
 
 for server, config in pairs(servers) do require('lspconfig')[server].setup(config) end
 
--- Use a loop to conveniently both setup defined servers
--- and map buffer local keybindings when the language server attaches
--- local servers = {"pyright", "tsserver"}
--- for _, lsp in ipairs(servers) do nvim_lsp[lsp].setup {on_attach = on_attach} end
 return lsp_config
