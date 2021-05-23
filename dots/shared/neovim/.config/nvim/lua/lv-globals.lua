@@ -33,7 +33,7 @@ O = {
     lua = {
         -- @usage can be 'lua-format'
         formatter = '',
-        autoformat = false,
+        autoformat = true,
         diagnostics = {virtual_text = {spacing = 0, prefix = ""}, signs = true, underline = true}
     },
     sh = {
