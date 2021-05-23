@@ -180,10 +180,6 @@ _G.packer_plugins = {
     needs_bufread = false,
     path = "/home/mike/.local/share/nvim/site/pack/packer/opt/popup.nvim"
   },
-  rnvimr = {
-    loaded = true,
-    path = "/home/mike/.local/share/nvim/site/pack/packer/start/rnvimr"
-  },
   ["surround.nvim"] = {
     loaded = false,
     needs_bufread = false,
