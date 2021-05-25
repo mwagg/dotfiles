@@ -49,19 +49,14 @@ local function documentHighlight(client, bufnr)
     ]], false)
     end
 end
-local lsp_config = {}
-
-function lsp_config.common_on_attach(client, bufnr)
-    documentHighlight(client, bufnr)
-end
-
-function lsp_config.tsserver_on_attach(client, bufnr)
-    lsp_config.common_on_attach(client, bufnr)
-    client.resolved_capabilities.document_formatting = false
-end
 
 local function common_on_attach(client, bufnr)
     documentHighlight(client, bufnr)
+end
+
+function tsserver_on_attach(client, bufnr)
+    common_on_attach(client, bufnr)
+    client.resolved_capabilities.document_formatting = false
 end
 
 local sumneko_root_path = DATA_PATH .. "/lspinstall/lua"
@@ -151,7 +146,24 @@ local servers = {
     yamlls = {},
     terraformls = {filetypes = {"terraform", "tf"}},
     solargraph = {settings = {solargraph = {autoformat = true, bundlerPath = '~/.asdf/shims/bundle'}}},
-    elmls = {}
+    elmls = {},
+    tsserver = {
+        cmd = {DATA_PATH .. "/lspinstall/typescript/node_modules/.bin/typescript-language-server", "--stdio"},
+        filetypes = {
+            "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx"
+        },
+        on_attach = tsserver_on_attach,
+        root_dir = require('lspconfig/util').root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+        settings = {documentFormatting = false},
+        handlers = {
+            ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+                virtual_text = {spacing = 0, prefix = ""},
+                signs = true,
+                underline = true,
+                update_in_insert = true
+            })
+        }
+    }
 }
 
 for server, config in pairs(servers) do require('lspconfig')[server].setup(config) end
@@ -171,5 +183,3 @@ utils.define_augroups({
         {'BufWritePre', '*.elm', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
     }
 })
-
-return lsp_config
