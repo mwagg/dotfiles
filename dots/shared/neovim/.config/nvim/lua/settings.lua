@@ -31,15 +31,10 @@ vim.o.smartindent = true
 
 -- don't automatically add comment on newline
 vim.cmd('filetype plugin on') -- need to make sure the autocmd is after this
-vim.cmd(
-    'autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o')
-
--- no line numbers in terminals
-vim.cmd('autocmd TermOpen * setlocal nonumber norelativenumber')
+vim.cmd('autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o')
 
 -- highlight on yank
 vim.cmd('augroup name')
 vim.cmd('autocmd!')
-vim.cmd(
-    'autocmd TextYankPost *, lua require(\'vim.highlight\').on_yank({higroup = \'Search\', timeout = 200})')
+vim.cmd('autocmd TextYankPost *, lua require(\'vim.highlight\').on_yank({higroup = \'Search\', timeout = 200})')
 vim.cmd('augroup END')
