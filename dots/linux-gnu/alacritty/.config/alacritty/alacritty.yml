@@ -11,7 +11,7 @@ scrolling:
 font:
   normal:
     family: SauceCodePro Nerd Font Mono
-  size: 14.0
+  size: 12.0
 
 # Live config reload (changes require restart)
 live_config_reload: true
