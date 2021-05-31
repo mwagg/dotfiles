@@ -52,9 +52,13 @@ end
 
 local function common_on_attach(client, bufnr)
     documentHighlight(client, bufnr)
+    require"lsp_signature".on_attach({
+        bind = true, -- This is mandatory, otherwise border config won't get registered.
+        handler_opts = {border = "single"}
+    })
 end
 
-function tsserver_on_attach(client, bufnr)
+local function tsserver_on_attach(client, bufnr)
     common_on_attach(client, bufnr)
     client.resolved_capabilities.document_formatting = false
 end
