@@ -35,7 +35,7 @@ sudo dnf install -y \
 	haproxy \
     postgresql \
     postgresql-devel \
-    ranger
+    emacs
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
@@ -70,3 +70,10 @@ type nvim > /dev/null 2>&1 || { git clone https://github.com/neovim/neovim.git ~
 type gh || sudo dnf -y install https://github.com/cli/cli/releases/download/v1.9.2/gh_1.9.2_linux_amd64.rpm
 
 type aws || { curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "/tmp/awscliv2.zip"; cd /tmp; unzip "/tmp/awscliv2.zip"; sudo ./aws/install; }
+
+if [ ! -f ~/.emacs.d/bin/doom ]; then
+    rm -rf ~/.emacs
+    git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+    ~/.emacs.d/bin/doom install
+
+fi
