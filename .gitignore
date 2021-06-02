@@ -3,3 +3,4 @@
 /dots/shared/fish/.config/fish/functions/fzf_key_bindings.fish
 /dots/shared/fish/.config/fish/functions/fish_user_key_bindings.fish
 .DS_Store
+packer_compiled.vim
