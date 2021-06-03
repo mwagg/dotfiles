@@ -50,6 +50,7 @@ pacman_install tmux
 
 # base devel
 pacman_install base-devel
+pacman_install clang
 
 # USB drives
 pacman_install exfat-utils
@@ -68,6 +69,7 @@ sudo chsh -s /usr/bin/fish $USER
 # vim/emacs shared
 pacman_install ripgrep
 pacman_install ttf-nerd-fonts-symbols
+yay_install nerd-fonts-source-code-pro
 
 # neovim
 pacman_install python-neovim
