@@ -172,3 +172,11 @@ pacman_install pulseaudio-bluetooth
 pacman_install bluez-utils
 pacman_install bluez
 sudo systemctl enable --now bluetooth.service
+
+# time/locale
+sudo ln -sf /usr/share/zoneinfo/Europe/London /etc/localtime
+echo "KEYMAP=uk" | sudo tee -a /etc/vconsole.conf
+sudo hwclock --systohc
+sudo sed -i /etc/locale.gen -e 's/#en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/'
+sudo locale-gen
+echo "LANG=en_GB.UTF-8" | sudo tee -a /etc/locale.conf
