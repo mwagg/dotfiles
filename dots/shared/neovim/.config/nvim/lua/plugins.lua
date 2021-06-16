@@ -75,4 +75,6 @@ return packer.startup(function()
     -- tab bar
     use 'romgrk/barbar.nvim'
     use 'simrat39/symbols-outline.nvim'
+    -- text replacement
+    use 'gabrielpoca/replacer.nvim'
 end)

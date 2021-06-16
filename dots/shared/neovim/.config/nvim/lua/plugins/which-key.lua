@@ -118,7 +118,8 @@ local mappings = {
         R = {"<cmd>Telescope registers<cr>", "Registers"},
         t = {"<cmd>Telescope live_grep<cr>", "Text"},
         h = {':HopWord<cr>', 'Word'}
-    }
+    },
+    r = {"<cmd>lua require('replacer').run()<cr>", "Replacer"}
 }
 
 local wk = require("which-key")
