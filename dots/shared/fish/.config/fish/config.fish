@@ -16,7 +16,7 @@ for path in $HOME/.local/bin \
 		/opt/homebrew/bin \
 		/Users/mike/.cargo/bin
 	if test -d "$path"
-		set -g fish_user_paths "$path" $fish_user_paths
+		fish_add_path fish_user_paths "$path"
 	end
 end
 
