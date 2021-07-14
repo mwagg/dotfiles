@@ -196,7 +196,6 @@ utils.define_augroups({
         {'BufWritePre', '*.tsx', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'},
         {'BufWritePre', '*.lua', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'},
         {'BufWritePre', '*.json', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'},
-        {'BufWritePre', '*.yml', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'},
         {'BufWritePre', '*.tf', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'},
         {'BufWritePre', '*.rb', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'},
         {'BufWritePre', '*.elm', 'lua vim.lsp.buf.formatting_sync(nil, 1000)'}
