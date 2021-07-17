@@ -83,10 +83,6 @@ sudo chsh -s /usr/bin/fish $USER
 pacman_install ripgrep
 pacman_install ttf-nerd-fonts-symbols
 yay_install nerd-fonts-source-code-pro
-if [[ ! -d ~/.emacs.d ]]; then
-  git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
-  ~/.emacs.d/bin/doom install
-fi
 pacman_install noto-fonts-emoji
 
 # github
