@@ -61,6 +61,9 @@ pacman_install cmake
 # tmux
 pacman_install tmux
 
+# firefox
+pacman_install firefox
+
 # base devel
 pacman_install base-devel
 pacman_install clang
@@ -173,3 +176,9 @@ sudo hwclock --systohc
 sudo sed -i /etc/locale.gen -e 's/#en_GB.UTF-8 UTF-8/en_GB.UTF-8 UTF-8/'
 sudo locale-gen
 echo "LANG=en_GB.UTF-8" | sudo tee -a /etc/locale.conf
+
+# sway
+pacman_install sddm
+pacman_install upower
+pacman_install light
+pacman_install wofi
