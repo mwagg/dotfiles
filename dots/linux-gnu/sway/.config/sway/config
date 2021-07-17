@@ -1,0 +1,6 @@
+include ./vars
+include ./input
+include ./bindings
+include ./style
+include ./bar
+include /etc/sway/config.d/*
