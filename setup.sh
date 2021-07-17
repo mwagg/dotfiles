@@ -40,10 +40,23 @@ sudo ufw enable || true
 
 # terminal
 pacman_install alacritty
-gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'alacritty'
-gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return'
+pacman_install adobe-source-code-pro-fonts
+gsettings set org.gnome.settings-daemon.plugins.media-keys custom-keybindings "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']" | true
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ name 'Terminal' | true
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ command 'alacritty' | true
+gsettings set org.gnome.settings-daemon.plugins.media-keys.custom-keybinding:/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/ binding '<Super>Return' | true
+
+# neovim
+pacman_install python-neovim
+yay_install neovim-nightly-bin
+pacman_install xsel
+pacman_install ninja
+yay_install lua-language-server
+yay_install efm-langserver
+yay_install lua-format
+yay_install terraform-ls
+pacman_install aspell-en
+pacman_install cmake
 
 # tmux
 pacman_install tmux
@@ -70,27 +83,11 @@ sudo chsh -s /usr/bin/fish $USER
 pacman_install ripgrep
 pacman_install ttf-nerd-fonts-symbols
 yay_install nerd-fonts-source-code-pro
-
-# neovim
-pacman_install python-neovim
-yay_install neovim-nightly-bin
-pacman_install xsel
-pacman_install ninja
-yay_install lua-language-server
-yay_install efm-langserver
-yay_install lua-format
-yay_install terraform-ls
-
-# emacs
-pacman_install adobe-source-code-pro-fonts
-pacman_install aspell-en
-pacman_install emacs
-sudo sed -i -e 's/^Exec=.*/Exec=\/usr\/bin\/fish -c emacs %f/' /usr/share/applications/emacs.desktop
-pacman_install cmake
 if [[ ! -d ~/.emacs.d ]]; then
   git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
   ~/.emacs.d/bin/doom install
 fi
+pacman_install noto-fonts-emoji
 
 # github
 pacman_install github-cli
