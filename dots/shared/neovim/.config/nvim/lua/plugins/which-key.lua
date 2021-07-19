@@ -77,7 +77,8 @@ local mappings = {
         b = {"<cmd>Telescope git_branches<cr>", "Checkout branch"},
         c = {"<cmd>Telescope git_commits<cr>", "Checkout commit"},
         C = {"<cmd>Telescope git_bcommits<cr>", "Checkout commit(for current file)"},
-        m = {':GitMessenger<cr>', 'Git message'}
+        m = {':GitMessenger<cr>', 'Git message'},
+        p = {':Neogit pull<cr>', 'Pull'},
     },
     b = {
         name = '+buffer',
