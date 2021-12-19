@@ -2,6 +2,11 @@
 
 set -e
 
+if [ "$SPIN" ]; then
+    rm ~/.zshrc
+    rm ~/.zlogin
+fi
+
 CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
 
@@ -29,7 +34,3 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 fi
 
-if [ "$SPIN" ]; then
-    rm ~/.zshrc
-    rm ~/.zlogin
-fi
