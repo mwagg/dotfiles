@@ -1,0 +1,33 @@
+local cmd = vim.api.nvim_command
+cmd("set iskeyword+=-")
+vim.opt.syntax = "enable"
+vim.opt.hidden = true
+vim.opt.wrap = false
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
+vim.opt.ruler = true
+vim.opt.cmdheight = 2
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.smartindent = true
+vim.opt.autoindent = true
+vim.opt.laststatus = 2
+vim.opt.number = true
+vim.opt.relativenumber = true
+vim.opt.background = "dark"
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.signcolumn = "yes"
+vim.opt.updatetime = 300
+vim.opt.timeoutlen = 500
+vim.opt.clipboard = "unnamedplus"
+vim.opt.mouse = "a"
+vim.opt.ts = 2
+vim.opt.sw = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.completeopt = "menu,menuone,noselect"
+vim.opt.termguicolors = true
+vim.opt.inccommand = "nosplit"
+
+require("settings/terminal")

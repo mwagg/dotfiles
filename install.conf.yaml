@@ -2,5 +2,12 @@
 
 - link:
     ~/.gitconfig: gitconfig
+    ~/.zlogin: zlogin
+    ~/.zshrc: zshrc
+    ~/.zpreztorc: zpreztorc
+    ~/.zprofile: zprofile
+    ~/.zshenv: zshenv
+    ~/.config/kitty: kitty
+    ~/.config/nvim: nvim
 
 

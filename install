@@ -8,7 +8,22 @@ DOTBOT_DIR="dotbot"
 DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+PREZTO_DIR="${ZDOTDIR:-$HOME}/.zprezto"
+
+if [ ! -d "$PREZTO_DIR" ]; then
+  git clone --recursive https://github.com/sorin-ionescu/prezto.git "$PREZTO_DIR"
+fi
+
 cd "${BASEDIR}"
+
+if [[ "$OSTYPE" == "darwin"* ]]; then
+    brew bundle
+    type lua-format
+    if [ $? != 0 ]; then
+        luarocks install --server=https://luarocks.org/dev luaformatter
+    fi
+fi
+
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive "${DOTBOT_DIR}"
 
