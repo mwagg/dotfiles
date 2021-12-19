@@ -48,7 +48,7 @@ local function configure()
         ["<leader>"] = {":Telescope find_files hidden=true<cr>", "Find files"},
         f = {p = {":Telescope project<cr>", "Project"}, c = {":Telescope colorscheme<cr>", "Colorscheme"}},
         b = {b = {":Telescope buffers<cr>", "Find buffer"}},
-        g = {b = {":Telescope git_branches<cr>", "Branches"}, g = {":Telescope git_status<cr>", "Status"}},
+        g = {b = {":Telescope git_branches<cr>", "Branches"}},
         h = {h = {":Telescope help_tags<cr>", "Help tags"}}
     }, {prefix = "<leader>"})
 end
