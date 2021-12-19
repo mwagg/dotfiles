@@ -55,3 +55,7 @@ function git-clean() {
         fi
     done
 }
+
+if [ -f /etc/zsh/zshrc.default.inc.zsh ]; then
+    source /etc/zsh/zshrc.default.inc.zsh
+fi

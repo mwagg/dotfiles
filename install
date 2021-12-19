@@ -16,6 +16,11 @@ fi
 
 cd "${BASEDIR}"
 
+git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
+git submodule update --init --recursive "${DOTBOT_DIR}"
+
+"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+
 if [[ "$OSTYPE" == "darwin"* ]]; then
     brew bundle
     type lua-format
@@ -24,7 +29,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 fi
 
-git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${DOTBOT_DIR}"
-
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+if [ "$SPIN" ]; then
+    rm ~/.zshrc
+    rm ~/.zlogin
+fi
