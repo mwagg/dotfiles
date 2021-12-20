@@ -60,6 +60,8 @@ function git-clean() {
     done
 }
 
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+
 if [ -f /etc/zsh/zshrc.default.inc.zsh ]; then
     source /etc/zsh/zshrc.default.inc.zsh
 fi
