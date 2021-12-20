@@ -10,6 +10,10 @@ if [[ "$OSTYPE" == darwin* ]]; then
   export BROWSER='open'
 fi
 
+if [ "$SPIN" ]; then
+    export TERM=xterm-256color
+fi
+
 #
 # Editors
 #
