@@ -103,5 +103,9 @@ use {
             },
             on_attach = common_on_attach
         })
+
+        -- Nix
+        lspconfig.rnix.setup({on_attach = common_on_attach})
+        configure_format_on_save("nix", {"*.nix"})
     end
 }
