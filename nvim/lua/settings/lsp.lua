@@ -1,6 +1,13 @@
 local use = require("packer").use
 
 use {
+    "ray-x/lsp_signature.nvim",
+    config = function()
+        require"lsp_signature".setup()
+    end
+}
+
+use {
     "neovim/nvim-lspconfig",
     requires = {"tami5/lspsaga.nvim", "hrsh7th/cmp-nvim-lsp"},
     config = function()
@@ -54,7 +61,6 @@ use {
         -- EFM
         lspconfig.efm.setup({
             cmd = {"efm-langserver"},
-            capabilities = capabilities,
             init_options = {documentFormatting = true, codeAction = false},
             filetypes = {"lua"},
             settings = {
@@ -77,7 +83,7 @@ use {
         table.insert(runtime_path, "lua/?/init.lua")
         lspconfig.sumneko_lua.setup({
             settings = {
-                capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+                capabilities = capabilities,
                 settings = {
                     Lua = {
                         runtime = {
@@ -105,7 +111,10 @@ use {
         })
 
         -- Nix
-        lspconfig.rnix.setup({on_attach = common_on_attach})
+        lspconfig.rnix.setup({on_attach = common_on_attach, capabilities = capabilities})
         configure_format_on_save("nix", {"*.nix"})
+
+        -- JS/TS
+        lspconfig.tsserver.setup({on_attach = common_on_attach, capabilities = capabilities})
     end
 }
