@@ -5,6 +5,7 @@ set -e
 if [ "$SPIN" ]; then
     rm ~/.zshrc
     rm ~/.zlogin
+    export PATH="$HOME/.nix-profile/bin:$PATH"
 fi
 
 CONFIG="install.conf.yaml"
@@ -34,3 +35,16 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 fi
 
+type home-manager || {
+    nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+    nix-channel --update
+    nix-shell '<home-manager>' -A install
+}
+
+if [ "$SPIN" ]; then
+    echo "(import ~/dotfiles/nix/spin.nix)" >> ~/.config/nixpkgs/home.nix
+else
+    echo "(import ~/dotfiles/nix/home.nix)" >> ~/.config/nixpkgs/home.nix
+fi
+
+home-manager switch
