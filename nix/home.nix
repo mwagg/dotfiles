@@ -9,5 +9,6 @@
   home.packages = with pkgs; [
     rnix-lsp
     tldr
+    nodePackages.typescript-language-server
   ];
 }
