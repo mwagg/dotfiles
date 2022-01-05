@@ -21,7 +21,6 @@ use {
                 r = {"<cmd>Gitsigns reset_hunk<CR>", "Reset hunk"},
                 R = {"<cmd>Gitsigns reset_buffer<CR>", "Reset buffer"},
                 p = {"<cmd>Gitsigns preview_hunk<CR>", "Preview hunk"},
-                b = {"<cmd>lua require\"gitsigns\".blame_line{full=true}<CR>", "Blame"},
                 S = {"<cmd>Gitsigns stage_buffer<CR>", "Stage buffer"},
                 U = {"<cmd>Gitsigns reset_buffer_index<CR>", "Reset buffer index"}
             }
