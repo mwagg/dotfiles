@@ -58,7 +58,8 @@ local function configure()
         f = {p = {":Telescope project<cr>", "Project"}, c = {":Telescope colorscheme<cr>", "Colorscheme"}},
         b = {b = {":Telescope buffers<cr>", "Find buffer"}},
         g = {b = {":Telescope git_branches<cr>", "Branches"}, l = {":Telescope git_commits<cr>", "Search commits"}},
-        h = {h = {":Telescope help_tags<cr>", "Help tags"}}
+        h = {h = {":Telescope help_tags<cr>", "Help tags"}},
+        c = {d = {":Telescope diagnostics<cr>", "Show diagnostics"}}
     }, {prefix = "<leader>"})
 end
 
