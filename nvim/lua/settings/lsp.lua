@@ -134,5 +134,9 @@ use {
             },
             on_attach = common_on_attach
         })
+
+        -- Ruby - sorbet
+        lspconfig.sorbet.setup({on_attach = common_on_attach, capabilities = capabilities})
+        lspconfig.solargraph.setup({on_attach = common_on_attach, capabilities = capabilities})
     end
 }
