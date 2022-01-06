@@ -9,7 +9,10 @@ use {
 
 use {
     "neovim/nvim-lspconfig",
-    requires = {"tami5/lspsaga.nvim", "hrsh7th/cmp-nvim-lsp"},
+    requires = {
+        "tami5/lspsaga.nvim", "hrsh7th/cmp-nvim-lsp", "jose-elias-alvarez/null-ls.nvim",
+        "jose-elias-alvarez/nvim-lsp-ts-utils"
+    },
     config = function()
         local lspconfig = require "lspconfig"
 
@@ -113,9 +116,23 @@ use {
                 client.resolved_capabilities.document_formatting = false
                 client.resolved_capabilities.document_range_formatting = false
 
+                local ts_utils = require("nvim-lsp-ts-utils")
+                ts_utils.setup({})
+                ts_utils.setup_client(client)
+
                 common_on_attach(client, bufnr)
             end,
             capabilities = capabilities
+        })
+        local null_ls = require("null-ls")
+        null_ls.setup({
+            sources = {
+                null_ls.builtins.diagnostics.eslint.with({prefer_local = "node_modules/.bin"}),
+                null_ls.builtins.code_actions.eslint.with({prefer_local = "node_modules/.bin"}),
+                null_ls.builtins.formatting.prettier.with({prefer_local = "node_modules/.bin"}),
+                null_ls.builtins.code_actions.gitsigns
+            },
+            on_attach = common_on_attach
         })
     end
 }
