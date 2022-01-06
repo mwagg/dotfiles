@@ -38,6 +38,15 @@ local function configure()
                     -- ["<C-i>"] = my_cool_custom_action,
                 }
             }
+        },
+        pickers = {
+            find_files = {theme = "dropdown"},
+            live_grep = {theme = "dropdown"},
+            grep_string = {theme = "dropdown"},
+            projects = {theme = "dropdown"},
+            help_tags = {theme = "dropdown"},
+            git_branches = {theme = "dropdown"},
+            buffers = {theme = "dropdown"}
         }
     }
     require('telescope').load_extension('project')
