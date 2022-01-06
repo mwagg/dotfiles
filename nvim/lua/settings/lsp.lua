@@ -28,7 +28,7 @@ use {
             }
         })
 
-        local common_on_attach = function(_, bufnr)
+        local common_on_attach = function(client, bufnr)
             local function buf_set_keymap(...)
                 vim.api.nvim_buf_set_keymap(bufnr, ...)
             end
@@ -44,16 +44,11 @@ use {
             buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
             buf_set_keymap('n', '<leader>cf', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
             buf_set_keymap('n', '<leader>ch', "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
-        end
 
-        local configure_format_on_save = function(name, file_types)
-            local cmd = vim.api.nvim_command
-            cmd("augroup autoformat_" .. name)
-            cmd('autocmd!')
-            for _, file_type in pairs(file_types) do
-                cmd("autocmd BufWritePre " .. file_type .. " lua vim.lsp.buf.formatting()")
+            if client.resolved_capabilities.document_formatting then
+                local cmd = vim.api.nvim_command
+                cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
             end
-            cmd("augroup END")
         end
 
         local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -77,7 +72,6 @@ use {
         })
 
         -- Lua
-        configure_format_on_save("lua", {"*.lua"})
         local runtime_path = vim.split(package.path, ';')
         table.insert(runtime_path, "lua/?.lua")
         table.insert(runtime_path, "lua/?/init.lua")
@@ -112,9 +106,16 @@ use {
 
         -- Nix
         lspconfig.rnix.setup({on_attach = common_on_attach, capabilities = capabilities})
-        configure_format_on_save("nix", {"*.nix"})
 
         -- JS/TS
-        lspconfig.tsserver.setup({on_attach = common_on_attach, capabilities = capabilities})
+        lspconfig.tsserver.setup({
+            on_attach = function(client, bufnr)
+                client.resolved_capabilities.document_formatting = false
+                client.resolved_capabilities.document_range_formatting = false
+
+                common_on_attach(client, bufnr)
+            end,
+            capabilities = capabilities
+        })
     end
 }
