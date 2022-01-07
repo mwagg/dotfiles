@@ -10,5 +10,6 @@
     rnix-lsp
     tldr
     neovim
+    nodePackages.typescript-language-server
   ];
 }
