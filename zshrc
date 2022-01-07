@@ -65,3 +65,8 @@ function git-clean() {
 if [ -f /etc/zsh/zshrc.default.inc.zsh ]; then
     source /etc/zsh/zshrc.default.inc.zsh
 fi
+
+if [ "$SPIN" ]; then
+    export TERM=xterm-256color
+fi
+
