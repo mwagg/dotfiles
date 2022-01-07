@@ -6,6 +6,7 @@ if [ "$SPIN" ]; then
     rm ~/.zshrc
     rm ~/.zlogin
     export PATH="$HOME/.nix-profile/bin:$PATH"
+    export NIX_PATH="$HOME/.nix-defexpr/channels"
 fi
 
 CONFIG="install.conf.yaml"
