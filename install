@@ -44,9 +44,9 @@ type home-manager || {
 }
 
 if [ "$SPIN" ]; then
-    echo "(import ~/dotfiles/nix/spin.nix)" >> ~/.config/nixpkgs/home.nix
+    echo "(import ~/dotfiles/nix/spin.nix)" > ~/.config/nixpkgs/home.nix
 else
-    echo "(import ~/dotfiles/nix/home.nix)" >> ~/.config/nixpkgs/home.nix
+    echo "(import ~/dotfiles/nix/home.nix)" > ~/.config/nixpkgs/home.nix
 fi
 
 home-manager switch
