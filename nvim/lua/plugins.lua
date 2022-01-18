@@ -3,10 +3,6 @@ local fn = vim.fn
 
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
-local function require_settings(name)
-    require(string.format("settings/%s", name))
-end
-
 -- bootstrap packer if not installed
 if fn.empty(fn.glob(install_path)) > 0 then
     fn.system({"git", "clone", "https://github.com/wbthomason/packer.nvim", install_path})
@@ -30,17 +26,17 @@ use {
     end
 }
 
-require_settings("nightfox")
-require_settings("cmp")
-require_settings("surround")
-require_settings("which-key")
-require_settings("telescope")
-require_settings("lualine")
-require_settings("autopairs")
-require_settings("treesitter")
-require_settings("gitsigns")
-require_settings("snippets")
-require_settings("lsp")
-require_settings("neogit")
-require_settings("nvim-tree")
-require_settings("comment")
+require("settings/nightfox")
+require("settings/cmp")
+require("settings/surround")
+require("settings/which-key")
+require("settings/telescope")
+require("settings/lualine")
+require("settings/autopairs")
+require("settings/treesitter")
+require("settings/gitsigns")
+require("settings/snippets")
+require("settings/lsp")
+require("settings/neogit")
+require("settings/nvim-tree")
+require("settings/comment")
