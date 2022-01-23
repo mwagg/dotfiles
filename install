@@ -30,10 +30,7 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
     brew bundle
-    type lua-format
-    if [ $? != 0 ]; then
-        luarocks install --server=https://luarocks.org/dev luaformatter
-    fi
+    type lua-format || { luarocks install --server=https://luarocks.org/dev luaformatter }
 fi
 
 type home-manager || {
