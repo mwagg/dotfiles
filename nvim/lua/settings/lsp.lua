@@ -41,6 +41,8 @@ use {
 
             buf_set_keymap('n', '<leader>ca', "<cmd>lua require('lspsaga.codeaction').code_action()<cr>", opts)
             buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
+            buf_set_keymap('n', '<C-f>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
+            buf_set_keymap('n', '<C-b>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", opts)
             buf_set_keymap('n', '<leader>cr', "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
             buf_set_keymap('n', '[e', "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
             buf_set_keymap('n', ']e', "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
