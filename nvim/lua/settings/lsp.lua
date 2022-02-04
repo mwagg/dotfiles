@@ -110,7 +110,7 @@ use {
         })
 
         -- Nix
-        lspconfig.rnix.setup({on_attach = common_on_attach, capabilities = capabilities})
+        -- lspconfig.rnix.setup({on_attach = common_on_attach, capabilities = capabilities})
 
         -- JS/TS
         lspconfig.tsserver.setup({

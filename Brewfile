@@ -12,3 +12,7 @@ brew "efm-langserver"
 brew "ripgrep"
 brew "htop"
 brew "autojump"
+cask "rectangle" unless Dir.exist?('/Applications/Rectangle.app')
+brew "tldr"
+brew "gh"
+brew "gpg"

@@ -2,13 +2,6 @@
 
 set -e
 
-if [ "$SPIN" ]; then
-    rm ~/.zshrc
-    rm ~/.zlogin
-    export PATH="$HOME/.nix-profile/bin:$PATH"
-    export NIX_PATH="$HOME/.nix-defexpr/channels"
-fi
-
 CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
 
@@ -29,21 +22,8 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
+    type brew || { /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; }
+    eval "$(/opt/homebrew/bin/brew shellenv)"
     brew bundle
-    type lua-format || { luarocks install --server=https://luarocks.org/dev luaformatter }
+    type lua-format || { luarocks install --server=https://luarocks.org/dev luaformatter; }
 fi
-
-type home-manager || {
-    echo "Installing home-manager"
-    nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
-    nix-channel --update
-    nix-shell '<home-manager>' -A install
-}
-
-if [ "$SPIN" ]; then
-    echo "(import ~/dotfiles/nix/spin.nix)" > ~/.config/nixpkgs/home.nix
-else
-    echo "(import ~/dotfiles/nix/home.nix)" > ~/.config/nixpkgs/home.nix
-fi
-
-home-manager switch
