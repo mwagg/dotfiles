@@ -28,7 +28,6 @@ use {
 
 require("settings/nightfox")
 require("settings/cmp")
-require("settings/surround")
 require("settings/which-key")
 require("settings/telescope")
 require("settings/lualine")
@@ -40,3 +39,4 @@ require("settings/lsp")
 require("settings/neogit")
 require("settings/nvim-tree")
 require("settings/comment")
+require("settings/mini")
