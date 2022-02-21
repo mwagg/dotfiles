@@ -27,12 +27,14 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     brew bundle
     type lua-format || { luarocks install --server=https://luarocks.org/dev luaformatter; }
 
-    type dev > /dev/null 2>&1 || {
+    if [[ ! -d /opt/dev ]]
+    then
         test -d "$HOME/.asdf" || { git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0; } 
 
         asdf plugin add ruby || true
         asdf install ruby 3.1.1 || true
 
         asdf reshim
-    }
+    fi
 fi
+
