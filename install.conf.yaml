@@ -8,3 +8,4 @@
     ~/.zshenv: zshenv
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
+    ~/.default-gems: default-gems
