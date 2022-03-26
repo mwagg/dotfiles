@@ -16,3 +16,5 @@ cask "rectangle" unless Dir.exist?('/Applications/Rectangle.app')
 brew "tldr"
 brew "gh"
 brew "gpg"
+brew "postgresql"
+brew "redis"
