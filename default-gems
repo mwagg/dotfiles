@@ -1,2 +1,5 @@
 bundler
 pry
+sorbet
+watchman
+solargraph
