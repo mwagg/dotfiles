@@ -9,3 +9,4 @@
     ~/.config/kitty: kitty
     ~/.config/nvim: nvim
     ~/.default-gems: default-gems
+    ~/.tool-versions: tool-versions
