@@ -30,4 +30,4 @@ vim.opt.completeopt = "menu,menuone,noselect"
 vim.opt.termguicolors = true
 vim.opt.inccommand = "nosplit"
 
-require("settings/terminal")
+require("settings-terminal")
