@@ -10,6 +10,10 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 PREZTO_DIR="${ZDOTDIR:-$HOME}/.zprezto"
 
+if [ "$SPIN" ]; then
+  rm -rf ~/.zshrc ~/.zlogin
+fi
+
 if [ ! -d "$PREZTO_DIR" ]; then
   git clone --recursive https://github.com/sorin-ionescu/prezto.git "$PREZTO_DIR"
 fi
