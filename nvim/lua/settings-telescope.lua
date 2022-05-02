@@ -40,32 +40,32 @@ local function configure()
             }
         },
         pickers = {
-            find_files = {theme = "dropdown"},
-            live_grep = {theme = "dropdown"},
-            grep_string = {theme = "dropdown"},
-            projects = {theme = "dropdown"},
-            help_tags = {theme = "dropdown"},
-            git_branches = {theme = "dropdown"},
-            buffers = {theme = "dropdown"}
+            find_files = { theme = "dropdown" },
+            live_grep = { theme = "dropdown" },
+            grep_string = { theme = "dropdown" },
+            projects = { theme = "dropdown" },
+            help_tags = { theme = "dropdown" },
+            git_branches = { theme = "dropdown" },
+            buffers = { theme = "dropdown" }
         }
     }
     require('telescope').load_extension('project')
 
     require("which-key").register({
-        ["/"] = {":Telescope live_grep<cr>", "Live grep"},
-        ["*"] = {":Telescope grep_string<cr>", "Search word under cursor"},
-        ["<leader>"] = {":Telescope find_files hidden=true<cr>", "Find files"},
-        f = {p = {":Telescope project<cr>", "Project"}, c = {":Telescope colorscheme<cr>", "Colorscheme"}},
-        b = {b = {":Telescope buffers<cr>", "Find buffer"}},
-        g = {b = {":Telescope git_branches<cr>", "Branches"}, l = {":Telescope git_commits<cr>", "Search commits"}},
-        h = {h = {":Telescope help_tags<cr>", "Help tags"}},
-        c = {d = {":Telescope diagnostics<cr>", "Show diagnostics"}}
-    }, {prefix = "<leader>"})
+        ["/"] = { ":Telescope live_grep<cr>", "Live grep" },
+        ["*"] = { ":Telescope grep_string<cr>", "Search word under cursor" },
+        ["<leader>"] = { ":Telescope find_files hidden=true<cr>", "Find files" },
+        f = { p = { ":Telescope project<cr>", "Project" }, c = { ":Telescope colorscheme<cr>", "Colorscheme" } },
+        b = { b = { ":Telescope buffers<cr>", "Find buffer" } },
+        g = { b = { ":Telescope git_branches<cr>", "Branches" }, l = { ":Telescope git_commits<cr>", "Search commits" } },
+        h = { h = { ":Telescope help_tags<cr>", "Help tags" } },
+        c = { name = "Code", d = { ":Telescope diagnostics<cr>", "Show diagnostics" } }
+    }, { prefix = "<leader>" })
 end
 
 use {
     "nvim-telescope/telescope.nvim",
-    requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}, {"nvim-telescope/telescope-project.nvim"}},
+    requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" }, { "nvim-telescope/telescope-project.nvim" } },
     config = configure,
     after = "which-key.nvim"
 }
