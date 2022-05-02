@@ -5,7 +5,7 @@ local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
 -- bootstrap packer if not installed
 if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({"git", "clone", "https://github.com/wbthomason/packer.nvim", install_path})
+    fn.system({ "git", "clone", "https://github.com/wbthomason/packer.nvim", install_path })
     execute "packadd packer.nvim"
 end
 
@@ -21,8 +21,8 @@ packer.reset()
 use {
     "wbthomason/packer.nvim",
     config = function()
-        vim.api.nvim_set_keymap("n", "<leader>pp", ":PackerSync<cr>", {silent = true, noremap = true})
-        vim.api.nvim_set_keymap("n", "<leader>pc", ":PackerCompile<cr>", {silent = true, noremap = true})
+        vim.api.nvim_set_keymap("n", "<leader>pp", ":PackerSync<cr>", { silent = true, noremap = true })
+        vim.api.nvim_set_keymap("n", "<leader>pc", ":PackerCompile<cr>", { silent = true, noremap = true })
     end
 }
 
