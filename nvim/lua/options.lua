@@ -41,7 +41,7 @@ vim.opt.mouse = "a"
 
 -- tabs/spacing config
 vim.opt.ts = 2
-vim.opt.sw = 4
+vim.opt.sw = 2
 vim.opt.expandtab = true
 
 require("settings-terminal")
