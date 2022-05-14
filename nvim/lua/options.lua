@@ -1,33 +1,47 @@
-local cmd = vim.api.nvim_command
-cmd("set iskeyword+=-")
-vim.opt.syntax = "enable"
+-- enable hidden buffers
 vim.opt.hidden = true
+
+-- wrap text
 vim.opt.wrap = false
-vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
-vim.opt.ruler = true
+
+-- use two lines for cmdline to prevent hit enter commands
 vim.opt.cmdheight = 2
-vim.opt.splitbelow = true
-vim.opt.splitright = true
+
+-- automatically indent lines
 vim.opt.smartindent = true
 vim.opt.autoindent = true
+
+-- always display the status line
 vim.opt.laststatus = 2
+
+-- line numbers with relative line numbering
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.background = "dark"
+
+-- always show the sign column
+vim.opt.signcolumn = "yes"
+
+-- don't create backup files
 vim.opt.backup = false
 vim.opt.writebackup = false
-vim.opt.signcolumn = "yes"
-vim.opt.updatetime = 300
-vim.opt.timeoutlen = 500
+
+-- preview substitutions live
+vim.opt.inccommand = "nosplit"
+
+-- integrate with the system clipboard
 vim.opt.clipboard = "unnamedplus"
+
+vim.opt.updatetime = 300
+
+-- reduce timeout for mapped sequences
+vim.opt.timeoutlen = 500
+
+-- enable mouse support
 vim.opt.mouse = "a"
+
+-- tabs/spacing config
 vim.opt.ts = 2
 vim.opt.sw = 4
 vim.opt.expandtab = true
-vim.opt.smartindent = true
-vim.opt.completeopt = "menu,menuone,noselect"
-vim.opt.termguicolors = true
-vim.opt.inccommand = "nosplit"
 
 require("settings-terminal")

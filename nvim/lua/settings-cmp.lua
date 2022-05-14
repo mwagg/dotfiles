@@ -1,5 +1,7 @@
 local use = require("packer").use
 
+vim.opt.completeopt = "menu,menuone,noselect"
+
 local function configure()
     local cmp = require 'cmp'
     local lspkind = require("lspkind")
