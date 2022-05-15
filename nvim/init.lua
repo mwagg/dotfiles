@@ -10,7 +10,7 @@ end
 
 vim.cmd('command! ReloadConfig lua ReloadConfig()')
 
-require("plugins")
-require("mappings")
+require("mwagg/plugins")
+require("mwagg/mappings")
 require("mwagg/options")
-require("autocmd")
+require("mwagg/autocmd")
