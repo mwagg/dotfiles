@@ -44,4 +44,4 @@ vim.opt.ts = 2
 vim.opt.sw = 2
 vim.opt.expandtab = true
 
-require("settings-terminal")
+require("mwagg/terminal")
