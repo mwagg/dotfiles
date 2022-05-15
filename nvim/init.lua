@@ -8,7 +8,7 @@ function _G.ReloadConfig()
   dofile(vim.env.MYVIMRC)
 end
 
-vim.cmd('command! ReloadConfig lua ReloadConfig()')
+vim.api.nvim_create_user_command("ReloadConfig", "lua ReloadConfig()", {})
 
 require("mwagg/plugins")
 require("mwagg/mappings")
