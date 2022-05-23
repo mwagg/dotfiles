@@ -21,8 +21,8 @@ packer.reset()
 use {
   "wbthomason/packer.nvim",
   config = function()
-    vim.api.nvim_set_keymap("n", "<leader>pp", ":PackerSync<cr>", { silent = true, noremap = true })
-    vim.api.nvim_set_keymap("n", "<leader>pc", ":PackerCompile<cr>", { silent = true, noremap = true })
+    vim.api.nvim_set_keymap("n", "<leader>npp", ":PackerSync<cr>", { silent = true, noremap = true })
+    vim.api.nvim_set_keymap("n", "<leader>npc", ":PackerCompile<cr>", { silent = true, noremap = true })
   end
 }
 
