@@ -103,5 +103,10 @@ use {
     -- Ruby - sorbet
     lspconfig.sorbet.setup({ on_attach = on_attach, capabilities = capabilities })
     lspconfig.solargraph.setup({ on_attach = on_attach, capabilities = capabilities })
+
+    -- TypeScript
+    lspconfig.tsserver.setup({ on_attach = on_attach, capabilities = capabilities })
+
+
   end
 }
