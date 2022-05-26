@@ -40,9 +40,9 @@ use {
       -- Mappings.
       local opts = { noremap = true, silent = true }
 
-      vim.keymap.set("n", "<leader>ca", ":lua require('lspsaga.codeaction').code_action()<cr>", {desc="Code action"})
-      vim.keymap.set("n", "<leader>cr", ":Telescope lsp_references<cr>", {desc="References"})
-      vim.keymap.set("n", "<leader>cf", ":lua vim.lsp.buf.formatting()<CR>", {desc="Format"})
+      vim.keymap.set("n", "<leader>ca", ":lua require('lspsaga.codeaction').code_action()<cr>", { desc = "Code action" })
+      vim.keymap.set("n", "<leader>cr", ":Telescope lsp_references<cr>", { desc = "References" })
+      vim.keymap.set("n", "<leader>cf", ":lua vim.lsp.buf.formatting()<CR>", { desc = "Format" })
 
       buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
       buf_set_keymap('n', '<C-f>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
@@ -101,6 +101,7 @@ use {
     -- TypeScript
     lspconfig.tsserver.setup({ on_attach = on_attach, capabilities = capabilities })
 
-
+    -- GraphQL
+    lspconfig.graphql.setup({})
   end
 }
