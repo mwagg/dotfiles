@@ -13,18 +13,15 @@ end
 local packer = require("packer")
 packer.init {
   enable = true, -- enable profiling via :PackerCompile profile=true
-  threshold = 0 -- the amount in ms that a plugins load time must be over for it to be included in the profile
+  threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
+    display = {
+      open_fn = require('packer.util').float,
+    }
 }
 local use = packer.use
 packer.reset()
 
-use {
-  "wbthomason/packer.nvim",
-  config = function()
-    vim.api.nvim_set_keymap("n", "<leader>npp", ":PackerSync<cr>", { silent = true, noremap = true })
-    vim.api.nvim_set_keymap("n", "<leader>npc", ":PackerCompile<cr>", { silent = true, noremap = true })
-  end
-}
+use "wbthomason/packer.nvim"
 
 require("mwagg/nightfox")
 require("mwagg/cmp")
