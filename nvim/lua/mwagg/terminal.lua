@@ -14,4 +14,4 @@ vim.cmd("autocmd TermOpen * startinsert") -- switch to insert mode when opening 
 vim.cmd("autocmd BufWinEnter,WinEnter term://* startinsert") -- switch to insert mode when entering a terminal
 vim.cmd("autocmd TermOpen * setlocal signcolumn=no") -- no sign column in terminals
 
-vim.keymap.set("n", "<leader>t", ":terminal<cr>")
+vim.keymap.set("n", "<leader>t", ":terminal<cr>", { desc = "Open terminal in this buffer" })

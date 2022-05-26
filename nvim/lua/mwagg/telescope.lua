@@ -55,16 +55,16 @@ local function configure()
 
   telescope.load_extension('lsp_handlers')
 
-  require("which-key").register({
-    ["/"] = { ":Telescope live_grep<cr>", "Live grep" },
-    ["*"] = { ":Telescope grep_string<cr>", "Search word under cursor" },
-    ["<leader>"] = { ":Telescope find_files hidden=true<cr>", "Find files" },
-    f = { p = { ":Telescope project<cr>", "Project" }, c = { ":Telescope colorscheme<cr>", "Colorscheme" } },
-    b = { b = { ":Telescope buffers<cr>", "Find buffer" } },
-    g = { b = { ":Telescope git_branches<cr>", "Branches" }, l = { ":Telescope git_commits<cr>", "Search commits" } },
-    h = { h = { ":Telescope help_tags<cr>", "Help tags" } },
-    c = { name = "Code", d = { ":Telescope diagnostics<cr>", "Show diagnostics" } }
-  }, { prefix = "<leader>" })
+  vim.keymap.set("n", "<leader>/", ":Telescope live_grep<cr>", {desc="Search across project"})
+  vim.keymap.set("n", "<leader>*", ":Telescope grep_string<cr>", {desc={"Search word under cursor"}})
+  vim.keymap.set("n", "<leader><leader>", ":Telescope find_files<cr>", {desc="Find files"})
+  vim.keymap.set("n", "<leader>fp", "Telescope projects<cr>", {desc="Find project"})
+  vim.keymap.set("n", "<leader>fc", "Telescope colorscheme<cr>", {desc="Find colorscheme"})
+  vim.keymap.set("n", "<leader>bb", "Telescope buffers<cr>", {desc="Find buffer"})
+  vim.keymap.set("n", "<leader>gb", "Telescope git_branches<cr>", {desc="Find branches"})
+  vim.keymap.set("n", "<leader>gl", "Telescope git_commits<cr>", {desc="Find commits"})
+  vim.keymap.set("n", "<leader>hh", "Telescope help_tags<cr>", {desc="Find help"})
+  vim.keymap.set("n", "<leader>cd", "Telescope diagnostics<cr>", {desc="Show diagnostics"})
 end
 
 use {
@@ -76,5 +76,4 @@ use {
     { "gbrlsnchs/telescope-lsp-handlers.nvim" },
   },
   config = configure,
-  after = "which-key.nvim"
 }

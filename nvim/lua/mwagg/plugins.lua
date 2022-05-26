@@ -28,7 +28,6 @@ use {
 
 require("mwagg/nightfox")
 require("mwagg/cmp")
-require("mwagg/which-key")
 require("mwagg/telescope")
 require("mwagg/lualine")
 require("mwagg/autopairs")
@@ -41,3 +40,4 @@ require("mwagg/neo-tree")
 require("mwagg/comment")
 require("mwagg/mini")
 require("mwagg/notify")
+require("mwagg/keymenu")

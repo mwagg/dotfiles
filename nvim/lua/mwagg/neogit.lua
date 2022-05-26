@@ -3,7 +3,6 @@ local use = require("packer").use
 use {
     "TimUntersberger/neogit",
     requires = {"nvim-lua/plenary.nvim", "sindrets/diffview.nvim"},
-    after = "which-key.nvim",
     config = function()
         require'diffview'.setup({
             key_bindings = {
@@ -14,8 +13,7 @@ use {
 
         require('neogit').setup({integrations = {diffview = true}})
 
-        require('which-key').register({
-            g = {g = {"<cmd>Neogit<CR>", "Neogit"}, h = {"<cmd>DiffviewFileHistory<cr>", "File history"}}
-        }, {prefix = "<leader>"})
+        vim.keymap.set("n", "<leader>gg", "<cmd>Neogit<CR>", {desc="Neogit"})
+        vim.keymap.set("n", "<leader>gh", "<cmd>DiffviewFileHistory<CR>", {desc="File history"})
     end
 }

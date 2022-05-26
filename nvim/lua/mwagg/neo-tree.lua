@@ -127,7 +127,6 @@ use {
                 }
             }
         })
-        require("which-key").register({f = {f = {":Neotree reveal<cr>", "Show current file in tree"}}},
-                                      {prefix = "<leader>"})
+        vim.keymap.set("n", "<leader>ff", ":Neotree reveal<cr>", {desc="Show current file in tree"})
     end
 }

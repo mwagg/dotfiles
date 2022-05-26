@@ -13,7 +13,6 @@ use {
     "tami5/lspsaga.nvim", "hrsh7th/cmp-nvim-lsp", "jose-elias-alvarez/null-ls.nvim",
     "jose-elias-alvarez/nvim-lsp-ts-utils", "williamboman/nvim-lsp-installer"
   },
-  after = "which-key.nvim",
   config = function()
     local lspconfig = require "lspconfig"
     require("nvim-lsp-installer").setup({ automatic_installation = true })
@@ -41,14 +40,9 @@ use {
       -- Mappings.
       local opts = { noremap = true, silent = true }
 
-      require("which-key").register({
-        c = {
-          a = { ":lua require('lspsaga.codeaction').code_action()<cr>", "Code action" },
-          r = { ":Telescope lsp_references<cr>", "References" },
-          f = { ":lua vim.lsp.buf.formatting()<CR>", "Format" },
-
-        }
-      }, { prefix = "<leader>", buffer = bufnr })
+      vim.keymap.set("n", "<leader>ca", ":lua require('lspsaga.codeaction').code_action()<cr>", {desc="Code action"})
+      vim.keymap.set("n", "<leader>cr", ":Telescope lsp_references<cr>", {desc="References"})
+      vim.keymap.set("n", "<leader>cf", ":lua vim.lsp.buf.formatting()<CR>", {desc="Format"})
 
       buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
       buf_set_keymap('n', '<C-f>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", opts)
