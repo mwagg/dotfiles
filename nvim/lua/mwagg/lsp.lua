@@ -15,7 +15,7 @@ use {
   },
   config = function()
     local lspconfig = require "lspconfig"
-    require("nvim-lsp-installer").setup({ automatic_installation = true })
+    require("nvim-lsp-installer").setup({ automatic_installation = { exclude = "solargraph" } })
 
     -- ******************************
     -- LSP config
@@ -95,8 +95,10 @@ use {
     }
 
     -- Ruby - sorbet
-    lspconfig.sorbet.setup({ on_attach = on_attach, capabilities = capabilities, cmd={ "bundle", "exec", "srb", "tc", "--lsp" } })
-    lspconfig.solargraph.setup({ on_attach = on_attach, capabilities = capabilities })
+    lspconfig.sorbet.setup({ on_attach = on_attach, capabilities = capabilities, cmd = { "bundle", "exec", "srb", "tc", "--lsp" } })
+    lspconfig.solargraph.setup({
+      on_attach = on_attach, capabilities = capabilities,
+      cmd = { "bundle", "exec", "solargraph", "stdio" } })
 
     -- TypeScript
     lspconfig.tsserver.setup({ on_attach = on_attach, capabilities = capabilities })

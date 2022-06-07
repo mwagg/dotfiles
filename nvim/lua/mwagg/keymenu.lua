@@ -12,5 +12,6 @@ use {
     keymenu.set("n", "<Space>b", { desc = "Buffers" })
     keymenu.set("n", "<Space>h", { desc = "Help" })
     keymenu.set("n", "<Space>c", { desc = "Code" })
+    keymenu.set("n", "<Space>t", { desc = "Test" })
   end
 }

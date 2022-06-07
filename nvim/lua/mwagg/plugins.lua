@@ -14,9 +14,9 @@ local packer = require("packer")
 packer.init {
   enable = true, -- enable profiling via :PackerCompile profile=true
   threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
-    display = {
-      open_fn = require('packer.util').float,
-    }
+  display = {
+    open_fn = require('packer.util').float,
+  }
 }
 local use = packer.use
 packer.reset()
@@ -38,3 +38,4 @@ require("mwagg/comment")
 require("mwagg/mini")
 require("mwagg/fidget")
 require("mwagg/keymenu")
+require("mwagg/neotest")
