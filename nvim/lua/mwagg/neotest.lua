@@ -11,7 +11,7 @@ use {
     "rcarriga/neotest-plenary"
   },
   config = function()
-    local neotest = require('neotest')
+    local neotest = require("neotest")
     neotest.setup({
       adapters = {
         require("neotest-vim-test")({ ignore_filetypes = { "python", "lua" } }),
@@ -48,5 +48,9 @@ use {
     vim.keymap.set("n", "<leader>ts", function()
       neotest.summary.toggle()
     end, { desc = "Toggle test summary view" })
+
+    vim.keymap.set("n", "<leader>tl", function()
+      neotest.run.run_last()
+    end, { desc = "Rerun last test" })
   end
 }
