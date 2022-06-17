@@ -19,6 +19,7 @@ local function configure()
           ["<C-k>"] = telescope_actions.move_selection_previous,
           ["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
           ["<C-l>"] = telescope_actions.smart_send_to_qflist,
+          ['<c-d>'] = require('telescope.actions').delete_buffer,
           -- To disable a keymap, put [map] = false
           -- So, to not map "<C-n>", just put
           -- ["<c-x>"] = false,
