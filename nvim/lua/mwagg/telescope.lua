@@ -36,7 +36,7 @@ local function configure()
         n = {
           ["<C-j>"] = telescope_actions.move_selection_next,
           ["<C-k>"] = telescope_actions.move_selection_previous,
-          ["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist
+          ["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
           -- ["<C-i>"] = my_cool_custom_action,
         }
       }
@@ -55,16 +55,16 @@ local function configure()
 
   telescope.load_extension('lsp_handlers')
 
-  vim.keymap.set("n", "<leader>/", ":Telescope live_grep<cr>", {desc="Search across project"})
-  vim.keymap.set("n", "<leader>*", ":Telescope grep_string<cr>", {desc={"Search word under cursor"}})
-  vim.keymap.set("n", "<leader><leader>", ":Telescope find_files<cr>", {desc="Find files"})
-  vim.keymap.set("n", "<leader>fp", ":Telescope projects<cr>", {desc="Find project"})
-  vim.keymap.set("n", "<leader>fc", ":Telescope colorscheme<cr>", {desc="Find colorscheme"})
-  vim.keymap.set("n", "<leader>bb", ":Telescope buffers<cr>", {desc="Find buffer"})
-  vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<cr>", {desc="Find branches"})
-  vim.keymap.set("n", "<leader>gl", ":Telescope git_commits<cr>", {desc="Find commits"})
-  vim.keymap.set("n", "<leader>hh", ":Telescope help_tags<cr>", {desc="Find help"})
-  vim.keymap.set("n", "<leader>cd", ":Telescope diagnostics<cr>", {desc="Show diagnostics"})
+  vim.keymap.set("n", "<leader>/", ":Telescope live_grep<cr>", { desc = "Search across project" })
+  vim.keymap.set("n", "<leader>*", ":Telescope grep_string<cr>", { desc = { "Search word under cursor" } })
+  vim.keymap.set("n", "<leader><leader>", ":Telescope find_files<cr>", { desc = "Find files" })
+  vim.keymap.set("n", "<leader>fp", ":Telescope projects<cr>", { desc = "Find project" })
+  vim.keymap.set("n", "<leader>fc", ":Telescope colorscheme<cr>", { desc = "Find colorscheme" })
+  vim.keymap.set("n", "<leader>bb", ":Telescope buffers<cr>", { desc = "Find buffer" })
+  vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<cr>", { desc = "Find branches" })
+  vim.keymap.set("n", "<leader>gl", ":Telescope git_commits<cr>", { desc = "Find commits" })
+  vim.keymap.set("n", "<leader>hh", ":Telescope help_tags<cr>", { desc = "Find help" })
+  vim.keymap.set("n", "<leader>cd", ":Telescope diagnostics<cr>", { desc = "Show diagnostics" })
 end
 
 use {
