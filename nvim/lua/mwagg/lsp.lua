@@ -59,6 +59,21 @@ use {
           end
         })
       end
+
+      vim.api.nvim_create_autocmd("CursorHold", {
+        buffer = bufnr,
+        callback = function()
+          local daignostic_opts = {
+            focusable = false,
+            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+            border = 'rounded',
+            source = 'always',
+            prefix = ' ',
+            scope = 'cursor',
+          }
+          vim.diagnostic.open_float(nil, daignostic_opts)
+        end
+      })
     end
 
     local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
@@ -93,6 +108,14 @@ use {
         },
       }
     }
+
+    vim.diagnostic.config({
+      virtual_text = false,
+      signs = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = false,
+    })
 
     -- Ruby - sorbet
     lspconfig.sorbet.setup({ on_attach = on_attach, capabilities = capabilities, cmd = { "bundle", "exec", "srb", "tc", "--lsp" } })
