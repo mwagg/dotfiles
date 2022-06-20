@@ -8,7 +8,8 @@ use {
     "antoinemadec/FixCursorHold.nvim",
     "rcarriga/neotest-vim-test",
     "vim-test/vim-test",
-    "rcarriga/neotest-plenary"
+    "rcarriga/neotest-plenary",
+    "olimorris/neotest-rspec",
   },
   config = function()
     local neotest = require("neotest")
@@ -16,6 +17,7 @@ use {
       adapters = {
         require("neotest-vim-test")({ ignore_filetypes = { "python", "lua" } }),
         require("neotest-plenary"),
+        require("neotest-rspec")
       },
       icons = {
         child_indent = "│",
