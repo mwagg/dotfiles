@@ -42,6 +42,7 @@ use {
 
       vim.keymap.set("n", "<leader>ca", ":lua require('lspsaga.codeaction').code_action()<cr>", { desc = "Code action" })
       vim.keymap.set("n", "<leader>cr", ":Telescope lsp_references<cr>", { desc = "References" })
+      vim.keymap.set("n", "<leader>cR", require('lspsaga.rename').rename, { desc = "Rename" })
       vim.keymap.set("n", "<leader>cf", ":lua vim.lsp.buf.formatting()<CR>", { desc = "Format" })
 
       buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
@@ -55,25 +56,10 @@ use {
         vim.api.nvim_create_autocmd({ "BufWritePre" }, {
           pattern = "<buffer>",
           callback = function()
-            vim.lsp.buf.formatting()
+            vim.lsp.buf.formatting_sync()
           end
         })
       end
-
-      vim.api.nvim_create_autocmd("CursorHold", {
-        buffer = bufnr,
-        callback = function()
-          local daignostic_opts = {
-            focusable = false,
-            close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-            border = 'rounded',
-            source = 'always',
-            prefix = ' ',
-            scope = 'cursor',
-          }
-          vim.diagnostic.open_float(nil, daignostic_opts)
-        end
-      })
     end
 
     local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
