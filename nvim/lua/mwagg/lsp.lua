@@ -11,7 +11,8 @@ use {
   "neovim/nvim-lspconfig",
   requires = {
     "tami5/lspsaga.nvim", "hrsh7th/cmp-nvim-lsp", "jose-elias-alvarez/null-ls.nvim",
-    "jose-elias-alvarez/nvim-lsp-ts-utils", "williamboman/nvim-lsp-installer"
+    "jose-elias-alvarez/nvim-lsp-ts-utils", "williamboman/nvim-lsp-installer",
+    "linty-org/key-menu.nvim", "numToStr/FTerm.nvim",
   },
   config = function()
     local lspconfig = require "lspconfig"
@@ -114,5 +115,8 @@ use {
 
     -- GraphQL
     lspconfig.graphql.setup({})
+
+    -- Rust
+    lspconfig.rust_analyzer.setup({ on_attach = on_attach, capabilities = capabilities })
   end
 }

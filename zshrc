@@ -69,6 +69,4 @@ if [ "$SPIN" ]; then
     export TERM=xterm-256color
 fi
 
-if [[ -f "$HOME/.asdf/asdf.sh" ]]; then
-    . $HOME/.asdf/asdf.sh
-fi
+[ -f "$HOME/.asdf/asdf.sh" ] && . $HOME/.asdf/asdf.sh
