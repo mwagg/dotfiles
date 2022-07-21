@@ -12,7 +12,7 @@ use {
   requires = {
     "tami5/lspsaga.nvim", "hrsh7th/cmp-nvim-lsp", "jose-elias-alvarez/null-ls.nvim",
     "jose-elias-alvarez/nvim-lsp-ts-utils", "williamboman/nvim-lsp-installer",
-    "linty-org/key-menu.nvim", "numToStr/FTerm.nvim",
+    "linty-org/key-menu.nvim",
   },
   config = function()
     local lspconfig = require "lspconfig"
@@ -42,7 +42,7 @@ use {
       local opts = { noremap = true, silent = true }
 
       vim.keymap.set("n", "<leader>ca", ":lua require('lspsaga.codeaction').code_action()<cr>", { desc = "Code action" })
-      vim.keymap.set("n", "<leader>cr", ":Telescope lsp_references<cr>", { desc = "References" })
+      vim.keymap.set("n", "<leader>fr", ":Telescope lsp_references<cr>", { desc = "References" })
       vim.keymap.set("n", "<leader>cR", require('lspsaga.rename').rename, { desc = "Rename" })
       vim.keymap.set("n", "<leader>cf", ":lua vim.lsp.buf.formatting()<CR>", { desc = "Format" })
 
