@@ -12,7 +12,7 @@ use {
   requires = {
     "tami5/lspsaga.nvim", "hrsh7th/cmp-nvim-lsp", "jose-elias-alvarez/null-ls.nvim",
     "jose-elias-alvarez/nvim-lsp-ts-utils", "williamboman/nvim-lsp-installer",
-    "linty-org/key-menu.nvim",
+    "linty-org/key-menu.nvim", "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
   },
   config = function()
     local lspconfig = require "lspconfig"
@@ -104,6 +104,8 @@ use {
       severity_sort = false,
     })
 
+    require("lsp_lines").setup()
+
     -- Ruby - sorbet
     lspconfig.sorbet.setup({ on_attach = on_attach, capabilities = capabilities, cmd = { "bundle", "exec", "srb", "tc", "--lsp" } })
     lspconfig.solargraph.setup({
@@ -118,5 +120,6 @@ use {
 
     -- Rust
     lspconfig.rust_analyzer.setup({ on_attach = on_attach, capabilities = capabilities })
+
   end
 }
