@@ -43,3 +43,5 @@ vim.opt.mouse = "a"
 vim.opt.ts = 2
 vim.opt.sw = 2
 vim.opt.expandtab = true
+
+require("mwagg/terminal")
