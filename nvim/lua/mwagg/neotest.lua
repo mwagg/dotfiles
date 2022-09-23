@@ -10,6 +10,7 @@ use {
     "vim-test/vim-test",
     "rcarriga/neotest-plenary",
     "olimorris/neotest-rspec",
+    "rouge8/neotest-rust",
   },
   config = function()
     local neotest = require("neotest")
@@ -17,7 +18,8 @@ use {
       adapters = {
         require("neotest-vim-test")({ ignore_filetypes = { "python", "lua" } }),
         require("neotest-plenary"),
-        require("neotest-rspec")
+        require("neotest-rspec"),
+        require("neotest-rust"),
       },
       icons = {
         child_indent = "│",
