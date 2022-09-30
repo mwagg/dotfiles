@@ -12,7 +12,7 @@ use {
   requires = {
     "tami5/lspsaga.nvim", "hrsh7th/cmp-nvim-lsp", "jose-elias-alvarez/null-ls.nvim",
     "jose-elias-alvarez/nvim-lsp-ts-utils", "williamboman/nvim-lsp-installer",
-    "linty-org/key-menu.nvim", "https://git.sr.ht/~whynothugo/lsp_lines.nvim"
+    "linty-org/key-menu.nvim", "folke/trouble.nvim"
   },
   config = function()
     local lspconfig = require "lspconfig"
@@ -97,14 +97,17 @@ use {
     }
 
     vim.diagnostic.config({
-      virtual_text = false,
+      virtual_text = true,
       signs = true,
       underline = true,
       update_in_insert = false,
       severity_sort = false,
     })
 
-    require("lsp_lines").setup()
+    require("trouble").setup {
+      auto_open = true,
+      auto_close = true,
+    }
 
     -- Ruby - sorbet
     lspconfig.sorbet.setup({ on_attach = on_attach, capabilities = capabilities, cmd = { "bundle", "exec", "srb", "tc", "--lsp" } })
