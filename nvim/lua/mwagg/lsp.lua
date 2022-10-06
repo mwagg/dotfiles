@@ -112,8 +112,7 @@ use {
     -- Ruby - sorbet
     lspconfig.sorbet.setup({ on_attach = on_attach, capabilities = capabilities, cmd = { "bundle", "exec", "srb", "tc", "--lsp" } })
     lspconfig.solargraph.setup({
-      on_attach = on_attach, capabilities = capabilities,
-      cmd = { "bundle", "exec", "solargraph", "stdio" } })
+      on_attach = on_attach, capabilities = capabilities })
 
     -- TypeScript
     lspconfig.tsserver.setup({ on_attach = on_attach, capabilities = capabilities })
