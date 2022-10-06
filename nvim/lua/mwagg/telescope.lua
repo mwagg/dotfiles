@@ -66,6 +66,8 @@ local function configure()
   vim.keymap.set("n", "<leader>gl", ":Telescope git_commits<cr>", { desc = "Find commits" })
   vim.keymap.set("n", "<leader>hh", ":Telescope help_tags<cr>", { desc = "Find help" })
   vim.keymap.set("n", "<leader>cd", ":Telescope diagnostics<cr>", { desc = "Show diagnostics" })
+  vim.keymap.set("n", "<leader>fs", ":Telescope lsp_document_symbols<cr>", { desc = "Find LSP symbols in document" })
+  vim.keymap.set("n", "<leader>fS", ":Telescope lsp_workspace_symbols<cr>", { desc = "Find LSP symbols in workspace" })
 end
 
 use {
