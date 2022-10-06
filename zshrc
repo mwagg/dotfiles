@@ -16,7 +16,7 @@ fi
 alias gs="git status";
 alias gsk="git add -u .";
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -- ";
-alias gc="git commit";
+alias gc="git commit -v";
 
 if (( $+commands[nvim])); then
     alias vim=nvim
