@@ -1,28 +1,25 @@
-local map = vim.api.nvim_set_keymap
-local default_options = {noremap = true, silent = true}
-
 -- escape without the stretch
-vim.api.nvim_set_keymap('i', 'jk', '<Esc>', default_options)
+vim.keymap.set("i", "jk", "<Esc>")
 
 -- map the leader key
-vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", default_options)
+vim.keymap.set("n", "<Space>", "<NOP>")
 vim.g.mapleader = " "
 
 -- window navigation
-vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', {silent = true})
-vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', {silent = true})
+vim.keymap.set('n', '<C-h>', '<C-w>h', { silent = true })
+vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
+vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
+vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
 
 -- tab switch buffer
-map("n", "<TAB>", ":bnext<CR>", default_options)
-map("n", "<S-TAB>", ":bprevious<CR>", default_options)
+vim.keymap.set("n", "<TAB>", ":bnext<CR>")
+vim.keymap.set("n", "<S-TAB>", ":bprevious<CR>")
 
 -- resizing panes
-map("n", "<Left>", ":vertical resize +1<CR>", default_options)
-map("n", "<Right>", ":vertical resize -1<CR>", default_options)
-map("n", "<Up>", ":resize -1<CR>", default_options)
-map("n", "<Down>", ":resize +1<CR>", default_options)
+vim.keymap.set("n", "<Left>", ":vertical resize +1<CR>")
+vim.keymap.set("n", "<Right>", ":vertical resize -1<CR>")
+vim.keymap.set("n", "<Up>", ":resize -1<CR>")
+vim.keymap.set("n", "<Down>", ":resize +1<CR>")
 
 -- source current file as lua
-map("n", "<leader>fl", ":luafile %<CR>", default_options)
+vim.keymap.set("n", "<leader>fl", ":luafile %<CR>")
