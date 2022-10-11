@@ -23,3 +23,6 @@ vim.keymap.set("n", "<Down>", ":resize +1<CR>")
 
 -- source current file as lua
 vim.keymap.set("n", "<leader>fl", ":luafile %<CR>")
+
+-- buffers
+vim.keymap.set("n", "<leader>bd", ":bdelete<cr>", { desc = "Delete" })
