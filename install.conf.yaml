@@ -7,6 +7,6 @@
     ~/.zprofile: zprofile
     ~/.zshenv: zshenv
     ~/.config/kitty: kitty
-    # ~/.config/nvim: nvim
+    ~/.config/nvim: nvim
     ~/.default-gems: default-gems
     ~/.tool-versions: tool-versions
