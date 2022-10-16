@@ -6,13 +6,7 @@ local function configure()
 
   telescope.setup {
     defaults = {
-      vimgrep_arguments = {
-        'rg', '--color=never', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case',
-        '--hidden'
-      },
-      find_command = {
-        'rg', '--hidden', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case'
-      },
+      file_ignore_patterns = { ".git" },
       mappings = {
         i = {
           ["<C-j>"] = telescope_actions.move_selection_next,
@@ -43,7 +37,7 @@ local function configure()
       }
     },
     pickers = {
-      find_files = { theme = "dropdown" },
+      find_files = { hidden = true, theme = "dropdown" },
       live_grep = { theme = "dropdown" },
       grep_string = { theme = "dropdown" },
       projects = { theme = "dropdown" },
