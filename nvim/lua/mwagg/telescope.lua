@@ -37,13 +37,7 @@ local function configure()
       }
     },
     pickers = {
-      find_files = { hidden = true, theme = "dropdown" },
-      live_grep = { theme = "dropdown" },
-      grep_string = { theme = "dropdown" },
-      projects = { theme = "dropdown" },
-      help_tags = { theme = "dropdown" },
-      git_branches = { theme = "dropdown" },
-      buffers = { theme = "dropdown" }
+      find_files = { hidden = true },
     }
   }
   telescope.load_extension('project')
