@@ -53,7 +53,7 @@ use {
       buf_set_keymap('n', ']e', "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
       buf_set_keymap('n', 'gd', '<cmd>lua vim.lsp.buf.definition()<CR>', opts)
 
-      if client.resolved_capabilities.document_formatting then
+      if client.server_capabilities.document_formatting then
         vim.api.nvim_create_autocmd({ "BufWritePre" }, {
           pattern = "<buffer>",
           callback = function()
@@ -63,7 +63,7 @@ use {
       end
     end
 
-    local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+    local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
     -- Lua
     local runtime_path = vim.split(package.path, ';')
@@ -110,9 +110,11 @@ use {
     }
 
     -- Ruby - sorbet
-    lspconfig.sorbet.setup({ on_attach = on_attach, capabilities = capabilities, cmd = { "bundle", "exec", "srb", "tc", "--lsp" } })
+    lspconfig.sorbet.setup({ on_attach = on_attach, capabilities = capabilities,
+      cmd = { "bundle", "exec", "srb", "tc", "--lsp" } })
     lspconfig.solargraph.setup({
-      on_attach = on_attach, capabilities = capabilities })
+      on_attach = on_attach, capabilities = capabilities
+    })
 
     -- TypeScript
     lspconfig.tsserver.setup({ on_attach = on_attach, capabilities = capabilities })
