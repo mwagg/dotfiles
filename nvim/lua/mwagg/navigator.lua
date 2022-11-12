@@ -7,6 +7,10 @@ use({
     { 'neovim/nvim-lspconfig' },
   },
   config = function()
-    require('navigator').setup()
+    require('navigator').setup({
+      lsp = {
+        format_on_save = true
+      }
+    })
   end
 })
