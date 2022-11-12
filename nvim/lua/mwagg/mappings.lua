@@ -11,10 +11,6 @@ vim.keymap.set('n', '<C-j>', '<C-w>j', { silent = true })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { silent = true })
 vim.keymap.set('n', '<C-l>', '<C-w>l', { silent = true })
 
--- tab switch buffer
-vim.keymap.set("n", "<TAB>", ":bnext<CR>")
-vim.keymap.set("n", "<S-TAB>", ":bprevious<CR>")
-
 -- resizing panes
 vim.keymap.set("n", "<Left>", ":vertical resize +1<CR>")
 vim.keymap.set("n", "<Right>", ":vertical resize -1<CR>")
