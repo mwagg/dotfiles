@@ -55,6 +55,7 @@ local function configure()
   vim.keymap.set("n", "<leader>cd", ":Telescope diagnostics<cr>", { desc = "Show diagnostics" })
   vim.keymap.set("n", "<leader>fs", ":Telescope lsp_document_symbols<cr>", { desc = "Find LSP symbols in document" })
   vim.keymap.set("n", "<leader>fS", ":Telescope lsp_workspace_symbols<cr>", { desc = "Find LSP symbols in workspace" })
+  vim.keymap.set("n", "<leader>bb", ":Telescope buffers<cr>", { desc = "Find buffer" })
 end
 
 use {
