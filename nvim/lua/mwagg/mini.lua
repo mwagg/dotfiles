@@ -6,5 +6,6 @@ use {
     require("mini.indentscope").setup({})
     require("mini.jump").setup({})
     require("mini.surround").setup({})
+    require("mini.starter").setup({})
   end
 }
