@@ -67,7 +67,7 @@ use({
       lsp = {
         format_on_save = true
       },
-      default_keymaps = false,
+      default_mapping = false,
       keymaps = key_maps,
     })
   end
