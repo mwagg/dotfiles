@@ -24,6 +24,7 @@ packer.reset()
 use "wbthomason/packer.nvim"
 
 require("mwagg/nightfox")
+require("mwagg/which-key")
 require("mwagg/treesitter")
 require("mwagg/telescope")
 require("mwagg/navigator")
