@@ -11,7 +11,6 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 
 vim.cmd("autocmd TermOpen * setlocal nonumber norelativenumber") -- no line numbers in terminals
 vim.cmd("autocmd TermOpen * startinsert") -- switch to insert mode when opening a terminal
-vim.cmd("autocmd BufWinEnter,WinEnter term://* startinsert") -- switch to insert mode when entering a terminal
 vim.cmd("autocmd TermOpen * setlocal signcolumn=no") -- no sign column in terminals
 
 vim.keymap.set("n", "<leader>`", ":terminal<cr>", { desc = "Open terminal in this buffer" })
