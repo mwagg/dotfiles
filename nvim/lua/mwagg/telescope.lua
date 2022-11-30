@@ -34,14 +34,21 @@ local function configure()
           ["<C-q>"] = telescope_actions.smart_send_to_qflist + telescope_actions.open_qflist,
           -- ["<C-i>"] = my_cool_custom_action,
         }
+      },
+      extensions = {
+        project = {
+          base_dirs = {
+            "~/dotfiles",
+          }
+        }
       }
     },
     pickers = {
       find_files = { hidden = true },
     }
   }
-  telescope.load_extension('project')
 
+  telescope.load_extension('project')
   telescope.load_extension('lsp_handlers')
 
   vim.keymap.set("n", "<leader>/", ":Telescope live_grep<cr>", { desc = "Search across project" })
@@ -56,6 +63,7 @@ local function configure()
   vim.keymap.set("n", "<leader>fs", ":Telescope lsp_document_symbols<cr>", { desc = "Find LSP symbols in document" })
   vim.keymap.set("n", "<leader>fS", ":Telescope lsp_workspace_symbols<cr>", { desc = "Find LSP symbols in workspace" })
   vim.keymap.set("n", "<leader>bb", ":Telescope buffers<cr>", { desc = "Find buffer" })
+  vim.keymap.set("n", "<leader>pp", ":Telescope project<cr>", { desc = "Find projects" })
 end
 
 use {
