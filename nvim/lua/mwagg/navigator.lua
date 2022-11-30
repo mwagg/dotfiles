@@ -1,5 +1,14 @@
 local use = require("packer").use
 
+use("williamboman/mason.nvim")
+use({
+  "williamboman/mason-lspconfig.nvim",
+  config = function()
+    require("mason").setup()
+    require("mason-lspconfig").setup({})
+  end,
+})
+
 use({
   'ray-x/navigator.lua',
   requires = {
@@ -69,6 +78,7 @@ use({
       },
       default_mapping = false,
       keymaps = key_maps,
+      mason = true,
     })
   end
 })
