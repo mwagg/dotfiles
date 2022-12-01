@@ -11,10 +11,10 @@ use {
       incremental_selection = {
         enable = true,
         keymaps = {
-          init_selection = "gnn",
-          node_incremental = "grn",
-          scope_incremental = "grc",
-          node_decremental = "grm"
+          init_selection = "<cr>",
+          scope_incremental = "<cr>",
+          node_incremental = "<tab>",
+          node_decremental = "<s-tab>"
         }
       },
       indent = { enable = true },
