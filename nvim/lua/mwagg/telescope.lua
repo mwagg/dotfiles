@@ -54,16 +54,14 @@ local function configure()
   vim.keymap.set("n", "<leader>/", ":Telescope live_grep<cr>", { desc = "Search across project" })
   vim.keymap.set("n", "<leader>*", ":Telescope grep_string<cr>", { desc = { "Search word under cursor" } })
   vim.keymap.set("n", "<leader><leader>", ":Telescope find_files<cr>", { desc = "Find files" })
-  vim.keymap.set("n", "<leader>fp", ":Telescope projects<cr>", { desc = "Find project" })
   vim.keymap.set("n", "<leader>fc", ":Telescope colorscheme<cr>", { desc = "Find colorscheme" })
   vim.keymap.set("n", "<leader>gb", ":Telescope git_branches<cr>", { desc = "Find branches" })
   vim.keymap.set("n", "<leader>gl", ":Telescope git_commits<cr>", { desc = "Find commits" })
-  vim.keymap.set("n", "<leader>hh", ":Telescope help_tags<cr>", { desc = "Find help" })
-  vim.keymap.set("n", "<leader>cd", ":Telescope diagnostics<cr>", { desc = "Show diagnostics" })
+  vim.keymap.set("n", "<leader>h", ":Telescope help_tags<cr>", { desc = "Find help" })
   vim.keymap.set("n", "<leader>fs", ":Telescope lsp_document_symbols<cr>", { desc = "Find LSP symbols in document" })
   vim.keymap.set("n", "<leader>fS", ":Telescope lsp_workspace_symbols<cr>", { desc = "Find LSP symbols in workspace" })
   vim.keymap.set("n", "<leader>bb", ":Telescope buffers<cr>", { desc = "Find buffer" })
-  vim.keymap.set("n", "<leader>pp", ":Telescope project<cr>", { desc = "Find projects" })
+  vim.keymap.set("n", "<leader>fp", ":Telescope project<cr>", { desc = "Find projects" })
 end
 
 use {
