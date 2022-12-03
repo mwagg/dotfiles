@@ -1,5 +1,5 @@
 -- enable hidden buffers
-vim.opt.hidden = true
+vim.opt.hidden = false
 
 -- wrap text
 vim.opt.wrap = false
