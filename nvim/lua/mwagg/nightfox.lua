@@ -6,6 +6,6 @@ vim.opt.termguicolors = true
 use {
   "EdenEast/nightfox.nvim",
   config = function()
-    vim.cmd("colorscheme terafox")
+    vim.cmd("colorscheme duskfox")
   end
 }
