@@ -42,8 +42,5 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
     fi
 fi
 
-if [ "$SPIN" ]; then
-  sudo apt-get install entr -y
-  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-fi
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
