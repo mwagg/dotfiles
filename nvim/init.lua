@@ -62,6 +62,8 @@ require('packer').startup(function(use)
 
   use 'folke/which-key.nvim'
 
+  use 'rcarriga/nvim-notify'
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -180,6 +182,9 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+-- vim-notify
+vim.notify = require("notify")
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
