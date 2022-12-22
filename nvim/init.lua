@@ -190,12 +190,16 @@ require('gitsigns').setup {
 
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+local telescope_actions = require('telescope.actions')
 require('telescope').setup {
   defaults = {
     mappings = {
       i = {
         ['<C-u>'] = false,
         ['<C-d>'] = false,
+        ["<C-j>"] = telescope_actions.move_selection_next,
+        ["<C-k>"] = telescope_actions.move_selection_previous,
+        ["<esc>"] = telescope_actions.close,
       },
     },
   },
