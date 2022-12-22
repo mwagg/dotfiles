@@ -64,6 +64,8 @@ require('packer').startup(function(use)
 
   use 'rcarriga/nvim-notify'
 
+  use 'windwp/nvim-autopairs'
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -468,6 +470,9 @@ cmp.setup {
 local wk = require('which-key')
 wk.reset()
 wk.setup()
+
+-- nvim-autopairs
+require('nvim-autopairs').setup()
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
