@@ -68,6 +68,8 @@ require('packer').startup(function(use)
 
   use "vim-test/vim-test"
 
+  use 'echasnovski/mini.nvim'
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -492,6 +494,12 @@ vim.cmd("let test#strategy = 'neovim'")
 vim.keymap.set("n", "<leader>tt", ":TestNearest<cr>", { desc = "Run nearest test" })
 vim.keymap.set("n", "<leader>tf", ":TestFile<cr>", { desc = "Test file" })
 vim.keymap.set("n", "<leader>tl", ":TestLast<cr>", { desc = "Rerun last test" })
+
+-- mini
+require("mini.indentscope").setup({})
+require("mini.jump").setup({})
+require("mini.surround").setup({})
+require("mini.starter").setup({})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
