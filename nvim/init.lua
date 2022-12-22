@@ -129,6 +129,9 @@ vim.cmd [[colorscheme onedark]]
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
 
+-- integrate with the system clipboard
+vim.opt.clipboard = "unnamedplus"
+
 -- [[ Basic Keymaps ]]
 -- Set <space> as the leader key
 -- See `:help mapleader`
@@ -232,21 +235,22 @@ require('telescope').setup {
 pcall(require('telescope').load_extension, 'fzf')
 
 -- See `:help telescope.builtin`
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
+vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
     winblend = 10,
     previewer = false,
   })
-end, { desc = '[/] Fuzzily search in current buffer]' })
+end, { desc = 'Fuzzily search in current buffer' })
 
 vim.keymap.set('n', '<leader>sf', require('telescope.builtin').find_files, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = '[S]earch current [W]ord' })
 vim.keymap.set('n', '<leader>sg', require('telescope.builtin').live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>h', require('telescope.builtin').help_tags, { desc = '[H]elp tags' })
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
@@ -346,7 +350,6 @@ local on_attach = function(_, bufnr)
 
   -- See `:help K` for why this keymap
   nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-  nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
   -- Lesser used LSP functionality
   nmap('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
