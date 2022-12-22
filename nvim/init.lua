@@ -370,6 +370,16 @@ local on_attach = function(_, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
     vim.lsp.buf.format()
   end, { desc = 'Format current buffer with LSP' })
+
+  -- format on save
+  local format_on_save_group = vim.api.nvim_create_augroup('LSPFormatOnSaveGroup', { clear = true })
+  vim.api.nvim_create_autocmd('BufWritePost', {
+    callback = function()
+      vim.lsp.buf.format()
+    end,
+    group = format_on_save_group,
+    pattern = '*',
+  })
 end
 
 -- Enable the following language servers
