@@ -70,6 +70,14 @@ require('packer').startup(function(use)
 
   use 'echasnovski/mini.nvim'
 
+  use { 'nvim-neo-tree/neo-tree.nvim',
+    branch = "v2.x",
+    requires = {
+      "nvim-lua/plenary.nvim", "kyazdani42/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim"
+    },
+  }
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -500,6 +508,10 @@ require("mini.indentscope").setup({})
 require("mini.jump").setup({})
 require("mini.surround").setup({})
 require("mini.starter").setup({})
+
+-- neotree
+require('neo-tree').setup()
+vim.keymap.set("n", "<leader>e", ":Neotree reveal<cr>", { desc = "Show current file in tree" })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
