@@ -66,6 +66,8 @@ require('packer').startup(function(use)
 
   use 'windwp/nvim-autopairs'
 
+  use "vim-test/vim-test"
+
   -- Add custom plugins to packer from ~/.config/nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, 'custom.plugins')
   if has_plugins then
@@ -483,6 +485,13 @@ wk.setup()
 
 -- nvim-autopairs
 require('nvim-autopairs').setup()
+
+-- vim-test
+vim.cmd("let test#strategy = 'neovim'")
+
+vim.keymap.set("n", "<leader>tt", ":TestNearest<cr>", { desc = "Run nearest test" })
+vim.keymap.set("n", "<leader>tf", ":TestFile<cr>", { desc = "Test file" })
+vim.keymap.set("n", "<leader>tl", ":TestLast<cr>", { desc = "Rerun last test" })
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
