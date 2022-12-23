@@ -403,8 +403,9 @@ local servers = {
   -- gopls = {},
   -- pyright = {},
   rust_analyzer = {},
-  -- tsserver = {},
+  tsserver = {},
   solargraph = {},
+  sorbet = {},
 
   sumneko_lua = {
     Lua = {
