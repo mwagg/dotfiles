@@ -56,6 +56,12 @@ vim.keymap.set('t', '<Esc>', '<C-\\><C-n>')
 -- close window
 vim.keymap.set('n', '<leader>q', '<cmd>close<cr>', { silent = true })
 
+-- resize windows
+vim.keymap.set('n', '<up>', '<cmd>resize -1<cr>')
+vim.keymap.set('n', '<down>', '<cmd>resize +1<cr>')
+vim.keymap.set('n', '<left>', '<cmd>vertical resize -1<cr>')
+vim.keymap.set('n', '<right>', '<cmd>vertical resize +1<cr>')
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev)
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next)
