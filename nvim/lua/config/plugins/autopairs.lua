@@ -1,6 +1,6 @@
 return {
   'windwp/nvim-autopairs',
-  init = function() 
+  init = function()
     require('nvim-autopairs').setup()
   end,
 }
