@@ -28,6 +28,7 @@ return {
       'solargraph',
       'sumneko_lua',
       'rust_analyzer',
+      'yamlls',
     })
 
     lsp.nvim_workspace()
