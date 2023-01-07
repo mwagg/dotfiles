@@ -30,6 +30,7 @@
   "plenary.nvim": { "branch": "master", "commit": "4b7e52044bbb84242158d977a50c4cbcd85070c7" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "fab3e2212e206f4f8b3bbaa656e129443c9b802e" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "0b1c41ad8052badca6e72eafa4bc5481152e483e" },
+  "ts-node-action": { "branch": "master", "commit": "cef3c5936fb0de19a6af34bd3771f5815570803b" },
   "vim-sleuth": { "branch": "master", "commit": "8332f123a63c739c870c96907d987cc3ff719d24" },
   "vim-test": { "branch": "master", "commit": "c6e5d249241342fd4592a67113cb539427d57e23" },
   "which-key.nvim": { "branch": "main", "commit": "8682d3003595017cd8ffb4c860a07576647cc6f8" }
