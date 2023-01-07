@@ -20,5 +20,7 @@ return {
       top_down = true
     })
     vim.notify = notify
+
+    vim.keymap.set("n", "<esc>", function() require("notify").dismiss() end)
   end
 }
