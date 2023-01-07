@@ -11,8 +11,6 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 vim.keymap.set('n', '<leader>vc', ':e $MYVIMRC<cr>', { desc = 'Edit init.lua' })
 
-require('config.lazy')
-
 --
 -- [[ General options ]]
 --
@@ -85,5 +83,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = highlight_group,
   pattern = '*',
 })
+
+require('config.lazy')
 
 -- vim: ts=2 sts=2 sw=2 et
