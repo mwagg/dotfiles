@@ -17,6 +17,7 @@ alias gs="git status"
 alias gsk="git add -u ."
 alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit -- ";
 alias gc="git commit -v"
+alias lg="lazygit"
 alias be="bundle exec"
 alias rails_test="find -name '*_test.rb' | entr -cp bundle exec rails test /_"
 
