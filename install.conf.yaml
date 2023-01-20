@@ -10,3 +10,4 @@
     ~/.config/nvim: nvim
     ~/.default-gems: default-gems
     ~/.tool-versions: tool-versions
+    ~/.tmux.conf: tmux.conf
