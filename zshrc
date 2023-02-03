@@ -75,3 +75,7 @@ fi
 if [[ -f "$HOME/.asdf/asdf.sh" ]]; then
     . $HOME/.asdf/asdf.sh
 fi
+
+if [[ -f "$HOME/go/" ]]; then
+  export PATH "$HOME/go/bin":$PATH
+fi
