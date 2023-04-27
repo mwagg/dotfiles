@@ -11,12 +11,12 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PREZTO_DIR="${ZDOTDIR:-$HOME}/.zprezto"
 
 if [ "$SPIN" ]; then
-  rm -rf ~/.zshrc ~/.zlogin
-  go install github.com/jesseduffield/lazygit@latest
+	rm -rf ~/.zshrc ~/.zlogin
+	go install github.com/jesseduffield/lazygit@latest
 fi
 
 if [ ! -d "$PREZTO_DIR" ]; then
-  git clone --recursive https://github.com/sorin-ionescu/prezto.git "$PREZTO_DIR"
+	git clone --recursive https://github.com/sorin-ionescu/prezto.git "$PREZTO_DIR"
 fi
 
 cd "${BASEDIR}"
@@ -27,20 +27,23 @@ git submodule update --init --recursive "${DOTBOT_DIR}"
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-    type brew || { /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; }
-    eval "$(/opt/homebrew/bin/brew shellenv)"
-    brew bundle
-    type lua-format || { luarocks install --server=https://luarocks.org/dev luaformatter; }
+	type brew || { /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; }
+	eval "$(/opt/homebrew/bin/brew shellenv)"
+	brew bundle
+	type lua-format || { luarocks install --server=https://luarocks.org/dev luaformatter; }
 
-    if [[ ! -d /opt/dev ]]
-    then
-        test -d "$HOME/.asdf" || { git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0; } 
+	if [[ ! -d /opt/dev ]]; then
+		test -d "$HOME/.asdf" || { git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0; }
 
-        asdf plugin add ruby || true
-        asdf install ruby 3.1.1 || true
+		asdf plugin add ruby || true
+		asdf install ruby 3.1.1 || true
 
-        asdf reshim
-    fi
+		asdf reshim
+	fi
+fi
+
+if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
+	git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
 fi
 
 nvim --headless "+Lazy! sync" +qa
