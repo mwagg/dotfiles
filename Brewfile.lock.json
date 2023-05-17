@@ -5,10 +5,10 @@
         "revision": "6e051e032881029eb134cb5a00ada5a574c6817a"
       },
       "homebrew/cask": {
-        "revision": "548bfa33f552fc413164a7ec53403b47f415cbf9"
+        "revision": "f561c138d6630c030698f46f107986734be64638"
       },
       "homebrew/core": {
-        "revision": "bb885db974682a11483552ef35bf08f8d8b39366"
+        "revision": "3a4d62846a2f0a785cb375f2d6b1599697db755a"
       },
       "helix-editor/helix": {
         "revision": "6afb869f03eaa59a3bdeadbd5acd114a2ecfe575"
@@ -1122,7 +1122,7 @@
         "Homebrew/homebrew-core": "api",
         "CLT": "14.3.0.0.1.1679647830",
         "Xcode": "14.3",
-        "macOS": "13.3"
+        "macOS": "13.3.1"
       }
     }
   }
