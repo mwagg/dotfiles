@@ -13,6 +13,4 @@
 
 if [ "$TERM_PROGRAM" = "vscode" ]; then
   cd "${OLDPWD}"
-elif [ -d "${HOME}/src/github.com/Shopify" ]; then
-  cd "${HOME}/src/github.com/Shopify"
 fi
