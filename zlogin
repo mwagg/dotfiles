@@ -13,4 +13,9 @@
 
 if [ "$TERM_PROGRAM" = "vscode" ]; then
   cd "${OLDPWD}"
+elif [ "$TERM_PROGRAM" != "tmux" ]; then
+  if [ -d "${HOME}/src/github.com/Shopify" ]; then
+    cd "${HOME}/src/github.com/Shopify"
+  fi
 fi
+
