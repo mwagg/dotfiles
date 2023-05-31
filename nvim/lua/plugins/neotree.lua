@@ -7,6 +7,7 @@ return {
     },
     window = {
       mappings = {
+        ["h"] = "toggle_hidden",
         ["H"] = "prev_source",
         ["L"] = "next_source",
       },
