@@ -6,9 +6,11 @@ return {
       "shellcheck",
       "shfmt",
       "flake8",
-      "solargraph",
+      "ruby-lsp",
+      "sorbet",
       "rust-analyzer",
       "typescript-language-server",
+      "yaml-language-server",
     },
   },
 }
