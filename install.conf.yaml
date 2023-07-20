@@ -1,4 +1,4 @@
-- clean: ['~']
+- clean: ["~"]
 
 - link:
     ~/.zlogin: zlogin
@@ -11,3 +11,4 @@
     ~/.default-gems: default-gems
     ~/.tool-versions: tool-versions
     ~/.config/tmux: tmux
+    ~/.local/bin/rails_test: rails_test

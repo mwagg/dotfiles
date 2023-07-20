@@ -22,7 +22,6 @@ alias gl="git log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%
 alias gc="git commit -v"
 alias lg="lazygit"
 alias be="bundle exec"
-alias rails_test="find -name '*.rb' | entr -cp bundle exec rails test /_"
 
 if (( $+commands[nvim])); then
     alias vim=nvim
@@ -82,3 +81,9 @@ fi
 if [[ -d "$HOME/go/" ]]; then
   export PATH="$HOME/go/bin":$PATH
 fi
+
+if [[ -d "$HOME/.local/bin" ]]; then
+  export PATH="$HOME/.local/bin":$PATH
+fi
+
+
