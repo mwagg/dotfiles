@@ -3,14 +3,12 @@
 set -e
 
 if command -v fd &>/dev/null; then
-	echo "Using fd"
 	test_file=$(fd '.*_test.rb' | fzf)
 	watch_files="fd --extension rb"
 else
-	echo "Using find"
 	test_file=$(find . -name '*_test.rb' -printf '%P\n' | fzf)
 	watch_files="find . -name "*.rb""
 fi
 
-# bundle exec rails test "$test_file"
+bundle exec rails test "$test_file"
 $watch_files | entr -cp bundle exec rails test "$test_file"
