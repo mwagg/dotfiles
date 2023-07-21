@@ -10,5 +10,4 @@ else
 	watch_files="find . -name "*.rb""
 fi
 
-bundle exec rails test "$test_file"
-$watch_files | entr -cp bundle exec rails test "$test_file"
+$watch_files | entr -c bundle exec rails test "$test_file"
