@@ -23,6 +23,8 @@ alias gc="git commit -v"
 alias lg="lazygit"
 alias be="bundle exec"
 
+alias tf="tmux-sessionizer"
+
 if (( $+commands[nvim])); then
     alias vim=nvim
 fi

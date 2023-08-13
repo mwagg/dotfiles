@@ -12,3 +12,4 @@
     ~/.tool-versions: tool-versions
     ~/.config/tmux: tmux
     ~/.local/bin/rails_test: rails_test
+    ~/.local/bin/tmux-sessionizer: tmux-sessionizer
