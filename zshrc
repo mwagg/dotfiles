@@ -89,3 +89,9 @@ if [[ -d "$HOME/.local/bin" ]]; then
 fi
 
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# FZF
+[[ $- == *i* ]] && [ -f /opt/homebrew/opt/fzf/shell/completion.zsh ] && source /opt/homebrew/opt/fzf/shell/completion.zsh 2> /dev/null
+[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh 
+[ -f /usr/local/docs/fzf/examples/key-bindings.zsh ] && source /usr/local/docs/fzf/examples/key-bindings.zsh
