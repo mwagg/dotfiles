@@ -66,30 +66,15 @@ function git-clean() {
     done
 }
 
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-
-if [ -f /etc/zsh/zshrc.default.inc.zsh ]; then
-    source /etc/zsh/zshrc.default.inc.zsh
-fi
-
+[ -f /etc/zsh/zshrc.default.inc.zsh ] && source /etc/zsh/zshrc.default.inc.zsh
 if [ "$SPIN" ]; then
     export TERM=xterm-256color
 fi
 
-if [[ -f "$HOME/.asdf/asdf.sh" ]]; then
-    . $HOME/.asdf/asdf.sh
-fi
-
-if [[ -d "$HOME/go/" ]]; then
-  export PATH="$HOME/go/bin":$PATH
-fi
-
-if [[ -d "$HOME/.local/bin" ]]; then
-  export PATH="$HOME/.local/bin":$PATH
-fi
-
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
+[ -f "$HOME/.asdf/asdf.sh" ] && . $HOME/.asdf/asdf.sh
+[ -d "$HOME/go/" ] && export PATH="$HOME/go/bin":$PATH
+[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin":$PATH
 
 # FZF
 [[ $- == *i* ]] && [ -f /opt/homebrew/opt/fzf/shell/completion.zsh ] && source /opt/homebrew/opt/fzf/shell/completion.zsh 2> /dev/null
