@@ -68,7 +68,7 @@ function git-clean() {
 
 [ -f /etc/zsh/zshrc.default.inc.zsh ] && source /etc/zsh/zshrc.default.inc.zsh
 if [ "$SPIN" ]; then
-    export TERM=xterm-256color
+    export TERM=screen-256color
 fi
 
 [ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
