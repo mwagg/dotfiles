@@ -11,6 +11,7 @@ return {
       "rust-analyzer",
       "typescript-language-server",
       "yaml-language-server",
+      "rubocop",
     },
   },
 }
