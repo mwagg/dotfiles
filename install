@@ -19,6 +19,8 @@ if [ ! -d "$PREZTO_DIR" ]; then
 	git clone --recursive https://github.com/sorin-ionescu/prezto.git "$PREZTO_DIR"
 fi
 
+mkdir -p ~/.local/bin
+
 cd "${BASEDIR}"
 
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
