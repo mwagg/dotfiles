@@ -26,4 +26,17 @@ return {
       },
     },
   },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "zidhuss/neotest-minitest",
+    },
+    opts = function(_, opts)
+      opts.adapters = opts.adapters or {}
+      vim.list_extend(opts.adapters, {
+        require('neotest-minitest')
+      })
+    end
+  }
+
 }
