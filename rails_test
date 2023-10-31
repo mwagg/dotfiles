@@ -2,11 +2,20 @@
 
 set -e
 
+if [ "$1" == "--all" ]; then
+  all_tests=1
+  test_file=""
+fi
+
 if command -v fd &>/dev/null; then
-	test_file=$(fd '.*_test.rb' | fzf)
+  if [ -z "$all_tests" ]; then
+    test_file=$(fd '.*_test.rb' | fzf)
+  fi
 	watch_files="fd --extension rb"
 else
-	test_file=$(find . -name '*_test.rb' -printf '%P\n' | fzf)
+  if [ -z "$all_tests" ]; then
+    test_file=$(find . -name '*_test.rb' -printf '%P\n' | fzf)
+  fi
 	watch_files="find . -name "*.rb""
 fi
 

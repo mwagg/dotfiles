@@ -24,6 +24,7 @@ alias lg="lazygit"
 alias be="bundle exec"
 
 alias tf="tmux-sessionizer"
+alias rt="rails_test"
 
 if (( $+commands[nvim])); then
     alias vim=nvim
