@@ -5,10 +5,10 @@
         "revision": "73fe1415f01bc26ce4df0c4f52099ab1a0ef5b9d"
       },
       "homebrew/cask": {
-        "revision": "8290ef01e26f1fe87714eea55b1175ae1910583b"
+        "revision": "443db63536e4e90ac9802e6802cc8c4f5f3eb6b2"
       },
       "homebrew/core": {
-        "revision": "e804d695a97442ff44bcee56644308f4d6a9a928"
+        "revision": "8b460de451013a3fb63a2d7f9b08445e2a0c7e8e"
       },
       "helix-editor/helix": {
         "revision": "6afb869f03eaa59a3bdeadbd5acd114a2ecfe575"
@@ -1313,7 +1313,7 @@
         "macOS": "13.5"
       },
       "sonoma": {
-        "HOMEBREW_VERSION": "4.1.16",
+        "HOMEBREW_VERSION": "4.1.18",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.0.0.0.1.1694021235",
