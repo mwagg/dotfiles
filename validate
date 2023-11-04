@@ -1,0 +1,7 @@
+#!/bin/bash
+
+set -e
+
+bundle exec rubocop
+bundle exec rails test
+

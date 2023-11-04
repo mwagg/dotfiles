@@ -13,3 +13,4 @@
     ~/.config/tmux: tmux
     ~/.local/bin/rails_test: rails_test
     ~/.local/bin/tmux-sessionizer: tmux-sessionizer
+    ~/.local/bin/validate: validate
