@@ -17,16 +17,6 @@ return {
     },
   },
   {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        rubocop = {
-          cmd = { "bundle", "exec", "rubocop", "--lsp" },
-        },
-      },
-    },
-  },
-  {
     "nvim-neotest/neotest",
     dependencies = {
       "zidhuss/neotest-minitest",
@@ -34,9 +24,8 @@ return {
     opts = function(_, opts)
       opts.adapters = opts.adapters or {}
       vim.list_extend(opts.adapters, {
-        require('neotest-minitest')
+        require("neotest-minitest"),
       })
-    end
-  }
-
+    end,
+  },
 }
