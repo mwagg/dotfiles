@@ -5,3 +5,5 @@
 vim.keymap.set("n", "<Esc>", function()
   require("noice.view.backend.notify").dismiss()
 end)
+
+vim.keymap.set("i", "jk", "<esc>")
