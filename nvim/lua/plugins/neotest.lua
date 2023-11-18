@@ -29,4 +29,12 @@ return {
       end,
       desc = "Run last test",
     },
+    {
+      "<leader>ts",
+      function()
+        require("neotest").summary.toggle()
+      end,
+      desc = "Toggle test summary panel",
+    },
+  },
 }
