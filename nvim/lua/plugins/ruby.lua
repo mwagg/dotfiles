@@ -13,6 +13,7 @@ return {
       ensure_installed = {
         "ruby-lsp",
         "rubocop",
+        "sorbet",
       },
     },
   },
