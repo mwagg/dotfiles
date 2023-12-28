@@ -5,10 +5,10 @@
         "revision": "3f43dfca496433f364bc1c70711c581b0e804dec"
       },
       "homebrew/cask": {
-        "revision": "385e480b411def82067413d3cfa3d5c92d92e723"
+        "revision": "0f1667e48d5b47ce08430723cbb4125a6461e3a4"
       },
       "homebrew/core": {
-        "revision": "cb80cc01f71f8e58b614f4493be67b60f694fd1b"
+        "revision": "27ecc472f06058c13c254051e39569d048cec4fa"
       },
       "helix-editor/helix": {
         "revision": "6afb869f03eaa59a3bdeadbd5acd114a2ecfe575"
@@ -1349,6 +1349,12 @@
         "options": {
           "full_name": "homebrew/cask-fonts/font-jetbrains-mono-nerd-font"
         }
+      },
+      "wezterm": {
+        "version": "20230712-072601,f4abf8fd",
+        "options": {
+          "full_name": "wezterm"
+        }
       }
     }
   },
@@ -1374,9 +1380,9 @@
         "HOMEBREW_VERSION": "4.1.25",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
-        "CLT": "15.0.0.0.1.1694021235",
+        "CLT": "15.1.0.0.1.1700200546",
         "Xcode": "15.1",
-        "macOS": "14.1.2"
+        "macOS": "14.2"
       }
     }
   }
