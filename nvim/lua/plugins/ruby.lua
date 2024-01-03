@@ -18,6 +18,17 @@ return {
     },
   },
   {
+    "neovim/nvim-lspconfig",
+    opts = {
+      setup = {
+        sorbet = function(_, opts)
+          opts.root_dir = require('lspconfig.util').root_pattern "sorbet/config"
+          return opts
+        end
+      }
+    },
+  },
+  {
     "nvim-neotest/neotest",
     dependencies = {
       "zidhuss/neotest-minitest",
