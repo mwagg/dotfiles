@@ -20,11 +20,12 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = {
-      setup = {
-        sorbet = function(_, opts)
-          opts.root_dir = require('lspconfig.util').root_pattern "sorbet/config"
-          return opts
-        end
+      servers = {
+        sorbet = {
+          root_dir = function(fname)
+            return require('lspconfig.util').root_pattern("sorbet/config")(fname)
+          end,
+        },
       }
     },
   },
