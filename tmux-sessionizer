@@ -3,7 +3,10 @@
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	selected=$(find ~/src/github.com -mindepth 2 -maxdepth 2 -type d | fzf)
+  temp_file=$(mktemp)
+  echo "$HOME/dotfiles" >> $temp_file
+  find ~/src/github.com -mindepth 2 -maxdepth 2 -type d >> $temp_file
+	selected=$(cat $temp_file | fzf)
 fi
 
 if [[ -z $selected ]]; then
