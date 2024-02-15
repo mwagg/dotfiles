@@ -1,0 +1,12 @@
+#!/bin/bash
+
+set -e
+
+if command -v fd &>/dev/null; then
+	watch_files="fd --extension rb"
+else
+	watch_files="find . -name "*.rb""
+fi
+
+$watch_files | entr -c ./bin/typecheck
+
