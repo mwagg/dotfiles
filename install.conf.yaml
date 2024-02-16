@@ -12,6 +12,7 @@
     ~/.tool-versions: tool-versions
     ~/.config/tmux: tmux
     ~/.local/bin/rails_test: rails_test
+    ~/.local/bin/tc-watch: tc-watch
     ~/.local/bin/tmux-sessionizer: tmux-sessionizer
     ~/.local/bin/validate: validate
     ~/.config/wezterm: wezterm
