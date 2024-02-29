@@ -32,7 +32,7 @@ return {
   {
     "nvim-neotest/neotest",
     dependencies = {
-      "zidhuss/neotest-minitest",
+      "mwagg/neotest-minitest",
     },
     opts = function(_, opts)
       opts.adapters = opts.adapters or {}
