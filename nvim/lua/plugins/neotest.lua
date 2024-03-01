@@ -4,14 +4,18 @@ return {
     {
       "<leader>tt",
       function()
-        require("neotest").run.run()
+        local neotest = require("neotest")
+        neotest.output_panel.clear()
+        neotest.run.run()
       end,
       desc = "Run nearest test",
     },
     {
       "<leader>tf",
       function()
-        require("neotest").run.run(vim.fn.expand("%"))
+        local neotest = require("neotest")
+        neotest.output_panel.clear()
+        neotest.run.run(vim.fn.expand("%"))
       end,
       desc = "Run tests in current file",
     },
@@ -25,7 +29,9 @@ return {
     {
       "<leader>tl",
       function()
-        require("neotest").run.run_last()
+        local neotest = require("neotest")
+        neotest.output_panel.clear()
+        neotest.run.run_last()
       end,
       desc = "Run last test",
     },
