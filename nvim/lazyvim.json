@@ -2,7 +2,7 @@
   "extras": [
     "lazyvim.plugins.extras.coding.copilot",
     "lazyvim.plugins.extras.editor.leap",
-    "lazyvim.plugins.extras.editor.symbols-outline",
+    "lazyvim.plugins.extras.editor.outline",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.json",
     "lazyvim.plugins.extras.lang.rust",
@@ -16,5 +16,5 @@
   "news": {
     "NEWS.md": "2123"
   },
-  "version": 2
+  "version": 3
 }
