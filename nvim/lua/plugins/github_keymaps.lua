@@ -37,6 +37,12 @@ return {
       end,
       desc = "Merge"
     },
+    {
+      "<leader>gps",
+      function()
+        require("lazyvim.util").terminal({ "gh", "pr", "status" })
+      end,
+      desc = "Status"
     }
   }
 }
