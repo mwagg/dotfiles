@@ -7,16 +7,3 @@ vim.keymap.set("n", "<Esc>", function()
 end)
 
 vim.keymap.set("i", "jk", "<esc>")
-
--- github related keymaps
-vim.keymap.set("n", "<leader>gaw", function()
-  require("lazyvim.util").terminal({ "gh", "run", "watch" })
-end, { desc = "Watch" })
-
-vim.keymap.set("n", "<leader>gav", function()
-  require("lazyvim.util").terminal({ "gh", "run", "view" })
-end, { desc = "View" })
-
-vim.keymap.set("n", "<leader>gpc", function()
-  require("lazyvim.util").terminal({ "gh", "pr", "create" })
-end, { desc = "Create" })
