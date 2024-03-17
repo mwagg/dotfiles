@@ -30,13 +30,13 @@ return {
       end,
       desc = "Create"
     },
-
     {
       "<leader>gpm",
       function()
-        require("lazyvim.util").terminal({ "gh", "pr", "merge" })
+        require("lazyvim.util").terminal({ "gh", "pr", "merge", "-d" })
       end,
       desc = "Merge"
+    },
     }
   }
 }
