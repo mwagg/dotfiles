@@ -23,3 +23,4 @@ cask "rectangle" unless Dir.exist?('/Applications/Rectangle.app')
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
+brew "libgit2"
