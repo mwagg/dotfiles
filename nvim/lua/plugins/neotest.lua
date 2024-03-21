@@ -45,15 +45,15 @@ return {
         end,
         desc = "Toggle test summary panel",
       },
-    },
-    {
-      "<leader>ta",
-      function()
-        local neotest = require("neotest")
-        neotest.output_panel.clear()
-        neotest.run.attach()
-      end,
-      desc = "Attach to nearest test",
+      {
+        "<leader>ta",
+        function()
+          local neotest = require("neotest")
+          neotest.output_panel.clear()
+          neotest.run.attach()
+        end,
+        desc = "Attach to nearest test",
+      },
     },
   }
 }
