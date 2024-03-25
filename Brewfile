@@ -17,6 +17,7 @@ brew "tldr"
 brew "watch"
 brew "watchman"
 cask "homebrew/cask-fonts/font-mononoki-nerd-font"
+cask "homebrew/cask-fonts/font-symbols-only-nerd-font"
 cask "kitty"
 cask "logseq"
 cask "rectangle" unless Dir.exist?('/Applications/Rectangle.app')
