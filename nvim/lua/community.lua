@@ -6,7 +6,6 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.test.neotest" },
   { import = "astrocommunity.scrolling.neoscroll-nvim" },
   { import = "astrocommunity.git.neogit" },
   { import = "astrocommunity.motion.mini-surround" },

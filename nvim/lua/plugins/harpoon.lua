@@ -16,7 +16,7 @@ return {
           maps.n[prefix] = { desc = require("astroui").get_icon("Harpoon", 1, true) .. "Harpoon" }
 
           maps.n[prefix .. "a"] = { function() require("harpoon"):list():add() end, desc = "Add file" }
-          maps.n[prefix .. "e"] = {
+          maps.n[prefix .. "h"] = {
             function() require("harpoon").ui:toggle_quick_menu(require("harpoon"):list()) end,
             desc = "Toggle quick menu",
           }

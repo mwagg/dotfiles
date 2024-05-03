@@ -1,5 +1,6 @@
 local lsps = { "ruby_lsp", "sorbet", "rubocop" }
 
+---@type LazySpec
 return {
   {
     "nvim-treesitter/nvim-treesitter",
