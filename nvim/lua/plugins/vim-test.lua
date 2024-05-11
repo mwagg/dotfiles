@@ -1,4 +1,4 @@
-vim.g["test#strategy"] = "vimux"
+vim.g["test#strategy"] = "neovim_sticky"
 vim.g["VimuxHeight"] = "40"
 vim.g["VimuxOrientation"] = "h"
 
