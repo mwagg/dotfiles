@@ -29,9 +29,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
   callback = function()
     if vim.v.event.operator == "y" then
-      -- Highlight the yanked area
-      vim.highlight.on_yank { higroup = "Visual", timeout = 200 }
-
       -- Come back to the set yank position
       vim.fn.setpos(".", vim.g.pre_yank_cursor_pos)
 
