@@ -12,7 +12,6 @@ PREZTO_DIR="${ZDOTDIR:-$HOME}/.zprezto"
 
 if [ "$SPIN" ]; then
 	rm -rf ~/.zshrc ~/.zlogin
-	go install github.com/jesseduffield/lazygit@latest
 fi
 
 if [ ! -d "$PREZTO_DIR" ]; then
