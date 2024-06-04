@@ -1,41 +1,31 @@
-local lsps = { "ruby_lsp", "sorbet", "rubocop" }
-
----@type LazySpec
 return {
   {
     "nvim-treesitter/nvim-treesitter",
-    optional = true,
     opts = function(_, opts)
-      if opts.ensure_installed ~= "all" then
-        opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, { "ruby" })
-      end
+      vim.list_extend(opts.ensure_installed, {
+        "ruby",
+      })
     end,
   },
   {
-    "williamboman/mason-lspconfig.nvim",
-    optional = true,
-    opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, lsps)
-    end,
-  },
-  {
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-    optional = true,
-    opts = function(_, opts)
-      opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, lsps)
-    end,
-  },
-  {
-    "mfussenegger/nvim-dap",
-    optional = true,
-    dependencies = { "suketa/nvim-dap-ruby", config = true },
-  },
-  {
-    "stevearc/conform.nvim",
-    optional = true,
+    "williamboman/mason.nvim",
     opts = {
-      formatters_by_ft = {
-        ruby = { "standardrb" },
+      ensure_installed = {
+        "ruby-lsp",
+        "rubocop",
+        "sorbet",
+      },
+    },
+  },
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        sorbet = {
+          root_dir = function(fname)
+            return require("lspconfig.util").root_pattern("sorbet/config")(fname)
+          end,
+        },
       },
     },
   },

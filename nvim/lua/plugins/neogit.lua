@@ -1,20 +1,30 @@
----@type LazySpec
 return {
   {
     "NeogitOrg/neogit",
-    lazy = true, -- lazy load on module
     dependencies = {
-      { -- AstroCore is always loaded on startup, so making it a dependency doesn't matter
-        "AstroNvim/astrocore",
-        opts = {
-          mappings = { -- define a mapping to load the plugin module
-            n = {
-              ["<Leader>gg"] = { function() require("neogit").open() end, desc = "Open Neogit" },
-            },
-          },
+      "nvim-lua/plenary.nvim", -- required
+      "sindrets/diffview.nvim", -- optional - Diff integration
+
+      -- Only one of these is needed, not both.
+      "nvim-telescope/telescope.nvim", -- optional
+    },
+    config = true,
+    keys = {
+      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
+    },
+  },
+  {
+    "sindrets/diffview.nvim",
+    keys = { { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Diffview" } },
+    config = {
+      view = {
+        merge_tool = {
+          -- Config for conflicted files in diff views during a merge or rebase.
+          layout = "diff3_mixed",
+          disable_diagnostics = true, -- Temporarily disable diagnostics for conflict buffers while in the view.
+          winbar_info = true,
         },
       },
     },
-    opts = {}, -- run `require("neogit").setup({})`
   },
 }
