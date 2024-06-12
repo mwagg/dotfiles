@@ -6,7 +6,7 @@ return {
     config = true,
     cmd = { "Git" },
     keys = {
-      { "<leader>gC", "<cmd>Git commit<cr>", { desc = "Commit" } },
+      { "<leader>gc", "<cmd>Git commit<cr>", desc = "Commit" },
     },
   },
 }
