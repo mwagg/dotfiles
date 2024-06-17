@@ -20,6 +20,7 @@ return {
         end,
         desc = "Search file history",
       },
+      { "<leader>gc", false },
     },
     opts = {
       defaults = {
