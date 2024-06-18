@@ -21,6 +21,7 @@ return {
         desc = "Search file history",
       },
       { "<leader>gc", false },
+      { "<leader>gs", false },
     },
     opts = {
       defaults = {
