@@ -16,3 +16,4 @@
     ~/.local/bin/tmux-sessionizer: tmux-sessionizer
     ~/.local/bin/validate: validate
     ~/.config/wezterm: wezterm
+    ~/.config/git: git
