@@ -1,0 +1,175 @@
+// Place your key bindings in this file to override the defaults
+[
+    //
+    // VIM NAVIGATION SHORTCUTS
+    //
+    {
+        //  "ctrl+h": Focuses on the left editor group when the text editor is focused, Vim extension is active, and Vim is not in Insert mode.
+        "key": "ctrl+h",
+        "command": "workbench.action.focusLeftGroup",
+        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    },
+    {
+        // "ctrl+l": Focuses on the right editor group when the text editor is focused, Vim extension is active, and Vim is not in Insert mode.
+        "key": "ctrl+l",
+        "command": "workbench.action.focusRightGroup",
+        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    },
+    {
+        // "ctrl+k": Focuses on the editor group above the current one when the text editor is focused, Vim extension is active, and Vim is not in Insert mode.
+        "key": "ctrl+k",
+        "command": "workbench.action.focusAboveGroup",
+        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    },
+    {
+        // "ctrl+j": Focuses on the editor group below the current one when the text editor is focused, Vim extension is active, and Vim is not in Insert mode.
+        "key": "ctrl+j",
+        "command": "workbench.action.focusBelowGroup",
+        "when": "editorTextFocus && vim.active && vim.mode != 'Insert'"
+    },
+    //
+    // SUGGESTIONS AND AUTOCOMPLETION SHORTCUTS
+    //
+    {
+        // "ctrl+j": Selects the next suggestion in the suggestions widget when the widget is visible.
+        "key": "ctrl+j",
+        "command": "selectNextSuggestion",
+        "when": "suggestWidgetVisible"
+    },
+    {
+        // "ctrl+k": Selects the previous suggestion in the suggestions widget when the widget is visible.
+        "key": "ctrl+k",
+        "command": "selectPrevSuggestion",
+        "when": "suggestWidgetVisible"
+    },
+    {
+        // "ctrl+j": Selects the next item in the Quick Open dialog when it is open.
+        "key": "ctrl+j",
+        "command": "workbench.action.quickOpenSelectNext",
+        "when": "inQuickOpen"
+    },
+    {
+        // "ctrl+k": Selects the previous item in the Quick Open dialog when it is open.
+        "key": "ctrl+k",
+        "command": "workbench.action.quickOpenSelectPrevious",
+        "when": "inQuickOpen"
+    },
+    //
+    // EDITOR AND FILES SWITCHING NAVIGATION SHORTCUTS
+    //
+    // To switch between open files within an editor group, use the following shortcuts:
+    // ctrl+tab: Go to the next file in the group.
+    // ctrl+shift+tab: Go to the previous file in the group.
+    // To switch focus between editor groups, use the following shortcuts:
+    // ctrl+1: Focus on the first (left) editor group.
+    // ctrl+2: Focus on the second (right) editor group.
+    // With these shortcuts, you can easily navigate between open files in side-by-side text editor windows.
+    // For example, to switch from a file in the left editor group to a file in the right editor group, press ctrl+2,
+    // and then use ctrl+tab or ctrl+shift+tab to navigate between files in the right editor group.
+    // To switch back to the left editor group, press ctrl+1.
+    //
+    // FILE EXPLORER SHORTCUTS
+    //
+    {
+        // ", e": Toggles the sidebar's visibility when the text editor is not focused. <leader> + e
+        "key": ", e",
+        "command": "workbench.action.toggleSidebarVisibility",
+        "when": "!editorTextFocus"
+    },
+    {
+        // Focus on File Explorer when text editor is focused
+        "key": "ctrl+shift+e",
+        "command": "workbench.files.action.focusFilesExplorer",
+        "when": "editorTextFocus"
+    },
+    {
+        // Focus on active text editor group when File Explorer is focused
+        "key": "ctrl+shift+e",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
+        // Open selected file in the first (left) editor group from File Explorer
+        "key": "ctrl+shift+1",
+        "command": "explorer.openToSide",
+        "args": {
+            "group": 0
+        },
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    {
+        // Open selected file in the second (right) editor group from File Explorer
+        "key": "ctrl+shift+2",
+        "command": "explorer.openToSide",
+        "args": {
+            "group": 1
+        },
+        "when": "explorerViewletVisible && filesExplorerFocus && !inputFocus"
+    },
+    //
+    // FILE EXPLORER NAVIGATION SHORTCUTS
+    //
+    {
+        // "ctrl+h": Collapses the selected item in a list when the list is focused and no input field is focused.
+        "key": "ctrl+h",
+        "command": "list.collapse",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        // "ctrl+l": Expands the selected item in a list when the list is focused and no input field is focused.
+        "key": "ctrl+l",
+        "command": "list.expand",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        // "ctrl+k": Focuses on the item above the currently selected item in a list when the list is focused and no input field is focused.
+        "key": "ctrl+k",
+        "command": "list.focusUp",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        // "ctrl+j": Focuses on the item below the currently selected item in a list when the list is focused and no input field is focused
+        "key": "ctrl+j",
+        "command": "list.focusDown",
+        "when": "listFocus && !inputFocus"
+    },
+    {
+        // "cmd+enter": Renames a file when the Explorer view is visible and the Files Explorer is focused.
+        "key": "ctrl+enter",
+        "command": "renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
+        // "enter": Disables the default "renameFile" command when the Explorer view is visible and the Files Explorer is focused.
+        "key": "enter",
+        "command": "-renameFile",
+        "when": "explorerViewletVisible && filesExplorerFocus"
+    },
+    {
+        // "enter": Selects an item in a list when the list is focused and no input field is focused.
+        "key": "enter",
+        "command": "list.select",
+        "when": "listFocus && !inputFocus"
+    },
+    //
+    // TERMINAL SHORTCUTS
+    //
+    {
+        // Focus the terminal when the terminal is not focused
+        "key": "ctrl+;",
+        "command": "workbench.action.terminal.focus"
+    },
+    {
+        // Focus the active editor group (text editor) when the terminal is focused
+        "key": "ctrl+;",
+        "command": "workbench.action.focusActiveEditorGroup",
+        "when": "terminalFocus"
+    },
+    {
+        // Maximize/minimize terminal panel and focus on terminal when terminal is not focused
+        // (requires "multi-command" extension and "multiCommand.toggleMaximizedPanelAndFocusTerminal" command defined in settings.json)
+        "key": "ctrl+shift+;",
+        "command": "multiCommand.toggleMaximizedPanelAndFocusTerminal",
+        "when": "!terminalFocus || terminalFocus"
+    }
+]
