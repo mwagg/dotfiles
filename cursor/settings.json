@@ -11,60 +11,118 @@
   "vim.insertModeKeyBindings": [
     {
       // Pressing j twice ("before": ["j", "j"]) simulates the Esc key ("after": ["<Esc>"]).
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       // Pressing ctrl+n clears search highlighting
-      "before": ["<C-n>"],
-      "commands": [":nohl"]
+      "before": [
+        "<C-n>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
     },
     {
       // Pressing the leader key (Spacebar) followed by w splits the editor.
-      "before": ["<leader>", "w"],
-      "commands": ["workbench.action.splitEditor"]
+      "before": [
+        "<leader>",
+        "w"
+      ],
+      "commands": [
+        "workbench.action.splitEditor"
+      ]
     },
     {
       // Pressing the leader key (Spacebar) followed by e toggles the sidebar visibility.
-      "before": ["<leader>", "e"],
-      "commands": ["workbench.action.toggleSidebarVisibility"]
+      "before": [
+        "<leader>",
+        "e"
+      ],
+      "commands": [
+        "workbench.action.toggleSidebarVisibility"
+      ]
     },
     {
       // Pressing the leader key (Spacebar) followed by f reveals the current file in the Explorer.
-      "before": ["<leader>", "f"],
-      "commands": ["revealInExplorer"]
+      "before": [
+        "<leader>",
+        "f"
+      ],
+      "commands": [
+        "revealInExplorer"
+      ]
     },
     {
       // Pressing the leader key (Spacebar) followed by r and then e renames the current symbol.
-      "before": ["<leader>", "c", "r"],
-      "commands": ["editor.action.rename"]
+      "before": [
+        "<leader>",
+        "c",
+        "r"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
     },
     {
       // Pressing the leader key (Spacebar) followed by r and then f renames the current file.
-      "before": ["<leader>", "r", "f"],
-      "commands": ["fileutils.renameFile"]
+      "before": [
+        "<leader>",
+        "r",
+        "f"
+      ],
+      "commands": [
+        "fileutils.renameFile"
+      ]
     },
     {
       // Pressing the leader key (Spacebar) followed by o, g shows all symbols in the workspace.
-      "before": ["<leader>", "s", "s"],
-      "commands": ["workbench.action.gotoSymbol"]
+      "before": [
+        "<leader>",
+        "s",
+        "s"
+      ],
+      "commands": [
+        "workbench.action.gotoSymbol"
+      ]
     },
     {
-       // Pressing the leader key (Spacebar) followed by o, o shows all open editors in the active group.
-      "before": ["<leader>", "o", "o"],
-      "commands": ["workbench.action.showEditorsInActiveGroup"]
+      // Pressing the leader key (Spacebar) followed by o, o shows all open editors in the active group.
+      "before": [
+        "<leader>",
+        "o",
+        "o"
+      ],
+      "commands": [
+        "workbench.action.showEditorsInActiveGroup"
+      ]
     },
     {
       // Pressing the leader key (Spacebar) followed by o, p opens the quick open panel.
-      "before": ["<leader>", "p"],
-      "commands": ["workbench.action.quickOpen"]
+      "before": [
+        "<leader>",
+        "p"
+      ],
+      "commands": [
+        "workbench.action.quickOpen"
+      ]
     },
     {
       //  Pressing m followed by a toggles numbered bookmark 1.
-      "before": ["m", "a"],
-      "commands": ["numberedBookmarks.toggleBookmark1"]
+      "before": [
+        "m",
+        "a"
+      ],
+      "commands": [
+        "numberedBookmarks.toggleBookmark1"
+      ]
     },
     {
       // Pressing ' followed by a jumps to numbered bookmark 1.
@@ -74,21 +132,50 @@
     },
     {
       // Pressing gr goes to references
-      "before": ["g", "r"],
-      "commands": ["editor.action.goToReferences"],
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.goToReferences"
+      ],
       "when": "editorTextFocus && vim.active && vim.mode == 'Normal'"
+    },
+    // Pressing leader, b, o closes other tabs
+    {
+      "before": [
+        "<leader>",
+        "b",
+        "o"
+      ],
+      "commands": [
+        "workbench.action.closeOtherEditors"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "b",
+        "d"
+      ],
+      "commands": [
+        "workbench.action.closeActiveEditor"
+      ]
     }
-    
   ],
-
   //
   // Custom keybindings for visual
-  // 
-
+  //
   "vim.visualModeKeyBindings": [
     {
-      "before": ["leader", "c"],
-      "commands": ["editor.action.commentLine", "extension.vim_escape"]
+      "before": [
+        "leader",
+        "c"
+      ],
+      "commands": [
+        "editor.action.commentLine",
+        "extension.vim_escape"
+      ]
     }
   ],
   "[jsonc]": {
@@ -96,7 +183,7 @@
   },
   "editor.fontSize": 14,
   "terminal.integrated.fontSize": 14,
-
+  "vim.commandLineModeKeyBindings": [],
   // END OF VIM CONFIGURATION
   // (...)
 }
