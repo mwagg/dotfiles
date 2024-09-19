@@ -1,6 +1,6 @@
 {
   // vim configuration
-  // "editor.lineNumbers": "relative",
+  "editor.lineNumbers": "relative",
   "editor.scrollBeyondLastLine": false, // recommended by neovim
   "vim.easymotion": true,
   "vim.incsearch": true,
@@ -161,6 +161,16 @@
       "commands": [
         "workbench.action.closeActiveEditor"
       ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "z",
+        "z"
+      ],
+      "commands": [
+        "workbench.action.toggleZenMode"
+      ]
     }
   ],
   //
@@ -181,9 +191,10 @@
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
-  "editor.fontSize": 14,
+  "editor.fontSize": 16,
   "terminal.integrated.fontSize": 14,
   "vim.commandLineModeKeyBindings": [],
+  "workbench.colorTheme": "Tokyo Night AltSynt",
   // END OF VIM CONFIGURATION
   // (...)
 }

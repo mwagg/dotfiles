@@ -77,12 +77,6 @@
         "when": "!editorTextFocus"
     },
     {
-        // Focus on File Explorer when text editor is focused
-        "key": "ctrl+shift+e",
-        "command": "workbench.files.action.focusFilesExplorer",
-        "when": "editorTextFocus"
-    },
-    {
         // Focus on active text editor group when File Explorer is focused
         "key": "ctrl+shift+e",
         "command": "workbench.action.focusActiveEditorGroup",
@@ -171,5 +165,15 @@
         "key": "ctrl+shift+;",
         "command": "multiCommand.toggleMaximizedPanelAndFocusTerminal",
         "when": "!terminalFocus || terminalFocus"
+    },
+    {
+        "key": "ctrl+;",
+        "command": "workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
+    },
+    {
+        "key": "ctrl+`",
+        "command": "-workbench.action.terminal.toggleTerminal",
+        "when": "terminal.active"
     }
 ]
