@@ -171,6 +171,35 @@
       "commands": [
         "workbench.action.toggleZenMode"
       ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "H"
+      ],
+      "commands": [
+        "vscode-harpoon.addEditor"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "h",
+        "e"
+      ],
+      "commands": [
+        "vscode-harpoon.editEditors"
+      ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "h",
+        "h"
+      ],
+      "commands": [
+        "vscode-harpoon.editorQuickPick"
+      ]
     }
   ],
   //
@@ -195,6 +224,8 @@
   "terminal.integrated.fontSize": 14,
   "vim.commandLineModeKeyBindings": [],
   "workbench.colorTheme": "Tokyo Night AltSynt",
+  "remote.SSH.connectTimeout": 150,
+  "redhat.telemetry.enabled": false,
   // END OF VIM CONFIGURATION
   // (...)
 }
