@@ -17,5 +17,9 @@
     ~/.local/bin/validate: validate
     ~/.config/wezterm: wezterm
     ~/.config/git: git
-    ~/Library/Application Support/Cursor/User/settings.json: cursor/settings.json
-    ~/Library/Application Support/Cursor/User/keybindings.json: cursor/keybindings.json
+    ~/Library/Application Support/Cursor/User/settings.json:
+      path: cursor/settings.json
+      if: '[ `uname` = Darwin ]'
+    ~/Library/Application Support/Cursor/User/keybindings.json:
+      path: cursor/keybindings.json
+      if: '[ `uname` = Darwin ]'
