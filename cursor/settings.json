@@ -200,6 +200,24 @@
       "commands": [
         "vscode-harpoon.editorQuickPick"
       ]
+    },
+    {
+      "before": [
+        "[",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.prev"
+      ]
+    },
+    {
+      "before": [
+        "]",
+        "d"
+      ],
+      "commands": [
+        "editor.action.marker.next"
+      ]
     }
   ],
   //

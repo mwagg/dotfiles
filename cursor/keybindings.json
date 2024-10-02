@@ -176,26 +176,6 @@
         "command": "workbench.action.toggleMaximizedPanel"
     },
     {
-        "key": "] d",
-        "command": "editor.action.marker.next",
-        "when": "editorFocus"
-    },
-    {
-        "key": "alt+f8",
-        "command": "-editor.action.marker.next",
-        "when": "editorFocus"
-    },
-    {
-        "key": "[ d",
-        "command": "editor.action.marker.prev",
-        "when": "editorFocus"
-    },
-    {
-        "key": "shift+alt+f8",
-        "command": "-editor.action.marker.prev",
-        "when": "editorFocus"
-    },
-    {
         "key": "shift+k",
         "command": "editor.action.showHover",
         "when": "editorTextFocus"
