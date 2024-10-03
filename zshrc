@@ -22,6 +22,8 @@ alias gl="git log --graph --oneline"
 alias gc="git commit -v"
 alias lg="lazygit"
 alias be="bundle exec"
+alias gb="git branch | fzf | git switch -"
+alias gcd='cd $(find ~/src/github.com -type d -depth 2 -prune | fzf)'
 
 alias tf="tmux-sessionizer"
 alias rt="rails_test"
