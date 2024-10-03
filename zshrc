@@ -18,7 +18,7 @@ bindkey "^[[1;3D" backward-word
 
 alias gs="git status"
 alias gsk="git add -u ."
-alias gl="git log --graph --oneline";
+alias gl="git log --graph --oneline"
 alias gc="git commit -v"
 alias lg="lazygit"
 alias be="bundle exec"
