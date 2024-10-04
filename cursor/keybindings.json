@@ -71,12 +71,6 @@
     // FILE EXPLORER SHORTCUTS
     //
     {
-        // ", e": Toggles the sidebar's visibility when the text editor is not focused. <leader> + e
-        "key": ", e",
-        "command": "workbench.action.toggleSidebarVisibility",
-        "when": "!editorTextFocus"
-    },
-    {
         // Focus on active text editor group when File Explorer is focused
         "key": "ctrl+shift+e",
         "command": "workbench.action.focusActiveEditorGroup",
