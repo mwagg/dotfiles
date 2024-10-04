@@ -218,6 +218,16 @@
       "commands": [
         "editor.action.marker.next"
       ]
+    },
+    {
+      "before": [
+        "<leader>",
+        "b",
+        "o"
+      ],
+      "commands": [
+        "workbench.action.closeOtherEditors"
+      ]
     }
   ],
   //
