@@ -24,6 +24,7 @@
             pkgs.lazygit
             pkgs.nerdfonts
             pkgs.tmux
+            pkgs.gh
           ];
 
         fonts.packages = [
