@@ -25,6 +25,7 @@
             pkgs.nerdfonts
             pkgs.tmux
             pkgs.gh
+            pkgs.fzf
           ];
 
         fonts.packages = [
