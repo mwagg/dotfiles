@@ -2,11 +2,6 @@
 # Executes commands at the start of an interactive session.
 #
 
-# Source Prezto.
-if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
-fi
-
 bindkey "^[[1;3C" forward-word
 bindkey "^[[1;3D" backward-word
 
@@ -27,6 +22,7 @@ alias gcd='cd $(find ~/src/github.com -type d -depth 2 -prune | fzf)'
 
 alias tf="tmux-sessionizer"
 alias rt="rails_test"
+alias drb="rm -rf ~/.config/nix-darwin/flake.nix && cp ~/dotfiles/nix-darwin/flake.nix ~/.config/nix-darwin/flake.nix && darwin-rebuild switch --flake ~/.config/nix-darwin"
 
 if (( $+commands[nvim])); then
     alias vim=nvim
@@ -84,4 +80,8 @@ fi
 [ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh 
 [ -f /usr/local/docs/fzf/examples/key-bindings.zsh ] && source /usr/local/docs/fzf/examples/key-bindings.zsh
 
-export AGNOSTER_PROMPT_SEGMENTS[2]=
+autoload -Uz vcs_info
+precmd() { vcs_info }
+zstyle ':vcs_info:git:*' formats '%b '
+setopt PROMPT_SUBST
+PROMPT='%F{green}%*%f %F{blue}%~%f %F{red}${vcs_info_msg_0_}%f$ '

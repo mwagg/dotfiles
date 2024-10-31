@@ -2,48 +2,46 @@
 
 set -e
 
-CONFIG="install.conf.yaml"
-DOTBOT_DIR="dotbot"
-
-DOTBOT_BIN="bin/dotbot"
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-PREZTO_DIR="${ZDOTDIR:-$HOME}/.zprezto"
+function link {
+  from=$1
+  to=$2
 
-if [ "$SPIN" ]; then
-	rm -rf ~/.zshrc ~/.zlogin
-fi
-
-if [ ! -d "$PREZTO_DIR" ]; then
-	git clone --recursive https://github.com/sorin-ionescu/prezto.git "$PREZTO_DIR"
-fi
+  rm -rf "$to"
+  ln -s "$BASEDIR/$from" "$to"
+}
 
 mkdir -p ~/.local/bin
+mkdir -p ~/.config
 
-cd "${BASEDIR}"
-
-git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${DOTBOT_DIR}"
-
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+link zlogin ~/.zlogin
+link zshrc ~/.zshrc
+link zpreztorc ~/.zpreztorc
+link zprofile ~/.zprofile
+link zshenv ~/.zshenv
+link kitty ~/.config/kitty
+link nvim ~/.config/nvim
+link default-gems ~/.default-gems
+link tool-versions ~/.tool-versions
+link tmux ~/.config/tmux
+link rails_test ~/.local/bin/rails_test
+link tc-watch ~/.local/bin/tc-watch
+link tmux-sessionizer ~/.local/bin/tmux-sessionizer
+link validate ~/.local/bin/validate
+link wezterm ~/.config/wezterm
+link git ~/.config/git
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	type brew || { /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"; }
-	eval "$(/opt/homebrew/bin/brew shellenv)"
-	brew bundle
-
-	if [[ ! -d /opt/dev ]]; then
-		test -d "$HOME/.asdf" || { git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.9.0; }
-
-		asdf plugin add ruby || true
-		asdf install ruby 3.1.1 || true
-
-		asdf reshim
-	fi
+  mkdir -p ~/Library/Application Support/Cursor/User/
+  link cursor/settings.json ~/Library/Application Support/Cursor/User/settings.json
+  link cursor/keybindings.json ~/Library/Application Support/Cursor/User/keybindings.json
 fi
 
-if [ ! -d "$HOME/.config/tmux/plugins/tpm" ]; then
-	git clone https://github.com/tmux-plugins/tpm "$HOME/.config/tmux/plugins/tpm"
+if [ "$SPIN" ]; then
+  rm -rf ~/.zshrc ~/.zlogin
 fi
 
-nvim --headless "+Lazy! sync" +qa
+mkdir -p ~/.config/nix-darwin
+cp $BASEDIR/nix-darwin/flake.nix ~/.config/nix-darwin/
+nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin
