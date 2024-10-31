@@ -28,6 +28,7 @@
             pkgs.fzf
             pkgs.tmux
             pkgs.htop
+            pkgs.autojump
           ];
 
         fonts.packages = [

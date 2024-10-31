@@ -66,6 +66,8 @@ if [ "$SPIN" ]; then
     export TERM=screen-256color
 fi
 
+[ -f /nix/var/nix/gcroots/current-system/sw/share/zsh/site-functions/autojump.zsh ] && source /nix/var/nix/gcroots/current-system/sw/share/zsh/site-functions/autojump.zsh
+
 autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '%b '
