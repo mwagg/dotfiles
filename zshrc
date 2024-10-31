@@ -7,10 +7,6 @@ bindkey "^[[1;3D" backward-word
 
 [ -f /opt/dev/dev.sh ] && source /opt/dev/dev.sh
 
-[[ -f /opt/dev/sh/chruby/chruby.sh ]] && { type chruby >/dev/null 2>&1 || chruby () { source /opt/dev/sh/chruby/chruby.sh; chruby "$@"; } }
-
-[[ -x /opt/homebrew/bin/brew ]] && eval $(/opt/homebrew/bin/brew shellenv)
-
 alias gs="git status"
 alias gsk="git add -u ."
 alias gl="git log --graph --oneline"
@@ -69,16 +65,6 @@ function git-clean() {
 if [ "$SPIN" ]; then
     export TERM=screen-256color
 fi
-
-[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
-[ -f "$HOME/.asdf/asdf.sh" ] && . $HOME/.asdf/asdf.sh
-[ -d "$HOME/go/" ] && export PATH="$HOME/go/bin":$PATH
-[ -d "$HOME/.local/bin" ] && export PATH="$HOME/.local/bin":$PATH
-
-# FZF
-[[ $- == *i* ]] && [ -f /opt/homebrew/opt/fzf/shell/completion.zsh ] && source /opt/homebrew/opt/fzf/shell/completion.zsh 2> /dev/null
-[ -f /opt/homebrew/opt/fzf/shell/key-bindings.zsh ] && source /opt/homebrew/opt/fzf/shell/key-bindings.zsh 
-[ -f /usr/local/docs/fzf/examples/key-bindings.zsh ] && source /usr/local/docs/fzf/examples/key-bindings.zsh
 
 autoload -Uz vcs_info
 precmd() { vcs_info }
