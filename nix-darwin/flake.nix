@@ -26,6 +26,7 @@
             pkgs.tmux
             pkgs.gh
             pkgs.fzf
+            pkgs.tmux
           ];
 
         fonts.packages = [
