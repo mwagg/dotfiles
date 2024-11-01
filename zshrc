@@ -18,7 +18,7 @@ alias gcd='cd $(find ~/src/github.com -type d -depth 2 -prune | fzf)'
 
 alias tf="tmux-sessionizer"
 alias rt="rails_test"
-alias drb="rm -rf ~/.config/nix-darwin/flake.nix && cp ~/dotfiles/nix-darwin/flake.nix ~/.config/nix-darwin/flake.nix && darwin-rebuild switch --flake ~/.config/nix-darwin"
+alias drb="darwin-rebuild switch --flake $HOME/dotfiles/nix-darwin"
 
 if (( $+commands[nvim])); then
     alias vim=nvim

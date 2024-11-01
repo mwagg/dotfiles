@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-set -e
-
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-mkdir -p ~/.config/nix-darwin
-cp $BASEDIR/nix-darwin/flake.nix ~/.config/nix-darwin/
-nix run nix-darwin --extra-experimental-features "nix-command flakes" -- switch --flake ~/.config/nix-darwin
